@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814514826579",
+    "project_id": "beautylink-1fe62",
+    "storage_bucket": "beautylink-1fe62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814514826579:android:0b94b1ea7e7eceae3085a6",
+        "android_client_info": {
+          "package_name": "com.devservices.beautylink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814514826579-lsd3dsvjvhpgc5nhorsqcogk4pj1p9h2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG8eAa0CfxF18fv_eed-8ckDeEruIgRL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814514826579-lsd3dsvjvhpgc5nhorsqcogk4pj1p9h2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
