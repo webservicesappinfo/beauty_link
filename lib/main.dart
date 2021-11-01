@@ -94,7 +94,6 @@ class MyApp extends StatelessWidget {
           FirebaseAuth.instance.currentUser?.reload();
           final isSignedIn = snapshot.data != null && AuthService().isSignedIn;
           return isSignedIn ? HomePage() : LoginPage();
-          //return MapPickerPage();
         },
       ),
     );
