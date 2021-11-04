@@ -86,17 +86,17 @@ class ApiAddUserRequest extends $pb.GeneratedMessage {
 
 class ApiAddUserReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ApiAddUserReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'mobileApi'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isAdded', protoName: 'isAdded')
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
     ..hasRequiredFields = false
   ;
 
   ApiAddUserReply._() : super();
   factory ApiAddUserReply({
-    $core.bool? isAdded,
+    $core.bool? result,
   }) {
     final _result = create();
-    if (isAdded != null) {
-      _result.isAdded = isAdded;
+    if (result != null) {
+      _result.result = result;
     }
     return _result;
   }
@@ -122,13 +122,13 @@ class ApiAddUserReply extends $pb.GeneratedMessage {
   static ApiAddUserReply? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.bool get isAdded => $_getBF(0);
+  $core.bool get result => $_getBF(0);
   @$pb.TagNumber(1)
-  set isAdded($core.bool v) { $_setBool(0, v); }
+  set result($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasIsAdded() => $_has(0);
+  $core.bool hasResult() => $_has(0);
   @$pb.TagNumber(1)
-  void clearIsAdded() => clearField(1);
+  void clearResult() => clearField(1);
 }
 
 class ApiGetUserRequest extends $pb.GeneratedMessage {
@@ -756,17 +756,17 @@ class ApiSetUserLocationRequest extends $pb.GeneratedMessage {
 
 class ApiSetUserLocationReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ApiSetUserLocationReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'mobileApi'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isSet', protoName: 'isSet')
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
     ..hasRequiredFields = false
   ;
 
   ApiSetUserLocationReply._() : super();
   factory ApiSetUserLocationReply({
-    $core.bool? isSet,
+    $core.bool? result,
   }) {
     final _result = create();
-    if (isSet != null) {
-      _result.isSet = isSet;
+    if (result != null) {
+      _result.result = result;
     }
     return _result;
   }
@@ -792,12 +792,12 @@ class ApiSetUserLocationReply extends $pb.GeneratedMessage {
   static ApiSetUserLocationReply? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.bool get isSet => $_getBF(0);
+  $core.bool get result => $_getBF(0);
   @$pb.TagNumber(1)
-  set isSet($core.bool v) { $_setBool(0, v); }
+  set result($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasIsSet() => $_has(0);
+  $core.bool hasResult() => $_has(0);
   @$pb.TagNumber(1)
-  void clearIsSet() => clearField(1);
+  void clearResult() => clearField(1);
 }
 

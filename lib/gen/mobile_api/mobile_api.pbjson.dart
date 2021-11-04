@@ -24,12 +24,12 @@ final $typed_data.Uint8List apiAddUserRequestDescriptor = $convert.base64Decode(
 const ApiAddUserReply$json = const {
   '1': 'ApiAddUserReply',
   '2': const [
-    const {'1': 'isAdded', '3': 1, '4': 1, '5': 8, '10': 'isAdded'},
+    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
   ],
 };
 
 /// Descriptor for `ApiAddUserReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiAddUserReplyDescriptor = $convert.base64Decode('Cg9BcGlBZGRVc2VyUmVwbHkSGAoHaXNBZGRlZBgBIAEoCFIHaXNBZGRlZA==');
+final $typed_data.Uint8List apiAddUserReplyDescriptor = $convert.base64Decode('Cg9BcGlBZGRVc2VyUmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');
 @$core.Deprecated('Use apiGetUserRequestDescriptor instead')
 const ApiGetUserRequest$json = const {
   '1': 'ApiGetUserRequest',
@@ -152,9 +152,9 @@ final $typed_data.Uint8List apiSetUserLocationRequestDescriptor = $convert.base6
 const ApiSetUserLocationReply$json = const {
   '1': 'ApiSetUserLocationReply',
   '2': const [
-    const {'1': 'isSet', '3': 1, '4': 1, '5': 8, '10': 'isSet'},
+    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
   ],
 };
 
 /// Descriptor for `ApiSetUserLocationReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiSetUserLocationReplyDescriptor = $convert.base64Decode('ChdBcGlTZXRVc2VyTG9jYXRpb25SZXBseRIUCgVpc1NldBgBIAEoCFIFaXNTZXQ=');
+final $typed_data.Uint8List apiSetUserLocationReplyDescriptor = $convert.base64Decode('ChdBcGlTZXRVc2VyTG9jYXRpb25SZXBseRIWCgZyZXN1bHQYASABKAhSBnJlc3VsdA==');

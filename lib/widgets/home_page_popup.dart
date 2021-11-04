@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePagePopup extends StatelessWidget {
-  List<String> _settingsBtnChoices = <String>["profile", "signOut"];
+  List<String> _settingsBtnChoices = <String>["profile", "signOut", "test"];
 
   @override
   Widget build(BuildContext context) {

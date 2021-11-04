@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
         child: ElevatedButton(
             onPressed: () {
               AuthService().reLoginWithGoogle().then((user) {
-                if (user != null) UserService.instance.addUser(user);
+                if (user != null) UserService().addUser(user);
               });
             },
             child: Text('Sign in')),

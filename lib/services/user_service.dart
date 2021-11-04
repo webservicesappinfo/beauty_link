@@ -8,7 +8,8 @@ import 'package:beauty_link/global.dart' as global;
 
 class UserService {
   UserService._internal();
-  static final UserService instance = UserService._internal();
+  static final UserService _singleton = UserService._internal();
+  factory UserService() => _singleton;
 
   MobileApiClient mobileApiClient = MobileApiClient(ClientChannel(global.ip,
       port: global.port,
@@ -16,12 +17,13 @@ class UserService {
 
   AppUser? get _currentUser => AuthService().user;
 
-  void addUser(AppUser? user) async {
-    if (user == null) return;
+  Future<bool> addUser(AppUser? user) async {
+    if (user == null) return false;
     var response = await mobileApiClient.apiAddUser(new ApiAddUserRequest(
         guid: user.uidFB,
-        name: "${user.name}/${user.email}",
+        name: "${user.name}/${user.email ?? ""}",
         token: user.token));
+      return response.result;
   }
 
   Future<List<AppUser>> getUsers() async {
@@ -69,7 +71,7 @@ class UserService {
             forGuid: user.uidFB,
             lat: user.location?.latitude.toString(),
             lng: user.location?.longitude.toString()));
-    return reply.isSet;
+    return reply.result;
   }
 
   void saveToken(AppUser user, String token) {}

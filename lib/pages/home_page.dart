@@ -3,6 +3,7 @@
 import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/pages/profile_page.dart';
+import 'package:beauty_link/pages/test_users_page.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:beauty_link/widgets/floating_btn.dart';
 import 'package:beauty_link/widgets/home_page_popup.dart';
@@ -25,16 +26,27 @@ class HomePage extends StatelessWidget {
             body: BlocConsumer<BaseBloc, StateBase>(listener: (context, state) {
               switch (state.runtimeType) {
                 case HomePopupBtnClickState:
-                  var btnKey = (state as HomePopupBtnClickState).key;
-                  if (btnKey == "profile") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProfilePage(),
-                      ),
-                    );
-                  } else if (btnKey == "signOut") AuthService().signOut();
-                  break;
+                  switch ((state as HomePopupBtnClickState).key) {
+                    case "profile":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfilePage(),
+                        ),
+                      );
+                      break;
+                    case "signOut":
+                      AuthService().signOut();
+                      break;
+                    case "test":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TestUsersPage(),
+                        ),
+                      );
+                      break;
+                  }
               }
             }, builder: (context, state) {
               return Column(
