@@ -1,4 +1,5 @@
 import 'package:beauty_link/bloc/states.dart';
+import 'package:beauty_link/models/app_user.dart';
 
 abstract class EventBase {
   final EventExceptionBase? exception;
@@ -41,4 +42,10 @@ class HomePopupBtnClickEvent extends EventBase {
   HomePopupBtnClickEvent(this.key)
       : super([HomePopupBtnClickState(key)],
             EventExceptionBase("HomePopupBtnClickEvent error"));
+}
+
+class LoadTestUserPageEvent extends EventBase {
+  LoadTestUserPageEvent()
+      : super([InitState(), LoadingState(), LoadedTestUsersPageState()],
+            EventExceptionBase("CounterEvent error"));
 }

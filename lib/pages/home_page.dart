@@ -44,7 +44,10 @@ class HomePage extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => TestUsersPage(),
                         ),
-                      );
+                      ).then((value) => context
+                          .read<BaseBloc>()
+                          .add(LoadTestUserPageEvent()));
+                      //context.read<BaseBloc>().add(LoadTestUserPageEvent());
                       break;
                   }
               }

@@ -23,7 +23,7 @@ class UserService {
         guid: user.uidFB,
         name: "${user.name}/${user.email ?? ""}",
         token: user.token));
-      return response.result;
+    return response.result;
   }
 
   Future<List<AppUser>> getUsers() async {
