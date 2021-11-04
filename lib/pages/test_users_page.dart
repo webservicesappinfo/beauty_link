@@ -1,4 +1,5 @@
 import 'package:beauty_link/bloc/base_bloc.dart';
+import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/pages/test_add_user_page.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +19,16 @@ class TestUsersPage extends StatelessWidget {
                         listener: (context, state) {},
                         builder: (context, state) {
                           switch (state.runtimeType) {
+                            case InitState:
+                              context.read<BaseBloc>().add(LoadTestUserPageEvent());
+                              break;
                             case LoadingState:
                               Center(
                                 child: CircularProgressIndicator(),
                               );
                               break;
                             case LoadedTestUsersPageState:
-                              var stateresult =
-                                  (state as LoadedTestUsersPageState).result;
+                              var stateresult = (state as LoadedTestUsersPageState).result;
                               if (stateresult == null)
                                 return Center(
                                   child: Text(
@@ -37,15 +40,15 @@ class TestUsersPage extends StatelessWidget {
                                 return ListView.builder(
                                     padding: const EdgeInsets.all(8),
                                     itemCount: stateresult.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return Text(
-                                          stateresult[index].name ?? "<Empty>",
-                                          style: TextStyle(fontSize: 22));
+                                    itemBuilder: (BuildContext context, int index) {
+                                      return Text(stateresult[index].name ?? "<Empty>", style: TextStyle(fontSize: 22));
                                     });
                           }
                           return Center(
-                            child: CircularProgressIndicator(),
+                            child: Text(
+                              "InitState",
+                              style: TextStyle(fontSize: 20.0),
+                            ),
                           );
                         })),
                 Center(

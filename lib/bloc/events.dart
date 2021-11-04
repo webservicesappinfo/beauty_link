@@ -19,8 +19,7 @@ abstract class EventBase {
         return false;
       }
     } catch (e, s) {
-      currentState =
-          ExceptionState(exception ?? EventExceptionBase(e.toString()));
+      currentState = ExceptionState(exception ?? EventExceptionBase(e.toString()));
       return false;
     }
   }
@@ -32,20 +31,14 @@ class EventExceptionBase {
 }
 
 class CounterEvent extends EventBase {
-  CounterEvent()
-      : super([InitState(), LoadingState(), LoadedState()],
-            EventExceptionBase("CounterEvent error"));
+  CounterEvent() : super([InitState(), LoadingState(), LoadedState()], EventExceptionBase("CounterEvent error"));
 }
 
 class HomePopupBtnClickEvent extends EventBase {
   final String key;
-  HomePopupBtnClickEvent(this.key)
-      : super([HomePopupBtnClickState(key)],
-            EventExceptionBase("HomePopupBtnClickEvent error"));
+  HomePopupBtnClickEvent(this.key) : super([HomePopupBtnClickState(key)], EventExceptionBase("HomePopupBtnClickEvent error"));
 }
 
 class LoadTestUserPageEvent extends EventBase {
-  LoadTestUserPageEvent()
-      : super([InitState(), LoadingState(), LoadedTestUsersPageState()],
-            EventExceptionBase("CounterEvent error"));
+  LoadTestUserPageEvent() : super([LoadingState(), LoadedTestUsersPageState()], EventExceptionBase("CounterEvent error"));
 }
