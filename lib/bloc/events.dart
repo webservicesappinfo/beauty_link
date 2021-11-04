@@ -1,7 +1,7 @@
 import 'package:beauty_link/bloc/states.dart';
 
 abstract class EventBase {
-  final EventExceptionBase exception;
+  final EventExceptionBase? exception;
   List<StateBase> _states;
   EventBase(this._states, this.exception);
   int _index = 0;
@@ -17,8 +17,9 @@ abstract class EventBase {
         _index = 0;
         return false;
       }
-    } catch (Exception) {
-      currentState = ExceptionState(exception);
+    } catch (e, s) {
+      currentState =
+          ExceptionState(exception ?? EventExceptionBase(e.toString()));
       return false;
     }
   }
@@ -38,5 +39,6 @@ class CounterEvent extends EventBase {
 class HomePopupBtnClickEvent extends EventBase {
   final String key;
   HomePopupBtnClickEvent(this.key)
-      : super([HomePopupBtnClickState(key)], EventExceptionBase("HomePopupBtnClickEvent error"));
+      : super([HomePopupBtnClickState(key)],
+            EventExceptionBase("HomePopupBtnClickEvent error"));
 }
