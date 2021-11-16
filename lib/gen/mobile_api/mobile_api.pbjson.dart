@@ -8,69 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use apiAddUserRequestDescriptor instead')
-const ApiAddUserRequest$json = const {
-  '1': 'ApiAddUserRequest',
-  '2': const [
-    const {'1': 'guid', '3': 1, '4': 1, '5': 9, '10': 'guid'},
-    const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'token', '3': 3, '4': 1, '5': 9, '10': 'token'},
-  ],
-};
-
-/// Descriptor for `ApiAddUserRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiAddUserRequestDescriptor = $convert.base64Decode('ChFBcGlBZGRVc2VyUmVxdWVzdBISCgRndWlkGAEgASgJUgRndWlkEhIKBG5hbWUYAiABKAlSBG5hbWUSFAoFdG9rZW4YAyABKAlSBXRva2Vu');
-@$core.Deprecated('Use apiAddUserReplyDescriptor instead')
-const ApiAddUserReply$json = const {
-  '1': 'ApiAddUserReply',
-  '2': const [
-    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
-  ],
-};
-
-/// Descriptor for `ApiAddUserReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiAddUserReplyDescriptor = $convert.base64Decode('Cg9BcGlBZGRVc2VyUmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');
-@$core.Deprecated('Use apiGetUserRequestDescriptor instead')
-const ApiGetUserRequest$json = const {
-  '1': 'ApiGetUserRequest',
-  '2': const [
-    const {'1': 'guid', '3': 1, '4': 1, '5': 9, '10': 'guid'},
-  ],
-};
-
-/// Descriptor for `ApiGetUserRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiGetUserRequestDescriptor = $convert.base64Decode('ChFBcGlHZXRVc2VyUmVxdWVzdBISCgRndWlkGAEgASgJUgRndWlk');
-@$core.Deprecated('Use apiGetUserReplyDescriptor instead')
-const ApiGetUserReply$json = const {
-  '1': 'ApiGetUserReply',
-  '2': const [
-    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'guid', '3': 2, '4': 1, '5': 9, '10': 'guid'},
-  ],
-};
-
-/// Descriptor for `ApiGetUserReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiGetUserReplyDescriptor = $convert.base64Decode('Cg9BcGlHZXRVc2VyUmVwbHkSEgoEbmFtZRgBIAEoCVIEbmFtZRISCgRndWlkGAIgASgJUgRndWlk');
-@$core.Deprecated('Use apiGetUsersRequestDescriptor instead')
-const ApiGetUsersRequest$json = const {
-  '1': 'ApiGetUsersRequest',
-  '2': const [
-    const {'1': 'restriction', '3': 1, '4': 1, '5': 9, '10': 'restriction'},
-  ],
-};
-
-/// Descriptor for `ApiGetUsersRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiGetUsersRequestDescriptor = $convert.base64Decode('ChJBcGlHZXRVc2Vyc1JlcXVlc3QSIAoLcmVzdHJpY3Rpb24YASABKAlSC3Jlc3RyaWN0aW9u');
-@$core.Deprecated('Use apiGetUsersReplyDescriptor instead')
-const ApiGetUsersReply$json = const {
-  '1': 'ApiGetUsersReply',
-  '2': const [
-    const {'1': 'names', '3': 1, '4': 3, '5': 9, '10': 'names'},
-  ],
-};
-
-/// Descriptor for `ApiGetUsersReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiGetUsersReplyDescriptor = $convert.base64Decode('ChBBcGlHZXRVc2Vyc1JlcGx5EhQKBW5hbWVzGAEgAygJUgVuYW1lcw==');
 @$core.Deprecated('Use apiFindLastMessageRequestDescriptor instead')
 const ApiFindLastMessageRequest$json = const {
   '1': 'ApiFindLastMessageRequest',

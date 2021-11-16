@@ -1,4 +1,5 @@
 import 'package:beauty_link/gen/mobile_api/mobile_api.pbgrpc.dart';
+import 'package:beauty_link/gen/user/user.pb.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grpc/grpc.dart';
@@ -19,17 +20,18 @@ class UserService {
 
   Future<bool> addUser(AppUser? user) async {
     if (user == null) return false;
-    var response = await mobileApiClient.apiAddUser(new ApiAddUserRequest(
-        guid: user.uidFB,
+    var response = await mobileApiClient.apiAddUser(new AddUserRequest(
+        //guid: user.uidFB,
         name: "${user.name}/${user.email ?? ""}",
-        token: user.token));
+        /*token: user.token*/
+        token: user.uidFB));
     return response.result;
   }
 
   Future<List<AppUser>> getUsers() async {
     var users = <AppUser>[];
     var response = await mobileApiClient
-        .apiGetUsers(new ApiGetUsersRequest(restriction: null));
+        .apiGetUsers(new GetUsersRequest(restriction: null));
     var curUserCaption = "${_currentUser?.name}/${_currentUser?.email}";
     for (var item in response.names) {
       var parts = item.split(':').toList();

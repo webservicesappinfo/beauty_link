@@ -2,14 +2,16 @@
 
 import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
+import 'package:beauty_link/global.dart';
 import 'package:beauty_link/pages/profile_page.dart';
-import 'package:beauty_link/pages/test_users_page.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:beauty_link/widgets/floating_btn.dart';
 import 'package:beauty_link/widgets/home_page_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:beauty_link/bloc/base_bloc.dart';
+
+import 'for_test/entities_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -23,7 +25,7 @@ class HomePage extends StatelessWidget {
               centerTitle: true,
               actions: <Widget>[HomePagePopup()],
             ),
-            body: BlocConsumer<BaseBloc, StateBase>(listener: (context, state) {
+            body: BlocConsumer<BaseBloc, BaseState>(listener: (context, state) {
               switch (state.runtimeType) {
                 case HomePopupBtnClickState:
                   switch ((state as HomePopupBtnClickState).key) {
@@ -42,10 +44,10 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => TestUsersPage(),
+                          builder: (context) => EntitiesPage(
+                              entityType: EntityType.user, params: Map()),
                         ),
                       );
-                      //context.read<BaseBloc>().add(LoadTestUserPageEvent());
                       break;
                   }
               }
@@ -65,7 +67,7 @@ class HomePage extends StatelessWidget {
             floatingActionButton: FloatingButton()));
   }
 
-  String getTextByState(StateBase state) {
+  String getTextByState(BaseState state) {
     switch (state.runtimeType) {
       case InitState:
         return "Init";
