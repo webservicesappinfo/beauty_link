@@ -125,18 +125,26 @@ class EntitiesPage extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           itemCount: stateResult.length,
           itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(stateResult[index].name ?? "<Empty>",
-                  style: TextStyle(fontSize: 22)),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EntityInfo(
-                      entityType: entityType,
-                      params: {
-                        'name': stateResult[index].name,
-                        'guid': stateResult[index].uidFB
-                      }),
+            return Dismissible(
+              key: Key(index.toString()),
+              background:
+                  Container(color: Colors.green, child: Icon(Icons.check)),
+              secondaryBackground:
+                  Container(color: Colors.red, child: Icon(Icons.cancel)),
+              onDismissed: (direction) {},
+              child: ListTile(
+                title: Text(stateResult[index].name ?? "<Empty>",
+                    style: TextStyle(fontSize: 22)),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EntityInfo(
+                        entityType: entityType,
+                        params: {
+                          'name': stateResult[index].name,
+                          'guid': stateResult[index].uidFB
+                        }),
+                  ),
                 ),
               ),
             );

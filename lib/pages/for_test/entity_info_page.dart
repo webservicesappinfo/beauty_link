@@ -22,17 +22,24 @@ class EntityInfo extends StatelessWidget {
   }
 
   Widget _onLoaded(BuildContext context) {
-    switch (entityType) {
-      case EntityType.user:
-        return _onUser(context);
-      default:
-        return Center(
-          child: Text(
-            "Empty",
-            style: TextStyle(fontSize: 20.0),
-          ),
-        );
-    }
+    return Column(
+      children: [
+        Center(child: Builder(builder: (context) {
+          switch (entityType) {
+            case EntityType.user:
+              return _onUser(context);
+            default:
+              return Center(
+                child: Text(
+                  "Empty",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              );
+          }
+        })),
+        ElevatedButton(onPressed: () {}, child: Text('Remove $entityType'))
+      ],
+    );
   }
 
   Widget _onUser(BuildContext context) {
