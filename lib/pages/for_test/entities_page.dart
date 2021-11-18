@@ -133,20 +133,22 @@ class EntitiesPage extends StatelessWidget {
                   Container(color: Colors.red, child: Icon(Icons.cancel)),
               onDismissed: (direction) {},
               child: ListTile(
-                title: Text(stateResult[index].name ?? "<Empty>",
-                    style: TextStyle(fontSize: 22)),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => EntityInfo(
-                        entityType: entityType,
-                        params: {
-                          'name': stateResult[index].name,
-                          'guid': stateResult[index].uidFB
-                        }),
-                  ),
-                ),
-              ),
+                  title: Text(stateResult[index].name ?? "<Empty>",
+                      style: TextStyle(fontSize: 22)),
+                  onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EntityInfo(
+                              entityType: entityType,
+                              params: {
+                                'name': stateResult[index].name,
+                                'guid': stateResult[index].uidFB
+                              }),
+                        ),
+                      ).then((value) {
+                        BlocProvider.of<BaseBloc>(context)
+                            .add(UsersPageLoadEvent());
+                      })),
             );
           });
   }
@@ -156,7 +158,7 @@ class EntitiesPage extends StatelessWidget {
     if (stateResult == null)
       return Center(
         child: Text(
-          "Users not found",
+          "Companies not found",
           style: TextStyle(fontSize: 20.0),
         ),
       );
@@ -166,28 +168,24 @@ class EntitiesPage extends StatelessWidget {
           itemCount: stateResult.length,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              title: Text(stateResult[index].name ?? "<Empty>",
-                  style: TextStyle(fontSize: 22)),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EntityInfo(
-                      entityType: entityType,
-                      params: {
-                        'name': stateResult[index].name,
-                        'guid': stateResult[index].userGuid
-                      }),
-                ),
-              ),
-            );
+                title: Text(stateResult[index].name ?? "<Empty>",
+                    style: TextStyle(fontSize: 22)),
+                onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EntityInfo(
+                            entityType: entityType,
+                            params: {
+                              'name': stateResult[index].name,
+                              'guid': stateResult[index].userGuid
+                            }),
+                      ),
+                    ).then((value) {
+                      BlocProvider.of<BaseBloc>(context).add(
+                          CompaniesPageLoadEvent(
+                              userGuid: params['userGuid'],
+                              owner: params['companyType'] == 'owner'));
+                    }));
           });
-  }
-
-  void _pop(BaseBloc? b) {
-    try {
-      b?.add(UsersPageLoadEvent());
-    } catch (Ex) {
-      var e = Ex.runtimeType;
-    }
   }
 }

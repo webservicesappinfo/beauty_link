@@ -24,7 +24,14 @@ class UserService {
         //guid: user.uidFB,
         name: "${user.name}/${user.email ?? ""}",
         /*token: user.token*/
-        token: user.uidFB));
+        uidFB: user.uidFB));
+    return response.result;
+  }
+
+  Future<bool> delUser(AppUser? user) async {
+    if (user == null) return false;
+    var response =
+        await mobileApiClient.apiDelUser(new DelUserRequest(uidFB: user.uidFB));
     return response.result;
   }
 

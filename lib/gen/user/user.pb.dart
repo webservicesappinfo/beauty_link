@@ -11,17 +11,17 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class GetUserRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetUserRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uidFB', protoName: 'uidFB')
     ..hasRequiredFields = false
   ;
 
   GetUserRequest._() : super();
   factory GetUserRequest({
-    $core.String? guid,
+    $core.String? uidFB,
   }) {
     final _result = create();
-    if (guid != null) {
-      _result.guid = guid;
+    if (uidFB != null) {
+      _result.uidFB = uidFB;
     }
     return _result;
   }
@@ -47,33 +47,33 @@ class GetUserRequest extends $pb.GeneratedMessage {
   static GetUserRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get guid => $_getSZ(0);
+  $core.String get uidFB => $_getSZ(0);
   @$pb.TagNumber(1)
-  set guid($core.String v) { $_setString(0, v); }
+  set uidFB($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasGuid() => $_has(0);
+  $core.bool hasUidFB() => $_has(0);
   @$pb.TagNumber(1)
-  void clearGuid() => clearField(1);
+  void clearUidFB() => clearField(1);
 }
 
 class GetUserReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetUserReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uidFB', protoName: 'uidFB')
     ..hasRequiredFields = false
   ;
 
   GetUserReply._() : super();
   factory GetUserReply({
     $core.String? name,
-    $core.String? guid,
+    $core.String? uidFB,
   }) {
     final _result = create();
     if (name != null) {
       _result.name = name;
     }
-    if (guid != null) {
-      _result.guid = guid;
+    if (uidFB != null) {
+      _result.uidFB = uidFB;
     }
     return _result;
   }
@@ -108,13 +108,13 @@ class GetUserReply extends $pb.GeneratedMessage {
   void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get guid => $_getSZ(1);
+  $core.String get uidFB => $_getSZ(1);
   @$pb.TagNumber(2)
-  set guid($core.String v) { $_setString(1, v); }
+  set uidFB($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasGuid() => $_has(1);
+  $core.bool hasUidFB() => $_has(1);
   @$pb.TagNumber(2)
-  void clearGuid() => clearField(2);
+  void clearUidFB() => clearField(2);
 }
 
 class GetUsersRequest extends $pb.GeneratedMessage {
@@ -207,7 +207,7 @@ class GetUsersReply extends $pb.GeneratedMessage {
 
 class AddUserRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddUserRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uidFB', protoName: 'uidFB')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
     ..hasRequiredFields = false
@@ -215,13 +215,13 @@ class AddUserRequest extends $pb.GeneratedMessage {
 
   AddUserRequest._() : super();
   factory AddUserRequest({
-    $core.String? guid,
+    $core.String? uidFB,
     $core.String? name,
     $core.String? token,
   }) {
     final _result = create();
-    if (guid != null) {
-      _result.guid = guid;
+    if (uidFB != null) {
+      _result.uidFB = uidFB;
     }
     if (name != null) {
       _result.name = name;
@@ -253,13 +253,13 @@ class AddUserRequest extends $pb.GeneratedMessage {
   static AddUserRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get guid => $_getSZ(0);
+  $core.String get uidFB => $_getSZ(0);
   @$pb.TagNumber(1)
-  set guid($core.String v) { $_setString(0, v); }
+  set uidFB($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasGuid() => $_has(0);
+  $core.bool hasUidFB() => $_has(0);
   @$pb.TagNumber(1)
-  void clearGuid() => clearField(1);
+  void clearUidFB() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
@@ -329,7 +329,7 @@ class AddUserReply extends $pb.GeneratedMessage {
 
 class UpdateUserRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateUserRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uidFB', protoName: 'uidFB')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
     ..hasRequiredFields = false
@@ -337,13 +337,13 @@ class UpdateUserRequest extends $pb.GeneratedMessage {
 
   UpdateUserRequest._() : super();
   factory UpdateUserRequest({
-    $core.String? guid,
+    $core.String? uidFB,
     $core.String? name,
     $core.String? token,
   }) {
     final _result = create();
-    if (guid != null) {
-      _result.guid = guid;
+    if (uidFB != null) {
+      _result.uidFB = uidFB;
     }
     if (name != null) {
       _result.name = name;
@@ -375,13 +375,13 @@ class UpdateUserRequest extends $pb.GeneratedMessage {
   static UpdateUserRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get guid => $_getSZ(0);
+  $core.String get uidFB => $_getSZ(0);
   @$pb.TagNumber(1)
-  set guid($core.String v) { $_setString(0, v); }
+  set uidFB($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasGuid() => $_has(0);
+  $core.bool hasUidFB() => $_has(0);
   @$pb.TagNumber(1)
-  void clearGuid() => clearField(1);
+  void clearUidFB() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
@@ -449,61 +449,61 @@ class UpdateUserReply extends $pb.GeneratedMessage {
   void clearResult() => clearField(1);
 }
 
-class RemoveUserRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RemoveUserRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+class DelUserRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DelUserRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uidFB', protoName: 'uidFB')
     ..hasRequiredFields = false
   ;
 
-  RemoveUserRequest._() : super();
-  factory RemoveUserRequest({
-    $core.String? guid,
+  DelUserRequest._() : super();
+  factory DelUserRequest({
+    $core.String? uidFB,
   }) {
     final _result = create();
-    if (guid != null) {
-      _result.guid = guid;
+    if (uidFB != null) {
+      _result.uidFB = uidFB;
     }
     return _result;
   }
-  factory RemoveUserRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RemoveUserRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory DelUserRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DelUserRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  RemoveUserRequest clone() => RemoveUserRequest()..mergeFromMessage(this);
+  DelUserRequest clone() => DelUserRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  RemoveUserRequest copyWith(void Function(RemoveUserRequest) updates) => super.copyWith((message) => updates(message as RemoveUserRequest)) as RemoveUserRequest; // ignore: deprecated_member_use
+  DelUserRequest copyWith(void Function(DelUserRequest) updates) => super.copyWith((message) => updates(message as DelUserRequest)) as DelUserRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RemoveUserRequest create() => RemoveUserRequest._();
-  RemoveUserRequest createEmptyInstance() => create();
-  static $pb.PbList<RemoveUserRequest> createRepeated() => $pb.PbList<RemoveUserRequest>();
+  static DelUserRequest create() => DelUserRequest._();
+  DelUserRequest createEmptyInstance() => create();
+  static $pb.PbList<DelUserRequest> createRepeated() => $pb.PbList<DelUserRequest>();
   @$core.pragma('dart2js:noInline')
-  static RemoveUserRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RemoveUserRequest>(create);
-  static RemoveUserRequest? _defaultInstance;
+  static DelUserRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelUserRequest>(create);
+  static DelUserRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get guid => $_getSZ(0);
+  $core.String get uidFB => $_getSZ(0);
   @$pb.TagNumber(1)
-  set guid($core.String v) { $_setString(0, v); }
+  set uidFB($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasGuid() => $_has(0);
+  $core.bool hasUidFB() => $_has(0);
   @$pb.TagNumber(1)
-  void clearGuid() => clearField(1);
+  void clearUidFB() => clearField(1);
 }
 
-class RemoveUserReply extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RemoveUserReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
+class DelUserReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DelUserReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
     ..hasRequiredFields = false
   ;
 
-  RemoveUserReply._() : super();
-  factory RemoveUserReply({
+  DelUserReply._() : super();
+  factory DelUserReply({
     $core.bool? result,
   }) {
     final _result = create();
@@ -512,26 +512,26 @@ class RemoveUserReply extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory RemoveUserReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RemoveUserReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory DelUserReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DelUserReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  RemoveUserReply clone() => RemoveUserReply()..mergeFromMessage(this);
+  DelUserReply clone() => DelUserReply()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  RemoveUserReply copyWith(void Function(RemoveUserReply) updates) => super.copyWith((message) => updates(message as RemoveUserReply)) as RemoveUserReply; // ignore: deprecated_member_use
+  DelUserReply copyWith(void Function(DelUserReply) updates) => super.copyWith((message) => updates(message as DelUserReply)) as DelUserReply; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RemoveUserReply create() => RemoveUserReply._();
-  RemoveUserReply createEmptyInstance() => create();
-  static $pb.PbList<RemoveUserReply> createRepeated() => $pb.PbList<RemoveUserReply>();
+  static DelUserReply create() => DelUserReply._();
+  DelUserReply createEmptyInstance() => create();
+  static $pb.PbList<DelUserReply> createRepeated() => $pb.PbList<DelUserReply>();
   @$core.pragma('dart2js:noInline')
-  static RemoveUserReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RemoveUserReply>(create);
-  static RemoveUserReply? _defaultInstance;
+  static DelUserReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelUserReply>(create);
+  static DelUserReply? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get result => $_getBF(0);

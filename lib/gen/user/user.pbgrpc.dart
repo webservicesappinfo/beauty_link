@@ -35,12 +35,11 @@ class UserClient extends $grpc.Client {
           ($0.UpdateUserRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.UpdateUserReply.fromBuffer(value));
-  static final _$removeUser =
-      $grpc.ClientMethod<$0.RemoveUserRequest, $0.RemoveUserReply>(
-          '/user.User/RemoveUser',
-          ($0.RemoveUserRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $0.RemoveUserReply.fromBuffer(value));
+  static final _$delUser =
+      $grpc.ClientMethod<$0.DelUserRequest, $0.DelUserReply>(
+          '/user.User/DelUser',
+          ($0.DelUserRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.DelUserReply.fromBuffer(value));
 
   UserClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -68,10 +67,9 @@ class UserClient extends $grpc.Client {
     return $createUnaryCall(_$updateUser, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.RemoveUserReply> removeUser(
-      $0.RemoveUserRequest request,
+  $grpc.ResponseFuture<$0.DelUserReply> delUser($0.DelUserRequest request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$removeUser, request, options: options);
+    return $createUnaryCall(_$delUser, request, options: options);
   }
 }
 
@@ -107,13 +105,13 @@ abstract class UserServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.UpdateUserRequest.fromBuffer(value),
         ($0.UpdateUserReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.RemoveUserRequest, $0.RemoveUserReply>(
-        'RemoveUser',
-        removeUser_Pre,
+    $addMethod($grpc.ServiceMethod<$0.DelUserRequest, $0.DelUserReply>(
+        'DelUser',
+        delUser_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.RemoveUserRequest.fromBuffer(value),
-        ($0.RemoveUserReply value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.DelUserRequest.fromBuffer(value),
+        ($0.DelUserReply value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.GetUserReply> getUser_Pre(
@@ -136,9 +134,9 @@ abstract class UserServiceBase extends $grpc.Service {
     return updateUser(call, await request);
   }
 
-  $async.Future<$0.RemoveUserReply> removeUser_Pre($grpc.ServiceCall call,
-      $async.Future<$0.RemoveUserRequest> request) async {
-    return removeUser(call, await request);
+  $async.Future<$0.DelUserReply> delUser_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.DelUserRequest> request) async {
+    return delUser(call, await request);
   }
 
   $async.Future<$0.GetUserReply> getUser(
@@ -149,6 +147,6 @@ abstract class UserServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.GetUsersRequest request);
   $async.Future<$0.UpdateUserReply> updateUser(
       $grpc.ServiceCall call, $0.UpdateUserRequest request);
-  $async.Future<$0.RemoveUserReply> removeUser(
-      $grpc.ServiceCall call, $0.RemoveUserRequest request);
+  $async.Future<$0.DelUserReply> delUser(
+      $grpc.ServiceCall call, $0.DelUserRequest request);
 }

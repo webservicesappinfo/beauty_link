@@ -1,7 +1,10 @@
 import 'package:beauty_link/bloc/base_bloc.dart';
+import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/global.dart';
+import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/pages/for_test/entities_page.dart';
+import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,9 +40,30 @@ class EntityInfo extends StatelessWidget {
               );
           }
         })),
-        ElevatedButton(onPressed: () {}, child: Text('Remove $entityType'))
+        ElevatedButton(
+            onPressed: () => _delEntity(context),
+            child: Text('Remove $entityType'))
       ],
     );
+  }
+
+  void _delEntity(BuildContext context) {
+    switch (entityType) {
+      case EntityType.user:
+        UserService().delUser(AppUser(uidFB: params['guid'])).then((value) {
+          Navigator.pop(context);
+        });
+        break;
+      case EntityType.company:
+        // TODO: Handle this case.
+        break;
+      case EntityType.skill:
+        // TODO: Handle this case.
+        break;
+      case EntityType.offer:
+        // TODO: Handle this case.
+        break;
+    }
   }
 
   Widget _onUser(BuildContext context) {

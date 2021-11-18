@@ -31,6 +31,11 @@ class MobileApiClient extends $grpc.Client {
           '/mobileApi.MobileApi/ApiGetUsers',
           ($0.GetUsersRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.GetUsersReply.fromBuffer(value));
+  static final _$apiDelUser =
+      $grpc.ClientMethod<$0.DelUserRequest, $0.DelUserReply>(
+          '/mobileApi.MobileApi/ApiDelUser',
+          ($0.DelUserRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.DelUserReply.fromBuffer(value));
   static final _$apiAddCompany =
       $grpc.ClientMethod<$1.AddCompanyRequest, $1.AddCompanyReply>(
           '/mobileApi.MobileApi/ApiAddCompany',
@@ -92,6 +97,11 @@ class MobileApiClient extends $grpc.Client {
   $grpc.ResponseFuture<$0.GetUsersReply> apiGetUsers($0.GetUsersRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiGetUsers, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.DelUserReply> apiDelUser($0.DelUserRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiDelUser, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.AddCompanyReply> apiAddCompany(
@@ -162,6 +172,13 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.GetUsersRequest.fromBuffer(value),
         ($0.GetUsersReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.DelUserRequest, $0.DelUserReply>(
+        'ApiDelUser',
+        apiDelUser_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.DelUserRequest.fromBuffer(value),
+        ($0.DelUserReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.AddCompanyRequest, $1.AddCompanyReply>(
         'ApiAddCompany',
         apiAddCompany_Pre,
@@ -238,6 +255,11 @@ abstract class MobileApiServiceBase extends $grpc.Service {
     return apiGetUsers(call, await request);
   }
 
+  $async.Future<$0.DelUserReply> apiDelUser_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.DelUserRequest> request) async {
+    return apiDelUser(call, await request);
+  }
+
   $async.Future<$1.AddCompanyReply> apiAddCompany_Pre($grpc.ServiceCall call,
       $async.Future<$1.AddCompanyRequest> request) async {
     return apiAddCompany(call, await request);
@@ -284,6 +306,8 @@ abstract class MobileApiServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.GetUserRequest request);
   $async.Future<$0.GetUsersReply> apiGetUsers(
       $grpc.ServiceCall call, $0.GetUsersRequest request);
+  $async.Future<$0.DelUserReply> apiDelUser(
+      $grpc.ServiceCall call, $0.DelUserRequest request);
   $async.Future<$1.AddCompanyReply> apiAddCompany(
       $grpc.ServiceCall call, $1.AddCompanyRequest request);
   $async.Future<$1.GetCompanyReply> apiGetCompany(
