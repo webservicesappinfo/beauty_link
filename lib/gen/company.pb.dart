@@ -120,21 +120,21 @@ class GetCompanyReply extends $pb.GeneratedMessage {
 class GetCompaniesRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetCompaniesRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userGuid', protoName: 'userGuid')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type')
     ..hasRequiredFields = false
   ;
 
   GetCompaniesRequest._() : super();
   factory GetCompaniesRequest({
     $core.String? userGuid,
-    $core.bool? owner,
+    $core.String? type,
   }) {
     final _result = create();
     if (userGuid != null) {
       _result.userGuid = userGuid;
     }
-    if (owner != null) {
-      _result.owner = owner;
+    if (type != null) {
+      _result.type = type;
     }
     return _result;
   }
@@ -169,26 +169,31 @@ class GetCompaniesRequest extends $pb.GeneratedMessage {
   void clearUserGuid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get owner => $_getBF(1);
+  $core.String get type => $_getSZ(1);
   @$pb.TagNumber(2)
-  set owner($core.bool v) { $_setBool(1, v); }
+  set type($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasOwner() => $_has(1);
+  $core.bool hasType() => $_has(1);
   @$pb.TagNumber(2)
-  void clearOwner() => clearField(2);
+  void clearType() => clearField(2);
 }
 
 class GetCompaniesReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetCompaniesReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
-    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'names')
+    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guids')
+    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'names')
     ..hasRequiredFields = false
   ;
 
   GetCompaniesReply._() : super();
   factory GetCompaniesReply({
+    $core.Iterable<$core.String>? guids,
     $core.Iterable<$core.String>? names,
   }) {
     final _result = create();
+    if (guids != null) {
+      _result.guids.addAll(guids);
+    }
     if (names != null) {
       _result.names.addAll(names);
     }
@@ -216,7 +221,10 @@ class GetCompaniesReply extends $pb.GeneratedMessage {
   static GetCompaniesReply? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.String> get names => $_getList(0);
+  $core.List<$core.String> get guids => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get names => $_getList(1);
 }
 
 class AddCompanyRequest extends $pb.GeneratedMessage {
@@ -316,6 +324,114 @@ class AddCompanyReply extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static AddCompanyReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AddCompanyReply>(create);
   static AddCompanyReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get result => $_getBF(0);
+  @$pb.TagNumber(1)
+  set result($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasResult() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearResult() => clearField(1);
+}
+
+class JoinToCompanyRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'JoinToCompanyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companyGuid', protoName: 'companyGuid')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userGuid', protoName: 'userGuid')
+    ..hasRequiredFields = false
+  ;
+
+  JoinToCompanyRequest._() : super();
+  factory JoinToCompanyRequest({
+    $core.String? companyGuid,
+    $core.String? userGuid,
+  }) {
+    final _result = create();
+    if (companyGuid != null) {
+      _result.companyGuid = companyGuid;
+    }
+    if (userGuid != null) {
+      _result.userGuid = userGuid;
+    }
+    return _result;
+  }
+  factory JoinToCompanyRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory JoinToCompanyRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  JoinToCompanyRequest clone() => JoinToCompanyRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  JoinToCompanyRequest copyWith(void Function(JoinToCompanyRequest) updates) => super.copyWith((message) => updates(message as JoinToCompanyRequest)) as JoinToCompanyRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static JoinToCompanyRequest create() => JoinToCompanyRequest._();
+  JoinToCompanyRequest createEmptyInstance() => create();
+  static $pb.PbList<JoinToCompanyRequest> createRepeated() => $pb.PbList<JoinToCompanyRequest>();
+  @$core.pragma('dart2js:noInline')
+  static JoinToCompanyRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<JoinToCompanyRequest>(create);
+  static JoinToCompanyRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get companyGuid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set companyGuid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCompanyGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCompanyGuid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get userGuid => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set userGuid($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasUserGuid() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearUserGuid() => clearField(2);
+}
+
+class JoinToCompanyReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'JoinToCompanyReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
+    ..hasRequiredFields = false
+  ;
+
+  JoinToCompanyReply._() : super();
+  factory JoinToCompanyReply({
+    $core.bool? result,
+  }) {
+    final _result = create();
+    if (result != null) {
+      _result.result = result;
+    }
+    return _result;
+  }
+  factory JoinToCompanyReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory JoinToCompanyReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  JoinToCompanyReply clone() => JoinToCompanyReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  JoinToCompanyReply copyWith(void Function(JoinToCompanyReply) updates) => super.copyWith((message) => updates(message as JoinToCompanyReply)) as JoinToCompanyReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static JoinToCompanyReply create() => JoinToCompanyReply._();
+  JoinToCompanyReply createEmptyInstance() => create();
+  static $pb.PbList<JoinToCompanyReply> createRepeated() => $pb.PbList<JoinToCompanyReply>();
+  @$core.pragma('dart2js:noInline')
+  static JoinToCompanyReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<JoinToCompanyReply>(create);
+  static JoinToCompanyReply? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get result => $_getBF(0);
@@ -449,14 +565,14 @@ class UpdateCompanyReply extends $pb.GeneratedMessage {
   void clearResult() => clearField(1);
 }
 
-class RemoveCompanyRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RemoveCompanyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
+class DelCompanyRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DelCompanyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
     ..hasRequiredFields = false
   ;
 
-  RemoveCompanyRequest._() : super();
-  factory RemoveCompanyRequest({
+  DelCompanyRequest._() : super();
+  factory DelCompanyRequest({
     $core.String? guid,
   }) {
     final _result = create();
@@ -465,26 +581,26 @@ class RemoveCompanyRequest extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory RemoveCompanyRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RemoveCompanyRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory DelCompanyRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DelCompanyRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  RemoveCompanyRequest clone() => RemoveCompanyRequest()..mergeFromMessage(this);
+  DelCompanyRequest clone() => DelCompanyRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  RemoveCompanyRequest copyWith(void Function(RemoveCompanyRequest) updates) => super.copyWith((message) => updates(message as RemoveCompanyRequest)) as RemoveCompanyRequest; // ignore: deprecated_member_use
+  DelCompanyRequest copyWith(void Function(DelCompanyRequest) updates) => super.copyWith((message) => updates(message as DelCompanyRequest)) as DelCompanyRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RemoveCompanyRequest create() => RemoveCompanyRequest._();
-  RemoveCompanyRequest createEmptyInstance() => create();
-  static $pb.PbList<RemoveCompanyRequest> createRepeated() => $pb.PbList<RemoveCompanyRequest>();
+  static DelCompanyRequest create() => DelCompanyRequest._();
+  DelCompanyRequest createEmptyInstance() => create();
+  static $pb.PbList<DelCompanyRequest> createRepeated() => $pb.PbList<DelCompanyRequest>();
   @$core.pragma('dart2js:noInline')
-  static RemoveCompanyRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RemoveCompanyRequest>(create);
-  static RemoveCompanyRequest? _defaultInstance;
+  static DelCompanyRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelCompanyRequest>(create);
+  static DelCompanyRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get guid => $_getSZ(0);
@@ -496,14 +612,14 @@ class RemoveCompanyRequest extends $pb.GeneratedMessage {
   void clearGuid() => clearField(1);
 }
 
-class RemoveCompanyReply extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RemoveCompanyReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
+class DelCompanyReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DelCompanyReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
     ..hasRequiredFields = false
   ;
 
-  RemoveCompanyReply._() : super();
-  factory RemoveCompanyReply({
+  DelCompanyReply._() : super();
+  factory DelCompanyReply({
     $core.bool? result,
   }) {
     final _result = create();
@@ -512,26 +628,26 @@ class RemoveCompanyReply extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory RemoveCompanyReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RemoveCompanyReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory DelCompanyReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DelCompanyReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  RemoveCompanyReply clone() => RemoveCompanyReply()..mergeFromMessage(this);
+  DelCompanyReply clone() => DelCompanyReply()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  RemoveCompanyReply copyWith(void Function(RemoveCompanyReply) updates) => super.copyWith((message) => updates(message as RemoveCompanyReply)) as RemoveCompanyReply; // ignore: deprecated_member_use
+  DelCompanyReply copyWith(void Function(DelCompanyReply) updates) => super.copyWith((message) => updates(message as DelCompanyReply)) as DelCompanyReply; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RemoveCompanyReply create() => RemoveCompanyReply._();
-  RemoveCompanyReply createEmptyInstance() => create();
-  static $pb.PbList<RemoveCompanyReply> createRepeated() => $pb.PbList<RemoveCompanyReply>();
+  static DelCompanyReply create() => DelCompanyReply._();
+  DelCompanyReply createEmptyInstance() => create();
+  static $pb.PbList<DelCompanyReply> createRepeated() => $pb.PbList<DelCompanyReply>();
   @$core.pragma('dart2js:noInline')
-  static RemoveCompanyReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RemoveCompanyReply>(create);
-  static RemoveCompanyReply? _defaultInstance;
+  static DelCompanyReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelCompanyReply>(create);
+  static DelCompanyReply? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get result => $_getBF(0);

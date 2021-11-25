@@ -58,13 +58,6 @@ class AddEntityPageByUserLoadedState extends BaseState<void> {
   }
 }
 
-class AddEntityPageByCompanyLoadedState extends BaseState<void> {
-  @override
-  Future execute() async {
-    //result = await UserService().getUsers();
-  }
-}
-
 class LoadedUserInfoState extends BaseState<List<AppUser>> {
   @override
   Future execute() async {
@@ -72,12 +65,32 @@ class LoadedUserInfoState extends BaseState<List<AppUser>> {
   }
 }
 
-class LoadedCompaniesState extends BaseState<List<Company>> {
-  String userGuid;
-  bool owner;
-  LoadedCompaniesState({required this.userGuid, required this.owner}) : super();
+
+class AddEntityPageByCompanyLoadedState extends BaseState<void> {
   @override
   Future execute() async {
-    result = await CompanyService().getCompanies(userGuid, owner);
+    //result = await UserService().getUsers();
+  }
+}
+
+class AddEntityPageByCanBeContainsCompanyLoadedState
+    extends BaseState<List<Company>> {
+  String userGuid;
+  AddEntityPageByCanBeContainsCompanyLoadedState({required this.userGuid})
+      : super();
+
+  @override
+  Future execute() async {
+    result = await CompanyService().getCompanies(userGuid, 'canBeContains');
+  }
+}
+
+class LoadedCompaniesState extends BaseState<List<Company>> {
+  String userGuid;
+  String type;
+  LoadedCompaniesState({required this.userGuid, required this.type}) : super();
+  @override
+  Future execute() async {
+    result = await CompanyService().getCompanies(userGuid, type);
   }
 }

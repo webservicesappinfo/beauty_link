@@ -20,6 +20,12 @@ class CompanyClient extends $grpc.Client {
           ($0.AddCompanyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.AddCompanyReply.fromBuffer(value));
+  static final _$joinToCompany =
+      $grpc.ClientMethod<$0.JoinToCompanyRequest, $0.JoinToCompanyReply>(
+          '/company.Company/JoinToCompany',
+          ($0.JoinToCompanyRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.JoinToCompanyReply.fromBuffer(value));
   static final _$getCompanies =
       $grpc.ClientMethod<$0.GetCompaniesRequest, $0.GetCompaniesReply>(
           '/company.Company/GetCompanies',
@@ -38,12 +44,12 @@ class CompanyClient extends $grpc.Client {
           ($0.UpdateCompanyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.UpdateCompanyReply.fromBuffer(value));
-  static final _$removeCompany =
-      $grpc.ClientMethod<$0.RemoveCompanyRequest, $0.RemoveCompanyReply>(
-          '/company.Company/RemoveCompany',
-          ($0.RemoveCompanyRequest value) => value.writeToBuffer(),
+  static final _$delCompany =
+      $grpc.ClientMethod<$0.DelCompanyRequest, $0.DelCompanyReply>(
+          '/company.Company/DelCompany',
+          ($0.DelCompanyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.RemoveCompanyReply.fromBuffer(value));
+              $0.DelCompanyReply.fromBuffer(value));
 
   CompanyClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -54,6 +60,12 @@ class CompanyClient extends $grpc.Client {
       $0.AddCompanyRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addCompany, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.JoinToCompanyReply> joinToCompany(
+      $0.JoinToCompanyRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$joinToCompany, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.GetCompaniesReply> getCompanies(
@@ -74,10 +86,10 @@ class CompanyClient extends $grpc.Client {
     return $createUnaryCall(_$updateCompany, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.RemoveCompanyReply> removeCompany(
-      $0.RemoveCompanyRequest request,
+  $grpc.ResponseFuture<$0.DelCompanyReply> delCompany(
+      $0.DelCompanyRequest request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$removeCompany, request, options: options);
+    return $createUnaryCall(_$delCompany, request, options: options);
   }
 }
 
@@ -92,6 +104,15 @@ abstract class CompanyServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.AddCompanyRequest.fromBuffer(value),
         ($0.AddCompanyReply value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.JoinToCompanyRequest, $0.JoinToCompanyReply>(
+            'JoinToCompany',
+            joinToCompany_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.JoinToCompanyRequest.fromBuffer(value),
+            ($0.JoinToCompanyReply value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$0.GetCompaniesRequest, $0.GetCompaniesReply>(
             'GetCompanies',
@@ -117,20 +138,23 @@ abstract class CompanyServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $0.UpdateCompanyRequest.fromBuffer(value),
             ($0.UpdateCompanyReply value) => value.writeToBuffer()));
-    $addMethod(
-        $grpc.ServiceMethod<$0.RemoveCompanyRequest, $0.RemoveCompanyReply>(
-            'RemoveCompany',
-            removeCompany_Pre,
-            false,
-            false,
-            ($core.List<$core.int> value) =>
-                $0.RemoveCompanyRequest.fromBuffer(value),
-            ($0.RemoveCompanyReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.DelCompanyRequest, $0.DelCompanyReply>(
+        'DelCompany',
+        delCompany_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.DelCompanyRequest.fromBuffer(value),
+        ($0.DelCompanyReply value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.AddCompanyReply> addCompany_Pre($grpc.ServiceCall call,
       $async.Future<$0.AddCompanyRequest> request) async {
     return addCompany(call, await request);
+  }
+
+  $async.Future<$0.JoinToCompanyReply> joinToCompany_Pre($grpc.ServiceCall call,
+      $async.Future<$0.JoinToCompanyRequest> request) async {
+    return joinToCompany(call, await request);
   }
 
   $async.Future<$0.GetCompaniesReply> getCompanies_Pre($grpc.ServiceCall call,
@@ -148,19 +172,21 @@ abstract class CompanyServiceBase extends $grpc.Service {
     return updateCompany(call, await request);
   }
 
-  $async.Future<$0.RemoveCompanyReply> removeCompany_Pre($grpc.ServiceCall call,
-      $async.Future<$0.RemoveCompanyRequest> request) async {
-    return removeCompany(call, await request);
+  $async.Future<$0.DelCompanyReply> delCompany_Pre($grpc.ServiceCall call,
+      $async.Future<$0.DelCompanyRequest> request) async {
+    return delCompany(call, await request);
   }
 
   $async.Future<$0.AddCompanyReply> addCompany(
       $grpc.ServiceCall call, $0.AddCompanyRequest request);
+  $async.Future<$0.JoinToCompanyReply> joinToCompany(
+      $grpc.ServiceCall call, $0.JoinToCompanyRequest request);
   $async.Future<$0.GetCompaniesReply> getCompanies(
       $grpc.ServiceCall call, $0.GetCompaniesRequest request);
   $async.Future<$0.GetCompanyReply> getCompany(
       $grpc.ServiceCall call, $0.GetCompanyRequest request);
   $async.Future<$0.UpdateCompanyReply> updateCompany(
       $grpc.ServiceCall call, $0.UpdateCompanyRequest request);
-  $async.Future<$0.RemoveCompanyReply> removeCompany(
-      $grpc.ServiceCall call, $0.RemoveCompanyRequest request);
+  $async.Future<$0.DelCompanyReply> delCompany(
+      $grpc.ServiceCall call, $0.DelCompanyRequest request);
 }

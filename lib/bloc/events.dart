@@ -58,25 +58,33 @@ class UserInfoPageLoadEvent extends BaseEvent {
             EventExceptionBase("LoadTestUserInfoPageEvent error"));
 }
 
-class AddEntityPageByUserLoad extends BaseEvent {
-  AddEntityPageByUserLoad()
+class AddEntityPageLoadByUser extends BaseEvent {
+  AddEntityPageLoadByUser()
       : super([LoadingState(), AddEntityPageByUserLoadedState()],
             EventExceptionBase("AddPageByUserLoad error"));
 }
 
-class AddEntityPageByCompanyLoad extends BaseEvent {
-  AddEntityPageByCompanyLoad()
+class AddEntityPageLoadByCompany extends BaseEvent {
+  AddEntityPageLoadByCompany()
       : super([LoadingState(), AddEntityPageByCompanyLoadedState()],
+            EventExceptionBase("AddPageByUserLoad error"));
+}
+
+class AddEntityPageLoadByCanBeContainsCompany extends BaseEvent {
+  String userGuid;
+  AddEntityPageLoadByCanBeContainsCompany({
+    required this.userGuid,
+  }) : super([LoadingState(), AddEntityPageByCompanyLoadedState()],
             EventExceptionBase("AddPageByUserLoad error"));
 }
 
 class CompaniesPageLoadEvent extends BaseEvent {
   String userGuid;
-  bool owner;
+  String type;
 
-  CompaniesPageLoadEvent({required this.userGuid, required this.owner})
+  CompaniesPageLoadEvent({required this.userGuid, required this.type})
       : super([
           LoadingState(),
-          LoadedCompaniesState(userGuid: userGuid, owner: owner)
+          LoadedCompaniesState(userGuid: userGuid, type: type)
         ], EventExceptionBase("LoadCompaniesPageEvent error"));
 }

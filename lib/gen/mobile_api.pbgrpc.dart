@@ -10,8 +10,8 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import '../user/user.pb.dart' as $0;
-import '../company/company.pb.dart' as $1;
+import 'user.pb.dart' as $0;
+import 'company.pb.dart' as $1;
 import 'mobile_api.pb.dart' as $2;
 export 'mobile_api.pb.dart';
 
@@ -42,6 +42,12 @@ class MobileApiClient extends $grpc.Client {
           ($1.AddCompanyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.AddCompanyReply.fromBuffer(value));
+  static final _$apiJoinToCompany =
+      $grpc.ClientMethod<$1.JoinToCompanyRequest, $1.JoinToCompanyReply>(
+          '/mobileApi.MobileApi/ApiJoinToCompany',
+          ($1.JoinToCompanyRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.JoinToCompanyReply.fromBuffer(value));
   static final _$apiGetCompany =
       $grpc.ClientMethod<$1.GetCompanyRequest, $1.GetCompanyReply>(
           '/mobileApi.MobileApi/ApiGetCompany',
@@ -54,6 +60,12 @@ class MobileApiClient extends $grpc.Client {
           ($1.GetCompaniesRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.GetCompaniesReply.fromBuffer(value));
+  static final _$apiDelCompany =
+      $grpc.ClientMethod<$1.DelCompanyRequest, $1.DelCompanyReply>(
+          '/mobileApi.MobileApi/ApiDelCompany',
+          ($1.DelCompanyRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.DelCompanyReply.fromBuffer(value));
   static final _$apiSendMessage =
       $grpc.ClientMethod<$2.ApiSendMessageRequest, $2.ApiSendMessageReply>(
           '/mobileApi.MobileApi/ApiSendMessage',
@@ -110,6 +122,12 @@ class MobileApiClient extends $grpc.Client {
     return $createUnaryCall(_$apiAddCompany, request, options: options);
   }
 
+  $grpc.ResponseFuture<$1.JoinToCompanyReply> apiJoinToCompany(
+      $1.JoinToCompanyRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiJoinToCompany, request, options: options);
+  }
+
   $grpc.ResponseFuture<$1.GetCompanyReply> apiGetCompany(
       $1.GetCompanyRequest request,
       {$grpc.CallOptions? options}) {
@@ -120,6 +138,12 @@ class MobileApiClient extends $grpc.Client {
       $1.GetCompaniesRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiGetCompanies, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.DelCompanyReply> apiDelCompany(
+      $1.DelCompanyRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiDelCompany, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.ApiSendMessageReply> apiSendMessage(
@@ -186,6 +210,15 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.AddCompanyRequest.fromBuffer(value),
         ($1.AddCompanyReply value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$1.JoinToCompanyRequest, $1.JoinToCompanyReply>(
+            'ApiJoinToCompany',
+            apiJoinToCompany_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $1.JoinToCompanyRequest.fromBuffer(value),
+            ($1.JoinToCompanyReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.GetCompanyRequest, $1.GetCompanyReply>(
         'ApiGetCompany',
         apiGetCompany_Pre,
@@ -202,6 +235,13 @@ abstract class MobileApiServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $1.GetCompaniesRequest.fromBuffer(value),
             ($1.GetCompaniesReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.DelCompanyRequest, $1.DelCompanyReply>(
+        'ApiDelCompany',
+        apiDelCompany_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.DelCompanyRequest.fromBuffer(value),
+        ($1.DelCompanyReply value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$2.ApiSendMessageRequest, $2.ApiSendMessageReply>(
             'ApiSendMessage',
@@ -265,6 +305,12 @@ abstract class MobileApiServiceBase extends $grpc.Service {
     return apiAddCompany(call, await request);
   }
 
+  $async.Future<$1.JoinToCompanyReply> apiJoinToCompany_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$1.JoinToCompanyRequest> request) async {
+    return apiJoinToCompany(call, await request);
+  }
+
   $async.Future<$1.GetCompanyReply> apiGetCompany_Pre($grpc.ServiceCall call,
       $async.Future<$1.GetCompanyRequest> request) async {
     return apiGetCompany(call, await request);
@@ -274,6 +320,11 @@ abstract class MobileApiServiceBase extends $grpc.Service {
       $grpc.ServiceCall call,
       $async.Future<$1.GetCompaniesRequest> request) async {
     return apiGetCompanies(call, await request);
+  }
+
+  $async.Future<$1.DelCompanyReply> apiDelCompany_Pre($grpc.ServiceCall call,
+      $async.Future<$1.DelCompanyRequest> request) async {
+    return apiDelCompany(call, await request);
   }
 
   $async.Future<$2.ApiSendMessageReply> apiSendMessage_Pre(
@@ -310,10 +361,14 @@ abstract class MobileApiServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.DelUserRequest request);
   $async.Future<$1.AddCompanyReply> apiAddCompany(
       $grpc.ServiceCall call, $1.AddCompanyRequest request);
+  $async.Future<$1.JoinToCompanyReply> apiJoinToCompany(
+      $grpc.ServiceCall call, $1.JoinToCompanyRequest request);
   $async.Future<$1.GetCompanyReply> apiGetCompany(
       $grpc.ServiceCall call, $1.GetCompanyRequest request);
   $async.Future<$1.GetCompaniesReply> apiGetCompanies(
       $grpc.ServiceCall call, $1.GetCompaniesRequest request);
+  $async.Future<$1.DelCompanyReply> apiDelCompany(
+      $grpc.ServiceCall call, $1.DelCompanyRequest request);
   $async.Future<$2.ApiSendMessageReply> apiSendMessage(
       $grpc.ServiceCall call, $2.ApiSendMessageRequest request);
   $async.Future<$2.ApiFindLastMessagesReply> apiFindLastMessage(

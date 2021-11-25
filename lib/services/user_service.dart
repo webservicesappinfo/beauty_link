@@ -1,5 +1,5 @@
-import 'package:beauty_link/gen/mobile_api/mobile_api.pbgrpc.dart';
-import 'package:beauty_link/gen/user/user.pb.dart';
+import 'package:beauty_link/gen/mobile_api.pbgrpc.dart';
+import 'package:beauty_link/gen/user.pb.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grpc/grpc.dart';

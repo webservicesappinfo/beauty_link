@@ -34,22 +34,23 @@ const GetCompaniesRequest$json = const {
   '1': 'GetCompaniesRequest',
   '2': const [
     const {'1': 'userGuid', '3': 1, '4': 1, '5': 9, '10': 'userGuid'},
-    const {'1': 'owner', '3': 2, '4': 1, '5': 8, '10': 'owner'},
+    const {'1': 'type', '3': 2, '4': 1, '5': 9, '10': 'type'},
   ],
 };
 
 /// Descriptor for `GetCompaniesRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getCompaniesRequestDescriptor = $convert.base64Decode('ChNHZXRDb21wYW5pZXNSZXF1ZXN0EhoKCHVzZXJHdWlkGAEgASgJUgh1c2VyR3VpZBIUCgVvd25lchgCIAEoCFIFb3duZXI=');
+final $typed_data.Uint8List getCompaniesRequestDescriptor = $convert.base64Decode('ChNHZXRDb21wYW5pZXNSZXF1ZXN0EhoKCHVzZXJHdWlkGAEgASgJUgh1c2VyR3VpZBISCgR0eXBlGAIgASgJUgR0eXBl');
 @$core.Deprecated('Use getCompaniesReplyDescriptor instead')
 const GetCompaniesReply$json = const {
   '1': 'GetCompaniesReply',
   '2': const [
-    const {'1': 'names', '3': 1, '4': 3, '5': 9, '10': 'names'},
+    const {'1': 'guids', '3': 1, '4': 3, '5': 9, '10': 'guids'},
+    const {'1': 'names', '3': 2, '4': 3, '5': 9, '10': 'names'},
   ],
 };
 
 /// Descriptor for `GetCompaniesReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getCompaniesReplyDescriptor = $convert.base64Decode('ChFHZXRDb21wYW5pZXNSZXBseRIUCgVuYW1lcxgBIAMoCVIFbmFtZXM=');
+final $typed_data.Uint8List getCompaniesReplyDescriptor = $convert.base64Decode('ChFHZXRDb21wYW5pZXNSZXBseRIUCgVndWlkcxgBIAMoCVIFZ3VpZHMSFAoFbmFtZXMYAiADKAlSBW5hbWVz');
 @$core.Deprecated('Use addCompanyRequestDescriptor instead')
 const AddCompanyRequest$json = const {
   '1': 'AddCompanyRequest',
@@ -71,6 +72,27 @@ const AddCompanyReply$json = const {
 
 /// Descriptor for `AddCompanyReply`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List addCompanyReplyDescriptor = $convert.base64Decode('Cg9BZGRDb21wYW55UmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');
+@$core.Deprecated('Use joinToCompanyRequestDescriptor instead')
+const JoinToCompanyRequest$json = const {
+  '1': 'JoinToCompanyRequest',
+  '2': const [
+    const {'1': 'companyGuid', '3': 1, '4': 1, '5': 9, '10': 'companyGuid'},
+    const {'1': 'userGuid', '3': 2, '4': 1, '5': 9, '10': 'userGuid'},
+  ],
+};
+
+/// Descriptor for `JoinToCompanyRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List joinToCompanyRequestDescriptor = $convert.base64Decode('ChRKb2luVG9Db21wYW55UmVxdWVzdBIgCgtjb21wYW55R3VpZBgBIAEoCVILY29tcGFueUd1aWQSGgoIdXNlckd1aWQYAiABKAlSCHVzZXJHdWlk');
+@$core.Deprecated('Use joinToCompanyReplyDescriptor instead')
+const JoinToCompanyReply$json = const {
+  '1': 'JoinToCompanyReply',
+  '2': const [
+    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
+  ],
+};
+
+/// Descriptor for `JoinToCompanyReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List joinToCompanyReplyDescriptor = $convert.base64Decode('ChJKb2luVG9Db21wYW55UmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');
 @$core.Deprecated('Use updateCompanyRequestDescriptor instead')
 const UpdateCompanyRequest$json = const {
   '1': 'UpdateCompanyRequest',
@@ -93,23 +115,23 @@ const UpdateCompanyReply$json = const {
 
 /// Descriptor for `UpdateCompanyReply`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateCompanyReplyDescriptor = $convert.base64Decode('ChJVcGRhdGVDb21wYW55UmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');
-@$core.Deprecated('Use removeCompanyRequestDescriptor instead')
-const RemoveCompanyRequest$json = const {
-  '1': 'RemoveCompanyRequest',
+@$core.Deprecated('Use delCompanyRequestDescriptor instead')
+const DelCompanyRequest$json = const {
+  '1': 'DelCompanyRequest',
   '2': const [
     const {'1': 'guid', '3': 1, '4': 1, '5': 9, '10': 'guid'},
   ],
 };
 
-/// Descriptor for `RemoveCompanyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List removeCompanyRequestDescriptor = $convert.base64Decode('ChRSZW1vdmVDb21wYW55UmVxdWVzdBISCgRndWlkGAEgASgJUgRndWlk');
-@$core.Deprecated('Use removeCompanyReplyDescriptor instead')
-const RemoveCompanyReply$json = const {
-  '1': 'RemoveCompanyReply',
+/// Descriptor for `DelCompanyRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List delCompanyRequestDescriptor = $convert.base64Decode('ChFEZWxDb21wYW55UmVxdWVzdBISCgRndWlkGAEgASgJUgRndWlk');
+@$core.Deprecated('Use delCompanyReplyDescriptor instead')
+const DelCompanyReply$json = const {
+  '1': 'DelCompanyReply',
   '2': const [
     const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
   ],
 };
 
-/// Descriptor for `RemoveCompanyReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List removeCompanyReplyDescriptor = $convert.base64Decode('ChJSZW1vdmVDb21wYW55UmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');
+/// Descriptor for `DelCompanyReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List delCompanyReplyDescriptor = $convert.base64Decode('Cg9EZWxDb21wYW55UmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');

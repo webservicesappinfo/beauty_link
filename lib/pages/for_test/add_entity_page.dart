@@ -38,6 +38,8 @@ class AddEntityPage extends StatelessWidget {
                 return _onLoadedByUserState(context);
               case AddEntityPageByCompanyLoadedState:
                 return _onLoadedByCompanyState(context);
+              case AddEntityPageByCanBeContainsCompanyLoadedState:
+                return _onLoadedByCanBeContainsCompanyState(context);
               default:
                 return _onLoadingState();
             }
@@ -50,10 +52,14 @@ class AddEntityPage extends StatelessWidget {
   Widget _onInitState(BaseBloc bloc) {
     switch (entityType) {
       case EntityType.user:
-        bloc.add(AddEntityPageByUserLoad());
+        bloc.add(AddEntityPageLoadByUser());
         break;
       case EntityType.company:
-        bloc.add(AddEntityPageByCompanyLoad());
+        if (params['companyType'] == 'canBeContains')
+          bloc.add(AddEntityPageLoadByCanBeContainsCompany(
+              userGuid: params['guid']));
+        else
+          bloc.add(AddEntityPageLoadByCompany());
         break;
       case EntityType.skill:
         // TODO: Handle this case.
@@ -109,6 +115,24 @@ class AddEntityPage extends StatelessWidget {
         ]);
   }
 
+  Widget _onLoadedByCanBeContainsCompanyState(BuildContext context) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: TextField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(hintText: 'Enter a search term'),
+              onChanged: (value) {
+                _name = value;
+              },
+            ),
+          ),
+          ElevatedButton(
+              onPressed: () => _addCompany(context), child: Text('Confirm')),
+        ]);
+  }
+
   void _addUser(BuildContext context) {
     var uid = Uuid();
     UserService()
@@ -133,7 +157,7 @@ class AddEntityPage extends StatelessWidget {
 
   void _addCompany(BuildContext context) {
     CompanyService()
-        .addCompany(Company(name: _name, userGuid: params['userGuid']))
+        .addCompany(Company(name: _name, ownerGuid: params['userGuid']))
         .then((value) => {
               if (value)
                 Navigator.pop(context)

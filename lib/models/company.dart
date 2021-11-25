@@ -1,19 +1,22 @@
 class Company {
+  String? guid;
   String? name;
-  String? userGuid;
+  String? ownerGuid;
 
-  Company({this.name, this.userGuid});
+  Company({this.guid, required this.name, this.ownerGuid});
 
   factory Company.fromJson(Map<String, dynamic> json) {
     return new Company(
+      guid: json['guid'],
       name: json['name'],
-      userGuid: json['userGuid'],
+      ownerGuid: json['ownerGuid'],
     );
   }
   Map<String, dynamic> toJsonForPost() {
     return {
+      'guid': this.guid,
       'name': this.name,
-      'userGuid': this.userGuid,
+      'userGuid': this.ownerGuid,
     };
   }
 }

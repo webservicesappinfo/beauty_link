@@ -3,7 +3,9 @@ import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/global.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/pages/for_test/entities_page.dart';
+import 'package:beauty_link/services/company_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,6 +33,8 @@ class EntityInfo extends StatelessWidget {
           switch (entityType) {
             case EntityType.user:
               return _onUser(context);
+            case EntityType.company:
+              return _onCompany(context);
             default:
               return Center(
                 child: Text(
@@ -40,30 +44,8 @@ class EntityInfo extends StatelessWidget {
               );
           }
         })),
-        ElevatedButton(
-            onPressed: () => _delEntity(context),
-            child: Text('Remove $entityType'))
       ],
     );
-  }
-
-  void _delEntity(BuildContext context) {
-    switch (entityType) {
-      case EntityType.user:
-        UserService().delUser(AppUser(uidFB: params['guid'])).then((value) {
-          Navigator.pop(context);
-        });
-        break;
-      case EntityType.company:
-        // TODO: Handle this case.
-        break;
-      case EntityType.skill:
-        // TODO: Handle this case.
-        break;
-      case EntityType.offer:
-        // TODO: Handle this case.
-        break;
-    }
   }
 
   Widget _onUser(BuildContext context) {
@@ -106,12 +88,93 @@ class EntityInfo extends StatelessWidget {
                             entityType: EntityType.company,
                             params: {
                               'userGuid': params['guid'],
-                              'companyType': 'income'
+                              'companyType': 'contains'
                             }),
                       ));
                 },
-                child: Text('IncomeCompanies'))),
+                child: Text('ContainsCompanies'))),
+        SizedBox(
+          height: 10,
+        ),
+        Center(
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EntitiesPage(
+                            entityType: EntityType.company,
+                            params: {
+                              'userGuid': params['guid'],
+                              'companyType': 'canBeContains'
+                            }),
+                      ));
+                },
+                child: Text('CanBeContainsCompanies'))),
+        ElevatedButton(
+            onPressed: () => _delEntity(context),
+            child: Text('Remove $entityType'))
       ],
     );
+  }
+
+  Widget _onCompany(BuildContext context) {
+    switch (params['companyType']) {
+      case 'owner':
+        return Column(
+          children: [
+            Text("Type: Owner"),
+            Text("Name: ${params['name'] ?? "NoName"}"),
+            ElevatedButton(
+                onPressed: () => _delEntity(context),
+                child: Text('Remove $entityType'))
+          ],
+        );
+      case 'contains':
+        return Column(
+          children: [
+            Text("Type: Contains"),
+            Text("Name: ${params['name'] ?? "NoName"}"),
+            ElevatedButton(
+                onPressed: () => _delEntity(context),
+                child: Text('Remove $entityType'))
+          ],
+        );
+      case 'canBeContains':
+        return Column(
+          children: [
+            Text("Type: Can be contains"),
+            Text("Name: ${params['name'] ?? "NoName"}"),
+            ElevatedButton(
+                onPressed: () => CompanyService()
+                    .joinToCompany(params['ownerGuid'], params['guid'])
+                    .then((value) => Navigator.pop(context)),
+                child: Text('Join!'))
+          ],
+        );
+      default:
+        return Text('Default');
+    }
+  }
+
+  void _delEntity(BuildContext context) {
+    switch (entityType) {
+      case EntityType.user:
+        UserService().delUser(AppUser(uidFB: params['guid'])).then((value) {
+          Navigator.pop(context);
+        });
+        break;
+      case EntityType.company:
+        CompanyService()
+            .delCompany(params['guid'])
+            .then((value) => Navigator.pop(context));
+        break;
+      case EntityType.skill:
+        // TODO: Handle this case.
+        break;
+      case EntityType.offer:
+        // TODO: Handle this case.
+        break;
+    }
   }
 }

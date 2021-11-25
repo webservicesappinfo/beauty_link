@@ -66,8 +66,7 @@ class EntitiesPage extends StatelessWidget {
                                   BlocProvider.of<BaseBloc>(context).add(
                                       CompaniesPageLoadEvent(
                                           userGuid: params['userGuid'],
-                                          owner: params['companyType'] ==
-                                              'owner'));
+                                          type: params['companyType']));
                                   break;
                                 case EntityType.skill:
                                   // TODO: Handle this case.
@@ -93,8 +92,7 @@ class EntitiesPage extends StatelessWidget {
         break;
       case EntityType.company:
         BlocProvider.of<BaseBloc>(context).add(CompaniesPageLoadEvent(
-            userGuid: params['userGuid'],
-            owner: params['companyType'] == 'owner'));
+            userGuid: params['userGuid'], type: params['companyType']));
         break;
       case EntityType.skill:
         // TODO: Handle this case.
@@ -173,18 +171,19 @@ class EntitiesPage extends StatelessWidget {
                 onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EntityInfo(
-                            entityType: entityType,
-                            params: {
-                              'name': stateResult[index].name,
-                              'guid': stateResult[index].userGuid
-                            }),
+                        builder: (context) =>
+                            EntityInfo(entityType: entityType, params: {
+                          'companyType': params['companyType'],
+                          'guid': stateResult[index].guid,
+                          'name': stateResult[index].name,
+                          'ownerGuid': params['userGuid']
+                        }),
                       ),
                     ).then((value) {
                       BlocProvider.of<BaseBloc>(context).add(
                           CompaniesPageLoadEvent(
                               userGuid: params['userGuid'],
-                              owner: params['companyType'] == 'owner'));
+                              type: params['companyType']));
                     }));
           });
   }
