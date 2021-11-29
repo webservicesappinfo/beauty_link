@@ -42,6 +42,9 @@ class EntitiesPage extends StatelessWidget {
                           case LoadedCompaniesState:
                             return _onLoadedCompaniesState(
                                 state as LoadedCompaniesState);
+                          case LoadedSkillsState:
+                            return _onLoadedSkillsState(
+                                state as LoadedSkillsState);
                           default:
                             return _onLoadingState();
                         }
@@ -69,7 +72,9 @@ class EntitiesPage extends StatelessWidget {
                                           type: params['companyType']));
                                   break;
                                 case EntityType.skill:
-                                  // TODO: Handle this case.
+                                  BlocProvider.of<BaseBloc>(context).add(
+                                      SkillsPageLoadEvent(
+                                          userGuid: params['userGuid']));
                                   break;
                                 case EntityType.offer:
                                   // TODO: Handle this case.
@@ -95,7 +100,9 @@ class EntitiesPage extends StatelessWidget {
             userGuid: params['userGuid'], type: params['companyType']));
         break;
       case EntityType.skill:
-        // TODO: Handle this case.
+        BlocProvider.of<BaseBloc>(context).add(SkillsPageLoadEvent(
+            userGuid:
+                params.keys.contains('userGuid') ? params['userGuid'] : null));
         break;
       case EntityType.offer:
         // TODO: Handle this case.
@@ -184,6 +191,42 @@ class EntitiesPage extends StatelessWidget {
                           CompaniesPageLoadEvent(
                               userGuid: params['userGuid'],
                               type: params['companyType']));
+                    }));
+          });
+  }
+
+  Widget _onLoadedSkillsState(LoadedSkillsState state) {
+    var stateResult = state.result;
+    if (stateResult == null)
+      return Center(
+        child: Text(
+          "Skills not found",
+          style: TextStyle(fontSize: 20.0),
+        ),
+      );
+    else
+      return ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: stateResult.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+                title: Text(stateResult[index].name ?? "<Empty>",
+                    style: TextStyle(fontSize: 22)),
+                onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EntityInfo(
+                            entityType: entityType,
+                            params: {
+                              'guid': stateResult[index].guid,
+                              'name': stateResult[index].name
+                            }),
+                      ),
+                    ).then((value) {
+                      BlocProvider.of<BaseBloc>(context)
+                          .add(SkillsPageLoadEvent(
+                        userGuid: params['userGuid'],
+                      ));
                     }));
           });
   }

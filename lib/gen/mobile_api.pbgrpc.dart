@@ -12,7 +12,8 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'user.pb.dart' as $0;
 import 'company.pb.dart' as $1;
-import 'mobile_api.pb.dart' as $2;
+import 'skill.pb.dart' as $2;
+import 'mobile_api.pb.dart' as $3;
 export 'mobile_api.pb.dart';
 
 class MobileApiClient extends $grpc.Client {
@@ -66,30 +67,45 @@ class MobileApiClient extends $grpc.Client {
           ($1.DelCompanyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.DelCompanyReply.fromBuffer(value));
+  static final _$apiAddSkill =
+      $grpc.ClientMethod<$2.AddSkillRequest, $2.AddSkillReply>(
+          '/mobileApi.MobileApi/ApiAddSkill',
+          ($2.AddSkillRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $2.AddSkillReply.fromBuffer(value));
+  static final _$apiGetSkills =
+      $grpc.ClientMethod<$2.GetSkillsRequest, $2.GetSkillsReply>(
+          '/mobileApi.MobileApi/ApiGetSkills',
+          ($2.GetSkillsRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $2.GetSkillsReply.fromBuffer(value));
+  static final _$apiDelSkill =
+      $grpc.ClientMethod<$2.DelSkillRequest, $2.DelSkillReply>(
+          '/mobileApi.MobileApi/ApiDelSkill',
+          ($2.DelSkillRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $2.DelSkillReply.fromBuffer(value));
   static final _$apiSendMessage =
-      $grpc.ClientMethod<$2.ApiSendMessageRequest, $2.ApiSendMessageReply>(
+      $grpc.ClientMethod<$3.ApiSendMessageRequest, $3.ApiSendMessageReply>(
           '/mobileApi.MobileApi/ApiSendMessage',
-          ($2.ApiSendMessageRequest value) => value.writeToBuffer(),
+          ($3.ApiSendMessageRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $2.ApiSendMessageReply.fromBuffer(value));
+              $3.ApiSendMessageReply.fromBuffer(value));
   static final _$apiFindLastMessage = $grpc.ClientMethod<
-          $2.ApiFindLastMessageRequest, $2.ApiFindLastMessagesReply>(
+          $3.ApiFindLastMessageRequest, $3.ApiFindLastMessagesReply>(
       '/mobileApi.MobileApi/ApiFindLastMessage',
-      ($2.ApiFindLastMessageRequest value) => value.writeToBuffer(),
+      ($3.ApiFindLastMessageRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $2.ApiFindLastMessagesReply.fromBuffer(value));
+          $3.ApiFindLastMessagesReply.fromBuffer(value));
   static final _$apiGetUserLocation = $grpc.ClientMethod<
-          $2.ApiGetUserLocationRequest, $2.ApiGetUserLocationReply>(
+          $3.ApiGetUserLocationRequest, $3.ApiGetUserLocationReply>(
       '/mobileApi.MobileApi/ApiGetUserLocation',
-      ($2.ApiGetUserLocationRequest value) => value.writeToBuffer(),
+      ($3.ApiGetUserLocationRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $2.ApiGetUserLocationReply.fromBuffer(value));
+          $3.ApiGetUserLocationReply.fromBuffer(value));
   static final _$apiSetUserLocation = $grpc.ClientMethod<
-          $2.ApiSetUserLocationRequest, $2.ApiSetUserLocationReply>(
+          $3.ApiSetUserLocationRequest, $3.ApiSetUserLocationReply>(
       '/mobileApi.MobileApi/ApiSetUserLocation',
-      ($2.ApiSetUserLocationRequest value) => value.writeToBuffer(),
+      ($3.ApiSetUserLocationRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $2.ApiSetUserLocationReply.fromBuffer(value));
+          $3.ApiSetUserLocationReply.fromBuffer(value));
 
   MobileApiClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -146,26 +162,42 @@ class MobileApiClient extends $grpc.Client {
     return $createUnaryCall(_$apiDelCompany, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.ApiSendMessageReply> apiSendMessage(
-      $2.ApiSendMessageRequest request,
+  $grpc.ResponseFuture<$2.AddSkillReply> apiAddSkill($2.AddSkillRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiAddSkill, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.GetSkillsReply> apiGetSkills(
+      $2.GetSkillsRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiGetSkills, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.DelSkillReply> apiDelSkill($2.DelSkillRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiDelSkill, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.ApiSendMessageReply> apiSendMessage(
+      $3.ApiSendMessageRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiSendMessage, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.ApiFindLastMessagesReply> apiFindLastMessage(
-      $2.ApiFindLastMessageRequest request,
+  $grpc.ResponseFuture<$3.ApiFindLastMessagesReply> apiFindLastMessage(
+      $3.ApiFindLastMessageRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiFindLastMessage, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.ApiGetUserLocationReply> apiGetUserLocation(
-      $2.ApiGetUserLocationRequest request,
+  $grpc.ResponseFuture<$3.ApiGetUserLocationReply> apiGetUserLocation(
+      $3.ApiGetUserLocationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiGetUserLocation, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.ApiSetUserLocationReply> apiSetUserLocation(
-      $2.ApiSetUserLocationRequest request,
+  $grpc.ResponseFuture<$3.ApiSetUserLocationReply> apiSetUserLocation(
+      $3.ApiSetUserLocationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiSetUserLocation, request, options: options);
   }
@@ -242,42 +274,63 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.DelCompanyRequest.fromBuffer(value),
         ($1.DelCompanyReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.AddSkillRequest, $2.AddSkillReply>(
+        'ApiAddSkill',
+        apiAddSkill_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $2.AddSkillRequest.fromBuffer(value),
+        ($2.AddSkillReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.GetSkillsRequest, $2.GetSkillsReply>(
+        'ApiGetSkills',
+        apiGetSkills_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $2.GetSkillsRequest.fromBuffer(value),
+        ($2.GetSkillsReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.DelSkillRequest, $2.DelSkillReply>(
+        'ApiDelSkill',
+        apiDelSkill_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $2.DelSkillRequest.fromBuffer(value),
+        ($2.DelSkillReply value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$2.ApiSendMessageRequest, $2.ApiSendMessageReply>(
+        $grpc.ServiceMethod<$3.ApiSendMessageRequest, $3.ApiSendMessageReply>(
             'ApiSendMessage',
             apiSendMessage_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $2.ApiSendMessageRequest.fromBuffer(value),
-            ($2.ApiSendMessageReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.ApiFindLastMessageRequest,
-            $2.ApiFindLastMessagesReply>(
+                $3.ApiSendMessageRequest.fromBuffer(value),
+            ($3.ApiSendMessageReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.ApiFindLastMessageRequest,
+            $3.ApiFindLastMessagesReply>(
         'ApiFindLastMessage',
         apiFindLastMessage_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $2.ApiFindLastMessageRequest.fromBuffer(value),
-        ($2.ApiFindLastMessagesReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.ApiGetUserLocationRequest,
-            $2.ApiGetUserLocationReply>(
+            $3.ApiFindLastMessageRequest.fromBuffer(value),
+        ($3.ApiFindLastMessagesReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.ApiGetUserLocationRequest,
+            $3.ApiGetUserLocationReply>(
         'ApiGetUserLocation',
         apiGetUserLocation_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $2.ApiGetUserLocationRequest.fromBuffer(value),
-        ($2.ApiGetUserLocationReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.ApiSetUserLocationRequest,
-            $2.ApiSetUserLocationReply>(
+            $3.ApiGetUserLocationRequest.fromBuffer(value),
+        ($3.ApiGetUserLocationReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.ApiSetUserLocationRequest,
+            $3.ApiSetUserLocationReply>(
         'ApiSetUserLocation',
         apiSetUserLocation_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $2.ApiSetUserLocationRequest.fromBuffer(value),
-        ($2.ApiSetUserLocationReply value) => value.writeToBuffer()));
+            $3.ApiSetUserLocationRequest.fromBuffer(value),
+        ($3.ApiSetUserLocationReply value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.AddUserReply> apiAddUser_Pre(
@@ -327,27 +380,42 @@ abstract class MobileApiServiceBase extends $grpc.Service {
     return apiDelCompany(call, await request);
   }
 
-  $async.Future<$2.ApiSendMessageReply> apiSendMessage_Pre(
+  $async.Future<$2.AddSkillReply> apiAddSkill_Pre(
+      $grpc.ServiceCall call, $async.Future<$2.AddSkillRequest> request) async {
+    return apiAddSkill(call, await request);
+  }
+
+  $async.Future<$2.GetSkillsReply> apiGetSkills_Pre($grpc.ServiceCall call,
+      $async.Future<$2.GetSkillsRequest> request) async {
+    return apiGetSkills(call, await request);
+  }
+
+  $async.Future<$2.DelSkillReply> apiDelSkill_Pre(
+      $grpc.ServiceCall call, $async.Future<$2.DelSkillRequest> request) async {
+    return apiDelSkill(call, await request);
+  }
+
+  $async.Future<$3.ApiSendMessageReply> apiSendMessage_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$2.ApiSendMessageRequest> request) async {
+      $async.Future<$3.ApiSendMessageRequest> request) async {
     return apiSendMessage(call, await request);
   }
 
-  $async.Future<$2.ApiFindLastMessagesReply> apiFindLastMessage_Pre(
+  $async.Future<$3.ApiFindLastMessagesReply> apiFindLastMessage_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$2.ApiFindLastMessageRequest> request) async {
+      $async.Future<$3.ApiFindLastMessageRequest> request) async {
     return apiFindLastMessage(call, await request);
   }
 
-  $async.Future<$2.ApiGetUserLocationReply> apiGetUserLocation_Pre(
+  $async.Future<$3.ApiGetUserLocationReply> apiGetUserLocation_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$2.ApiGetUserLocationRequest> request) async {
+      $async.Future<$3.ApiGetUserLocationRequest> request) async {
     return apiGetUserLocation(call, await request);
   }
 
-  $async.Future<$2.ApiSetUserLocationReply> apiSetUserLocation_Pre(
+  $async.Future<$3.ApiSetUserLocationReply> apiSetUserLocation_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$2.ApiSetUserLocationRequest> request) async {
+      $async.Future<$3.ApiSetUserLocationRequest> request) async {
     return apiSetUserLocation(call, await request);
   }
 
@@ -369,12 +437,18 @@ abstract class MobileApiServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $1.GetCompaniesRequest request);
   $async.Future<$1.DelCompanyReply> apiDelCompany(
       $grpc.ServiceCall call, $1.DelCompanyRequest request);
-  $async.Future<$2.ApiSendMessageReply> apiSendMessage(
-      $grpc.ServiceCall call, $2.ApiSendMessageRequest request);
-  $async.Future<$2.ApiFindLastMessagesReply> apiFindLastMessage(
-      $grpc.ServiceCall call, $2.ApiFindLastMessageRequest request);
-  $async.Future<$2.ApiGetUserLocationReply> apiGetUserLocation(
-      $grpc.ServiceCall call, $2.ApiGetUserLocationRequest request);
-  $async.Future<$2.ApiSetUserLocationReply> apiSetUserLocation(
-      $grpc.ServiceCall call, $2.ApiSetUserLocationRequest request);
+  $async.Future<$2.AddSkillReply> apiAddSkill(
+      $grpc.ServiceCall call, $2.AddSkillRequest request);
+  $async.Future<$2.GetSkillsReply> apiGetSkills(
+      $grpc.ServiceCall call, $2.GetSkillsRequest request);
+  $async.Future<$2.DelSkillReply> apiDelSkill(
+      $grpc.ServiceCall call, $2.DelSkillRequest request);
+  $async.Future<$3.ApiSendMessageReply> apiSendMessage(
+      $grpc.ServiceCall call, $3.ApiSendMessageRequest request);
+  $async.Future<$3.ApiFindLastMessagesReply> apiFindLastMessage(
+      $grpc.ServiceCall call, $3.ApiFindLastMessageRequest request);
+  $async.Future<$3.ApiGetUserLocationReply> apiGetUserLocation(
+      $grpc.ServiceCall call, $3.ApiGetUserLocationRequest request);
+  $async.Future<$3.ApiSetUserLocationReply> apiSetUserLocation(
+      $grpc.ServiceCall call, $3.ApiSetUserLocationRequest request);
 }

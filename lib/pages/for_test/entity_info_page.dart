@@ -113,7 +113,13 @@ class EntityInfo extends StatelessWidget {
                 child: Text('CanBeContainsCompanies'))),
         ElevatedButton(
             onPressed: () => _delEntity(context),
-            child: Text('Remove $entityType'))
+            child: Text('Remove $entityType')),
+        SizedBox(
+          height: 10,
+        ),
+        ElevatedButton(
+            onPressed: () => _delEntity(context),
+            child: Text('Skills')),
       ],
     );
   }

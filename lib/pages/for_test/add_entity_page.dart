@@ -3,7 +3,9 @@ import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
+import 'package:beauty_link/models/skill.dart';
 import 'package:beauty_link/services/company_service.dart';
+import 'package:beauty_link/services/skill_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +15,7 @@ import '../../global.dart';
 
 class AddEntityPage extends StatelessWidget {
   String? _name;
+  String? _desc;
   EntityType entityType;
   final Map params;
   AddEntityPage({Key? key, required this.entityType, required this.params})
@@ -40,6 +43,8 @@ class AddEntityPage extends StatelessWidget {
                 return _onLoadedByCompanyState(context);
               case AddEntityPageByCanBeContainsCompanyLoadedState:
                 return _onLoadedByCanBeContainsCompanyState(context);
+              case AddEntityPageBySkillLoadedState:
+                return _onLoadedBySkillState(context);
               default:
                 return _onLoadingState();
             }
@@ -62,7 +67,7 @@ class AddEntityPage extends StatelessWidget {
           bloc.add(AddEntityPageLoadByCompany());
         break;
       case EntityType.skill:
-        // TODO: Handle this case.
+        bloc.add(AddEntityPageLoadBySkill());
         break;
       case EntityType.offer:
         // TODO: Handle this case.
@@ -133,6 +138,33 @@ class AddEntityPage extends StatelessWidget {
         ]);
   }
 
+  Widget _onLoadedBySkillState(BuildContext context) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: TextField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(hintText: 'Enter name'),
+              onChanged: (value) {
+                _name = value;
+              },
+            ),
+          ),
+          Center(
+            child: TextField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(hintText: 'Enter desc'),
+              onChanged: (value) {
+                _desc = value;
+              },
+            ),
+          ),
+          ElevatedButton(
+              onPressed: () => _addSkill(context), child: Text('Confirm')),
+        ]);
+  }
+
   void _addUser(BuildContext context) {
     var uid = Uuid();
     UserService()
@@ -174,5 +206,24 @@ class AddEntityPage extends StatelessWidget {
                   ],
                 )
             });
+  }
+
+  void _addSkill(BuildContext context) {
+    SkillService().addSkill(Skill(name: _name, desc: _desc)).then((value) => {
+          if (value)
+            Navigator.pop(context)
+          else
+            AlertDialog(
+              title: Text("Error"),
+              content: Text("Error"),
+              actions: [
+                ElevatedButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Return value
+                    }),
+              ],
+            )
+        });
   }
 }

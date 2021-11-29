@@ -78,6 +78,12 @@ class AddEntityPageLoadByCanBeContainsCompany extends BaseEvent {
             EventExceptionBase("AddPageByUserLoad error"));
 }
 
+class AddEntityPageLoadBySkill extends BaseEvent {
+  AddEntityPageLoadBySkill()
+      : super([LoadingState(), AddEntityPageBySkillLoadedState()],
+            EventExceptionBase("AddPageByUserLoad error"));
+}
+
 class CompaniesPageLoadEvent extends BaseEvent {
   String userGuid;
   String type;
@@ -87,4 +93,14 @@ class CompaniesPageLoadEvent extends BaseEvent {
           LoadingState(),
           LoadedCompaniesState(userGuid: userGuid, type: type)
         ], EventExceptionBase("LoadCompaniesPageEvent error"));
+}
+
+class SkillsPageLoadEvent extends BaseEvent {
+  String? userGuid;
+
+  SkillsPageLoadEvent({this.userGuid})
+      : super([
+          LoadingState(),
+          LoadedSkillsState(userGuid: userGuid)
+        ], EventExceptionBase("SkillsPageLoadEvent error"));
 }
