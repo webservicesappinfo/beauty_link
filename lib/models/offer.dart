@@ -1,8 +1,8 @@
 class Offer {
   String? guid;
-  String name;
-  String masterName;
-  String skillName;
+  String? name;
+  String? masterName;
+  String? skillName;
 
   Offer(
       {this.guid,

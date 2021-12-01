@@ -20,11 +20,15 @@ class CompanyService {
     return response.result;
   }
 
-  Future<bool> joinToCompany(String? userGuid, String? companyGuid) async {
+  Future<bool> joinToCompany(
+      String? userGuid, String? companyGuid, String? companyName) async {
     if ((userGuid?.isEmpty ?? true) || (companyGuid?.isEmpty ?? true))
       return false;
     var response = await mobileApiClient.apiJoinToCompany(
-        new JoinToCompanyRequest(userGuid: userGuid, companyGuid: companyGuid));
+        new JoinToCompanyRequest(
+            userGuid: userGuid,
+            companyGuid: companyGuid,
+            companyName: companyName));
     return response.result;
   }
 

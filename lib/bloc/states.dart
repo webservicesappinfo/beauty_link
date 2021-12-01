@@ -1,7 +1,9 @@
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
+import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/skill.dart';
 import 'package:beauty_link/services/company_service.dart';
+import 'package:beauty_link/services/offer_service.dart';
 import 'package:beauty_link/services/skill_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
@@ -110,5 +112,21 @@ class LoadedSkillsState extends BaseState<List<Skill>> {
   @override
   Future execute() async {
     result = await SkillService().getSkills(userGuid);
+  }
+}
+
+class LoadedOffersState extends BaseState<List<Offer>> {
+  String? userGuid;
+  LoadedOffersState({this.userGuid}) : super();
+  @override
+  Future execute() async {
+    result = await OfferService().getOffers(userGuid);
+  }
+}
+
+class AddEntityPageByOfferLoadedState extends BaseState<void> {
+  @override
+  Future execute() async {
+    //result = await UserService().getUsers();
   }
 }

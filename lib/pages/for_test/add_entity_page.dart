@@ -3,8 +3,10 @@ import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
+import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/skill.dart';
 import 'package:beauty_link/services/company_service.dart';
+import 'package:beauty_link/services/offer_service.dart';
 import 'package:beauty_link/services/skill_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,8 @@ import '../../global.dart';
 class AddEntityPage extends StatelessWidget {
   String? _name;
   String? _desc;
+  String? _masterName;
+  String? _skillName;
   EntityType entityType;
   final Map params;
   AddEntityPage({Key? key, required this.entityType, required this.params})
@@ -45,6 +49,8 @@ class AddEntityPage extends StatelessWidget {
                 return _onLoadedByCanBeContainsCompanyState(context);
               case AddEntityPageBySkillLoadedState:
                 return _onLoadedBySkillState(context);
+              case AddEntityPageByOfferLoadedState:
+                return _onLoadedByOfferState(context);
               default:
                 return _onLoadingState();
             }
@@ -70,7 +76,7 @@ class AddEntityPage extends StatelessWidget {
         bloc.add(AddEntityPageLoadBySkill());
         break;
       case EntityType.offer:
-        // TODO: Handle this case.
+        bloc.add(AddEntityPageLoadByOffer());
         break;
     }
     return Center(
@@ -165,6 +171,42 @@ class AddEntityPage extends StatelessWidget {
         ]);
   }
 
+  Widget _onLoadedByOfferState(BuildContext context) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: TextField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(hintText: 'Enter name'),
+              onChanged: (value) {
+                _name = value;
+              },
+            ),
+          ),
+          Center(
+            child: TextField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(hintText: 'Enter masterName'),
+              onChanged: (value) {
+                _masterName = value;
+              },
+            ),
+          ),
+          Center(
+            child: TextField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(hintText: 'Enter skillName'),
+              onChanged: (value) {
+                _masterName = value;
+              },
+            ),
+          ),
+          ElevatedButton(
+              onPressed: () => _addOffer(context), child: Text('Confirm')),
+        ]);
+  }
+
   void _addUser(BuildContext context) {
     var uid = Uuid();
     UserService()
@@ -225,5 +267,27 @@ class AddEntityPage extends StatelessWidget {
               ],
             )
         });
+  }
+
+  void _addOffer(BuildContext context) {
+    OfferService()
+        .addOffer(
+            Offer(name: _name, masterName: _masterName, skillName: _skillName))
+        .then((value) => {
+              if (value)
+                Navigator.pop(context)
+              else
+                AlertDialog(
+                  title: Text("Error"),
+                  content: Text("Error"),
+                  actions: [
+                    ElevatedButton(
+                        child: Text("Ok"),
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Return value
+                        }),
+                  ],
+                )
+            });
   }
 }

@@ -338,18 +338,23 @@ class AddCompanyReply extends $pb.GeneratedMessage {
 class JoinToCompanyRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'JoinToCompanyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companyGuid', protoName: 'companyGuid')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userGuid', protoName: 'userGuid')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companyName', protoName: 'companyName')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userGuid', protoName: 'userGuid')
     ..hasRequiredFields = false
   ;
 
   JoinToCompanyRequest._() : super();
   factory JoinToCompanyRequest({
     $core.String? companyGuid,
+    $core.String? companyName,
     $core.String? userGuid,
   }) {
     final _result = create();
     if (companyGuid != null) {
       _result.companyGuid = companyGuid;
+    }
+    if (companyName != null) {
+      _result.companyName = companyName;
     }
     if (userGuid != null) {
       _result.userGuid = userGuid;
@@ -387,13 +392,22 @@ class JoinToCompanyRequest extends $pb.GeneratedMessage {
   void clearCompanyGuid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get userGuid => $_getSZ(1);
+  $core.String get companyName => $_getSZ(1);
   @$pb.TagNumber(2)
-  set userGuid($core.String v) { $_setString(1, v); }
+  set companyName($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasUserGuid() => $_has(1);
+  $core.bool hasCompanyName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearUserGuid() => clearField(2);
+  void clearCompanyName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get userGuid => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set userGuid($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUserGuid() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUserGuid() => clearField(3);
 }
 
 class JoinToCompanyReply extends $pb.GeneratedMessage {

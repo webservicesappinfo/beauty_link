@@ -126,12 +126,12 @@ class EntityInfo extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        EntitiesPage(entityType: EntityType.skill, params: {
+                        EntitiesPage(entityType: EntityType.offer, params: {
                       'userGuid': params['guid'],
                     }),
                   ));
             },
-            child: Text('Skills')),
+            child: Text('Offers')),
       ],
     );
   }
@@ -165,7 +165,8 @@ class EntityInfo extends StatelessWidget {
             Text("Name: ${params['name'] ?? "NoName"}"),
             ElevatedButton(
                 onPressed: () => CompanyService()
-                    .joinToCompany(params['ownerGuid'], params['guid'])
+                    .joinToCompany(
+                        params['ownerGuid'], params['guid'], params['name'])
                     .then((value) => Navigator.pop(context)),
                 child: Text('Join!'))
           ],

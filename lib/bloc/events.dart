@@ -104,3 +104,19 @@ class SkillsPageLoadEvent extends BaseEvent {
           LoadedSkillsState(userGuid: userGuid)
         ], EventExceptionBase("SkillsPageLoadEvent error"));
 }
+
+class OffersPageLoadEvent extends BaseEvent {
+  String? userGuid;
+
+  OffersPageLoadEvent({this.userGuid})
+      : super([
+          LoadingState(),
+          LoadedOffersState(userGuid: userGuid)
+        ], EventExceptionBase("OffersPageLoadEvent error"));
+}
+
+class AddEntityPageLoadByOffer extends BaseEvent {
+  AddEntityPageLoadByOffer()
+      : super([LoadingState(), AddEntityPageByOfferLoadedState()],
+            EventExceptionBase("AddPageByUserLoad error"));
+}

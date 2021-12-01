@@ -22,7 +22,7 @@ class OfferService {
     return response.result;
   }
 
-  Future<List<Offer>> getSkills(String? userGuid) async {
+  Future<List<Offer>> getOffers(String? userGuid) async {
     var skills = <Offer>[];
     var response = await mobileApiClient
         .apiGetOffers(new GetOffersRequest(userGuid: userGuid));
