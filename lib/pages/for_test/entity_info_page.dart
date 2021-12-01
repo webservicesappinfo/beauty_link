@@ -6,6 +6,7 @@ import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/pages/for_test/entities_page.dart';
 import 'package:beauty_link/services/company_service.dart';
+import 'package:beauty_link/services/skill_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +36,8 @@ class EntityInfo extends StatelessWidget {
               return _onUser(context);
             case EntityType.company:
               return _onCompany(context);
+            case EntityType.skill:
+              return _onSkill(context);
             default:
               return Center(
                 child: Text(
@@ -118,7 +121,16 @@ class EntityInfo extends StatelessWidget {
           height: 10,
         ),
         ElevatedButton(
-            onPressed: () => _delEntity(context),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EntitiesPage(entityType: EntityType.skill, params: {
+                      'userGuid': params['guid'],
+                    }),
+                  ));
+            },
             child: Text('Skills')),
       ],
     );
@@ -163,6 +175,28 @@ class EntityInfo extends StatelessWidget {
     }
   }
 
+  Widget _onSkill(BuildContext context) {
+    return Column(children: [
+      Center(
+        child: Text(
+          params['name'] ?? "NoName",
+          style: TextStyle(fontSize: 20.0),
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Center(
+        child: Text(
+          params['desc'] ?? "NoDesc",
+          style: TextStyle(fontSize: 20.0),
+        ),
+      ),
+      ElevatedButton(
+          onPressed: () => _delEntity(context), child: Text('Del skill')),
+    ]);
+  }
+
   void _delEntity(BuildContext context) {
     switch (entityType) {
       case EntityType.user:
@@ -176,7 +210,9 @@ class EntityInfo extends StatelessWidget {
             .then((value) => Navigator.pop(context));
         break;
       case EntityType.skill:
-        // TODO: Handle this case.
+        SkillService()
+            .delSkill(params['guid'])
+            .then((value) => Navigator.pop(context));
         break;
       case EntityType.offer:
         // TODO: Handle this case.

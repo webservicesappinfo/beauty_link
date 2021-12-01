@@ -215,12 +215,12 @@ class EntitiesPage extends StatelessWidget {
                 onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EntityInfo(
-                            entityType: entityType,
-                            params: {
-                              'guid': stateResult[index].guid,
-                              'name': stateResult[index].name
-                            }),
+                        builder: (context) =>
+                            EntityInfo(entityType: entityType, params: {
+                          'guid': stateResult[index].guid,
+                          'name': stateResult[index].name,
+                          'desc': stateResult[index].desc
+                        }),
                       ),
                     ).then((value) {
                       BlocProvider.of<BaseBloc>(context)
