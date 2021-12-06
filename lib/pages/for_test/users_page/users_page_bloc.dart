@@ -42,5 +42,7 @@ class TapUserEvent extends BaseEventV2 {
         );
 
   @override
-  Future<void> execute() async {}
+  Future<void> execute() async {
+    
+  }
 }
