@@ -9,7 +9,7 @@ class BaseBloc extends Bloc<BaseEvent, BaseState> {
   Stream<BaseState> mapEventToState(BaseEvent event) async* {
     while (true) {
       var next = true;
-      await event.next().then((value) => next = value);
+      await event.next(this).then((value) => next = value);
       if (!next) break;
       yield event.currentState;
     }

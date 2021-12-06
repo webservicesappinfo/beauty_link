@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BaseBloc>(
-        create: (context) => BaseBloc(InitState()),
+        create: (context) => BaseBloc(BaseInitState()),
         child: Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
@@ -69,9 +69,9 @@ class HomePage extends StatelessWidget {
 
   String getTextByState(BaseState state) {
     switch (state.runtimeType) {
-      case InitState:
+      case BaseInitState:
         return "Init";
-      case LoadingState:
+      case BaseLoadingState:
         return "Loading";
       case LoadedState:
         return "Loaded";

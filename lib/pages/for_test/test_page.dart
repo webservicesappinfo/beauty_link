@@ -11,7 +11,7 @@ class TestPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BaseBloc>(
-        create: (context) => BaseBloc(InitState()),
+        create: (context) => BaseBloc(BaseInitState()),
         child: Scaffold(
             appBar: AppBar(title: Text('list')),
             body: BlocConsumer<BaseBloc, BaseState>(listener: (context, state) {

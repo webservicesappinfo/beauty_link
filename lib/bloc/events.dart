@@ -1,3 +1,4 @@
+import 'package:beauty_link/bloc/base_bloc.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 
@@ -6,13 +7,13 @@ abstract class BaseEvent {
   List<BaseState> _states;
   BaseEvent(this._states, this.exception);
   int _index = 0;
-  BaseState currentState = InitState();
+  BaseState currentState = BaseInitState();
 
-  Future<bool> next() async {
+  Future<bool> next(BaseBloc bloc) async {
     try {
       if (_index < _states.length) {
         print("call method next ${_states[_index].runtimeType}");
-        await _states[_index].execute();
+        await _states[_index].execute(bloc);
         currentState = _states[_index];
         _index++;
         return true;
@@ -35,7 +36,7 @@ class EventExceptionBase {
 
 class CounterEvent extends BaseEvent {
   CounterEvent()
-      : super([InitState(), LoadingState(), LoadedState()],
+      : super([BaseInitState(), BaseLoadingState(), LoadedState()],
             EventExceptionBase("CounterEvent error"));
 }
 
@@ -48,25 +49,25 @@ class HomePopupBtnClickEvent extends BaseEvent {
 
 class UsersPageLoadEvent extends BaseEvent {
   UsersPageLoadEvent()
-      : super([LoadingState(), LoadedUsersState()],
+      : super([BaseLoadingState(), LoadedUsersState()],
             EventExceptionBase("LoadAddTestUserPageEvent error"));
 }
 
 class UserInfoPageLoadEvent extends BaseEvent {
   UserInfoPageLoadEvent()
-      : super([LoadingState(), LoadedUsersState()],
+      : super([BaseLoadingState(), LoadedUsersState()],
             EventExceptionBase("LoadTestUserInfoPageEvent error"));
 }
 
 class AddEntityPageLoadByUser extends BaseEvent {
   AddEntityPageLoadByUser()
-      : super([LoadingState(), AddEntityPageByUserLoadedState()],
+      : super([BaseLoadingState(), AddEntityPageByUserLoadedState()],
             EventExceptionBase("AddPageByUserLoad error"));
 }
 
 class AddEntityPageLoadByCompany extends BaseEvent {
   AddEntityPageLoadByCompany()
-      : super([LoadingState(), AddEntityPageByCompanyLoadedState()],
+      : super([BaseLoadingState(), AddEntityPageByCompanyLoadedState()],
             EventExceptionBase("AddPageByUserLoad error"));
 }
 
@@ -74,13 +75,13 @@ class AddEntityPageLoadByCanBeContainsCompany extends BaseEvent {
   String userGuid;
   AddEntityPageLoadByCanBeContainsCompany({
     required this.userGuid,
-  }) : super([LoadingState(), AddEntityPageByCompanyLoadedState()],
+  }) : super([BaseLoadingState(), AddEntityPageByCompanyLoadedState()],
             EventExceptionBase("AddPageByUserLoad error"));
 }
 
 class AddEntityPageLoadBySkill extends BaseEvent {
   AddEntityPageLoadBySkill()
-      : super([LoadingState(), AddEntityPageBySkillLoadedState()],
+      : super([BaseLoadingState(), AddEntityPageBySkillLoadedState()],
             EventExceptionBase("AddPageByUserLoad error"));
 }
 
@@ -90,7 +91,7 @@ class CompaniesPageLoadEvent extends BaseEvent {
 
   CompaniesPageLoadEvent({required this.userGuid, required this.type})
       : super([
-          LoadingState(),
+          BaseLoadingState(),
           LoadedCompaniesState(userGuid: userGuid, type: type)
         ], EventExceptionBase("LoadCompaniesPageEvent error"));
 }
@@ -100,7 +101,7 @@ class SkillsPageLoadEvent extends BaseEvent {
 
   SkillsPageLoadEvent({this.userGuid})
       : super([
-          LoadingState(),
+          BaseLoadingState(),
           LoadedSkillsState(userGuid: userGuid)
         ], EventExceptionBase("SkillsPageLoadEvent error"));
 }
@@ -110,13 +111,13 @@ class OffersPageLoadEvent extends BaseEvent {
 
   OffersPageLoadEvent({this.userGuid})
       : super([
-          LoadingState(),
+          BaseLoadingState(),
           LoadedOffersState(userGuid: userGuid)
         ], EventExceptionBase("OffersPageLoadEvent error"));
 }
 
 class AddEntityPageLoadByOffer extends BaseEvent {
   AddEntityPageLoadByOffer()
-      : super([LoadingState(), AddEntityPageByOfferLoadedState()],
+      : super([BaseLoadingState(), AddEntityPageByOfferLoadedState()],
             EventExceptionBase("AddPageByUserLoad error"));
 }

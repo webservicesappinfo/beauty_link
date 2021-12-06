@@ -21,7 +21,7 @@ class EntityInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BaseBloc>(
-        create: (context) => BaseBloc(InitState()),
+        create: (context) => BaseBloc(BaseInitState()),
         child: Scaffold(
             appBar: AppBar(title: Text('$entityType Info')),
             body: _onLoaded(context)));

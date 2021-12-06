@@ -28,7 +28,7 @@ class AddEntityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => BaseBloc(InitState()),
+      create: (context) => BaseBloc(BaseInitState()),
       child: Scaffold(
         appBar: AppBar(title: Text('Add $entityType')),
         body: BlocConsumer<BaseBloc, BaseState>(
@@ -37,9 +37,9 @@ class AddEntityPage extends StatelessWidget {
           },
           builder: (context, state) {
             switch (state.runtimeType) {
-              case InitState:
+              case BaseInitState:
                 return _onInitState(BlocProvider.of<BaseBloc>(context));
-              case LoadingState:
+              case BaseLoadingState:
                 return _onLoadingState();
               case AddEntityPageByUserLoadedState:
                 return _onLoadedByUserState(context);
