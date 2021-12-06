@@ -4,6 +4,7 @@ import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/global.dart';
 import 'package:beauty_link/pages/for_test/test_page.dart';
+import 'package:beauty_link/pages/for_test/users_page/users_page.dart';
 import 'package:beauty_link/pages/profile_page.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:beauty_link/widgets/floating_btn.dart';
@@ -46,6 +47,14 @@ class HomePage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => TestPage(),
+                        ),
+                      );
+                      break;
+                    case "test2":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UsersPage(),
                         ),
                       );
                       break;

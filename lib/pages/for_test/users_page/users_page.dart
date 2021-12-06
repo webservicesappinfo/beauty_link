@@ -1,7 +1,5 @@
-import 'package:beauty_link/bloc/states.dart';
+import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/pages/for_test/users_page/users_page_bloc.dart';
-import 'package:beauty_link/pages/for_test/users_page/users_page_events.dart';
-import 'package:beauty_link/pages/for_test/users_page/users_page_states.dart';
 import 'package:beauty_link/widgets/LoadingWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,40 +10,24 @@ class UsersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => UsersPageBloc(BaseInitState()),
+        create: (context) => UsersPageBloc(InitState()),
         child: Scaffold(
             appBar: AppBar(title: Text('Users')),
-            body: BlocConsumer<UsersPageBloc, BaseState>(
+            body: BlocConsumer<UsersPageBloc, BaseStateV2>(
                 listener: (context, state) {
-              switch (state.runtimeType) {
-                case OnTapedUserState:
-                  /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EntityInfo(
-                              entityType: entityType,
-                              params: {
-                                'name': stateResult[index].name,
-                                'guid': stateResult[index].uidFB
-                              }),
-                        ),
-                      ).then((value) {
-                        BlocProvider.of<BaseBloc>(context)
-                            .add(UsersPageLoadEvent());
-                      });*/
-                  break;
-              }
+              if (state is InitState)
+                BlocProvider.of<UsersPageBloc>(context)
+                    .add(LoadUserPageEvent(context));
             }, builder: (context, state) {
               return Column(children: [
                 Expanded(child: Builder(builder: (context) {
-                  switch (state.runtimeType) {
-                    case BaseLoadingState:
-                      return LoadingWidget();
-                    case UsersPageLoadedState:
-                      return _onUsersPageLoadedState(context);
-                    default:
-                      return Text('empty');
-                  }
+                  if (state is BaseBeginInvokeState<TapUserEvent> ||
+                      state is BaseBeginInvokeState<LoadUserPageEvent>)
+                    return LoadingWidget();
+                  else if (state is BaseEndInvokeState<TapUserEvent>)
+                    return _onUsersPageLoadedState(context);
+                  else
+                    return Text('empty');
                 }))
               ]);
             })));
@@ -67,7 +49,8 @@ class UsersPage extends StatelessWidget {
             child: ListTile(
                 title: Text(bloc.users[index].name ?? "<Empty>",
                     style: TextStyle(fontSize: 22)),
-                onTap: () => {bloc.add(OnTapUserEvent(bloc.users[index]))}),
+                onTap: () =>
+                    {bloc.add(TapUserEvent(context, bloc.users[index]))}),
           );
         });
   }
