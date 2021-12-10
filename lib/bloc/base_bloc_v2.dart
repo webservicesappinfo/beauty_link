@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class BaseBlocV2 extends Bloc<BaseEventV2, BaseStateV2> {
   BaseBlocV2(BaseStateV2 initialState) : super(initialState);
@@ -18,15 +19,15 @@ class BaseBlocV2 extends Bloc<BaseEventV2, BaseStateV2> {
 
 abstract class BaseEventV2 {
   final BuildContext context;
-  final BaseStateV2 beginInvokeState;
-  final BaseStateV2 endInvokeState;
-  final BaseEventException? exception;
+  late BaseStateV2 beginInvokeState;
+  late BaseStateV2 endInvokeState;
+  BaseEventException? exception;
 
-  BaseEventV2(
-      {required this.context,
-      required this.beginInvokeState,
-      required this.endInvokeState,
-      this.exception});
+  BaseEventV2({required this.context}) {
+    beginInvokeState = BeginInvokeEventState(this);
+    endInvokeState = EndInvokeEventState(this);
+    exception = BaseEventException("${this.runtimeType} exception!");
+  }
 
   Future<void> execute() async {}
 }
@@ -38,15 +39,22 @@ class BaseEventException {
 
 abstract class BaseStateV2<T> {
   T? event;
+  BaseStateV2(this.event);
 }
 
-class InitState extends BaseStateV2 {}
+class InitState extends BaseStateV2 {
+  InitState() : super(null);
+}
 
 class ExceptionState extends BaseStateV2 {
   BaseEventException? exception;
-  ExceptionState(this.exception) : assert(exception != null);
+  ExceptionState(this.exception) : super(exception);
 }
 
-class BaseBeginInvokeState<T> extends BaseStateV2<T> {}
+class BeginInvokeEventState extends BaseStateV2 {
+  BeginInvokeEventState(BaseEventV2 event) : super(event);
+}
 
-class BaseEndInvokeState<T> extends BaseStateV2<T> {}
+class EndInvokeEventState extends BaseStateV2 {
+  EndInvokeEventState(BaseEventV2 event) : super(event);
+}
