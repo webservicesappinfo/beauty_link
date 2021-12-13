@@ -1,5 +1,5 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
-import 'package:beauty_link/pages/for_test/add_user_page/add_user_page_bloc.dart';
+import 'package:beauty_link/pages/for_test/add_user/add_user_page_bloc.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:beauty_link/widgets/custom_text_field.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';

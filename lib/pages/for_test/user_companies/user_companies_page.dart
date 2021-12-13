@@ -2,7 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/entity_base.dart';
-import 'package:beauty_link/pages/for_test/user_companies.dart/user_companies_page_bloc.dart';
+import 'package:beauty_link/pages/for_test/user_companies/user_companies_page_bloc.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
@@ -47,11 +47,14 @@ class UserCompaniesPage extends StatelessWidget {
 
   Widget _onUserCompaniesPageLoadedState(BuildContext context) {
     var bloc = BlocProvider.of<UserCompaniesPageBloc>(context);
-    return Column(children: [
-      Expanded(child: EntityListWidget(entities: bloc.companies, onTap: _onTap)),
-      SizedBox(height: 10),
-      CustomButton(text: 'Add company', clickEvent: AddCompanyBtnClick(bloc, context), bloc: bloc)
-    ]);
+    if (bloc.companyType == 'owner')
+      return Column(children: [
+        Expanded(child: EntityListWidget(entities: bloc.companies, onTap: _onTap)),
+        SizedBox(height: 10),
+        CustomButton(text: 'Add company', clickEvent: AddCompanyBtnClick(bloc, context), bloc: bloc)
+      ]);
+    else
+      return EntityListWidget(entities: bloc.companies, onTap: _onTap);
   }
 
   dynamic _onTap(BuildContext context, EntityBase entity) {

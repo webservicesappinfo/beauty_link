@@ -1,6 +1,6 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
-import 'package:beauty_link/pages/for_test/user_info_page.dart/user_info_page_bloc.dart';
+import 'package:beauty_link/pages/for_test/user_info/user_info_page_bloc.dart';
 import 'package:beauty_link/pages/for_test/users_page/users_page_bloc.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
@@ -32,29 +32,7 @@ class UserInfoPage extends StatelessWidget {
                   case EndEventState:
                     switch ((state as EndEventState).event.runtimeType) {
                       case LoadUserInfoPageEvent:
-                        return Column(
-                          children: [
-                            Text('${bloc.user.name ?? 'empty'}'),
-                            SizedBox(height: 10),
-                            CustomButton(
-                              bloc: bloc,
-                              clickEvent: CompaniesBtnClickEvent(bloc, context, "owner"),
-                              text: "OwnerCompanies",
-                            ),
-                            SizedBox(height: 10),
-                            CustomButton(
-                              bloc: bloc,
-                              clickEvent: CompaniesBtnClickEvent(bloc, context, "contains"),
-                              text: "ContainsCompanies",
-                            ),
-                            SizedBox(height: 10),
-                            CustomButton(
-                              bloc: bloc,
-                              clickEvent: CompaniesBtnClickEvent(bloc, context, "canbecontains"),
-                              text: "CanBeContainCompanies",
-                            )
-                          ],
-                        );
+                        return _onLoadUserInfoPageEvent(context);
                       case CompaniesBtnClickEvent:
                         return LoadingWidget();
                       default:
@@ -65,5 +43,38 @@ class UserInfoPage extends StatelessWidget {
                 }
               },
             )));
+  }
+
+  Widget _onLoadUserInfoPageEvent(BuildContext context) {
+    var bloc = BlocProvider.of<UserInfoPageBloc>(context);
+    return Column(
+      children: [
+        Text('${bloc.user.name ?? 'empty'}'),
+        SizedBox(height: 10),
+        CustomButton(
+          bloc: bloc,
+          clickEvent: CompaniesBtnClickEvent(bloc, context, "owner"),
+          text: "OwnerCompanies",
+        ),
+        SizedBox(height: 10),
+        CustomButton(
+          bloc: bloc,
+          clickEvent: CompaniesBtnClickEvent(bloc, context, "contains"),
+          text: "ContainsCompanies",
+        ),
+        SizedBox(height: 10),
+        CustomButton(
+          bloc: bloc,
+          clickEvent: CompaniesBtnClickEvent(bloc, context, "canbecontains"),
+          text: "CanBeContainCompanies",
+        ),
+        SizedBox(height: 10),
+        CustomButton(
+          bloc: bloc,
+          clickEvent: OffersBtnClicEvent(bloc, context),
+          text: "Offers",
+        )
+      ],
+    );
   }
 }
