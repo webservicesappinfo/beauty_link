@@ -44,7 +44,6 @@ class UsersPage extends StatelessWidget {
 
   Widget _onUsersPageLoadedState(BuildContext context) {
     var bloc = BlocProvider.of<UsersPageBloc>(context);
-    //return EntityListWidget(entities: bloc.users, onTap: _onTap);
     return Column(children: [
       Expanded(child: EntityListWidget(entities: bloc.users, onTap: _onTap)),
       SizedBox(height: 10),
