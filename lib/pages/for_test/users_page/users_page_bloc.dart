@@ -1,5 +1,6 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/pages/for_test/add_user_page/add_user_page.dart';
 import 'package:beauty_link/pages/for_test/user_info_page.dart/user_info_page.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
@@ -18,19 +19,22 @@ class UsersPageBloc extends BaseBlocV2 {
 }
 
 class LoadUserPageEvent extends BaseEventV2 {
-  LoadUserPageEvent(BuildContext context) : super(context: context);
+  UsersPageBloc bloc;
+  LoadUserPageEvent(BuildContext context, this.bloc) : super();
 
   @override
   Future<void> execute() async {
-    var bloc = BlocProvider.of<UsersPageBloc>(context);
     await bloc.fetchUsers();
   }
 }
 
 class TapUserEvent extends BaseEventV2 {
+  UsersPageBloc bloc;
+  BuildContext context;
   AppUser _tapUser;
 
-  TapUserEvent(BuildContext context, this._tapUser) : super(context: context);
+  TapUserEvent(this.bloc, this.context, this._tapUser) : super();
+
   @override
   Future<void> execute() async {
     Navigator.push(
@@ -38,6 +42,23 @@ class TapUserEvent extends BaseEventV2 {
       MaterialPageRoute(
         builder: (context) => UserInfoPage(user: _tapUser),
       ),
-    );
+    ).then((value) => bloc.add(LoadUserPageEvent(context, bloc)));
+  }
+}
+
+class AddUserBtnClick extends BaseEventV2 {
+  UsersPageBloc bloc;
+  BuildContext context;
+
+  AddUserBtnClick(this.bloc, this.context) : super();
+
+  @override
+  Future<void> execute() async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddUserPage(),
+      ),
+    ).then((value) => bloc.add(LoadUserPageEvent(context, bloc)));
   }
 }

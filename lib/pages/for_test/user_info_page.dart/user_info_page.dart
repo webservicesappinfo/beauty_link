@@ -2,7 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/pages/for_test/user_info_page.dart/user_info_page_bloc.dart';
 import 'package:beauty_link/pages/for_test/users_page/users_page_bloc.dart';
-import 'package:beauty_link/widgets/LoadingWidget.dart';
+import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,12 +25,12 @@ class UserInfoPage extends StatelessWidget {
                 var bloc = BlocProvider.of<UserInfoPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(LoadUserInfoPageEvent(context));
+                    bloc.add(LoadUserInfoPageEvent(bloc));
                     return LoadingWidget();
-                  case BeginInvokeEventState:
+                  case BeginEventState:
                     return LoadingWidget();
-                  case EndInvokeEventState:
-                    switch ((state as EndInvokeEventState).event.runtimeType) {
+                  case EndEventState:
+                    switch ((state as EndEventState).event.runtimeType) {
                       case LoadUserInfoPageEvent:
                         return Column(
                           children: [
@@ -38,19 +38,19 @@ class UserInfoPage extends StatelessWidget {
                             SizedBox(height: 10),
                             CustomButton(
                               bloc: bloc,
-                              clickEvent: CompaniesBtnClickEvent(context, "owner"),
+                              clickEvent: CompaniesBtnClickEvent(bloc, context, "owner"),
                               text: "OwnerCompanies",
                             ),
                             SizedBox(height: 10),
                             CustomButton(
                               bloc: bloc,
-                              clickEvent: CompaniesBtnClickEvent(context, "contains"),
+                              clickEvent: CompaniesBtnClickEvent(bloc, context, "contains"),
                               text: "ContainsCompanies",
                             ),
                             SizedBox(height: 10),
                             CustomButton(
                               bloc: bloc,
-                              clickEvent: CompaniesBtnClickEvent(context, "canbecontains"),
+                              clickEvent: CompaniesBtnClickEvent(bloc, context, "canbecontains"),
                               text: "CanBeContainCompanies",
                             )
                           ],

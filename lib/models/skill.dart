@@ -1,4 +1,6 @@
-class Skill {
+import 'package:beauty_link/models/entity_base.dart';
+
+class Skill extends EntityBase {
   String? guid;
   String? name;
   String? desc;
@@ -15,4 +17,7 @@ class Skill {
   Map<String, dynamic> toJsonForPost() {
     return {'guid': guid, 'name': name, 'desc': desc};
   }
+
+  @override
+  String getCaption() => name ?? "NoName";
 }

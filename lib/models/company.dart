@@ -1,4 +1,6 @@
-class Company {
+import 'package:beauty_link/models/entity_base.dart';
+
+class Company extends EntityBase {
   String? guid;
   String? name;
   String? ownerGuid;
@@ -19,4 +21,7 @@ class Company {
       'userGuid': this.ownerGuid,
     };
   }
+
+  @override
+  String getCaption() => name ?? "NoName";
 }

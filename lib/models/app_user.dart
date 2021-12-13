@@ -1,13 +1,14 @@
+import 'package:beauty_link/models/entity_base.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class AppUser {
+class AppUser extends EntityBase {
   final String? uidFB;
   final String? name;
   String? email;
   String? login;
   String? token;
   LatLng? location;
-  
+
   AppUser({this.uidFB, this.name, this.email, this.login});
 
   factory AppUser.fromJson(Map<String, dynamic> json) {
@@ -33,4 +34,7 @@ class AppUser {
       'Login': this.login,
     };
   }
+
+  @override
+  String getCaption() => name ?? "NoName";
 }

@@ -18,14 +18,13 @@ class BaseBlocV2 extends Bloc<BaseEventV2, BaseStateV2> {
 }
 
 abstract class BaseEventV2 {
-  final BuildContext context;
   late BaseStateV2 beginInvokeState;
   late BaseStateV2 endInvokeState;
   BaseEventException? exception;
 
-  BaseEventV2({required this.context}) {
-    beginInvokeState = BeginInvokeEventState(this);
-    endInvokeState = EndInvokeEventState(this);
+  BaseEventV2() {
+    beginInvokeState = BeginEventState(this);
+    endInvokeState = EndEventState(this);
     exception = BaseEventException("${this.runtimeType} exception!");
   }
 
@@ -51,10 +50,10 @@ class ExceptionState extends BaseStateV2 {
   ExceptionState(this.exception) : super(exception);
 }
 
-class BeginInvokeEventState extends BaseStateV2 {
-  BeginInvokeEventState(BaseEventV2 event) : super(event);
+class BeginEventState extends BaseStateV2 {
+  BeginEventState(BaseEventV2 event) : super(event);
 }
 
-class EndInvokeEventState extends BaseStateV2 {
-  EndInvokeEventState(BaseEventV2 event) : super(event);
+class EndEventState extends BaseStateV2 {
+  EndEventState(BaseEventV2 event) : super(event);
 }

@@ -19,13 +19,11 @@ class UserCompaniesPageBloc extends BaseBlocV2 {
 }
 
 class LoadUserCompaniesPageEvent extends BaseEventV2 {
-  AppUser user;
-  String companyType;
-  LoadUserCompaniesPageEvent(BuildContext context, this.user, this.companyType) : super(context: context);
+  UserCompaniesPageBloc bloc;
+  LoadUserCompaniesPageEvent(this.bloc) : super();
 
   @override
   Future<void> execute() async {
-    var bloc = BlocProvider.of<UserCompaniesPageBloc>(context);
     await bloc.getCompanies();
   }
 }

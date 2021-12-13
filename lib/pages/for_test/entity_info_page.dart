@@ -15,16 +15,13 @@ class EntityInfo extends StatelessWidget {
   final EntityType entityType;
   final Map<String, String?> params;
 
-  const EntityInfo({Key? key, required this.entityType, required this.params})
-      : super(key: key);
+  const EntityInfo({Key? key, required this.entityType, required this.params}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BaseBloc>(
         create: (context) => BaseBloc(BaseInitState()),
-        child: Scaffold(
-            appBar: AppBar(title: Text('$entityType Info')),
-            body: _onLoaded(context)));
+        child: Scaffold(appBar: AppBar(title: Text('$entityType Info')), body: _onLoaded(context)));
   }
 
   Widget _onLoaded(BuildContext context) {
@@ -71,10 +68,7 @@ class EntityInfo extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => EntitiesPage(
                             entityType: EntityType.company,
-                            params: {
-                              'userGuid': params['guid'],
-                              'companyType': 'owner'
-                            }),
+                            params: {'userGuid': params['guid'], 'companyType': 'owner'}),
                       ));
                 },
                 child: Text('OwnerCompanies'))),
@@ -89,10 +83,7 @@ class EntityInfo extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => EntitiesPage(
                             entityType: EntityType.company,
-                            params: {
-                              'userGuid': params['guid'],
-                              'companyType': 'contains'
-                            }),
+                            params: {'userGuid': params['guid'], 'companyType': 'contains'}),
                       ));
                 },
                 child: Text('ContainsCompanies'))),
@@ -107,16 +98,11 @@ class EntityInfo extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => EntitiesPage(
                             entityType: EntityType.company,
-                            params: {
-                              'userGuid': params['guid'],
-                              'companyType': 'canBeContains'
-                            }),
+                            params: {'userGuid': params['guid'], 'companyType': 'canBeContains'}),
                       ));
                 },
                 child: Text('CanBeContainsCompanies'))),
-        ElevatedButton(
-            onPressed: () => _delEntity(context),
-            child: Text('Remove $entityType')),
+        ElevatedButton(onPressed: () => _delEntity(context), child: Text('Remove $entityType')),
         SizedBox(
           height: 10,
         ),
@@ -125,8 +111,7 @@ class EntityInfo extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        EntitiesPage(entityType: EntityType.offer, params: {
+                    builder: (context) => EntitiesPage(entityType: EntityType.offer, params: {
                       'userGuid': params['guid'],
                     }),
                   ));
@@ -143,9 +128,7 @@ class EntityInfo extends StatelessWidget {
           children: [
             Text("Type: Owner"),
             Text("Name: ${params['name'] ?? "NoName"}"),
-            ElevatedButton(
-                onPressed: () => _delEntity(context),
-                child: Text('Remove $entityType'))
+            ElevatedButton(onPressed: () => _delEntity(context), child: Text('Remove $entityType'))
           ],
         );
       case 'contains':
@@ -153,9 +136,7 @@ class EntityInfo extends StatelessWidget {
           children: [
             Text("Type: Contains"),
             Text("Name: ${params['name'] ?? "NoName"}"),
-            ElevatedButton(
-                onPressed: () => _delEntity(context),
-                child: Text('Remove $entityType'))
+            ElevatedButton(onPressed: () => _delEntity(context), child: Text('Remove $entityType'))
           ],
         );
       case 'canBeContains':
@@ -165,8 +146,7 @@ class EntityInfo extends StatelessWidget {
             Text("Name: ${params['name'] ?? "NoName"}"),
             ElevatedButton(
                 onPressed: () => CompanyService()
-                    .joinToCompany(
-                        params['ownerGuid'], params['guid'], params['name'])
+                    .joinToCompany(params['ownerGuid'], params['guid'], params['name'])
                     .then((value) => Navigator.pop(context)),
                 child: Text('Join!'))
           ],
@@ -193,27 +173,22 @@ class EntityInfo extends StatelessWidget {
           style: TextStyle(fontSize: 20.0),
         ),
       ),
-      ElevatedButton(
-          onPressed: () => _delEntity(context), child: Text('Del skill')),
+      ElevatedButton(onPressed: () => _delEntity(context), child: Text('Del skill')),
     ]);
   }
 
   void _delEntity(BuildContext context) {
     switch (entityType) {
       case EntityType.user:
-        UserService().delUser(AppUser(uidFB: params['guid'])).then((value) {
+        UserService().delUser(AppUser(uidFB: params['guid'], name: '')).then((value) {
           Navigator.pop(context);
         });
         break;
       case EntityType.company:
-        CompanyService()
-            .delCompany(params['guid'])
-            .then((value) => Navigator.pop(context));
+        CompanyService().delCompany(params['guid']).then((value) => Navigator.pop(context));
         break;
       case EntityType.skill:
-        SkillService()
-            .delSkill(params['guid'])
-            .then((value) => Navigator.pop(context));
+        SkillService().delSkill(params['guid']).then((value) => Navigator.pop(context));
         break;
       case EntityType.offer:
         // TODO: Handle this case.

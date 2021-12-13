@@ -210,7 +210,7 @@ class AddEntityPage extends StatelessWidget {
   void _addUser(BuildContext context) {
     var uid = Uuid();
     UserService()
-        .addUser(AppUser(name: _name, uidFB: uid.v1()))
+        .addUser(AppUser(name: _name ?? "", uidFB: uid.v1()))
         .then((value) => {
               if (value)
                 Navigator.pop(context)
