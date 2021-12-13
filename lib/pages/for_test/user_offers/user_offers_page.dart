@@ -49,13 +49,13 @@ class UserOffersPage extends StatelessWidget {
     return Column(children: [
       Expanded(child: EntityListWidget(entities: bloc.offers, onTap: _onTap)),
       SizedBox(height: 10),
-      CustomButton(text: 'Add user', clickEvent: AddUserBtnClick(bloc, context), bloc: bloc)
+      CustomButton(text: 'Add offer', clickEvent: AddOfferBtnClick(bloc, context), bloc: bloc)
     ]);
   }
 
   dynamic _onTap(BuildContext context, EntityBase entity) {
-    var offer = entity as Offer;
+    /*var offer = entity as Offer;
     var bloc = BlocProvider.of<UserOffersPageBloc>(context);
-    bloc.add(TapUserEvent(bloc, context, offer));
+    bloc.add(TapUserEvent(bloc, context, offer));*/
   }
 }
