@@ -12,23 +12,33 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class AddOfferRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddOfferRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'offer'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterName', protoName: 'masterName')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillName', protoName: 'skillName')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterName', protoName: 'masterName')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuid', protoName: 'skillGuid')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillName', protoName: 'skillName')
     ..hasRequiredFields = false
   ;
 
   AddOfferRequest._() : super();
   factory AddOfferRequest({
     $core.String? name,
+    $core.String? masterGuid,
     $core.String? masterName,
+    $core.String? skillGuid,
     $core.String? skillName,
   }) {
     final _result = create();
     if (name != null) {
       _result.name = name;
     }
+    if (masterGuid != null) {
+      _result.masterGuid = masterGuid;
+    }
     if (masterName != null) {
       _result.masterName = masterName;
+    }
+    if (skillGuid != null) {
+      _result.skillGuid = skillGuid;
     }
     if (skillName != null) {
       _result.skillName = skillName;
@@ -66,22 +76,40 @@ class AddOfferRequest extends $pb.GeneratedMessage {
   void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get masterName => $_getSZ(1);
+  $core.String get masterGuid => $_getSZ(1);
   @$pb.TagNumber(2)
-  set masterName($core.String v) { $_setString(1, v); }
+  set masterGuid($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasMasterName() => $_has(1);
+  $core.bool hasMasterGuid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearMasterName() => clearField(2);
+  void clearMasterGuid() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get skillName => $_getSZ(2);
+  $core.String get masterName => $_getSZ(2);
   @$pb.TagNumber(3)
-  set skillName($core.String v) { $_setString(2, v); }
+  set masterName($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSkillName() => $_has(2);
+  $core.bool hasMasterName() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSkillName() => clearField(3);
+  void clearMasterName() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get skillGuid => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set skillGuid($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasSkillGuid() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSkillGuid() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get skillName => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set skillName($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSkillName() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSkillName() => clearField(5);
 }
 
 class AddOfferReply extends $pb.GeneratedMessage {
@@ -133,20 +161,11 @@ class AddOfferReply extends $pb.GeneratedMessage {
 
 class GetOffersRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOffersRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'offer'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userGuid', protoName: 'userGuid')
     ..hasRequiredFields = false
   ;
 
   GetOffersRequest._() : super();
-  factory GetOffersRequest({
-    $core.String? userGuid,
-  }) {
-    final _result = create();
-    if (userGuid != null) {
-      _result.userGuid = userGuid;
-    }
-    return _result;
-  }
+  factory GetOffersRequest() => create();
   factory GetOffersRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetOffersRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
@@ -167,23 +186,16 @@ class GetOffersRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetOffersRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetOffersRequest>(create);
   static GetOffersRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get userGuid => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set userGuid($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasUserGuid() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearUserGuid() => clearField(1);
 }
 
 class GetOffersReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOffersReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'offer'), createEmptyInstance: create)
     ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'names')
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guids')
-    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterNames', protoName: 'masterNames')
-    ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillNames', protoName: 'skillNames')
+    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuids', protoName: 'masterGuids')
+    ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterNames', protoName: 'masterNames')
+    ..pPS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuids', protoName: 'skillGuids')
+    ..pPS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillNames', protoName: 'skillNames')
     ..hasRequiredFields = false
   ;
 
@@ -191,7 +203,9 @@ class GetOffersReply extends $pb.GeneratedMessage {
   factory GetOffersReply({
     $core.Iterable<$core.String>? names,
     $core.Iterable<$core.String>? guids,
+    $core.Iterable<$core.String>? masterGuids,
     $core.Iterable<$core.String>? masterNames,
+    $core.Iterable<$core.String>? skillGuids,
     $core.Iterable<$core.String>? skillNames,
   }) {
     final _result = create();
@@ -201,8 +215,14 @@ class GetOffersReply extends $pb.GeneratedMessage {
     if (guids != null) {
       _result.guids.addAll(guids);
     }
+    if (masterGuids != null) {
+      _result.masterGuids.addAll(masterGuids);
+    }
     if (masterNames != null) {
       _result.masterNames.addAll(masterNames);
+    }
+    if (skillGuids != null) {
+      _result.skillGuids.addAll(skillGuids);
     }
     if (skillNames != null) {
       _result.skillNames.addAll(skillNames);
@@ -237,10 +257,110 @@ class GetOffersReply extends $pb.GeneratedMessage {
   $core.List<$core.String> get guids => $_getList(1);
 
   @$pb.TagNumber(3)
-  $core.List<$core.String> get masterNames => $_getList(2);
+  $core.List<$core.String> get masterGuids => $_getList(2);
 
   @$pb.TagNumber(4)
-  $core.List<$core.String> get skillNames => $_getList(3);
+  $core.List<$core.String> get masterNames => $_getList(3);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.String> get skillGuids => $_getList(4);
+
+  @$pb.TagNumber(6)
+  $core.List<$core.String> get skillNames => $_getList(5);
+}
+
+class GetOffersByMasterRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOffersByMasterRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'offer'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
+    ..hasRequiredFields = false
+  ;
+
+  GetOffersByMasterRequest._() : super();
+  factory GetOffersByMasterRequest({
+    $core.String? masterGuid,
+  }) {
+    final _result = create();
+    if (masterGuid != null) {
+      _result.masterGuid = masterGuid;
+    }
+    return _result;
+  }
+  factory GetOffersByMasterRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetOffersByMasterRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetOffersByMasterRequest clone() => GetOffersByMasterRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetOffersByMasterRequest copyWith(void Function(GetOffersByMasterRequest) updates) => super.copyWith((message) => updates(message as GetOffersByMasterRequest)) as GetOffersByMasterRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetOffersByMasterRequest create() => GetOffersByMasterRequest._();
+  GetOffersByMasterRequest createEmptyInstance() => create();
+  static $pb.PbList<GetOffersByMasterRequest> createRepeated() => $pb.PbList<GetOffersByMasterRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetOffersByMasterRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetOffersByMasterRequest>(create);
+  static GetOffersByMasterRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get masterGuid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set masterGuid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMasterGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMasterGuid() => clearField(1);
+}
+
+class GetOffersBySkillRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOffersBySkillRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'offer'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuid', protoName: 'skillGuid')
+    ..hasRequiredFields = false
+  ;
+
+  GetOffersBySkillRequest._() : super();
+  factory GetOffersBySkillRequest({
+    $core.String? skillGuid,
+  }) {
+    final _result = create();
+    if (skillGuid != null) {
+      _result.skillGuid = skillGuid;
+    }
+    return _result;
+  }
+  factory GetOffersBySkillRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetOffersBySkillRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetOffersBySkillRequest clone() => GetOffersBySkillRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetOffersBySkillRequest copyWith(void Function(GetOffersBySkillRequest) updates) => super.copyWith((message) => updates(message as GetOffersBySkillRequest)) as GetOffersBySkillRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetOffersBySkillRequest create() => GetOffersBySkillRequest._();
+  GetOffersBySkillRequest createEmptyInstance() => create();
+  static $pb.PbList<GetOffersBySkillRequest> createRepeated() => $pb.PbList<GetOffersBySkillRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetOffersBySkillRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetOffersBySkillRequest>(create);
+  static GetOffersBySkillRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get skillGuid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set skillGuid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasSkillGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSkillGuid() => clearField(1);
 }
 
 class GetOfferRequest extends $pb.GeneratedMessage {

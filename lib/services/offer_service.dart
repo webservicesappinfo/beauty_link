@@ -30,7 +30,9 @@ class OfferService {
       skills.add(new Offer(
           guid: response.guids[i],
           name: response.names[i],
+          masterGuid: response.masterGuids[i],
           masterName: response.masterNames[i],
+          skillGuid: response.skillGuids[i],
           skillName: response.skillNames[i]));
     return skills;
   }

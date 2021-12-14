@@ -12,7 +12,7 @@ class UserOffersPageBloc extends BaseBlocV2 {
   UserOffersPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
 
   Future getOffers() async {
-    await OfferService().getOffers(user.uidFB).then((value) => offers = value);
+    await OfferService().getOffersByMaster(user.uidFB).then((value) => offers = value);
   }
 }
 

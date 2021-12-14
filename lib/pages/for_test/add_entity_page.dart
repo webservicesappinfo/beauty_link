@@ -271,8 +271,12 @@ class AddEntityPage extends StatelessWidget {
 
   void _addOffer(BuildContext context) {
     OfferService()
-        .addOffer(
-            Offer(name: _name, masterName: _masterName, skillName: _skillName))
+        .addOffer(Offer(
+            name: _name,
+            masterGuid: 'masterGuid',
+            masterName: _masterName,
+            skillGuid: 'skillGuid',
+            skillName: _skillName))
         .then((value) => {
               if (value)
                 Navigator.pop(context)

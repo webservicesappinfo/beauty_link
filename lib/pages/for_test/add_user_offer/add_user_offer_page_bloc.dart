@@ -7,11 +7,17 @@ import 'package:flutter/material.dart';
 class AddUserOfferPageBloc extends BaseBlocV2 {
   String? offerName;
   AppUser user;
-  AddUserOfferPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
+  AddUserOfferPageBloc(BaseStateV2 initialState, this.user)
+      : super(initialState);
 
   Future addOffer() async {
     if (offerName?.isEmpty ?? true) throw Exception("userName is null");
-    await OfferService().addOffer(Offer(name: offerName, masterName: user.name, skillName: 'testSkill'));
+    await OfferService().addOffer(Offer(
+        name: offerName,
+        masterGuid: user.uidFB,
+        masterName: user.name,
+        skillGuid: 'testSkillGuid',
+        skillName: 'testSkill'));
   }
 
   void onChangedOfferName(String name) => offerName = name;
