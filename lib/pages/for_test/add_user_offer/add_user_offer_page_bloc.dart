@@ -16,7 +16,7 @@ class AddUserOfferPageBloc extends BaseBlocV2 {
         name: offerName,
         masterGuid: user.uidFB,
         masterName: user.name,
-        skillGuid: 'testSkillGuid',
+        skillGuid: user.uidFB,
         skillName: 'testSkill'));
   }
 

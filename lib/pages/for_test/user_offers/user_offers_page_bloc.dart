@@ -11,7 +11,7 @@ class UserOffersPageBloc extends BaseBlocV2 {
 
   UserOffersPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
 
-  Future getOffers() async {
+  Future getOffersByMaster() async {
     await OfferService().getOffersByMaster(user.uidFB).then((value) => offers = value);
   }
 }
@@ -22,7 +22,7 @@ class LoadOffersPageEvent extends BaseEventV2 {
 
   @override
   Future<void> execute() async {
-    await bloc.getOffers();
+    await bloc.getOffersByMaster();
   }
 }
 
