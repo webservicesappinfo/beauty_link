@@ -16,7 +16,7 @@ class AddUserOfferPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddUserOfferPageBloc(InitState(), user),
       child: Scaffold(
-          appBar: AppBar(title: Text('add user')),
+          appBar: AppBar(title: Text('add offer')),
           body: BlocConsumer<AddUserOfferPageBloc, BaseStateV2>(
             listener: (context, state) {
               // TODO: implement listener

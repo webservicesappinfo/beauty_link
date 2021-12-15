@@ -72,7 +72,13 @@ class UserInfoPage extends StatelessWidget {
         CustomButton(
           bloc: bloc,
           clickEvent: OffersBtnClicEvent(bloc, context),
-          text: "Offers",
+          text: "My Offers",
+        ),
+        SizedBox(height: 10),
+        CustomButton(
+          bloc: bloc,
+          clickEvent: FindOfferBtnClicEvent(bloc, context),
+          text: "Find Offer",
         )
       ],
     );

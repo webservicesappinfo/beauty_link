@@ -1,5 +1,6 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/pages/for_test/find_offer/find_offer_page.dart';
 import 'package:beauty_link/pages/for_test/user_companies/user_companies_page.dart';
 import 'package:beauty_link/pages/for_test/user_offers/user_offers_page.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,23 @@ class OffersBtnClicEvent extends BaseEventV2 {
       MaterialPageRoute(
           builder: (context) => UserOffersPage(
                 user: bloc.user,
+              )),
+    ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
+  }
+}
+
+class FindOfferBtnClicEvent extends BaseEventV2 {
+  UserInfoPageBloc bloc;
+  BuildContext context;
+  FindOfferBtnClicEvent(this.bloc, this.context) : super();
+
+  @override
+  Future<void> execute() async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => FindOfferPage(
+                client: bloc.user,
               )),
     ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
   }
