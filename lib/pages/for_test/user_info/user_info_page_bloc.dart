@@ -2,7 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/pages/for_test/find_offer/find_offer_page.dart';
 import 'package:beauty_link/pages/for_test/user_companies/user_companies_page.dart';
-import 'package:beauty_link/pages/for_test/user_offers/user_offers_page.dart';
+import 'package:beauty_link/pages/for_test/master_offers/master_offers_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,7 +51,7 @@ class OffersBtnClicEvent extends BaseEventV2 {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => UserOffersPage(
+          builder: (context) => MasterOffersPage(
                 user: bloc.user,
               )),
     ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));

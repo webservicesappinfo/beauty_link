@@ -1,5 +1,6 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class FindOfferPage extends StatelessWidget {
                   case EndEventState:
                     switch ((state as EndEventState).event.runtimeType) {
                       case LoadFindOfferPageEvent:
-                        return _onLoadState(bloc);
+                        return _onLoadState(bloc, context);
                       default:
                         return Text('empty state');
                     }
@@ -43,10 +44,11 @@ class FindOfferPage extends StatelessWidget {
             )));
   }
 
-  Widget _onLoadState(FindOfferPageBloc bloc) {
+  Widget _onLoadState(FindOfferPageBloc bloc, BuildContext context) {
     return Column(
       children: [
-        CustomDropDownButton(caption: 'Select master', entities: bloc.masters, onChanged: bloc.onMasterChanged)
+        CustomDropDownButton(caption: 'Select master', entities: bloc.masters, onChanged: bloc.onMasterChanged),
+        CustomButton(text: 'Find', clickEvent: FindBtnClickEvent(bloc, context), bloc: bloc)
       ],
     );
   }

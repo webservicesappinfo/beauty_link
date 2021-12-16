@@ -5,11 +5,11 @@ import 'package:beauty_link/pages/for_test/add_user_offer/add_user_offer_page.da
 import 'package:beauty_link/services/offer_service.dart';
 import 'package:flutter/material.dart';
 
-class UserOffersPageBloc extends BaseBlocV2 {
+class MasterOffersPageBloc extends BaseBlocV2 {
   List<Offer> offers = [];
   AppUser user;
 
-  UserOffersPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
+  MasterOffersPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
 
   Future getOffersByMaster() async {
     await OfferService().getOffersByMaster(user.uidFB).then((value) => offers = value);
@@ -17,7 +17,7 @@ class UserOffersPageBloc extends BaseBlocV2 {
 }
 
 class LoadOffersPageEvent extends BaseEventV2 {
-  UserOffersPageBloc bloc;
+  MasterOffersPageBloc bloc;
   LoadOffersPageEvent(BuildContext context, this.bloc) : super();
 
   @override
@@ -27,7 +27,7 @@ class LoadOffersPageEvent extends BaseEventV2 {
 }
 
 class TapUserEvent extends BaseEventV2 {
-  UserOffersPageBloc bloc;
+  MasterOffersPageBloc bloc;
   BuildContext context;
   Offer offer;
 
@@ -45,7 +45,7 @@ class TapUserEvent extends BaseEventV2 {
 }
 
 class AddOfferBtnClick extends BaseEventV2 {
-  UserOffersPageBloc bloc;
+  MasterOffersPageBloc bloc;
   BuildContext context;
 
   AddOfferBtnClick(this.bloc, this.context) : super();
