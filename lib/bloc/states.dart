@@ -70,7 +70,6 @@ class LoadedUserInfoState extends BaseState<List<AppUser>> {
   }
 }
 
-
 class AddEntityPageByCompanyLoadedState extends BaseState<void> {
   @override
   Future execute(BaseBloc bloc) async {
@@ -78,11 +77,9 @@ class AddEntityPageByCompanyLoadedState extends BaseState<void> {
   }
 }
 
-class AddEntityPageByCanBeContainsCompanyLoadedState
-    extends BaseState<List<Company>> {
+class AddEntityPageByCanBeContainsCompanyLoadedState extends BaseState<List<Company>> {
   String userGuid;
-  AddEntityPageByCanBeContainsCompanyLoadedState({required this.userGuid})
-      : super();
+  AddEntityPageByCanBeContainsCompanyLoadedState({required this.userGuid}) : super();
 
   @override
   Future execute(BaseBloc bloc) async {
@@ -121,7 +118,7 @@ class LoadedOffersState extends BaseState<List<Offer>> {
   LoadedOffersState({this.userGuid}) : super();
   @override
   Future execute(BaseBloc bloc) async {
-    result = await OfferService().getOffersByMaster(userGuid);
+    result = await OfferService().getOffersByMaster(userGuid, true);
   }
 }
 

@@ -22,8 +22,7 @@ class AddEntityPage extends StatelessWidget {
   String? _skillName;
   EntityType entityType;
   final Map params;
-  AddEntityPage({Key? key, required this.entityType, required this.params})
-      : super(key: key);
+  AddEntityPage({Key? key, required this.entityType, required this.params}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +66,7 @@ class AddEntityPage extends StatelessWidget {
         break;
       case EntityType.company:
         if (params['companyType'] == 'canBeContains')
-          bloc.add(AddEntityPageLoadByCanBeContainsCompany(
-              userGuid: params['guid']));
+          bloc.add(AddEntityPageLoadByCanBeContainsCompany(userGuid: params['guid']));
         else
           bloc.add(AddEntityPageLoadByCompany());
         break;
@@ -91,163 +89,144 @@ class AddEntityPage extends StatelessWidget {
   }
 
   Widget _onLoadedByUserState(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: 'Enter a search term'),
-              onChanged: (value) {
-                _name = value;
-              },
-            ),
-          ),
-          ElevatedButton(
-              onPressed: () => _addUser(context), child: Text('Confirm')),
-        ]);
+    return Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+      Center(
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(hintText: 'Enter a search term'),
+          onChanged: (value) {
+            _name = value;
+          },
+        ),
+      ),
+      ElevatedButton(onPressed: () => _addUser(context), child: Text('Confirm')),
+    ]);
   }
 
   Widget _onLoadedByCompanyState(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: 'Enter a search term'),
-              onChanged: (value) {
-                _name = value;
-              },
-            ),
-          ),
-          ElevatedButton(
-              onPressed: () => _addCompany(context), child: Text('Confirm')),
-        ]);
+    return Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+      Center(
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(hintText: 'Enter a search term'),
+          onChanged: (value) {
+            _name = value;
+          },
+        ),
+      ),
+      ElevatedButton(onPressed: () => _addCompany(context), child: Text('Confirm')),
+    ]);
   }
 
   Widget _onLoadedByCanBeContainsCompanyState(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: 'Enter a search term'),
-              onChanged: (value) {
-                _name = value;
-              },
-            ),
-          ),
-          ElevatedButton(
-              onPressed: () => _addCompany(context), child: Text('Confirm')),
-        ]);
+    return Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+      Center(
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(hintText: 'Enter a search term'),
+          onChanged: (value) {
+            _name = value;
+          },
+        ),
+      ),
+      ElevatedButton(onPressed: () => _addCompany(context), child: Text('Confirm')),
+    ]);
   }
 
   Widget _onLoadedBySkillState(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: 'Enter name'),
-              onChanged: (value) {
-                _name = value;
-              },
-            ),
-          ),
-          Center(
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: 'Enter desc'),
-              onChanged: (value) {
-                _desc = value;
-              },
-            ),
-          ),
-          ElevatedButton(
-              onPressed: () => _addSkill(context), child: Text('Confirm')),
-        ]);
+    return Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+      Center(
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(hintText: 'Enter name'),
+          onChanged: (value) {
+            _name = value;
+          },
+        ),
+      ),
+      Center(
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(hintText: 'Enter desc'),
+          onChanged: (value) {
+            _desc = value;
+          },
+        ),
+      ),
+      ElevatedButton(onPressed: () => _addSkill(context), child: Text('Confirm')),
+    ]);
   }
 
   Widget _onLoadedByOfferState(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: 'Enter name'),
-              onChanged: (value) {
-                _name = value;
-              },
-            ),
-          ),
-          Center(
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: 'Enter masterName'),
-              onChanged: (value) {
-                _masterName = value;
-              },
-            ),
-          ),
-          Center(
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: 'Enter skillName'),
-              onChanged: (value) {
-                _masterName = value;
-              },
-            ),
-          ),
-          ElevatedButton(
-              onPressed: () => _addOffer(context), child: Text('Confirm')),
-        ]);
+    return Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+      Center(
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(hintText: 'Enter name'),
+          onChanged: (value) {
+            _name = value;
+          },
+        ),
+      ),
+      Center(
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(hintText: 'Enter masterName'),
+          onChanged: (value) {
+            _masterName = value;
+          },
+        ),
+      ),
+      Center(
+        child: TextField(
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(hintText: 'Enter skillName'),
+          onChanged: (value) {
+            _masterName = value;
+          },
+        ),
+      ),
+      ElevatedButton(onPressed: () => _addOffer(context), child: Text('Confirm')),
+    ]);
   }
 
   void _addUser(BuildContext context) {
     var uid = Uuid();
-    UserService()
-        .addUser(AppUser(name: _name ?? "", uidFB: uid.v1()))
-        .then((value) => {
-              if (value)
-                Navigator.pop(context)
-              else
-                AlertDialog(
-                  title: Text("Error"),
-                  content: Text("Error"),
-                  actions: [
-                    ElevatedButton(
-                        child: Text("Ok"),
-                        onPressed: () {
-                          Navigator.of(context).pop(); // Return value
-                        }),
-                  ],
-                )
-            });
+    UserService().addUser(AppUser(name: _name ?? "", uidFB: uid.v1())).then((value) => {
+          if (value)
+            Navigator.pop(context)
+          else
+            AlertDialog(
+              title: Text("Error"),
+              content: Text("Error"),
+              actions: [
+                ElevatedButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Return value
+                    }),
+              ],
+            )
+        });
   }
 
   void _addCompany(BuildContext context) {
-    CompanyService()
-        .addCompany(Company(name: _name, ownerGuid: params['userGuid']))
-        .then((value) => {
-              if (value)
-                Navigator.pop(context)
-              else
-                AlertDialog(
-                  title: Text("Error"),
-                  content: Text("Error"),
-                  actions: [
-                    ElevatedButton(
-                        child: Text("Ok"),
-                        onPressed: () {
-                          Navigator.of(context).pop(); // Return value
-                        }),
-                  ],
-                )
-            });
+    CompanyService().addCompany(Company(name: _name, ownerGuid: params['userGuid'])).then((value) => {
+          if (value)
+            Navigator.pop(context)
+          else
+            AlertDialog(
+              title: Text("Error"),
+              content: Text("Error"),
+              actions: [
+                ElevatedButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Return value
+                    }),
+              ],
+            )
+        });
   }
 
   void _addSkill(BuildContext context) {
@@ -276,7 +255,8 @@ class AddEntityPage extends StatelessWidget {
             masterGuid: 'masterGuid',
             masterName: _masterName,
             skillGuid: 'skillGuid',
-            skillName: _skillName))
+            skillName: _skillName,
+            status: 'actived'))
         .then((value) => {
               if (value)
                 Navigator.pop(context)

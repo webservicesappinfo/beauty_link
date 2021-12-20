@@ -7,6 +7,7 @@ class Offer extends EntityBase {
   String? masterName;
   String? skillGuid;
   String? skillName;
+  String? status;
 
   Offer(
       {this.guid,
@@ -14,7 +15,8 @@ class Offer extends EntityBase {
       required this.masterGuid,
       required this.masterName,
       required this.skillGuid,
-      required this.skillName});
+      required this.skillName,
+      required this.status});
 
   factory Offer.fromJson(Map<String, dynamic> json) {
     return new Offer(
@@ -24,6 +26,7 @@ class Offer extends EntityBase {
       masterName: json['masterName'],
       skillName: json['skillName'],
       skillGuid: json['skillGuid'],
+      status: json['status'],
     );
   }
   Map<String, dynamic> toJsonForPost() {
@@ -38,5 +41,5 @@ class Offer extends EntityBase {
   }
 
   @override
-  String getCaption() => name ?? "NoName";
+  String getCaption() => "Name: $name  Status: $status";
 }

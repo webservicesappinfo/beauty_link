@@ -19,7 +19,7 @@ class MasterOrdersPage extends StatelessWidget {
     return BlocProvider(
         create: (context) => MasterOrdersPageBloc(InitState(), master),
         child: Scaffold(
-            appBar: AppBar(title: Text('Users')),
+            appBar: AppBar(title: Text('Orders')),
             body: BlocConsumer<MasterOrdersPageBloc, BaseStateV2>(listener: (context, state) {
               if (state is InitState) {}
             }, builder: (context, state) {

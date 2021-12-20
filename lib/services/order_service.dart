@@ -16,6 +16,7 @@ class OrderService {
     if (order == null) return false;
     var response = await mobileApiClient.apiAddOrder(new AddOrderRequest(
         name: order.name,
+        offerGuid: order.offerGuid,
         userName: order.userName,
         userGuid: order.userGuid,
         masterName: order.masterName,
@@ -25,13 +26,14 @@ class OrderService {
     return response.result;
   }
 
-  Future<List<Order>> getOrders(String? userGuid) async {
+  Future<List<Order>> getOrders(String? userGuid, bool isMaster) async {
     var orders = <Order>[];
-    var response = await mobileApiClient.apiGetOrders(new GetOrdersRequest(userGuid: userGuid));
+    var response = await mobileApiClient.apiGetOrders(new GetOrdersRequest(userGuid: userGuid, isMaster: isMaster));
     for (var i = 0; i < response.names.length; i++)
       orders.add(new Order(
         guid: response.guids[i],
         name: response.names[i],
+        offerGuid: response.offerGuids[i],
         userGuid: response.userGuids[i],
         userName: response.userNames[i],
         masterName: response.masterNames[i],

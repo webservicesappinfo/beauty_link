@@ -3,21 +3,23 @@ import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/services/offer_service.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class AddUserOfferPageBloc extends BaseBlocV2 {
   String? offerName;
   AppUser user;
-  AddUserOfferPageBloc(BaseStateV2 initialState, this.user)
-      : super(initialState);
+  AddUserOfferPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
 
   Future addOffer() async {
     if (offerName?.isEmpty ?? true) throw Exception("userName is null");
+    var uid = Uuid();
     await OfferService().addOffer(Offer(
         name: offerName,
         masterGuid: user.uidFB,
         masterName: user.name,
         skillGuid: user.uidFB,
-        skillName: 'testSkill'));
+        skillName: uid.v1(),
+        status: 'Actived'));
   }
 
   void onChangedOfferName(String name) => offerName = name;

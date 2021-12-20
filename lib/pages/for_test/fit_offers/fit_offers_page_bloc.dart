@@ -13,7 +13,7 @@ class FitOffersPageBloc extends BaseBlocV2 {
   FitOffersPageBloc(BaseStateV2 initialState, this.master, this.client) : super(initialState);
 
   Future getOffersByMaster() async {
-    await OfferService().getOffersByMaster(master.uidFB).then((value) => offers = value);
+    await OfferService().getOffersByMaster(master.uidFB, false).then((value) => offers = value);
   }
 }
 

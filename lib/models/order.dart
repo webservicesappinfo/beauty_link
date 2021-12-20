@@ -3,6 +3,7 @@ import 'package:beauty_link/models/entity_base.dart';
 class Order extends EntityBase {
   String? guid;
   String? name;
+  String offerGuid;
   String userGuid;
   String userName;
   String masterGuid;
@@ -13,6 +14,7 @@ class Order extends EntityBase {
   Order(
       {this.guid,
       required this.name,
+      required this.offerGuid,
       required this.masterGuid,
       required this.userName,
       required this.userGuid,
@@ -24,6 +26,7 @@ class Order extends EntityBase {
     return new Order(
       guid: json['guid'],
       name: json['name'],
+      offerGuid: json['offerGuid'],
       userName: json['userName'],
       masterName: json['masterName'],
       skillName: json['skillName'],

@@ -12,7 +12,7 @@ class MasterOrdersPageBloc extends BaseBlocV2 {
   MasterOrdersPageBloc(BaseStateV2 initialState, this.master) : super(initialState);
 
   Future getOrders() async {
-    await OrderService().getOrders(master.uidFB).then((value) => orders = value);
+    await OrderService().getOrders(master.uidFB, true).then((value) => orders = value);
   }
 }
 
