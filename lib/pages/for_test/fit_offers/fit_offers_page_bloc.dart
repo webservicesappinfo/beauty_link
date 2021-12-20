@@ -41,7 +41,6 @@ class TapOfferEvent extends BaseEventV2 {
       MaterialPageRoute(
         builder: (context) => FitOfferInfoPage(
           offer: offer,
-          master: bloc.master,
           client: bloc.client,
         ),
       ),

@@ -13,14 +13,17 @@ const AddOrderRequest$json = const {
   '1': 'AddOrderRequest',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'userName', '3': 2, '4': 1, '5': 9, '10': 'userName'},
-    const {'1': 'masterName', '3': 3, '4': 1, '5': 9, '10': 'masterName'},
-    const {'1': 'skillName', '3': 4, '4': 1, '5': 9, '10': 'skillName'},
+    const {'1': 'userGuid', '3': 2, '4': 1, '5': 9, '10': 'userGuid'},
+    const {'1': 'userName', '3': 3, '4': 1, '5': 9, '10': 'userName'},
+    const {'1': 'masterGuid', '3': 4, '4': 1, '5': 9, '10': 'masterGuid'},
+    const {'1': 'masterName', '3': 5, '4': 1, '5': 9, '10': 'masterName'},
+    const {'1': 'skillGuid', '3': 6, '4': 1, '5': 9, '10': 'skillGuid'},
+    const {'1': 'skillName', '3': 7, '4': 1, '5': 9, '10': 'skillName'},
   ],
 };
 
 /// Descriptor for `AddOrderRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addOrderRequestDescriptor = $convert.base64Decode('Cg9BZGRPcmRlclJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIaCgh1c2VyTmFtZRgCIAEoCVIIdXNlck5hbWUSHgoKbWFzdGVyTmFtZRgDIAEoCVIKbWFzdGVyTmFtZRIcCglza2lsbE5hbWUYBCABKAlSCXNraWxsTmFtZQ==');
+final $typed_data.Uint8List addOrderRequestDescriptor = $convert.base64Decode('Cg9BZGRPcmRlclJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIaCgh1c2VyR3VpZBgCIAEoCVIIdXNlckd1aWQSGgoIdXNlck5hbWUYAyABKAlSCHVzZXJOYW1lEh4KCm1hc3Rlckd1aWQYBCABKAlSCm1hc3Rlckd1aWQSHgoKbWFzdGVyTmFtZRgFIAEoCVIKbWFzdGVyTmFtZRIcCglza2lsbEd1aWQYBiABKAlSCXNraWxsR3VpZBIcCglza2lsbE5hbWUYByABKAlSCXNraWxsTmFtZQ==');
 @$core.Deprecated('Use addOrderReplyDescriptor instead')
 const AddOrderReply$json = const {
   '1': 'AddOrderReply',
@@ -47,14 +50,17 @@ const GetOrdersReply$json = const {
   '2': const [
     const {'1': 'names', '3': 1, '4': 3, '5': 9, '10': 'names'},
     const {'1': 'guids', '3': 2, '4': 3, '5': 9, '10': 'guids'},
-    const {'1': 'userNames', '3': 3, '4': 3, '5': 9, '10': 'userNames'},
-    const {'1': 'masterNames', '3': 4, '4': 3, '5': 9, '10': 'masterNames'},
-    const {'1': 'skillNames', '3': 5, '4': 3, '5': 9, '10': 'skillNames'},
+    const {'1': 'userGuids', '3': 3, '4': 3, '5': 9, '10': 'userGuids'},
+    const {'1': 'userNames', '3': 4, '4': 3, '5': 9, '10': 'userNames'},
+    const {'1': 'masterGuids', '3': 5, '4': 3, '5': 9, '10': 'masterGuids'},
+    const {'1': 'masterNames', '3': 6, '4': 3, '5': 9, '10': 'masterNames'},
+    const {'1': 'skillGuids', '3': 7, '4': 3, '5': 9, '10': 'skillGuids'},
+    const {'1': 'skillNames', '3': 8, '4': 3, '5': 9, '10': 'skillNames'},
   ],
 };
 
 /// Descriptor for `GetOrdersReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getOrdersReplyDescriptor = $convert.base64Decode('Cg5HZXRPcmRlcnNSZXBseRIUCgVuYW1lcxgBIAMoCVIFbmFtZXMSFAoFZ3VpZHMYAiADKAlSBWd1aWRzEhwKCXVzZXJOYW1lcxgDIAMoCVIJdXNlck5hbWVzEiAKC21hc3Rlck5hbWVzGAQgAygJUgttYXN0ZXJOYW1lcxIeCgpza2lsbE5hbWVzGAUgAygJUgpza2lsbE5hbWVz');
+final $typed_data.Uint8List getOrdersReplyDescriptor = $convert.base64Decode('Cg5HZXRPcmRlcnNSZXBseRIUCgVuYW1lcxgBIAMoCVIFbmFtZXMSFAoFZ3VpZHMYAiADKAlSBWd1aWRzEhwKCXVzZXJHdWlkcxgDIAMoCVIJdXNlckd1aWRzEhwKCXVzZXJOYW1lcxgEIAMoCVIJdXNlck5hbWVzEiAKC21hc3Rlckd1aWRzGAUgAygJUgttYXN0ZXJHdWlkcxIgCgttYXN0ZXJOYW1lcxgGIAMoCVILbWFzdGVyTmFtZXMSHgoKc2tpbGxHdWlkcxgHIAMoCVIKc2tpbGxHdWlkcxIeCgpza2lsbE5hbWVzGAggAygJUgpza2lsbE5hbWVz');
 @$core.Deprecated('Use getOrderRequestDescriptor instead')
 const GetOrderRequest$json = const {
   '1': 'GetOrderRequest',

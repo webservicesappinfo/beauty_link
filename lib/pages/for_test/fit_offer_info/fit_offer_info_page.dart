@@ -11,13 +11,12 @@ import 'fit_offer_info_page_bloc.dart';
 class FitOfferInfoPage extends StatelessWidget {
   final Offer offer;
   final AppUser client;
-  final AppUser master;
-  const FitOfferInfoPage({Key? key, required this.offer, required this.master, required this.client}) : super(key: key);
+  const FitOfferInfoPage({Key? key, required this.offer, required this.client}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => FitOfferInfoPageBloc(InitState(), offer, master, client),
+        create: (context) => FitOfferInfoPageBloc(InitState(), offer, client),
         child: Scaffold(
             appBar: AppBar(title: Text('${offer.name}')),
             body: BlocConsumer<FitOfferInfoPageBloc, BaseStateV2>(
@@ -52,7 +51,7 @@ class FitOfferInfoPage extends StatelessWidget {
       children: [
         Text('Offer name: ${bloc.fitOffer.name}'),
         SizedBox(height: 10),
-        Text('Master name: ${bloc.master.name}'),
+        Text('Master name: ${bloc.fitOffer.masterName}'),
         SizedBox(height: 10),
         Text('Client name: ${bloc.client.name}'),
         SizedBox(height: 10),
