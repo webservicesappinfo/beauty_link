@@ -47,40 +47,47 @@ class UserInfoPage extends StatelessWidget {
 
   Widget _onLoadUserInfoPageEvent(BuildContext context) {
     var bloc = BlocProvider.of<UserInfoPageBloc>(context);
-    return Column(
-      children: [
-        Text('${bloc.user.name ?? 'empty'}'),
-        SizedBox(height: 10),
-        CustomButton(
-          bloc: bloc,
-          clickEvent: CompaniesBtnClickEvent(bloc, context, "owner"),
-          text: "OwnerCompanies",
-        ),
-        SizedBox(height: 10),
-        CustomButton(
-          bloc: bloc,
-          clickEvent: CompaniesBtnClickEvent(bloc, context, "contains"),
-          text: "ContainsCompanies",
-        ),
-        SizedBox(height: 10),
-        CustomButton(
-          bloc: bloc,
-          clickEvent: CompaniesBtnClickEvent(bloc, context, "canbecontains"),
-          text: "CanBeContainCompanies",
-        ),
-        SizedBox(height: 10),
-        CustomButton(
-          bloc: bloc,
-          clickEvent: OffersBtnClicEvent(bloc, context),
-          text: "My Offers",
-        ),
-        SizedBox(height: 10),
-        CustomButton(
-          bloc: bloc,
-          clickEvent: FindOfferBtnClicEvent(bloc, context),
-          text: "Find Offer",
-        )
-      ],
+    return Center(
+      child: Column(
+        children: [
+          Text('${bloc.user.name ?? 'empty'}'),          
+          CustomButton(
+            bloc: bloc,
+            clickEvent: CompaniesBtnClickEvent(bloc, context, "owner"),
+            text: "OwnerCompanies",
+          ),
+          CustomButton(
+            bloc: bloc,
+            clickEvent: CompaniesBtnClickEvent(bloc, context, "contains"),
+            text: "ContainsCompanies",
+          ),
+          CustomButton(
+            bloc: bloc,
+            clickEvent: CompaniesBtnClickEvent(bloc, context, "canbecontains"),
+            text: "CanBeContainCompanies",
+          ),
+          CustomButton(
+            bloc: bloc,
+            clickEvent: OffersBtnClicEvent(bloc, context),
+            text: "My Offers",
+          ),
+          CustomButton(
+            bloc: bloc,
+            clickEvent: FindOfferBtnClicEvent(bloc, context),
+            text: "Find Offer",
+          ),
+          CustomButton(
+            bloc: bloc,
+            clickEvent: MasterOrdersBtnClicEvent(bloc, context),
+            text: "Master Orders",
+          ),
+          CustomButton(
+            bloc: bloc,
+            clickEvent: ClientOrdersBtnClicEvent(bloc, context),
+            text: "Client Orders",
+          )
+        ],
+      ),
     );
   }
 }
