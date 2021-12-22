@@ -18,10 +18,11 @@ class FitOfferInfoPageBloc extends BaseBlocV2 {
   Future createOrder() async {
     await OrderService().addOrder(Order(
         name: fitOffer.name,
+        status: fitOffer.status,
         masterGuid: fitOffer.masterGuid ?? "noGuid",
         offerGuid: fitOffer.guid ?? 'noGuid',
-        userName: client.name ?? 'noName',
-        userGuid: client.uidFB ?? 'noGuid',
+        clientName: client.name ?? 'noName',
+        clientGuid: client.uidFB ?? 'noGuid',
         skillGuid: fitOffer.skillGuid ?? 'noName',
         masterName: fitOffer.masterName ?? 'noName',
         skillName: fitOffer.skillName ?? 'noName'));

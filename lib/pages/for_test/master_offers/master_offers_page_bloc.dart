@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/pages/for_test/add_user_offer/add_user_offer_page.dart';
+import 'package:beauty_link/pages/for_test/master_order_info/master_order_info_page.dart';
 import 'package:beauty_link/services/offer_service.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class TapUserEvent extends BaseEventV2 {
     /*Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => UserInfoPage(user: _tapUser),
+        builder: (context) => MasterOrderInfoPage(master: _tapUser),
       ),
     ).then((value) => bloc.add(LoadUserPageEvent(context, bloc)));*/
   }

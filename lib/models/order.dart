@@ -3,9 +3,10 @@ import 'package:beauty_link/models/entity_base.dart';
 class Order extends EntityBase {
   String? guid;
   String? name;
+  String? status;
   String offerGuid;
-  String userGuid;
-  String userName;
+  String clientGuid;
+  String clientName;
   String masterGuid;
   String masterName;
   String skillGuid;
@@ -14,10 +15,11 @@ class Order extends EntityBase {
   Order(
       {this.guid,
       required this.name,
+      required this.status,
       required this.offerGuid,
       required this.masterGuid,
-      required this.userName,
-      required this.userGuid,
+      required this.clientName,
+      required this.clientGuid,
       required this.skillGuid,
       required this.masterName,
       required this.skillName});
@@ -26,17 +28,18 @@ class Order extends EntityBase {
     return new Order(
       guid: json['guid'],
       name: json['name'],
+      status: json['status'],
       offerGuid: json['offerGuid'],
-      userName: json['userName'],
+      clientName: json['userName'],
       masterName: json['masterName'],
       skillName: json['skillName'],
-      userGuid: json['userGuid'],
+      clientGuid: json['userGuid'],
       masterGuid: json['masterGuid'],
       skillGuid: json['skillGuid'],
     );
   }
   Map<String, dynamic> toJsonForPost() {
-    return {'guid': guid, 'name': name, 'userName': userName, 'masterName': masterName, 'skillName': skillName};
+    return {'guid': guid, 'name': name, 'userName': clientName, 'masterName': masterName, 'skillName': skillName};
   }
 
   @override

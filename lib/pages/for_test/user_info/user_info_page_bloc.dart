@@ -1,5 +1,6 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/pages/for_test/client_orders/client_orders_page.dart';
 import 'package:beauty_link/pages/for_test/find_offer/find_offer_page.dart';
 import 'package:beauty_link/pages/for_test/master_orders/master_orders_page.dart';
 import 'package:beauty_link/pages/for_test/user_companies/user_companies_page.dart';
@@ -89,7 +90,7 @@ class ClientOrdersBtnClicEvent extends BaseEventV2 {
   Future<void> execute() async {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => FindOfferPage(client: bloc.user)),
+      MaterialPageRoute(builder: (context) => ClientOrdersPage(client: bloc.user)),
     ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
   }
 }

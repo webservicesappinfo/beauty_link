@@ -17,8 +17,8 @@ class OrderService {
     var response = await mobileApiClient.apiAddOrder(new AddOrderRequest(
         name: order.name,
         offerGuid: order.offerGuid,
-        userName: order.userName,
-        userGuid: order.userGuid,
+        userName: order.clientName,
+        userGuid: order.clientGuid,
         masterName: order.masterName,
         masterGuid: order.masterGuid,
         skillName: order.skillName,
@@ -33,9 +33,10 @@ class OrderService {
       orders.add(new Order(
         guid: response.guids[i],
         name: response.names[i],
+        status: response.statuses[i],
         offerGuid: response.offerGuids[i],
-        userGuid: response.userGuids[i],
-        userName: response.userNames[i],
+        clientGuid: response.userGuids[i],
+        clientName: response.userNames[i],
         masterName: response.masterNames[i],
         masterGuid: response.masterGuids[i],
         skillName: response.skillNames[i],

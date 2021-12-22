@@ -1,25 +1,24 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/order.dart';
-import 'package:beauty_link/pages/for_test/master_order_info/master_order_info_page.dart';
-import 'package:beauty_link/pages/for_test/master_orders/master_orders_page.dart';
+import 'package:beauty_link/pages/for_test/client_order_info/client_order_info_page.dart';
 import 'package:beauty_link/services/order_service.dart';
 import 'package:flutter/material.dart';
 
-class MasterOrdersPageBloc extends BaseBlocV2 {
-  AppUser master;
+class ClientOrdersPageBloc extends BaseBlocV2 {
+  AppUser client;
   List<Order> orders = [];
   Order? tapOrder;
 
-  MasterOrdersPageBloc(BaseStateV2 initialState, this.master) : super(initialState);
+  ClientOrdersPageBloc(BaseStateV2 initialState, this.client) : super(initialState);
 
   Future getOrders() async {
-    await OrderService().getOrders(master.uidFB, true).then((value) => orders = value);
+    await OrderService().getOrders(client.uidFB, false).then((value) => orders = value);
   }
 }
 
 class LoadMasterOrdersPageEvent extends BaseEventV2 {
-  MasterOrdersPageBloc bloc;
+  ClientOrdersPageBloc bloc;
   LoadMasterOrdersPageEvent(BuildContext context, this.bloc) : super();
 
   @override
@@ -29,7 +28,7 @@ class LoadMasterOrdersPageEvent extends BaseEventV2 {
 }
 
 class TapOrderEvent extends BaseEventV2 {
-  MasterOrdersPageBloc bloc;
+  ClientOrdersPageBloc bloc;
   BuildContext context;
   Order _tapOrder;
 
@@ -38,13 +37,11 @@ class TapOrderEvent extends BaseEventV2 {
   @override
   Future<void> execute() async {
     Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MasterOrderInfoPage(
-          master: bloc.master,
-          order: _tapOrder,
-        ),
-      ),
-    ).then((value) => bloc.add(LoadMasterOrdersPageEvent(context, bloc)));
+        context,
+        MaterialPageRoute(
+            builder: (context) => ClientOrderInfoPage(
+                  client: bloc.client,
+                  order: _tapOrder,
+                ))).then((value) => bloc.add(LoadMasterOrdersPageEvent(context, bloc)));
   }
 }
