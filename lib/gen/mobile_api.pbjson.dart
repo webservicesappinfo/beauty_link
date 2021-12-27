@@ -8,49 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use apiFindLastMessageRequestDescriptor instead')
-const ApiFindLastMessageRequest$json = const {
-  '1': 'ApiFindLastMessageRequest',
-  '2': const [
-    const {'1': 'fromGuid', '3': 1, '4': 1, '5': 9, '10': 'fromGuid'},
-    const {'1': 'forGuid', '3': 2, '4': 1, '5': 9, '10': 'forGuid'},
-  ],
-};
-
-/// Descriptor for `ApiFindLastMessageRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiFindLastMessageRequestDescriptor = $convert.base64Decode('ChlBcGlGaW5kTGFzdE1lc3NhZ2VSZXF1ZXN0EhoKCGZyb21HdWlkGAEgASgJUghmcm9tR3VpZBIYCgdmb3JHdWlkGAIgASgJUgdmb3JHdWlk');
-@$core.Deprecated('Use apiFindLastMessagesReplyDescriptor instead')
-const ApiFindLastMessagesReply$json = const {
-  '1': 'ApiFindLastMessagesReply',
-  '2': const [
-    const {'1': 'msg', '3': 1, '4': 1, '5': 9, '10': 'msg'},
-  ],
-};
-
-/// Descriptor for `ApiFindLastMessagesReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiFindLastMessagesReplyDescriptor = $convert.base64Decode('ChhBcGlGaW5kTGFzdE1lc3NhZ2VzUmVwbHkSEAoDbXNnGAEgASgJUgNtc2c=');
-@$core.Deprecated('Use apiSendMessageRequestDescriptor instead')
-const ApiSendMessageRequest$json = const {
-  '1': 'ApiSendMessageRequest',
-  '2': const [
-    const {'1': 'forGuid', '3': 1, '4': 1, '5': 9, '10': 'forGuid'},
-    const {'1': 'fromGuid', '3': 2, '4': 1, '5': 9, '10': 'fromGuid'},
-    const {'1': 'msg', '3': 3, '4': 1, '5': 9, '10': 'msg'},
-  ],
-};
-
-/// Descriptor for `ApiSendMessageRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiSendMessageRequestDescriptor = $convert.base64Decode('ChVBcGlTZW5kTWVzc2FnZVJlcXVlc3QSGAoHZm9yR3VpZBgBIAEoCVIHZm9yR3VpZBIaCghmcm9tR3VpZBgCIAEoCVIIZnJvbUd1aWQSEAoDbXNnGAMgASgJUgNtc2c=');
-@$core.Deprecated('Use apiSendMessageReplyDescriptor instead')
-const ApiSendMessageReply$json = const {
-  '1': 'ApiSendMessageReply',
-  '2': const [
-    const {'1': 'status', '3': 1, '4': 1, '5': 8, '10': 'status'},
-  ],
-};
-
-/// Descriptor for `ApiSendMessageReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List apiSendMessageReplyDescriptor = $convert.base64Decode('ChNBcGlTZW5kTWVzc2FnZVJlcGx5EhYKBnN0YXR1cxgBIAEoCFIGc3RhdHVz');
 @$core.Deprecated('Use apiGetUserLocationRequestDescriptor instead')
 const ApiGetUserLocationRequest$json = const {
   '1': 'ApiGetUserLocationRequest',

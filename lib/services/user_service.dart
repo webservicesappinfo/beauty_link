@@ -23,7 +23,8 @@ class UserService {
     var response = await mobileApiClient.apiAddUser(new AddUserRequest(
         //guid: user.uidFB,
         name: "${user.name}/${user.email ?? ""}",
-        /*token: user.token*/
+        //token: user.token
+        token: AuthService().user?.token,
         uidFB: user.uidFB));
     return response.result;
   }
@@ -48,20 +49,7 @@ class UserService {
       }
     }
     return users;
-  }
-
-  Future<String> findLastMessage(AppUser anotherUser) async {
-    var reply = await mobileApiClient.apiFindLastMessage(
-        new ApiFindLastMessageRequest(
-            fromGuid: AuthService().user?.uidFB, forGuid: anotherUser.uidFB));
-    return reply.msg;
-  }
-
-  Future<bool> sendMessage(AppUser anotherUser, String msg) async {
-    var reply = await mobileApiClient.apiSendMessage(new ApiSendMessageRequest(
-        fromGuid: _currentUser?.uidFB, forGuid: anotherUser.uidFB, msg: msg));
-    return reply.status;
-  }
+  }  
 
   Future<LatLng?> getUserLocation(AppUser? user) async {
     if (user == null) return null;
