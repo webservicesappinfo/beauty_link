@@ -39,7 +39,7 @@ class OfferService {
     return offers;
   }
 
-  Future<bool> delSkill(String? guid) async {
+  Future<bool> delOffer(String? guid) async {
     if (guid?.isEmpty ?? true) return false;
     var response = await mobileApiClient.apiDelOffer(new DelOfferRequest(guid: guid));
     return response.result;

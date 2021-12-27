@@ -5,13 +5,19 @@ import 'package:beauty_link/pages/for_test/find_offer/find_offer_page.dart';
 import 'package:beauty_link/pages/for_test/master_orders/master_orders_page.dart';
 import 'package:beauty_link/pages/for_test/user_companies/user_companies_page.dart';
 import 'package:beauty_link/pages/for_test/master_offers/master_offers_page.dart';
+import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserInfoPageBloc extends BaseBlocV2 {
   AppUser user;
   UserInfoPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
+
   Future getUserInfo() async {}
+
+  Future delUser() async {
+    await UserService().delUser(user);
+  }
 }
 
 class LoadUserInfoPageEvent extends BaseEventV2 {
@@ -92,5 +98,16 @@ class ClientOrdersBtnClicEvent extends BaseEventV2 {
       context,
       MaterialPageRoute(builder: (context) => ClientOrdersPage(client: bloc.user)),
     ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
+  }
+}
+
+class DelUserEvent extends BaseEventV2 {
+  UserInfoPageBloc bloc;
+  BuildContext context;
+  DelUserEvent(this.bloc, this.context) : super();
+
+  @override
+  Future<void> execute() async {
+    await bloc.delUser().then((value) => Navigator.pop(context));
   }
 }

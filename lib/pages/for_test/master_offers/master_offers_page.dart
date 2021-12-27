@@ -53,8 +53,8 @@ class MasterOffersPage extends StatelessWidget {
   }
 
   dynamic _onTap(BuildContext context, EntityBase entity) {
-    /*var offer = entity as Offer;
-    var bloc = BlocProvider.of<UserOffersPageBloc>(context);
-    bloc.add(TapUserEvent(bloc, context, offer));*/
+    var offer = entity as Offer;
+    var bloc = BlocProvider.of<MasterOffersPageBloc>(context);
+    bloc.add(TapUserEvent(bloc, context, offer));
   }
 }

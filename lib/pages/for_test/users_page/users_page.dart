@@ -46,7 +46,6 @@ class UsersPage extends StatelessWidget {
     var bloc = BlocProvider.of<UsersPageBloc>(context);
     return Column(children: [
       Expanded(child: EntityListWidget(entities: bloc.users, onTap: _onTap)),
-      SizedBox(height: 10),
       CustomButton(text: 'Add user', clickEvent: AddUserBtnClick(bloc, context), bloc: bloc)
     ]);
   }

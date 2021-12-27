@@ -85,6 +85,11 @@ class UserInfoPage extends StatelessWidget {
             bloc: bloc,
             clickEvent: ClientOrdersBtnClicEvent(bloc, context),
             text: "Client Orders",
+          ),
+          CustomButton(
+            bloc: bloc,
+            clickEvent: DelUserEvent(bloc, context),
+            text: "Del User",
           )
         ],
       ),
