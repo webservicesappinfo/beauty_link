@@ -9,7 +9,7 @@ class AppUser extends EntityBase {
   String? token;
   LatLng? location;
 
-  AppUser({this.uidFB, this.name, this.email, this.login});
+  AppUser({this.uidFB, this.name, this.token, this.email, this.login});
 
   factory AppUser.fromJson(Map<String, dynamic> json) {
     return new AppUser(

@@ -35,9 +35,15 @@ class AuthService {
 
   // create user obj based on firebase user
   AppUser? _userFromFirebaseUser(User? user) {
-    return user != null
-        ? AppUser(uidFB: user.uid, name: user.displayName, email: user.email)
-        : null;
+    if (user == null) return null;
+    return AppUser(uidFB: user.uid, name: user.displayName, email: user.email);
+  }
+
+  Future<String> getToken() async {
+    String result = "";
+    if (_auth.currentUser == null) return result;
+    await _auth.currentUser?.getIdToken().then((value) => result = value);
+    return result;
   }
 
   Future<AppUser?> reLoginWithGoogle() async {
@@ -49,8 +55,7 @@ class AuthService {
   Future<AppUser?> loginWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
@@ -90,8 +95,7 @@ class AuthService {
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
@@ -112,8 +116,7 @@ class AuthService {
   // register with email and password
   Future registerWithEmailAndPassword(String email, String password) async {
     try {
-      var result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      var result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
       await user?.sendEmailVerification();
       if (!(user?.emailVerified ?? false)) return null;
