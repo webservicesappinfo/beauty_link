@@ -1,6 +1,7 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/order.dart';
+import 'package:beauty_link/services/notification_service.dart';
 import 'package:beauty_link/services/order_service.dart';
 import 'package:flutter/material.dart';
 

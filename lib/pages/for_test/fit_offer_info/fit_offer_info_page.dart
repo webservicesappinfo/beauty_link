@@ -55,7 +55,7 @@ class FitOfferInfoPage extends StatelessWidget {
         SizedBox(height: 10),
         Text('Client name: ${bloc.client.name}'),
         SizedBox(height: 10),
-        CustomButton(text: "Create order", clickEvent: CreateOrderBtnClickEvent(context, bloc), bloc: bloc)
+        CustomButton(text: "Create order", clickEvent: CreateOrderBtnClickEvent(context, bloc), bloc: bloc),
       ],
     ));
   }

@@ -27,7 +27,8 @@ class FitOfferInfoPageBloc extends BaseBlocV2 {
         skillGuid: fitOffer.skillGuid ?? 'noName',
         masterName: fitOffer.masterName ?? 'noName',
         skillName: fitOffer.skillName ?? 'noName'));
-    await NotificationService().sendMessage(client.uidFB, fitOffer.masterGuid, "Add order. Client: ${client.name}");
+    await NotificationService().sendMessage(
+        client.uidFB, fitOffer.masterGuid, "Add order. Master: ${fitOffer.masterName}, Client: ${client.name}");
   }
 }
 

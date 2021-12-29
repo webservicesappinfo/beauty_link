@@ -39,10 +39,10 @@ class AuthService {
     return AppUser(uidFB: user.uid, name: user.displayName, email: user.email);
   }
 
-  Future<String> getToken() async {
-    String result = "";
+  Future<String?> getToken() async {
+    String? result;
     if (_auth.currentUser == null) return result;
-    await _auth.currentUser?.getIdToken().then((value) => result = value);
+    await _firebaseMessaging.getToken().then((value) => result = value);    
     return result;
   }
 
