@@ -118,7 +118,7 @@ class LoadedOffersState extends BaseState<List<Offer>> {
   LoadedOffersState({this.userGuid}) : super();
   @override
   Future execute(BaseBloc bloc) async {
-    result = await OfferService().getOffersByMaster(userGuid, true);
+    result = await OfferService().getOffersByMaster(userGuid, null, true);
   }
 }
 

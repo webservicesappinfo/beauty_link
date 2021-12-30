@@ -16,6 +16,7 @@ class FindOfferPageBloc extends BaseBlocV2 {
   Future getMasters() async {
     await UserService().getUsers().then((value) {
       masters = value.where((element) => element.uidFB != client.uidFB).toList();
+      masters.insert(0, AppUser(name: 'all'));
       if (masters.length > 0) selectedMaster = masters[0];
     });
   }

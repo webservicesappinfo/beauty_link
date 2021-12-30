@@ -18,7 +18,7 @@ class MasterOffersPage extends StatelessWidget {
     return BlocProvider(
         create: (context) => MasterOffersPageBloc(InitState(), user),
         child: Scaffold(
-            appBar: AppBar(title: Text('Offers')),
+            appBar: AppBar(title: Text('${user.name} offers')),
             body: BlocConsumer<MasterOffersPageBloc, BaseStateV2>(listener: (context, state) {
               if (state is InitState) {}
             }, builder: (context, state) {

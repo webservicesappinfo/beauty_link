@@ -23,10 +23,10 @@ class OfferService {
     return response.result;
   }
 
-  Future<List<Offer>> getOffersByMaster(String? masterGuid, bool forMaster) async {
+  Future<List<Offer>> getOffersByMaster(String? masterGuid, String? clientGuid, bool forMaster) async {
     var offers = <Offer>[];
-    var response = await mobileApiClient
-        .apiGetOffersByMaster(new GetOffersByMasterRequest(masterGuid: masterGuid, forMaster: forMaster));
+    var response = await mobileApiClient.apiGetOffersByMaster(
+        new GetOffersByMasterRequest(masterGuid: masterGuid, clientGuid: clientGuid, forMaster: forMaster));
     for (var i = 0; i < response.names.length; i++)
       offers.add(new Offer(
           guid: response.guids[i],

@@ -288,18 +288,23 @@ class GetOffersReply extends $pb.GeneratedMessage {
 class GetOffersByMasterRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOffersByMasterRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'offer'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'forMaster', protoName: 'forMaster')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientGuid', protoName: 'clientGuid')
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'forMaster', protoName: 'forMaster')
     ..hasRequiredFields = false
   ;
 
   GetOffersByMasterRequest._() : super();
   factory GetOffersByMasterRequest({
     $core.String? masterGuid,
+    $core.String? clientGuid,
     $core.bool? forMaster,
   }) {
     final _result = create();
     if (masterGuid != null) {
       _result.masterGuid = masterGuid;
+    }
+    if (clientGuid != null) {
+      _result.clientGuid = clientGuid;
     }
     if (forMaster != null) {
       _result.forMaster = forMaster;
@@ -337,13 +342,22 @@ class GetOffersByMasterRequest extends $pb.GeneratedMessage {
   void clearMasterGuid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get forMaster => $_getBF(1);
+  $core.String get clientGuid => $_getSZ(1);
   @$pb.TagNumber(2)
-  set forMaster($core.bool v) { $_setBool(1, v); }
+  set clientGuid($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasForMaster() => $_has(1);
+  $core.bool hasClientGuid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearForMaster() => clearField(2);
+  void clearClientGuid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get forMaster => $_getBF(2);
+  @$pb.TagNumber(3)
+  set forMaster($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasForMaster() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearForMaster() => clearField(3);
 }
 
 class GetOffersBySkillRequest extends $pb.GeneratedMessage {

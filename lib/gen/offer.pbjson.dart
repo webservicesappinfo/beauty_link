@@ -61,12 +61,13 @@ const GetOffersByMasterRequest$json = const {
   '1': 'GetOffersByMasterRequest',
   '2': const [
     const {'1': 'masterGuid', '3': 1, '4': 1, '5': 9, '10': 'masterGuid'},
-    const {'1': 'forMaster', '3': 2, '4': 1, '5': 8, '10': 'forMaster'},
+    const {'1': 'clientGuid', '3': 2, '4': 1, '5': 9, '10': 'clientGuid'},
+    const {'1': 'forMaster', '3': 3, '4': 1, '5': 8, '10': 'forMaster'},
   ],
 };
 
 /// Descriptor for `GetOffersByMasterRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getOffersByMasterRequestDescriptor = $convert.base64Decode('ChhHZXRPZmZlcnNCeU1hc3RlclJlcXVlc3QSHgoKbWFzdGVyR3VpZBgBIAEoCVIKbWFzdGVyR3VpZBIcCglmb3JNYXN0ZXIYAiABKAhSCWZvck1hc3Rlcg==');
+final $typed_data.Uint8List getOffersByMasterRequestDescriptor = $convert.base64Decode('ChhHZXRPZmZlcnNCeU1hc3RlclJlcXVlc3QSHgoKbWFzdGVyR3VpZBgBIAEoCVIKbWFzdGVyR3VpZBIeCgpjbGllbnRHdWlkGAIgASgJUgpjbGllbnRHdWlkEhwKCWZvck1hc3RlchgDIAEoCFIJZm9yTWFzdGVy');
 @$core.Deprecated('Use getOffersBySkillRequestDescriptor instead')
 const GetOffersBySkillRequest$json = const {
   '1': 'GetOffersBySkillRequest',
