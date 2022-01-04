@@ -685,3 +685,233 @@ class DelOrderReply extends $pb.GeneratedMessage {
   void clearResult() => clearField(1);
 }
 
+class AcceptedOrderRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AcceptedOrderRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'order'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..hasRequiredFields = false
+  ;
+
+  AcceptedOrderRequest._() : super();
+  factory AcceptedOrderRequest({
+    $core.String? guid,
+  }) {
+    final _result = create();
+    if (guid != null) {
+      _result.guid = guid;
+    }
+    return _result;
+  }
+  factory AcceptedOrderRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AcceptedOrderRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AcceptedOrderRequest clone() => AcceptedOrderRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AcceptedOrderRequest copyWith(void Function(AcceptedOrderRequest) updates) => super.copyWith((message) => updates(message as AcceptedOrderRequest)) as AcceptedOrderRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AcceptedOrderRequest create() => AcceptedOrderRequest._();
+  AcceptedOrderRequest createEmptyInstance() => create();
+  static $pb.PbList<AcceptedOrderRequest> createRepeated() => $pb.PbList<AcceptedOrderRequest>();
+  @$core.pragma('dart2js:noInline')
+  static AcceptedOrderRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AcceptedOrderRequest>(create);
+  static AcceptedOrderRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get guid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set guid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGuid() => clearField(1);
+}
+
+class AcceptedOrderReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AcceptedOrderReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'order'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientGuid', protoName: 'clientGuid')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
+    ..hasRequiredFields = false
+  ;
+
+  AcceptedOrderReply._() : super();
+  factory AcceptedOrderReply({
+    $core.bool? result,
+    $core.String? name,
+    $core.String? clientGuid,
+    $core.String? masterGuid,
+  }) {
+    final _result = create();
+    if (result != null) {
+      _result.result = result;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    if (clientGuid != null) {
+      _result.clientGuid = clientGuid;
+    }
+    if (masterGuid != null) {
+      _result.masterGuid = masterGuid;
+    }
+    return _result;
+  }
+  factory AcceptedOrderReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AcceptedOrderReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AcceptedOrderReply clone() => AcceptedOrderReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AcceptedOrderReply copyWith(void Function(AcceptedOrderReply) updates) => super.copyWith((message) => updates(message as AcceptedOrderReply)) as AcceptedOrderReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AcceptedOrderReply create() => AcceptedOrderReply._();
+  AcceptedOrderReply createEmptyInstance() => create();
+  static $pb.PbList<AcceptedOrderReply> createRepeated() => $pb.PbList<AcceptedOrderReply>();
+  @$core.pragma('dart2js:noInline')
+  static AcceptedOrderReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AcceptedOrderReply>(create);
+  static AcceptedOrderReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get result => $_getBF(0);
+  @$pb.TagNumber(1)
+  set result($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasResult() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearResult() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get clientGuid => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set clientGuid($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasClientGuid() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearClientGuid() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get masterGuid => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set masterGuid($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasMasterGuid() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearMasterGuid() => clearField(4);
+}
+
+class ExecutedOrderRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ExecutedOrderRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'order'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..hasRequiredFields = false
+  ;
+
+  ExecutedOrderRequest._() : super();
+  factory ExecutedOrderRequest({
+    $core.String? guid,
+  }) {
+    final _result = create();
+    if (guid != null) {
+      _result.guid = guid;
+    }
+    return _result;
+  }
+  factory ExecutedOrderRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ExecutedOrderRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ExecutedOrderRequest clone() => ExecutedOrderRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ExecutedOrderRequest copyWith(void Function(ExecutedOrderRequest) updates) => super.copyWith((message) => updates(message as ExecutedOrderRequest)) as ExecutedOrderRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ExecutedOrderRequest create() => ExecutedOrderRequest._();
+  ExecutedOrderRequest createEmptyInstance() => create();
+  static $pb.PbList<ExecutedOrderRequest> createRepeated() => $pb.PbList<ExecutedOrderRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ExecutedOrderRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ExecutedOrderRequest>(create);
+  static ExecutedOrderRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get guid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set guid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGuid() => clearField(1);
+}
+
+class ExecutedOrderReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ExecutedOrderReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'order'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
+    ..hasRequiredFields = false
+  ;
+
+  ExecutedOrderReply._() : super();
+  factory ExecutedOrderReply({
+    $core.bool? result,
+  }) {
+    final _result = create();
+    if (result != null) {
+      _result.result = result;
+    }
+    return _result;
+  }
+  factory ExecutedOrderReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ExecutedOrderReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ExecutedOrderReply clone() => ExecutedOrderReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ExecutedOrderReply copyWith(void Function(ExecutedOrderReply) updates) => super.copyWith((message) => updates(message as ExecutedOrderReply)) as ExecutedOrderReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ExecutedOrderReply create() => ExecutedOrderReply._();
+  ExecutedOrderReply createEmptyInstance() => create();
+  static $pb.PbList<ExecutedOrderReply> createRepeated() => $pb.PbList<ExecutedOrderReply>();
+  @$core.pragma('dart2js:noInline')
+  static ExecutedOrderReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ExecutedOrderReply>(create);
+  static ExecutedOrderReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get result => $_getBF(0);
+  @$pb.TagNumber(1)
+  set result($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasResult() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearResult() => clearField(1);
+}
+

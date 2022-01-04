@@ -16,6 +16,14 @@ class MasterOrderInfoPageBloc extends BaseBlocV2 {
   Future delOrder() async {
     await OrderService().delOrder(order.guid);
   }
+
+  Future acceptOrder() async {
+    await OrderService().acceptOrder(order.guid);
+  }
+
+  Future executeOrder() async {
+    await OrderService().executeOrder(order.guid);
+  }
 }
 
 class MasterOrderInfoPageEvent extends BaseEventV2 {
@@ -36,5 +44,27 @@ class CancelOrderBtnClickEvent extends BaseEventV2 {
   @override
   Future<void> execute() async {
     await bloc.delOrder().then((value) => Navigator.pop(context));
+  }
+}
+
+class AcceptOrderBtnClickEvent extends BaseEventV2 {
+  MasterOrderInfoPageBloc bloc;
+  BuildContext context;
+  AcceptOrderBtnClickEvent(this.context, this.bloc) : super();
+
+  @override
+  Future<void> execute() async {
+    await bloc.acceptOrder().then((value) => Navigator.pop(context));
+  }
+}
+
+class ExecuteOrderBtnClickEvent extends BaseEventV2 {
+  MasterOrderInfoPageBloc bloc;
+  BuildContext context;
+  ExecuteOrderBtnClickEvent(this.context, this.bloc) : super();
+
+  @override
+  Future<void> execute() async {
+    await bloc.executeOrder().then((value) => Navigator.pop(context));
   }
 }

@@ -40,6 +40,18 @@ class OrderClient extends $grpc.Client {
           '/order.Order/DelOrder',
           ($0.DelOrderRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.DelOrderReply.fromBuffer(value));
+  static final _$acceptedOrder =
+      $grpc.ClientMethod<$0.AcceptedOrderRequest, $0.AcceptedOrderReply>(
+          '/order.Order/AcceptedOrder',
+          ($0.AcceptedOrderRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.AcceptedOrderReply.fromBuffer(value));
+  static final _$executedOrder =
+      $grpc.ClientMethod<$0.ExecutedOrderRequest, $0.ExecutedOrderReply>(
+          '/order.Order/ExecutedOrder',
+          ($0.ExecutedOrderRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.ExecutedOrderReply.fromBuffer(value));
 
   OrderClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -70,6 +82,18 @@ class OrderClient extends $grpc.Client {
   $grpc.ResponseFuture<$0.DelOrderReply> delOrder($0.DelOrderRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delOrder, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.AcceptedOrderReply> acceptedOrder(
+      $0.AcceptedOrderRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$acceptedOrder, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.ExecutedOrderReply> executedOrder(
+      $0.ExecutedOrderRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$executedOrder, request, options: options);
   }
 }
 
@@ -113,6 +137,24 @@ abstract class OrderServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.DelOrderRequest.fromBuffer(value),
         ($0.DelOrderReply value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.AcceptedOrderRequest, $0.AcceptedOrderReply>(
+            'AcceptedOrder',
+            acceptedOrder_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.AcceptedOrderRequest.fromBuffer(value),
+            ($0.AcceptedOrderReply value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.ExecutedOrderRequest, $0.ExecutedOrderReply>(
+            'ExecutedOrder',
+            executedOrder_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.ExecutedOrderRequest.fromBuffer(value),
+            ($0.ExecutedOrderReply value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.AddOrderReply> addOrder_Pre(
@@ -140,6 +182,16 @@ abstract class OrderServiceBase extends $grpc.Service {
     return delOrder(call, await request);
   }
 
+  $async.Future<$0.AcceptedOrderReply> acceptedOrder_Pre($grpc.ServiceCall call,
+      $async.Future<$0.AcceptedOrderRequest> request) async {
+    return acceptedOrder(call, await request);
+  }
+
+  $async.Future<$0.ExecutedOrderReply> executedOrder_Pre($grpc.ServiceCall call,
+      $async.Future<$0.ExecutedOrderRequest> request) async {
+    return executedOrder(call, await request);
+  }
+
   $async.Future<$0.AddOrderReply> addOrder(
       $grpc.ServiceCall call, $0.AddOrderRequest request);
   $async.Future<$0.GetOrdersReply> getOrders(
@@ -150,4 +202,8 @@ abstract class OrderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.UpdateOrderRequest request);
   $async.Future<$0.DelOrderReply> delOrder(
       $grpc.ServiceCall call, $0.DelOrderRequest request);
+  $async.Future<$0.AcceptedOrderReply> acceptedOrder(
+      $grpc.ServiceCall call, $0.AcceptedOrderRequest request);
+  $async.Future<$0.ExecutedOrderReply> executedOrder(
+      $grpc.ServiceCall call, $0.ExecutedOrderRequest request);
 }

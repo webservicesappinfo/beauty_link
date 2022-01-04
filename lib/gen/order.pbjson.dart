@@ -127,3 +127,46 @@ const DelOrderReply$json = const {
 
 /// Descriptor for `DelOrderReply`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List delOrderReplyDescriptor = $convert.base64Decode('Cg1EZWxPcmRlclJlcGx5EhYKBnJlc3VsdBgBIAEoCFIGcmVzdWx0');
+@$core.Deprecated('Use acceptedOrderRequestDescriptor instead')
+const AcceptedOrderRequest$json = const {
+  '1': 'AcceptedOrderRequest',
+  '2': const [
+    const {'1': 'guid', '3': 1, '4': 1, '5': 9, '10': 'guid'},
+  ],
+};
+
+/// Descriptor for `AcceptedOrderRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List acceptedOrderRequestDescriptor = $convert.base64Decode('ChRBY2NlcHRlZE9yZGVyUmVxdWVzdBISCgRndWlkGAEgASgJUgRndWlk');
+@$core.Deprecated('Use acceptedOrderReplyDescriptor instead')
+const AcceptedOrderReply$json = const {
+  '1': 'AcceptedOrderReply',
+  '2': const [
+    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
+    const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'clientGuid', '3': 3, '4': 1, '5': 9, '10': 'clientGuid'},
+    const {'1': 'masterGuid', '3': 4, '4': 1, '5': 9, '10': 'masterGuid'},
+  ],
+};
+
+/// Descriptor for `AcceptedOrderReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List acceptedOrderReplyDescriptor = $convert.base64Decode('ChJBY2NlcHRlZE9yZGVyUmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQSEgoEbmFtZRgCIAEoCVIEbmFtZRIeCgpjbGllbnRHdWlkGAMgASgJUgpjbGllbnRHdWlkEh4KCm1hc3Rlckd1aWQYBCABKAlSCm1hc3Rlckd1aWQ=');
+@$core.Deprecated('Use executedOrderRequestDescriptor instead')
+const ExecutedOrderRequest$json = const {
+  '1': 'ExecutedOrderRequest',
+  '2': const [
+    const {'1': 'guid', '3': 1, '4': 1, '5': 9, '10': 'guid'},
+  ],
+};
+
+/// Descriptor for `ExecutedOrderRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List executedOrderRequestDescriptor = $convert.base64Decode('ChRFeGVjdXRlZE9yZGVyUmVxdWVzdBISCgRndWlkGAEgASgJUgRndWlk');
+@$core.Deprecated('Use executedOrderReplyDescriptor instead')
+const ExecutedOrderReply$json = const {
+  '1': 'ExecutedOrderReply',
+  '2': const [
+    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
+  ],
+};
+
+/// Descriptor for `ExecutedOrderReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List executedOrderReplyDescriptor = $convert.base64Decode('ChJFeGVjdXRlZE9yZGVyUmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');

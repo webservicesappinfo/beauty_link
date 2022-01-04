@@ -125,6 +125,18 @@ class MobileApiClient extends $grpc.Client {
           '/mobileApi.MobileApi/ApiDelOrder',
           ($4.DelOrderRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $4.DelOrderReply.fromBuffer(value));
+  static final _$apiAcceptedOrder =
+      $grpc.ClientMethod<$4.AcceptedOrderRequest, $4.AcceptedOrderReply>(
+          '/mobileApi.MobileApi/ApiAcceptedOrder',
+          ($4.AcceptedOrderRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $4.AcceptedOrderReply.fromBuffer(value));
+  static final _$apiExecutedOrder =
+      $grpc.ClientMethod<$4.ExecutedOrderRequest, $4.ExecutedOrderReply>(
+          '/mobileApi.MobileApi/ApiExecutedOrder',
+          ($4.ExecutedOrderRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $4.ExecutedOrderReply.fromBuffer(value));
   static final _$apiSendMessage =
       $grpc.ClientMethod<$5.SendNotificationRequest, $5.SendNotificationReply>(
           '/mobileApi.MobileApi/ApiSendMessage',
@@ -263,6 +275,18 @@ class MobileApiClient extends $grpc.Client {
   $grpc.ResponseFuture<$4.DelOrderReply> apiDelOrder($4.DelOrderRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiDelOrder, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.AcceptedOrderReply> apiAcceptedOrder(
+      $4.AcceptedOrderRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiAcceptedOrder, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.ExecutedOrderReply> apiExecutedOrder(
+      $4.ExecutedOrderRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiExecutedOrder, request, options: options);
   }
 
   $grpc.ResponseFuture<$5.SendNotificationReply> apiSendMessage(
@@ -442,6 +466,24 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.DelOrderRequest.fromBuffer(value),
         ($4.DelOrderReply value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$4.AcceptedOrderRequest, $4.AcceptedOrderReply>(
+            'ApiAcceptedOrder',
+            apiAcceptedOrder_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $4.AcceptedOrderRequest.fromBuffer(value),
+            ($4.AcceptedOrderReply value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$4.ExecutedOrderRequest, $4.ExecutedOrderReply>(
+            'ApiExecutedOrder',
+            apiExecutedOrder_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $4.ExecutedOrderRequest.fromBuffer(value),
+            ($4.ExecutedOrderReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$5.SendNotificationRequest,
             $5.SendNotificationReply>(
         'ApiSendMessage',
@@ -584,6 +626,18 @@ abstract class MobileApiServiceBase extends $grpc.Service {
     return apiDelOrder(call, await request);
   }
 
+  $async.Future<$4.AcceptedOrderReply> apiAcceptedOrder_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$4.AcceptedOrderRequest> request) async {
+    return apiAcceptedOrder(call, await request);
+  }
+
+  $async.Future<$4.ExecutedOrderReply> apiExecutedOrder_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$4.ExecutedOrderRequest> request) async {
+    return apiExecutedOrder(call, await request);
+  }
+
   $async.Future<$5.SendNotificationReply> apiSendMessage_Pre(
       $grpc.ServiceCall call,
       $async.Future<$5.SendNotificationRequest> request) async {
@@ -648,6 +702,10 @@ abstract class MobileApiServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $4.GetOrdersRequest request);
   $async.Future<$4.DelOrderReply> apiDelOrder(
       $grpc.ServiceCall call, $4.DelOrderRequest request);
+  $async.Future<$4.AcceptedOrderReply> apiAcceptedOrder(
+      $grpc.ServiceCall call, $4.AcceptedOrderRequest request);
+  $async.Future<$4.ExecutedOrderReply> apiExecutedOrder(
+      $grpc.ServiceCall call, $4.ExecutedOrderRequest request);
   $async.Future<$5.SendNotificationReply> apiSendMessage(
       $grpc.ServiceCall call, $5.SendNotificationRequest request);
   $async.Future<$5.FindLastGetMessageReply> apiFindLastMessage(

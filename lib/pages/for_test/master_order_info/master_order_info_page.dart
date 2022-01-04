@@ -50,12 +50,24 @@ class MasterOrderInfoPage extends StatelessWidget {
         child: Column(
       children: [
         Text('Order name: ${bloc.order.name}'),
+        Text('Order status: ${bloc.order.status}'),
         Text('Master name: ${bloc.order.masterName}'),
         Text('Client name: ${bloc.order.clientName}'),
-        bloc.order.status == "actived"
-            ? CustomButton(text: "Cancel order", clickEvent: CancelOrderBtnClickEvent(context, bloc), bloc: bloc)
-            : Container()
+        _btnByStatus(bloc, context)
       ],
     ));
+  }
+
+  Widget _btnByStatus(MasterOrderInfoPageBloc bloc, BuildContext context) {
+    switch (bloc.order.status?.toLowerCase()) {
+      case "actived":
+        return CustomButton(text: "Cancel order", clickEvent: CancelOrderBtnClickEvent(context, bloc), bloc: bloc);
+      case "submitted":
+        return CustomButton(text: "Accepted order", clickEvent: AcceptOrderBtnClickEvent(context, bloc), bloc: bloc);
+      case "accepted":
+        return CustomButton(text: "Execute order", clickEvent: ExecuteOrderBtnClickEvent(context, bloc), bloc: bloc);
+      default:
+        return Container();
+    }
   }
 }

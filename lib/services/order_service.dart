@@ -50,4 +50,16 @@ class OrderService {
     var response = await mobileApiClient.apiDelOrder(new DelOrderRequest(guid: guid));
     return response.result;
   }
+
+  Future<bool> acceptOrder(String? guid) async {
+    if (guid?.isEmpty ?? true) return false;
+    var response = await mobileApiClient.apiAcceptedOrder(new AcceptedOrderRequest(guid: guid));
+    return response.result;
+  }
+
+  Future<bool> executeOrder(String? guid) async {
+    if (guid?.isEmpty ?? true) return false;
+    var response = await mobileApiClient.apiExecutedOrder(new ExecutedOrderRequest(guid: guid));
+    return response.result;
+  }
 }
