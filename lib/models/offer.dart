@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:flutter/src/material/colors.dart';
 
 class Offer extends EntityBase {
   String? guid;
@@ -41,5 +44,24 @@ class Offer extends EntityBase {
   }
 
   @override
-  String getCaption() => "Name: $name  Status: $status";
+  String getCaption() => "Name: $name";
+
+  @override
+  Color? getColor() {
+    switch (status?.toLowerCase()) {
+      case "actived":
+        return Colors.green[100];
+      case "submitted":
+        return Colors.yellow[100];
+      case "accepted":
+        return Colors.pink[100];
+      default:
+        return Colors.blueGrey[100];
+    }
+  }
+
+  @override
+  String getSubCaption() {
+    return "Status: $status";
+  }
 }

@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:flutter/src/material/colors.dart';
 
 class Skill extends EntityBase {
   String? guid;
@@ -20,4 +23,14 @@ class Skill extends EntityBase {
 
   @override
   String getCaption() => name ?? "NoName";
+
+  @override
+  Color? getColor() {
+    return Colors.blueGrey[100];
+  }
+
+  @override
+  String getSubCaption() {
+    return "Desc: $desc";
+  }
 }

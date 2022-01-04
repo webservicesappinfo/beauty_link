@@ -1,4 +1,5 @@
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AppUser extends EntityBase {
@@ -37,4 +38,14 @@ class AppUser extends EntityBase {
 
   @override
   String getCaption() => name ?? "NoName";
+
+  @override
+  Color? getColor() {
+    return Colors.blueGrey[100];
+  }
+
+  @override
+  String getSubCaption() {
+    return "Email: $email";
+  }
 }

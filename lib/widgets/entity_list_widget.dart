@@ -18,9 +18,15 @@ class EntityListWidget extends StatelessWidget {
               background: Container(color: Colors.green, child: Icon(Icons.check)),
               secondaryBackground: Container(color: Colors.red, child: Icon(Icons.cancel)),
               onDismissed: (direction) {},
-              child: ListTile(
-                  title: Text(entities[index].getCaption(), style: TextStyle(fontSize: 22)),
-                  onTap: () => onTap(context, entities[index])));
+              child: Card(
+                child: ListTile(
+                    leading: Icon(Icons.face),
+                    trailing: Icon(Icons.arrow_forward),
+                    tileColor: entities[index].getColor(),
+                    title: Text(entities[index].getCaption(), style: TextStyle(fontSize: 22)),
+                    subtitle: Text(entities[index].getSubCaption(), style: TextStyle(fontSize: 14)),
+                    onTap: () => onTap(context, entities[index])),
+              ));
         });
   }
 }

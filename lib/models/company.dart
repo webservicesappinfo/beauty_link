@@ -1,4 +1,5 @@
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:flutter/material.dart';
 
 class Company extends EntityBase {
   String? guid;
@@ -24,4 +25,14 @@ class Company extends EntityBase {
 
   @override
   String getCaption() => name ?? "NoName";
+
+  @override
+  Color? getColor() {
+    return Colors.blueGrey[100];
+  }
+
+  @override
+  String getSubCaption() {
+    return "";
+  }
 }
