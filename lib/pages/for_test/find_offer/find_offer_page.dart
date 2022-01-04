@@ -48,6 +48,7 @@ class FindOfferPage extends StatelessWidget {
     return Column(
       children: [
         CustomDropDownButton(caption: 'Select master', entities: bloc.masters, onChanged: bloc.onMasterChanged),
+        CustomDropDownButton(caption: 'Select skill', entities: bloc.skills, onChanged: bloc.onSkillChanged),
         CustomButton(text: 'Find', clickEvent: FindBtnClickEvent(bloc, context), bloc: bloc)
       ],
     );

@@ -50,11 +50,9 @@ class FitOfferInfoPage extends StatelessWidget {
         child: Column(
       children: [
         Text('Offer name: ${bloc.fitOffer.name}'),
-        SizedBox(height: 10),
         Text('Master name: ${bloc.fitOffer.masterName}'),
-        SizedBox(height: 10),
+        Text('Skill name: ${bloc.fitOffer.skillName}'),
         Text('Client name: ${bloc.client.name}'),
-        SizedBox(height: 10),
         CustomButton(text: "Create order", clickEvent: CreateOrderBtnClickEvent(context, bloc), bloc: bloc),
       ],
     ));

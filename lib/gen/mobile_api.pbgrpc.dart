@@ -90,6 +90,11 @@ class MobileApiClient extends $grpc.Client {
           '/mobileApi.MobileApi/ApiAddOffer',
           ($3.AddOfferRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $3.AddOfferReply.fromBuffer(value));
+  static final _$apiGetOffers =
+      $grpc.ClientMethod<$3.GetOffersRequest, $3.GetOffersReply>(
+          '/mobileApi.MobileApi/ApiGetOffers',
+          ($3.GetOffersRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $3.GetOffersReply.fromBuffer(value));
   static final _$apiGetOffersByMaster =
       $grpc.ClientMethod<$3.GetOffersByMasterRequest, $3.GetOffersReply>(
           '/mobileApi.MobileApi/ApiGetOffersByMaster',
@@ -219,6 +224,12 @@ class MobileApiClient extends $grpc.Client {
   $grpc.ResponseFuture<$3.AddOfferReply> apiAddOffer($3.AddOfferRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiAddOffer, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.GetOffersReply> apiGetOffers(
+      $3.GetOffersRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiGetOffers, request, options: options);
   }
 
   $grpc.ResponseFuture<$3.GetOffersReply> apiGetOffersByMaster(
@@ -378,6 +389,13 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $3.AddOfferRequest.fromBuffer(value),
         ($3.AddOfferReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.GetOffersRequest, $3.GetOffersReply>(
+        'ApiGetOffers',
+        apiGetOffers_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $3.GetOffersRequest.fromBuffer(value),
+        ($3.GetOffersReply value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$3.GetOffersByMasterRequest, $3.GetOffersReply>(
             'ApiGetOffersByMaster',
@@ -529,6 +547,11 @@ abstract class MobileApiServiceBase extends $grpc.Service {
     return apiAddOffer(call, await request);
   }
 
+  $async.Future<$3.GetOffersReply> apiGetOffers_Pre($grpc.ServiceCall call,
+      $async.Future<$3.GetOffersRequest> request) async {
+    return apiGetOffers(call, await request);
+  }
+
   $async.Future<$3.GetOffersReply> apiGetOffersByMaster_Pre(
       $grpc.ServiceCall call,
       $async.Future<$3.GetOffersByMasterRequest> request) async {
@@ -611,6 +634,8 @@ abstract class MobileApiServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $2.DelSkillRequest request);
   $async.Future<$3.AddOfferReply> apiAddOffer(
       $grpc.ServiceCall call, $3.AddOfferRequest request);
+  $async.Future<$3.GetOffersReply> apiGetOffers(
+      $grpc.ServiceCall call, $3.GetOffersRequest request);
   $async.Future<$3.GetOffersReply> apiGetOffersByMaster(
       $grpc.ServiceCall call, $3.GetOffersByMasterRequest request);
   $async.Future<$3.GetOffersReply> apiGetOffersBySkill(

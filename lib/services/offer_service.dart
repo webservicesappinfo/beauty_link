@@ -24,24 +24,34 @@ class OfferService {
   }
 
   Future<List<Offer>> getOffersByMaster(String? masterGuid, String? clientGuid, bool forMaster) async {
-    var offers = <Offer>[];
     var response = await mobileApiClient.apiGetOffersByMaster(
         new GetOffersByMasterRequest(masterGuid: masterGuid, clientGuid: clientGuid, forMaster: forMaster));
-    for (var i = 0; i < response.names.length; i++)
-      offers.add(new Offer(
-          guid: response.guids[i],
-          name: response.names[i],
-          masterGuid: response.masterGuids[i],
-          masterName: response.masterNames[i],
-          skillGuid: response.skillGuids[i],
-          skillName: response.skillNames[i],
-          status: response.statuses[i]));
-    return offers;
+    return getOffersFromReply(response);
+  }
+
+  Future<List<Offer>> getOffers(String? masterGuid, String? skillGuid, String? clientGuid, bool forMaster) async {
+    var response = await mobileApiClient.apiGetOffers(new GetOffersRequest(
+        masterGuid: masterGuid, skillGuid: skillGuid, clientGuid: clientGuid, forMaster: forMaster));
+    return getOffersFromReply(response);
   }
 
   Future<bool> delOffer(String? guid) async {
     if (guid?.isEmpty ?? true) return false;
     var response = await mobileApiClient.apiDelOffer(new DelOfferRequest(guid: guid));
     return response.result;
+  }
+
+  List<Offer> getOffersFromReply(GetOffersReply reply) {
+    var offers = <Offer>[];
+    for (var i = 0; i < reply.names.length; i++)
+      offers.add(new Offer(
+          guid: reply.guids[i],
+          name: reply.names[i],
+          masterGuid: reply.masterGuids[i],
+          masterName: reply.masterNames[i],
+          skillGuid: reply.skillGuids[i],
+          skillName: reply.skillNames[i],
+          status: reply.statuses[i]));
+    return offers;
   }
 }

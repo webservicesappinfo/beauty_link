@@ -11,7 +11,7 @@ class MasterOfferInfoPageBloc extends BaseBlocV2 {
   MasterOfferInfoPageBloc(BaseStateV2 initialState, this.offer, this.master) : super(initialState);
 
   Future getOfferInfo() async {
-    //await OfferService().getOffersByMaster(master.uidFB, true).then((value) => offers = value);
+    //await SkillService().getSkills(master.uidFB).then((value) => skills = value);
   }
 
   Future delOffer() async {

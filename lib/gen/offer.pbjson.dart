@@ -35,10 +35,16 @@ final $typed_data.Uint8List addOfferReplyDescriptor = $convert.base64Decode('Cg1
 @$core.Deprecated('Use getOffersRequestDescriptor instead')
 const GetOffersRequest$json = const {
   '1': 'GetOffersRequest',
+  '2': const [
+    const {'1': 'masterGuid', '3': 1, '4': 1, '5': 9, '10': 'masterGuid'},
+    const {'1': 'skillGuid', '3': 2, '4': 1, '5': 9, '10': 'skillGuid'},
+    const {'1': 'clientGuid', '3': 3, '4': 1, '5': 9, '10': 'clientGuid'},
+    const {'1': 'forMaster', '3': 4, '4': 1, '5': 8, '10': 'forMaster'},
+  ],
 };
 
 /// Descriptor for `GetOffersRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getOffersRequestDescriptor = $convert.base64Decode('ChBHZXRPZmZlcnNSZXF1ZXN0');
+final $typed_data.Uint8List getOffersRequestDescriptor = $convert.base64Decode('ChBHZXRPZmZlcnNSZXF1ZXN0Eh4KCm1hc3Rlckd1aWQYASABKAlSCm1hc3Rlckd1aWQSHAoJc2tpbGxHdWlkGAIgASgJUglza2lsbEd1aWQSHgoKY2xpZW50R3VpZBgDIAEoCVIKY2xpZW50R3VpZBIcCglmb3JNYXN0ZXIYBCABKAhSCWZvck1hc3Rlcg==');
 @$core.Deprecated('Use getOffersReplyDescriptor instead')
 const GetOffersReply$json = const {
   '1': 'GetOffersReply',

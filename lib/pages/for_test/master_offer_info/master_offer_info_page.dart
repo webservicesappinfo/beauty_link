@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
+import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,6 +52,7 @@ class MasterOfferInfoPage extends StatelessWidget {
       children: [
         Text('Offer name: ${bloc.offer.name}'),
         Text('Master name: ${bloc.offer.masterName}'),
+        Text('Skill name: ${bloc.offer.skillName}'),
         CustomButton(text: "Del offer", clickEvent: DelOfferEvent(bloc, context), bloc: bloc)
       ],
     ));

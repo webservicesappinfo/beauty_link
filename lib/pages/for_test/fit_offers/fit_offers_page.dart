@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
+import 'package:beauty_link/models/skill.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
@@ -12,13 +13,14 @@ import 'fit_offers_page_bloc.dart';
 
 class FitOffersPage extends StatelessWidget {
   final AppUser master;
+  final Skill skill;
   final AppUser client;
-  FitOffersPage({Key? key, required this.master, required this.client}) : super(key: key);
+  FitOffersPage({Key? key, required this.master, required this.skill, required this.client}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => FitOffersPageBloc(InitState(), master, client),
+        create: (context) => FitOffersPageBloc(InitState(), master, skill, client),
         child: Scaffold(
             appBar: AppBar(title: Text('Offers')),
             body: BlocConsumer<FitOffersPageBloc, BaseStateV2>(listener: (context, state) {

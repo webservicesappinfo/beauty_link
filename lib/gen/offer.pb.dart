@@ -161,11 +161,35 @@ class AddOfferReply extends $pb.GeneratedMessage {
 
 class GetOffersRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOffersRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'offer'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuid', protoName: 'skillGuid')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientGuid', protoName: 'clientGuid')
+    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'forMaster', protoName: 'forMaster')
     ..hasRequiredFields = false
   ;
 
   GetOffersRequest._() : super();
-  factory GetOffersRequest() => create();
+  factory GetOffersRequest({
+    $core.String? masterGuid,
+    $core.String? skillGuid,
+    $core.String? clientGuid,
+    $core.bool? forMaster,
+  }) {
+    final _result = create();
+    if (masterGuid != null) {
+      _result.masterGuid = masterGuid;
+    }
+    if (skillGuid != null) {
+      _result.skillGuid = skillGuid;
+    }
+    if (clientGuid != null) {
+      _result.clientGuid = clientGuid;
+    }
+    if (forMaster != null) {
+      _result.forMaster = forMaster;
+    }
+    return _result;
+  }
   factory GetOffersRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory GetOffersRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
@@ -186,6 +210,42 @@ class GetOffersRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetOffersRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetOffersRequest>(create);
   static GetOffersRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get masterGuid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set masterGuid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMasterGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMasterGuid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get skillGuid => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set skillGuid($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasSkillGuid() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSkillGuid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get clientGuid => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set clientGuid($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasClientGuid() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearClientGuid() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.bool get forMaster => $_getBF(3);
+  @$pb.TagNumber(4)
+  set forMaster($core.bool v) { $_setBool(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasForMaster() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearForMaster() => clearField(4);
 }
 
 class GetOffersReply extends $pb.GeneratedMessage {
