@@ -4,6 +4,7 @@ import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/pages/for_test/master_offers/master_offers_page_bloc.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
+import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -46,8 +47,17 @@ class MasterOffersPage extends StatelessWidget {
 
   Widget _onOffersPageLoadedState(MasterOffersPageBloc bloc, BuildContext context) {
     return Column(children: [
+      CustomDropDownButton(
+          caption: 'filter',
+          entities: [
+            DropDownItem(caption: 'all'),
+            DropDownItem(caption: 'actived'),
+            DropDownItem(caption: 'Submitted'),
+            DropDownItem(caption: 'accepted'),
+            DropDownItem(caption: 'executed')
+          ],
+          onChanged: bloc.onFilterChanged),
       Expanded(child: EntityListWidget(entities: bloc.offers, onTap: _onTap)),
-      SizedBox(height: 10),
       CustomButton(text: 'Add offer', clickEvent: AddOfferBtnClick(bloc, context), bloc: bloc)
     ]);
   }

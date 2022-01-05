@@ -1,9 +1,11 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/pages/for_test/add_user_offer/add_user_offer_page.dart';
 import 'package:beauty_link/pages/for_test/master_offer_info/master_offer_info_page.dart';
 import 'package:beauty_link/services/offer_service.dart';
+import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
 import 'package:flutter/material.dart';
 
 class MasterOffersPageBloc extends BaseBlocV2 {
@@ -14,6 +16,11 @@ class MasterOffersPageBloc extends BaseBlocV2 {
 
   Future getOffersByMaster() async {
     await OfferService().getOffersByMaster(user.uidFB, null, true).then((value) => offers = value);
+  }
+
+  void onFilterChanged(EntityBase? item) {
+    var ddItem = item as DropDownItem;
+    if (ddItem == null) return;
   }
 }
 

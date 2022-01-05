@@ -1,10 +1,10 @@
 int port = 6000;
 
 // localhost
-//String ip = '192.168.76.2';
+String ip = '192.168.76.2';
 
 // localhost work
-String ip = '192.168.2.252';
+ //String ip = '192.168.2.252';
 
 // wifi
 //String ip = '192.168.31.221';

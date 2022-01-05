@@ -19,7 +19,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   @override
   void initState() {
     _dropDownMenuItems = getDropDownMenuItems();
-    _currentEntity = _dropDownMenuItems[0].value;
+    _currentEntity = _dropDownMenuItems.length > 0 ? _dropDownMenuItems[0].value : null;
     super.initState();
   }
 
@@ -33,22 +33,24 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return Container(
       color: Colors.white,
-      child: new Center(
-          child: new Column(
+      child: Center(
+          child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Text(widget.caption),
-          new Container(
-            padding: new EdgeInsets.all(3.0),
-          ),
-          new DropdownButton(
-            value: _currentEntity,
-            items: _dropDownMenuItems,
-            onChanged: changedDropDownItem,
-          )
+          Text(widget.caption),
+          InputDecorator(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(4.0))),
+                  contentPadding: EdgeInsets.all(5)),
+              child: DropdownButton(
+                  value: _currentEntity,
+                  items: _dropDownMenuItems,
+                  onChanged: changedDropDownItem,
+                  isExpanded: true,
+                  isDense: true))
         ],
       )),
     );
@@ -62,24 +64,18 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   }
 }
 
-/*class CustomDropDownButton extends StatelessWidget {
-  List<DropdownMenuItem<EntityBase>> _items = [];
-  CustomDropDownButton({Key? key, List<EntityBase>? entities}) : super(key: key) {
-    if (entities != null) {
-      for (EntityBase ent in entities) {
-        _items.add(DropdownMenuItem(value: ent, child: Text(ent.getCaption())));
-      }
-    }
-  }
+class DropDownItem extends EntityBase {
+  final String caption;
+  String? subCaption;
+  Color? color;
+  DropDownItem({required this.caption, this.subCaption, this.color});
 
   @override
-  Widget build(BuildContext context) {
-    return DropdownButton(value: _currentCity, items: _items, onChanged: changedDropDownItem);
-  }
+  String getCaption() => caption;
 
-  void changedDropDownItem(String selectedCity) {
-    setState(() {
-      _currentCity = selectedCity;
-    });
-  }
-}*/
+  @override
+  Color? getColor() => color;
+
+  @override
+  String getSubCaption() => subCaption ?? '';
+}

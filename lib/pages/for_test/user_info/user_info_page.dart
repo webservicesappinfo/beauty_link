@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/pages/for_test/user_info/user_info_page_bloc.dart';
 import 'package:beauty_link/pages/for_test/users_page/users_page_bloc.dart';
+import 'package:beauty_link/widgets/custom_gridview.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -15,84 +16,91 @@ class UserInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => UserInfoPageBloc(InitState(), user),
-        child: Scaffold(
-            appBar: AppBar(title: Text('${user.name}')),
-            body: BlocConsumer<UserInfoPageBloc, BaseStateV2>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
-              builder: (context, state) {
-                var bloc = BlocProvider.of<UserInfoPageBloc>(context);
-                switch (state.runtimeType) {
-                  case InitState:
-                    bloc.add(LoadUserInfoPageEvent(bloc));
-                    return LoadingWidget();
-                  case BeginEventState:
-                    return LoadingWidget();
-                  case EndEventState:
-                    switch ((state as EndEventState).event.runtimeType) {
-                      case LoadUserInfoPageEvent:
-                        return _onLoadUserInfoPageEvent(context);
-                      case CompaniesBtnClickEvent:
-                        return LoadingWidget();
-                      default:
-                        return Text('empty state');
-                    }
-                  default:
-                    return Text('empty state');
-                }
-              },
+        child: DefaultTabController(
+            length: 4,
+            child: Scaffold(
+              appBar: AppBar(
+                bottom: TabBar(
+                    tabs: [
+                      Tab(icon: Icon(Icons.person), text: 'Client'),
+                      Tab(icon: Icon(Icons.account_box), text: 'Master'),
+                      Tab(icon: Icon(Icons.group), text: 'Admin'),
+                      Tab(icon: Icon(Icons.admin_panel_settings), text: 'Profile'),
+                    ],
+                    indicator: ShapeDecoration(
+                        shape: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.transparent, width: 0, style: BorderStyle.solid)),
+                        gradient: LinearGradient(colors: [Colors.pink, Color(0xff01ff80)]))),
+                title: Text('User Panel'),
+              ),
+              body: BlocConsumer<UserInfoPageBloc, BaseStateV2>(
+                listener: (context, state) {
+                  // TODO: implement listener
+                },
+                builder: (context, state) {
+                  var bloc = BlocProvider.of<UserInfoPageBloc>(context);
+                  switch (state.runtimeType) {
+                    case InitState:
+                      bloc.add(LoadUserInfoPageEvent(bloc));
+                      return LoadingWidget();
+                    case BeginEventState:
+                      return LoadingWidget();
+                    case EndEventState:
+                      switch ((state as EndEventState).event.runtimeType) {
+                        case LoadUserInfoPageEvent:
+                          return _onLoadUserInfoPageEvent(context);
+                        case CompaniesBtnClickEvent:
+                          return LoadingWidget();
+                        default:
+                          return Text('empty state');
+                      }
+                    default:
+                      return Text('empty state');
+                  }
+                },
+              ),
             )));
   }
 
   Widget _onLoadUserInfoPageEvent(BuildContext context) {
     var bloc = BlocProvider.of<UserInfoPageBloc>(context);
-    return Center(
-      child: Column(
-        children: [
-          Text('${bloc.user.name ?? 'empty'}'),          
-          CustomButton(
-            bloc: bloc,
-            clickEvent: CompaniesBtnClickEvent(bloc, context, "owner"),
-            text: "OwnerCompanies",
-          ),
-          CustomButton(
-            bloc: bloc,
-            clickEvent: CompaniesBtnClickEvent(bloc, context, "contains"),
-            text: "ContainsCompanies",
-          ),
-          CustomButton(
-            bloc: bloc,
-            clickEvent: CompaniesBtnClickEvent(bloc, context, "canbecontains"),
-            text: "CanBeContainCompanies",
-          ),
-          CustomButton(
-            bloc: bloc,
-            clickEvent: OffersBtnClicEvent(bloc, context),
-            text: "My Offers",
-          ),
-          CustomButton(
-            bloc: bloc,
-            clickEvent: FindOfferBtnClicEvent(bloc, context),
-            text: "Find Offer",
-          ),
-          CustomButton(
-            bloc: bloc,
-            clickEvent: MasterOrdersBtnClicEvent(bloc, context),
-            text: "Master Orders",
-          ),
-          CustomButton(
-            bloc: bloc,
-            clickEvent: ClientOrdersBtnClicEvent(bloc, context),
-            text: "Client Orders",
-          ),
-          CustomButton(
-            bloc: bloc,
-            clickEvent: DelUserEvent(bloc, context),
-            text: "Del User",
-          )
-        ],
-      ),
+    return TabBarView(
+      children: [
+        Column(children: [
+          Expanded(
+              child: CustomGridView(items: [
+            CustomGridViewItem(bloc: bloc, event: FindOfferBtnClicEvent(bloc, context), text: 'Find Offer'),
+            CustomGridViewItem(bloc: bloc, event: ClientOrdersBtnClicEvent(bloc, context), text: 'Orders')
+          ]))
+        ]),
+        Column(children: [
+          Expanded(
+              child: CustomGridView(items: [
+            CustomGridViewItem(
+                bloc: bloc, event: CompaniesBtnClickEvent(bloc, context, "contains"), text: 'ContainCompanies'),
+            CustomGridViewItem(
+                bloc: bloc, event: CompaniesBtnClickEvent(bloc, context, "canbecontains"), text: 'JoinCompanies'),
+            CustomGridViewItem(bloc: bloc, event: OffersBtnClicEvent(bloc, context), text: 'Offers'),
+            CustomGridViewItem(bloc: bloc, event: MasterOrdersBtnClicEvent(bloc, context), text: 'Orders')
+          ]))
+        ]),
+        Column(children: [
+          Expanded(
+              child: CustomGridView(items: [
+            CustomGridViewItem(bloc: bloc, event: CompaniesBtnClickEvent(bloc, context, "owner"), text: 'Companies')
+          ]))
+        ]),
+        Column(
+          children: [
+            Text('User name: ${bloc.user.name ?? 'empty'}'),
+            CustomButton(
+              bloc: bloc,
+              clickEvent: DelUserEvent(bloc, context),
+              text: "Del User",
+            )
+          ],
+        )
+      ],
     );
   }
 }
