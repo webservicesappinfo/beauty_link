@@ -27,7 +27,7 @@ class MasterOffersPage extends StatelessWidget {
                 var bloc = BlocProvider.of<MasterOffersPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(LoadOffersPageEvent(context, bloc));
+                    bloc.add(LoadOffersPageEvent(bloc));
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -49,10 +49,11 @@ class MasterOffersPage extends StatelessWidget {
     return Column(children: [
       CustomDropDownButton(
           caption: 'filter',
+          selectedItem: DropDownItem(caption: bloc.status),
           entities: [
             DropDownItem(caption: 'all'),
             DropDownItem(caption: 'actived'),
-            DropDownItem(caption: 'Submitted'),
+            DropDownItem(caption: 'submitted'),
             DropDownItem(caption: 'accepted'),
             DropDownItem(caption: 'executed')
           ],

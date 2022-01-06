@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/order.dart';
+import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class ClientOrdersPage extends StatelessWidget {
                 var bloc = BlocProvider.of<ClientOrdersPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(LoadMasterOrdersPageEvent(context, bloc));
+                    bloc.add(LoadMasterOrdersPageEvent(bloc));
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -46,7 +47,19 @@ class ClientOrdersPage extends StatelessWidget {
 
   Widget _onMasterOrdersPageLoadedState(BuildContext context) {
     var bloc = BlocProvider.of<ClientOrdersPageBloc>(context);
-    return Column(children: [Expanded(child: EntityListWidget(entities: bloc.orders, onTap: _onTap))]);
+    return Column(children: [
+      CustomDropDownButton(
+          caption: 'filter',
+          selectedItem: DropDownItem(caption: bloc.status),
+          entities: [
+            DropDownItem(caption: 'all'),
+            DropDownItem(caption: 'submitted'),
+            DropDownItem(caption: 'accepted'),
+            DropDownItem(caption: 'executed')
+          ],
+          onChanged: bloc.onFilterChanged),
+      Expanded(child: EntityListWidget(entities: bloc.orders, onTap: _onTap))
+      ]);
   }
 
   dynamic _onTap(BuildContext context, EntityBase entity) {

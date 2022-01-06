@@ -11,22 +11,26 @@ import 'package:flutter/material.dart';
 class MasterOffersPageBloc extends BaseBlocV2 {
   List<Offer> offers = [];
   AppUser user;
+  String status = "all";
 
   MasterOffersPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
 
   Future getOffersByMaster() async {
-    await OfferService().getOffersByMaster(user.uidFB, null, true).then((value) => offers = value);
+    await OfferService().getOffersByMaster(user.uidFB, null, true).then((value) {
+      offers = value;
+      if (status != "all") offers = offers.where((element) => element.status?.toLowerCase() == status).toList();
+    });
   }
 
   void onFilterChanged(EntityBase? item) {
-    var ddItem = item as DropDownItem;
-    if (ddItem == null) return;
+    status = (item as DropDownItem).getCaption();
+    add(LoadOffersPageEvent(this));
   }
 }
 
 class LoadOffersPageEvent extends BaseEventV2 {
   MasterOffersPageBloc bloc;
-  LoadOffersPageEvent(BuildContext context, this.bloc) : super();
+  LoadOffersPageEvent(this.bloc) : super();
 
   @override
   Future<void> execute() async {
@@ -46,7 +50,7 @@ class TapUserEvent extends BaseEventV2 {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => MasterOfferInfoPage(master: bloc.user, offer: offer)),
-    ).then((value) => bloc.add(LoadOffersPageEvent(context, bloc)));
+    ).then((value) => bloc.add(LoadOffersPageEvent(bloc)));
   }
 }
 
@@ -63,6 +67,6 @@ class AddOfferBtnClick extends BaseEventV2 {
       MaterialPageRoute(
         builder: (context) => AddUserOfferPage(user: bloc.user),
       ),
-    ).then((value) => bloc.add(LoadOffersPageEvent(context, bloc)));
+    ).then((value) => bloc.add(LoadOffersPageEvent(bloc)));
   }
 }

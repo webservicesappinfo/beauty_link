@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 class CustomDropDownButton extends StatefulWidget {
   final String caption;
   final List<EntityBase> entities;
+  EntityBase? selectedItem;
   final Function(EntityBase?) onChanged;
-  CustomDropDownButton({Key? key, required this.caption, required this.entities, required this.onChanged})
+  CustomDropDownButton(
+      {Key? key, this.selectedItem, required this.caption, required this.entities, required this.onChanged})
       : super(key: key) {}
 
   @override
@@ -19,7 +21,14 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   @override
   void initState() {
     _dropDownMenuItems = getDropDownMenuItems();
-    _currentEntity = _dropDownMenuItems.length > 0 ? _dropDownMenuItems[0].value : null;
+    var ddSelItem = widget.selectedItem != null
+        ? _dropDownMenuItems.firstWhere((element) => element.value?.getCaption() == widget.selectedItem?.getCaption())
+        : null;
+    _currentEntity = ddSelItem != null
+        ? ddSelItem.value
+        : _dropDownMenuItems.length > 0
+            ? _dropDownMenuItems[0].value
+            : null;
     super.initState();
   }
 
