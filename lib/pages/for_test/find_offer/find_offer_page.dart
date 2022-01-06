@@ -5,6 +5,7 @@ import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import 'find_offer_page_bloc.dart';
 
@@ -45,10 +46,52 @@ class FindOfferPage extends StatelessWidget {
   }
 
   Widget _onLoadState(FindOfferPageBloc bloc, BuildContext context) {
+    var _controller = TextEditingController();
     return Column(
       children: [
         CustomDropDownButton(caption: 'Select master', entities: bloc.masters, onChanged: bloc.onMasterChanged),
         CustomDropDownButton(caption: 'Select skill', entities: bloc.skills, onChanged: bloc.onSkillChanged),
+        SizedBox(height: 10),
+        TextField(
+          readOnly: true,
+          controller: _controller,
+          decoration: InputDecoration(
+            hintText: 'date range',
+            suffixIcon: IconButton(
+                icon: Icon(Icons.date_range),
+                onPressed: () {
+                  showDialog<Widget>(
+                      context: context,
+                      barrierColor: Colors.white,
+                      builder: (BuildContext context) {
+                        return SfDateRangePicker(
+                          showActionButtons: true,
+                          selectionMode: DateRangePickerSelectionMode.range,
+                          monthViewSettings: DateRangePickerMonthViewSettings(firstDayOfWeek: 1),
+                          onSubmit: (Object? value) {
+                            bloc.pickerDateRange = value as PickerDateRange;
+                            if (bloc.pickerDateRange == null)
+                              _controller.clear();
+                            else {
+                              var startYaer = bloc.pickerDateRange?.startDate?.year;
+                              var startMonth = bloc.pickerDateRange?.startDate?.month;
+                              var startday = bloc.pickerDateRange?.startDate?.day;
+                              var endYaer = bloc.pickerDateRange?.endDate?.year;
+                              var endMonth = bloc.pickerDateRange?.endDate?.month;
+                              var endday = bloc.pickerDateRange?.endDate?.day;
+                              _controller.text = "$startYaer.$startMonth.$startday - $endYaer.$endMonth.$endday";
+                            }
+                            Navigator.pop(context);
+                          },
+                          onCancel: () {
+                            _controller.text = '';
+                            Navigator.pop(context);
+                          },
+                        );
+                      });
+                }),
+          ),
+        ),
         CustomButton(text: 'Find', clickEvent: FindBtnClickEvent(bloc, context), bloc: bloc)
       ],
     );

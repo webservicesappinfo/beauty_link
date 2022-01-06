@@ -7,6 +7,7 @@ import 'package:beauty_link/pages/for_test/fit_offers/fit_offers_page.dart';
 import 'package:beauty_link/services/skill_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class FindOfferPageBloc extends BaseBlocV2 {
   AppUser client;
@@ -15,6 +16,8 @@ class FindOfferPageBloc extends BaseBlocV2 {
   List<AppUser> masters = [];
   List<Skill> skills = [];
   String? masterName;
+  PickerDateRange? pickerDateRange;
+
   FindOfferPageBloc(BaseStateV2 initialState, this.client) : super(initialState);
 
   Future getMasters() async {
