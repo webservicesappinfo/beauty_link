@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/skill.dart';
+import 'package:beauty_link/pages/for_test/fit_offers/map_page.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
+import 'package:beauty_link/widgets/custom_gridview.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,36 +25,50 @@ class FitOffersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => FitOffersPageBloc(InitState(), master, skill, client),
-        child: Scaffold(
-            appBar: AppBar(title: Text('Offers')),
-            body: BlocConsumer<FitOffersPageBloc, BaseStateV2>(listener: (context, state) {
-              if (state is InitState) {}
-            }, builder: (context, state) {
-              return Builder(builder: (context) {
-                var bloc = BlocProvider.of<FitOffersPageBloc>(context);
-                switch (state.runtimeType) {
-                  case InitState:
-                    bloc.add(LoadOffersPageEvent(context, bloc));
-                    return LoadingWidget();
-                  case BeginEventState:
-                    return LoadingWidget();
-                  case EndEventState:
-                    switch ((state as EndEventState).event.runtimeType) {
-                      case LoadOffersPageEvent:
-                        return _onOffersPageLoadedState(bloc, context);
-                      default:
-                        return Text('empty state');
-                    }
-                  default:
-                    return Text('empty state');
-                }
-              });
-            })));
+        child: DefaultTabController(
+          length: 2,
+          child: Scaffold(
+              appBar: AppBar(
+                  bottom: TabBar(
+                      tabs: [
+                        Tab(icon: Icon(Icons.list), text: 'List'),
+                        Tab(icon: Icon(Icons.location_on), text: 'Map'),
+                      ],
+                      indicator: ShapeDecoration(
+                          shape: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent, width: 0, style: BorderStyle.solid)),
+                          gradient: LinearGradient(colors: [Colors.pink, Color(0xff01ff80)]))),
+                  title: Text('Offers')),
+              body: BlocConsumer<FitOffersPageBloc, BaseStateV2>(listener: (context, state) {
+                if (state is InitState) {}
+              }, builder: (context, state) {
+                return Builder(builder: (context) {
+                  var bloc = BlocProvider.of<FitOffersPageBloc>(context);
+                  switch (state.runtimeType) {
+                    case InitState:
+                      bloc.add(LoadOffersPageEvent(context, bloc));
+                      return LoadingWidget();
+                    case BeginEventState:
+                      return LoadingWidget();
+                    case EndEventState:
+                      switch ((state as EndEventState).event.runtimeType) {
+                        case LoadOffersPageEvent:
+                          return _onOffersPageLoadedState(bloc, context);
+                        default:
+                          return Text('empty state');
+                      }
+                    default:
+                      return Text('empty state');
+                  }
+                });
+              })),
+        ));
   }
 
   Widget _onOffersPageLoadedState(FitOffersPageBloc bloc, BuildContext context) {
-    return Column(children: [
-      Expanded(child: EntityListWidget(entities: bloc.offers, onTap: _onTap)),
+    return TabBarView(physics: NeverScrollableScrollPhysics(), children: [
+      Column(children: [Expanded(child: EntityListWidget(entities: bloc.offers, onTap: _onTap))]),
+      Column(children: [Expanded(child: _map())])
     ]);
   }
 
@@ -58,5 +76,9 @@ class FitOffersPage extends StatelessWidget {
     var offer = entity as Offer;
     var bloc = BlocProvider.of<FitOffersPageBloc>(context);
     bloc.add(TapOfferEvent(bloc, context, offer));
+  }
+
+  Widget _map() {
+    return MapPage(location: null);
   }
 }

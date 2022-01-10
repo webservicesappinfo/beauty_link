@@ -53,6 +53,7 @@ class MasterOfferInfoPage extends StatelessWidget {
         Text('Offer name: ${bloc.offer.name}'),
         Text('Master name: ${bloc.offer.masterName}'),
         Text('Skill name: ${bloc.offer.skillName}'),
+        CustomButton(text: "Set Location", clickEvent: SetLocationEvent(bloc, context), bloc: bloc),
         CustomButton(text: "Del offer", clickEvent: DelOfferEvent(bloc, context), bloc: bloc)
       ],
     ));
