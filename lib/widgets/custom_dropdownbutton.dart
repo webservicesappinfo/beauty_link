@@ -6,9 +6,10 @@ class CustomDropDownButton extends StatefulWidget {
   final List<EntityBase> entities;
   EntityBase? selectedItem;
   final Function(EntityBase?) onChanged;
+
   CustomDropDownButton(
       {Key? key, this.selectedItem, required this.caption, required this.entities, required this.onChanged})
-      : super(key: key) {}
+      : super(key: key);
 
   @override
   _CustomDropDownButtonState createState() => _CustomDropDownButtonState();
@@ -24,11 +25,11 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
     var ddSelItem = widget.selectedItem != null
         ? _dropDownMenuItems.firstWhere((element) => element.value?.getCaption() == widget.selectedItem?.getCaption())
         : null;
-    _currentEntity = ddSelItem != null
+    /*_currentEntity = ddSelItem != null
         ? ddSelItem.value
         : _dropDownMenuItems.length > 0
             ? _dropDownMenuItems[0].value
-            : null;
+            : null;*/
     super.initState();
   }
 
@@ -42,26 +43,29 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(widget.caption),
-          InputDecorator(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(4.0))),
-                  contentPadding: EdgeInsets.all(5)),
-              child: DropdownButton(
-                  value: _currentEntity,
-                  items: _dropDownMenuItems,
-                  onChanged: changedDropDownItem,
-                  isExpanded: true,
-                  isDense: true))
-        ],
-      )),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.white,
+        child: Center(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            InputDecorator(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(4.0))),
+                    contentPadding: EdgeInsets.all(5)),
+                child: DropdownButton(
+                    value: _currentEntity,
+                    items: _dropDownMenuItems,
+                    hint: Text(widget.caption),
+                    onChanged: changedDropDownItem,
+                    isExpanded: true,
+                    isDense: true))
+          ],
+        )),
+      ),
     );
   }
 

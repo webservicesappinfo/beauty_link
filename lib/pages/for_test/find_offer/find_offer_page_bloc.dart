@@ -1,7 +1,6 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
-import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/skill.dart';
 import 'package:beauty_link/pages/for_test/fit_offers/fit_offers_page.dart';
 import 'package:beauty_link/services/skill_service.dart';
@@ -21,19 +20,13 @@ class FindOfferPageBloc extends BaseBlocV2 {
   FindOfferPageBloc(BaseStateV2 initialState, this.client) : super(initialState);
 
   Future getMasters() async {
-    await UserService().getUsers().then((value) {
-      masters = value.where((element) => element.uidFB != client.uidFB).toList();
-      masters.insert(0, AppUser(name: 'all'));
-      if (masters.length > 0) selectedMaster = masters[0];
-    });
+    await UserService()
+        .getUsers()
+        .then((value) => masters = value.where((element) => element.uidFB != client.uidFB).toList());
   }
 
   Future getSkills() async {
-    await SkillService().getSkills(selectedMaster?.uidFB).then((value) {
-      skills = value;
-      skills.insert(0, Skill(name: 'all'));
-      if (skills.length > 0) selectedSkill = skills[0];
-    });
+    await SkillService().getSkills(selectedMaster?.uidFB).then((value) => skills = value);
   }
 
   void onMasterChanged(EntityBase? master) {
@@ -64,16 +57,16 @@ class FindBtnClickEvent extends BaseEventV2 {
 
   @override
   Future<void> execute() async {
-    if (bloc.selectedMaster != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FitOffersPage(
-              master: bloc.selectedMaster ?? AppUser(),
-              skill: bloc.selectedSkill ?? Skill(name: 'empty'),
-              client: bloc.client),
-        ),
-      ).then((value) => bloc.add(LoadFindOfferPageEvent(bloc)));
-    }
+    //if (bloc.selectedMaster != null) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FitOffersPage(
+            master: bloc.selectedMaster ?? AppUser(),
+            skill: bloc.selectedSkill ?? Skill(name: 'empty'),
+            client: bloc.client),
+      ),
+    ).then((value) => bloc.add(LoadFindOfferPageEvent(bloc)));
+    //}
   }
 }
