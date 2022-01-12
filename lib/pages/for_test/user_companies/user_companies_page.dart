@@ -58,8 +58,8 @@ class UserCompaniesPage extends StatelessWidget {
   }
 
   dynamic _onTap(BuildContext context, EntityBase entity) {
-    /*var user = entity as AppUser;
+    var company = entity as Company;
     var bloc = BlocProvider.of<UserCompaniesPageBloc>(context);
-    bloc.add(TapUserEvent(context, user));*/
+    bloc.add(CompanyTap(bloc, context, company));
   }
 }

@@ -60,6 +60,10 @@ class GetCompanyReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetCompanyReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ownerGuid', protoName: 'ownerGuid')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ownerName', protoName: 'ownerName')
+    ..pPS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuids', protoName: 'masterGuids')
+    ..pPS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterNames', protoName: 'masterNames')
     ..hasRequiredFields = false
   ;
 
@@ -67,6 +71,10 @@ class GetCompanyReply extends $pb.GeneratedMessage {
   factory GetCompanyReply({
     $core.String? name,
     $core.String? guid,
+    $core.String? ownerGuid,
+    $core.String? ownerName,
+    $core.Iterable<$core.String>? masterGuids,
+    $core.Iterable<$core.String>? masterNames,
   }) {
     final _result = create();
     if (name != null) {
@@ -74,6 +82,18 @@ class GetCompanyReply extends $pb.GeneratedMessage {
     }
     if (guid != null) {
       _result.guid = guid;
+    }
+    if (ownerGuid != null) {
+      _result.ownerGuid = ownerGuid;
+    }
+    if (ownerName != null) {
+      _result.ownerName = ownerName;
+    }
+    if (masterGuids != null) {
+      _result.masterGuids.addAll(masterGuids);
+    }
+    if (masterNames != null) {
+      _result.masterNames.addAll(masterNames);
     }
     return _result;
   }
@@ -115,6 +135,30 @@ class GetCompanyReply extends $pb.GeneratedMessage {
   $core.bool hasGuid() => $_has(1);
   @$pb.TagNumber(2)
   void clearGuid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get ownerGuid => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set ownerGuid($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOwnerGuid() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOwnerGuid() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get ownerName => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set ownerName($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasOwnerName() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearOwnerName() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.String> get masterGuids => $_getList(4);
+
+  @$pb.TagNumber(6)
+  $core.List<$core.String> get masterNames => $_getList(5);
 }
 
 class GetCompaniesRequest extends $pb.GeneratedMessage {

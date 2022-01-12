@@ -1,3 +1,4 @@
+import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:flutter/material.dart';
 
@@ -5,8 +6,10 @@ class Company extends EntityBase {
   String? guid;
   String? name;
   String? ownerGuid;
+  String? ownerName;
+  List<AppUser> masters = [];
 
-  Company({this.guid, required this.name, this.ownerGuid});
+  Company({this.guid, required this.name, this.ownerGuid, this.ownerName});
 
   factory Company.fromJson(Map<String, dynamic> json) {
     return new Company(

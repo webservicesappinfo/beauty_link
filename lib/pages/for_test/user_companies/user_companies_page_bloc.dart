@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/pages/for_test/add_user_company/add_user_company_page.dart';
+import 'package:beauty_link/pages/for_test/company_info/company_info_page.dart';
 import 'package:beauty_link/services/company_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,6 +42,24 @@ class AddCompanyBtnClick extends BaseEventV2 {
       context,
       MaterialPageRoute(
         builder: (context) => AddUserCompanyPage(user: bloc.user),
+      ),
+    ).then((value) => bloc.add(LoadUserCompaniesPageEvent(bloc)));
+  }
+}
+
+class CompanyTap extends BaseEventV2 {
+  UserCompaniesPageBloc bloc;
+  BuildContext context;
+  Company company;
+
+  CompanyTap(this.bloc, this.context, this.company) : super();
+
+  @override
+  Future<void> execute() async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CompanyInfoPage(company: company),
       ),
     ).then((value) => bloc.add(LoadUserCompaniesPageEvent(bloc)));
   }
