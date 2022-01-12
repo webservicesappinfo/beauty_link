@@ -7,6 +7,7 @@ import 'package:beauty_link/models/skill.dart';
 import 'package:beauty_link/services/company_service.dart';
 import 'package:beauty_link/services/offer_service.dart';
 import 'package:beauty_link/services/skill_service.dart';
+import 'package:beauty_link/widgets/custom_dropdownfield.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -47,9 +48,9 @@ class AddUserOfferPageBloc extends BaseBlocV2 {
 
   void onChangedOfferName(String name) => offerName = name;
 
-  void onSkillChanged(EntityBase? skill) => selectedSkill = skill as Skill;
+  void onSkillChanged(DropDownFieldItem? item) => selectedSkill = item?.entity as Skill;
 
-  void onCompanyChanged(dynamic company) => selectedCompany = company as Company;
+  void onCompanyChanged(DropDownFieldItem? item) => selectedCompany = item?.entity as Company;
 }
 
 class AddOfferInfoPageLoad extends BaseEventV2 {

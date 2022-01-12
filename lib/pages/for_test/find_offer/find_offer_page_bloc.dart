@@ -5,6 +5,7 @@ import 'package:beauty_link/models/skill.dart';
 import 'package:beauty_link/pages/for_test/fit_offers/fit_offers_page.dart';
 import 'package:beauty_link/services/skill_service.dart';
 import 'package:beauty_link/services/user_service.dart';
+import 'package:beauty_link/widgets/custom_dropdownfield.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
@@ -29,14 +30,13 @@ class FindOfferPageBloc extends BaseBlocV2 {
     await SkillService().getSkills(selectedMaster?.uidFB).then((value) => skills = value);
   }
 
-  void onMasterChanged(EntityBase? master) {
-    selectedMaster = master as AppUser;
+  void onMasterChanged(DropDownFieldItem? item) {
+    selectedMaster = item?.entity as AppUser;
     getSkills();
   }
 
-  void onSkillChanged(EntityBase? skill) {
-    selectedSkill = skill as Skill;
-  }
+  void onSkillChanged(DropDownFieldItem? item) => selectedSkill = item?.entity as Skill;
+  
 }
 
 class LoadFindOfferPageEvent extends BaseEventV2 {

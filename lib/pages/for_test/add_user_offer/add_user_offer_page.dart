@@ -36,13 +36,24 @@ class AddUserOfferPage extends StatelessWidget {
                     case AddOfferInfoPageLoad:
                       return Column(
                         children: [
-                          CustomTextField(hint: 'enter name', ontextChanged: bloc.onChangedOfferName),
-                          CustomDropDownButton(
-                              caption: 'Select skill', entities: bloc.skills, onChanged: bloc.onSkillChanged),
-                          CustomDropDownButton(
-                              caption: 'Select company', entities: bloc.companies, onChanged: bloc.onCompanyChanged),
-                          CustomDropDownField(
-                              hint: 'Select company', items: bloc.companies, onChanged: bloc.onCompanyChanged),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CustomTextField(hint: 'enter name', ontextChanged: bloc.onChangedOfferName),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CustomDropDownField(
+                                label: 'Select skill',
+                                items: bloc.skills.map((e) => DropDownFieldItem(caption: e.name, entity: e)).toList(),
+                                onChanged: bloc.onSkillChanged),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CustomDropDownField(
+                                label: 'Select company',
+                                items: bloc.companies.map((e) => DropDownFieldItem(caption: e.name, entity: e)).toList(),
+                                onChanged: bloc.onCompanyChanged),
+                          ),
                           CustomButton(text: 'Add offer', clickEvent: AddOfferBtnClick(bloc, context), bloc: bloc)
                         ],
                       );
