@@ -6,6 +6,7 @@ import 'package:beauty_link/global.dart';
 import 'package:beauty_link/pages/for_test/test_page.dart';
 import 'package:beauty_link/pages/for_test/users_page/users_page.dart';
 import 'package:beauty_link/pages/profile_page.dart';
+import 'package:beauty_link/pages/test3_page.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:beauty_link/widgets/floating_btn.dart';
 import 'package:beauty_link/widgets/home_page_popup.dart';
@@ -55,6 +56,14 @@ class HomePage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => UsersPage(),
+                        ),
+                      );
+                      break;
+                    case "test3":
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DropDownPage(),
                         ),
                       );
                       break;

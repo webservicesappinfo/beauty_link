@@ -14,8 +14,7 @@ Future<void> main() async {
   var channel = const AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
-    description:
-        'This channel is used for important notifications.', // description
+    description: 'This channel is used for important notifications.', // description
     importance: Importance.high,
   );
 
@@ -26,8 +25,7 @@ Future<void> main() async {
   /// We use this channel in the `AndroidManifest.xml` file to override the
   /// default FCM channel to enable heads up notifications.
   await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 
   FirebaseMessaging.instance.onTokenRefresh.listen((token) => {
@@ -86,7 +84,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'BeautyLink',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.grey,
       ),
       home: StreamBuilder<User?>(
         stream: AuthService().authStateChange(),

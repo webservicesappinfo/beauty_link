@@ -22,14 +22,6 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   @override
   void initState() {
     _dropDownMenuItems = getDropDownMenuItems();
-    var ddSelItem = widget.selectedItem != null
-        ? _dropDownMenuItems.firstWhere((element) => element.value?.getCaption() == widget.selectedItem?.getCaption())
-        : null;
-    /*_currentEntity = ddSelItem != null
-        ? ddSelItem.value
-        : _dropDownMenuItems.length > 0
-            ? _dropDownMenuItems[0].value
-            : null;*/
     super.initState();
   }
 

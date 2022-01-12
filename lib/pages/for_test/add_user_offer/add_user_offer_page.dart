@@ -3,6 +3,7 @@ import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/pages/for_test/add_user_offer/add_user_offer_page_bloc.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
+import 'package:beauty_link/widgets/custom_dropdownfield.dart';
 import 'package:beauty_link/widgets/custom_text_field.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,10 @@ class AddUserOfferPage extends StatelessWidget {
                           CustomTextField(hint: 'enter name', ontextChanged: bloc.onChangedOfferName),
                           CustomDropDownButton(
                               caption: 'Select skill', entities: bloc.skills, onChanged: bloc.onSkillChanged),
+                          CustomDropDownButton(
+                              caption: 'Select company', entities: bloc.companies, onChanged: bloc.onCompanyChanged),
+                          CustomDropDownField(
+                              hint: 'Select company', items: bloc.companies, onChanged: bloc.onCompanyChanged),
                           CustomButton(text: 'Add offer', clickEvent: AddOfferBtnClick(bloc, context), bloc: bloc)
                         ],
                       );
