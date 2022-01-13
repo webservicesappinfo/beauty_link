@@ -274,21 +274,26 @@ class GetCompaniesReply extends $pb.GeneratedMessage {
 class AddCompanyRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddCompanyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userGuid', protoName: 'userGuid')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ownerGuid', protoName: 'ownerGuid')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ownerName', protoName: 'ownerName')
     ..hasRequiredFields = false
   ;
 
   AddCompanyRequest._() : super();
   factory AddCompanyRequest({
     $core.String? name,
-    $core.String? userGuid,
+    $core.String? ownerGuid,
+    $core.String? ownerName,
   }) {
     final _result = create();
     if (name != null) {
       _result.name = name;
     }
-    if (userGuid != null) {
-      _result.userGuid = userGuid;
+    if (ownerGuid != null) {
+      _result.ownerGuid = ownerGuid;
+    }
+    if (ownerName != null) {
+      _result.ownerName = ownerName;
     }
     return _result;
   }
@@ -323,13 +328,22 @@ class AddCompanyRequest extends $pb.GeneratedMessage {
   void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get userGuid => $_getSZ(1);
+  $core.String get ownerGuid => $_getSZ(1);
   @$pb.TagNumber(2)
-  set userGuid($core.String v) { $_setString(1, v); }
+  set ownerGuid($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasUserGuid() => $_has(1);
+  $core.bool hasOwnerGuid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearUserGuid() => clearField(2);
+  void clearOwnerGuid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get ownerName => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set ownerName($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOwnerName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOwnerName() => clearField(3);
 }
 
 class AddCompanyReply extends $pb.GeneratedMessage {

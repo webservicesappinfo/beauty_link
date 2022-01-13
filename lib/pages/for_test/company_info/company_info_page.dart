@@ -1,5 +1,7 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
+import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
+import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +46,10 @@ class CompanyInfoPage extends StatelessWidget {
     return Center(
         child: Column(children: [
       Text("Name: ${bloc.company.name ?? 'noName'}"),
-      EntityListWidget(entities: bloc.company.masters, onTap: (context, entityBase) {})
+      bloc.company.masters.length > 0
+          ? Expanded(child: EntityListWidget(entities: bloc.company.masters, onTap: (context, entityBase) {}))
+          : Text("No masters"),
+      CustomButton(text: "Add master by QR", clickEvent: AddMasterByQREvent(context), bloc: bloc)
     ]));
   }
 }

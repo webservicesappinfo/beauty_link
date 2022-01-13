@@ -23,8 +23,8 @@ class CompanyService {
 
   Future<bool> addCompany(Company? company) async {
     if (company == null) return false;
-    var response =
-        await mobileApiClient.apiAddCompany(new AddCompanyRequest(name: company.name, userGuid: company.ownerGuid));
+    var response = await mobileApiClient.apiAddCompany(
+        new AddCompanyRequest(name: company.name, ownerGuid: company.ownerGuid, ownerName: company.ownerName));
     return response.result;
   }
 

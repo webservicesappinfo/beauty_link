@@ -9,9 +9,9 @@ class AddUserCompanyPageBloc extends BaseBlocV2 {
   AppUser user;
   AddUserCompanyPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
 
-  Future addUser() async {
+  Future addCompany() async {
     if (companyName?.isEmpty ?? true) throw Exception("userName is null");
-    await CompanyService().addCompany(Company(name: companyName, ownerGuid: user.uidFB));
+    await CompanyService().addCompany(Company(name: companyName, ownerGuid: user.uidFB, ownerName: user.name));
   }
 
   void onChangedCompanyName(String name) => companyName = name;
@@ -24,6 +24,6 @@ class AddUserBtnClick extends BaseEventV2 {
 
   @override
   Future<void> execute() async {
-    await bloc.addUser().then((value) => Navigator.pop(context));
+    await bloc.addCompany().then((value) => Navigator.pop(context));
   }
 }

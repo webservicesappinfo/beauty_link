@@ -60,12 +60,13 @@ const AddCompanyRequest$json = const {
   '1': 'AddCompanyRequest',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'userGuid', '3': 2, '4': 1, '5': 9, '10': 'userGuid'},
+    const {'1': 'ownerGuid', '3': 2, '4': 1, '5': 9, '10': 'ownerGuid'},
+    const {'1': 'ownerName', '3': 3, '4': 1, '5': 9, '10': 'ownerName'},
   ],
 };
 
 /// Descriptor for `AddCompanyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addCompanyRequestDescriptor = $convert.base64Decode('ChFBZGRDb21wYW55UmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEhoKCHVzZXJHdWlkGAIgASgJUgh1c2VyR3VpZA==');
+final $typed_data.Uint8List addCompanyRequestDescriptor = $convert.base64Decode('ChFBZGRDb21wYW55UmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEhwKCW93bmVyR3VpZBgCIAEoCVIJb3duZXJHdWlkEhwKCW93bmVyTmFtZRgDIAEoCVIJb3duZXJOYW1l');
 @$core.Deprecated('Use addCompanyReplyDescriptor instead')
 const AddCompanyReply$json = const {
   '1': 'AddCompanyReply',
