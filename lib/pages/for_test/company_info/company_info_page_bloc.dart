@@ -1,6 +1,7 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
+import 'package:beauty_link/pages/for_test/QR/qr_page.dart';
 import 'package:beauty_link/services/company_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:beauty_link/widgets/custom_dropdownfield.dart';
@@ -50,12 +51,12 @@ class AddMasterByQREvent extends BaseEventV2 {
   @override
   Future<void> execute() async {
     var bloc = BlocProvider.of<CompanyInfoPageBloc>(context);
-    /*Navigator.push(
+    Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AddUserPage(),
+        builder: (context) => QRPage(),
       ),
-    ).then((value) => bloc.add(CompanyInfoPageLoadEvent(bloc)));*/
+    ).then((value) => bloc.add(CompanyInfoPageLoadEvent(bloc)));
   }
 }
 
