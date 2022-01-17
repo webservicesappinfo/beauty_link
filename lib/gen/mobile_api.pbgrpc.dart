@@ -10,16 +10,22 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
+import 'mobile_api.pb.dart' as $6;
 import 'user.pb.dart' as $0;
 import 'company.pb.dart' as $1;
 import 'skill.pb.dart' as $2;
 import 'offer.pb.dart' as $3;
 import 'order.pb.dart' as $4;
 import 'notification.pb.dart' as $5;
-import 'mobile_api.pb.dart' as $6;
 export 'mobile_api.pb.dart';
 
 class MobileApiClient extends $grpc.Client {
+  static final _$getFitForCompanyUsers = $grpc.ClientMethod<
+          $6.GetFitForCompanyUsersRequest, $6.GetFitForCompanyUsersReply>(
+      '/mobileApi.MobileApi/GetFitForCompanyUsers',
+      ($6.GetFitForCompanyUsersRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $6.GetFitForCompanyUsersReply.fromBuffer(value));
   static final _$apiAddUser =
       $grpc.ClientMethod<$0.AddUserRequest, $0.AddUserReply>(
           '/mobileApi.MobileApi/ApiAddUser',
@@ -166,6 +172,12 @@ class MobileApiClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
+
+  $grpc.ResponseFuture<$6.GetFitForCompanyUsersReply> getFitForCompanyUsers(
+      $6.GetFitForCompanyUsersRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getFitForCompanyUsers, request, options: options);
+  }
 
   $grpc.ResponseFuture<$0.AddUserReply> apiAddUser($0.AddUserRequest request,
       {$grpc.CallOptions? options}) {
@@ -318,6 +330,15 @@ abstract class MobileApiServiceBase extends $grpc.Service {
   $core.String get $name => 'mobileApi.MobileApi';
 
   MobileApiServiceBase() {
+    $addMethod($grpc.ServiceMethod<$6.GetFitForCompanyUsersRequest,
+            $6.GetFitForCompanyUsersReply>(
+        'GetFitForCompanyUsers',
+        getFitForCompanyUsers_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $6.GetFitForCompanyUsersRequest.fromBuffer(value),
+        ($6.GetFitForCompanyUsersReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.AddUserRequest, $0.AddUserReply>(
         'ApiAddUser',
         apiAddUser_Pre,
@@ -522,6 +543,12 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         ($6.ApiSetUserLocationReply value) => value.writeToBuffer()));
   }
 
+  $async.Future<$6.GetFitForCompanyUsersReply> getFitForCompanyUsers_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$6.GetFitForCompanyUsersRequest> request) async {
+    return getFitForCompanyUsers(call, await request);
+  }
+
   $async.Future<$0.AddUserReply> apiAddUser_Pre(
       $grpc.ServiceCall call, $async.Future<$0.AddUserRequest> request) async {
     return apiAddUser(call, await request);
@@ -662,6 +689,8 @@ abstract class MobileApiServiceBase extends $grpc.Service {
     return apiSetUserLocation(call, await request);
   }
 
+  $async.Future<$6.GetFitForCompanyUsersReply> getFitForCompanyUsers(
+      $grpc.ServiceCall call, $6.GetFitForCompanyUsersRequest request);
   $async.Future<$0.AddUserReply> apiAddUser(
       $grpc.ServiceCall call, $0.AddUserRequest request);
   $async.Future<$0.GetUserReply> apiGetUser(

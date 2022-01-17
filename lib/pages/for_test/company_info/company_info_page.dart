@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
+import 'package:beauty_link/widgets/custom_dropdownfield.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,35 @@ class CompanyInfoPage extends StatelessWidget {
       bloc.company.masters.length > 0
           ? Expanded(child: EntityListWidget(entities: bloc.company.masters, onTap: (context, entityBase) {}))
           : Text("No masters"),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(children: [
+          Expanded(
+              child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blue, width: 1),
+                    color: Colors.grey[300],
+                    //shape: BoxShape.circle,
+                  ),
+                  child: CustomDropDownFieldMulti(
+                      items: bloc.canJoinUsers.map((e) => DropDownFieldItem(caption: e.name, entity: e)).toList(),
+                      hint: 'select masters',
+                      onChanged: bloc.onSelectMasterChanged))),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.blue, width: 1),
+              color: Colors.grey[300],
+              shape: BoxShape.rectangle,
+            ),
+            child: IconButton(
+                iconSize: 56,
+                icon: Icon(Icons.add),
+                onPressed: () {
+                  bloc.add(AddMastersFromList(context));
+                }),
+          )
+        ]),
+      ),
       CustomButton(text: "Add master by QR", clickEvent: AddMasterByQREvent(context), bloc: bloc)
     ]));
   }

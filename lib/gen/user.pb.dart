@@ -166,15 +166,20 @@ class GetUsersRequest extends $pb.GeneratedMessage {
 
 class GetUsersReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetUsersReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user'), createEmptyInstance: create)
-    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'names')
+    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uids')
+    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'names')
     ..hasRequiredFields = false
   ;
 
   GetUsersReply._() : super();
   factory GetUsersReply({
+    $core.Iterable<$core.String>? uids,
     $core.Iterable<$core.String>? names,
   }) {
     final _result = create();
+    if (uids != null) {
+      _result.uids.addAll(uids);
+    }
     if (names != null) {
       _result.names.addAll(names);
     }
@@ -202,7 +207,10 @@ class GetUsersReply extends $pb.GeneratedMessage {
   static GetUsersReply? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.String> get names => $_getList(0);
+  $core.List<$core.String> get uids => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get names => $_getList(1);
 }
 
 class AddUserRequest extends $pb.GeneratedMessage {

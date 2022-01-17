@@ -39,12 +39,19 @@ class UserService {
     var users = <AppUser>[];
     var response = await mobileApiClient.apiGetUsers(new GetUsersRequest(restriction: null));
     var curUserCaption = "${_currentUser?.name}/${_currentUser?.email}";
-    for (var item in response.names) {
-      var parts = item.split(':').toList();
-      if (parts.length > 1) {
-        if (parts[1] != curUserCaption) users.add(new AppUser(uidFB: parts[0], name: parts[1]));
-      }
+    for (var i = 0; i < response.names.length; i++) {
+      if (response.names[i] == curUserCaption) continue;
+      users.add(new AppUser(uidFB: response.uids[i], name: response.names[i]));
     }
+    return users;
+  }
+
+  Future<List<AppUser>> getFitForCompanyUsers(String companyGuid, bool isConsistIn) async {
+    var users = <AppUser>[];
+    var response = await mobileApiClient
+        .getFitForCompanyUsers(new GetFitForCompanyUsersRequest(companyGuid: companyGuid, isConsistIn: isConsistIn));
+    for (var i = 0; i < response.guids.length; i++)
+      users.add(new AppUser(uidFB: response.guids[i], name: response.names[i]));
     return users;
   }
 

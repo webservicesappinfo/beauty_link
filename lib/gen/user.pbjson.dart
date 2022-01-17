@@ -43,12 +43,13 @@ final $typed_data.Uint8List getUsersRequestDescriptor = $convert.base64Decode('C
 const GetUsersReply$json = const {
   '1': 'GetUsersReply',
   '2': const [
-    const {'1': 'names', '3': 1, '4': 3, '5': 9, '10': 'names'},
+    const {'1': 'uids', '3': 1, '4': 3, '5': 9, '10': 'uids'},
+    const {'1': 'names', '3': 2, '4': 3, '5': 9, '10': 'names'},
   ],
 };
 
 /// Descriptor for `GetUsersReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getUsersReplyDescriptor = $convert.base64Decode('Cg1HZXRVc2Vyc1JlcGx5EhQKBW5hbWVzGAEgAygJUgVuYW1lcw==');
+final $typed_data.Uint8List getUsersReplyDescriptor = $convert.base64Decode('Cg1HZXRVc2Vyc1JlcGx5EhIKBHVpZHMYASADKAlSBHVpZHMSFAoFbmFtZXMYAiADKAlSBW5hbWVz');
 @$core.Deprecated('Use addUserRequestDescriptor instead')
 const AddUserRequest$json = const {
   '1': 'AddUserRequest',

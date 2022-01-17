@@ -84,11 +84,12 @@ const JoinToCompanyRequest$json = const {
     const {'1': 'companyGuid', '3': 1, '4': 1, '5': 9, '10': 'companyGuid'},
     const {'1': 'companyName', '3': 2, '4': 1, '5': 9, '10': 'companyName'},
     const {'1': 'userGuid', '3': 3, '4': 1, '5': 9, '10': 'userGuid'},
+    const {'1': 'userName', '3': 4, '4': 1, '5': 9, '10': 'userName'},
   ],
 };
 
 /// Descriptor for `JoinToCompanyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List joinToCompanyRequestDescriptor = $convert.base64Decode('ChRKb2luVG9Db21wYW55UmVxdWVzdBIgCgtjb21wYW55R3VpZBgBIAEoCVILY29tcGFueUd1aWQSIAoLY29tcGFueU5hbWUYAiABKAlSC2NvbXBhbnlOYW1lEhoKCHVzZXJHdWlkGAMgASgJUgh1c2VyR3VpZA==');
+final $typed_data.Uint8List joinToCompanyRequestDescriptor = $convert.base64Decode('ChRKb2luVG9Db21wYW55UmVxdWVzdBIgCgtjb21wYW55R3VpZBgBIAEoCVILY29tcGFueUd1aWQSIAoLY29tcGFueU5hbWUYAiABKAlSC2NvbXBhbnlOYW1lEhoKCHVzZXJHdWlkGAMgASgJUgh1c2VyR3VpZBIaCgh1c2VyTmFtZRgEIAEoCVIIdXNlck5hbWU=');
 @$core.Deprecated('Use joinToCompanyReplyDescriptor instead')
 const JoinToCompanyReply$json = const {
   '1': 'JoinToCompanyReply',

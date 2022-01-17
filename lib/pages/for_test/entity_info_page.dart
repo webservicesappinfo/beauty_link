@@ -146,7 +146,7 @@ class EntityInfo extends StatelessWidget {
             Text("Name: ${params['name'] ?? "NoName"}"),
             ElevatedButton(
                 onPressed: () => CompanyService()
-                    .joinToCompany(params['ownerGuid'], params['guid'], params['name'])
+                    .joinToCompany(params['ownerGuid'], 'noName', params['guid'], params['name'])
                     .then((value) => Navigator.pop(context)),
                 child: Text('Join!'))
           ],
