@@ -28,7 +28,7 @@ class MasterOrdersPage extends StatelessWidget {
                 var bloc = BlocProvider.of<MasterOrdersPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(LoadMasterOrdersPageEvent(bloc));
+                    LoadMasterOrdersPageEvent(context)..invoke();
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -58,14 +58,16 @@ class MasterOrdersPage extends StatelessWidget {
             DropDownItem(caption: 'accepted'),
             DropDownItem(caption: 'executed')
           ],
-          onChanged: bloc.onFilterChanged),
-      Expanded(child: EntityListWidget(entities: bloc.orders, onTap: _onTap))
-      ]);
-  }
-
-  dynamic _onTap(BuildContext context, EntityBase entity) {
-    var order = entity as Order;
-    var bloc = BlocProvider.of<MasterOrdersPageBloc>(context);
-    bloc.add(TapOrderEvent(bloc, context, order));
+          onChanged: (EntityBase? entity) {
+            bloc.status = (entity as DropDownItem).getCaption();
+            LoadMasterOrdersPageEvent(context)..invoke();
+          }),
+      Expanded(
+          child: EntityListWidget(
+              entities: bloc.orders,
+              onTap: (EntityBase entity) {
+                TapOrderEvent(context, entity as Order)..invoke();
+              }))
+    ]);
   }
 }

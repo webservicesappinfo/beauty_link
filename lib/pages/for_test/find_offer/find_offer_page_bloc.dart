@@ -36,12 +36,10 @@ class FindOfferPageBloc extends BaseBlocV2 {
   }
 
   void onSkillChanged(DropDownFieldItem? item) => selectedSkill = item?.entity as Skill;
-  
 }
 
-class LoadFindOfferPageEvent extends BaseEventV2 {
-  FindOfferPageBloc bloc;
-  LoadFindOfferPageEvent(this.bloc) : super();
+class LoadFindOfferPageEvent extends BaseEventV2<FindOfferPageBloc> {
+  LoadFindOfferPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -50,10 +48,8 @@ class LoadFindOfferPageEvent extends BaseEventV2 {
   }
 }
 
-class FindBtnClickEvent extends BaseEventV2 {
-  FindOfferPageBloc bloc;
-  BuildContext context;
-  FindBtnClickEvent(this.bloc, this.context) : super();
+class FindBtnClickEvent extends BaseEventV2<FindOfferPageBloc> {
+  FindBtnClickEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -66,7 +62,7 @@ class FindBtnClickEvent extends BaseEventV2 {
             skill: bloc.selectedSkill ?? Skill(name: 'empty'),
             client: bloc.client),
       ),
-    ).then((value) => bloc.add(LoadFindOfferPageEvent(bloc)));
+    ).then((value) => LoadFindOfferPageEvent(context)..invoke());
     //}
   }
 }

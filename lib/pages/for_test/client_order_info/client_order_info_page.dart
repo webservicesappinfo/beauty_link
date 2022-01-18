@@ -27,7 +27,7 @@ class ClientOrderInfoPage extends StatelessWidget {
                 var bloc = BlocProvider.of<ClientOrderInfoPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(ClientOrderInfoPageEvent(bloc));
+                    ClientOrderInfoPageEvent(context)..invoke();
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -54,7 +54,7 @@ class ClientOrderInfoPage extends StatelessWidget {
         Text('Master name: ${bloc.order.masterName}'),
         Text('Client name: ${bloc.order.clientName}'),
         bloc.order.status == "Submitted"
-            ? CustomButton(text: "Cancel order", clickEvent: CancelOrderBtnClickEvent(context, bloc), bloc: bloc)
+            ? CustomButton(text: "Cancel order", clickEvent: () => CancelOrderBtnClickEvent(context)..invoke())
             : Container()
       ],
     ));

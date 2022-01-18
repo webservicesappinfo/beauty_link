@@ -27,7 +27,7 @@ class MasterOrderInfoPage extends StatelessWidget {
                 var bloc = BlocProvider.of<MasterOrderInfoPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(MasterOrderInfoPageEvent(bloc));
+                    MasterOrderInfoPageEvent(context)..invoke();
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -61,11 +61,11 @@ class MasterOrderInfoPage extends StatelessWidget {
   Widget _btnByStatus(MasterOrderInfoPageBloc bloc, BuildContext context) {
     switch (bloc.order.status?.toLowerCase()) {
       case "actived":
-        return CustomButton(text: "Cancel order", clickEvent: CancelOrderBtnClickEvent(context, bloc), bloc: bloc);
+        return CustomButton(text: "Cancel order", clickEvent: () => CancelOrderBtnClickEvent(context)..invoke());
       case "submitted":
-        return CustomButton(text: "Accepted order", clickEvent: AcceptOrderBtnClickEvent(context, bloc), bloc: bloc);
+        return CustomButton(text: "Accepted order", clickEvent: () => AcceptOrderBtnClickEvent(context)..invoke());
       case "accepted":
-        return CustomButton(text: "Execute order", clickEvent: ExecuteOrderBtnClickEvent(context, bloc), bloc: bloc);
+        return CustomButton(text: "Execute order", clickEvent: () => ExecuteOrderBtnClickEvent(context)..invoke());
       default:
         return Container();
     }

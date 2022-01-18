@@ -46,7 +46,7 @@ class FitOffersPage extends StatelessWidget {
                   var bloc = BlocProvider.of<FitOffersPageBloc>(context);
                   switch (state.runtimeType) {
                     case InitState:
-                      bloc.add(LoadOffersPageEvent(context, bloc));
+                      LoadOffersPageEvent(context)..invoke();
                       return LoadingWidget();
                     case BeginEventState:
                       return LoadingWidget();
@@ -67,15 +67,13 @@ class FitOffersPage extends StatelessWidget {
 
   Widget _onOffersPageLoadedState(FitOffersPageBloc bloc, BuildContext context) {
     return TabBarView(physics: NeverScrollableScrollPhysics(), children: [
-      Column(children: [Expanded(child: EntityListWidget(entities: bloc.offers, onTap: _onTap))]),
+      Column(children: [
+        Expanded(
+            child: EntityListWidget(
+                entities: bloc.offers, onTap: (EntityBase entity) => TapOfferEvent(context, entity as Offer)..invoke()))
+      ]),
       Column(children: [Expanded(child: _map())])
     ]);
-  }
-
-  dynamic _onTap(BuildContext context, EntityBase entity) {
-    var offer = entity as Offer;
-    var bloc = BlocProvider.of<FitOffersPageBloc>(context);
-    bloc.add(TapOfferEvent(bloc, context, offer));
   }
 
   Widget _map() {

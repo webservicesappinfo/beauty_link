@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BaseBlocV2 extends Bloc<BaseEventV2, BaseStateV2> {
@@ -15,16 +16,19 @@ class BaseBlocV2 extends Bloc<BaseEventV2, BaseStateV2> {
   }
 }
 
-abstract class BaseEventV2 {
+abstract class BaseEventV2<T extends BaseBlocV2> {
   late BaseStateV2 beginInvokeState;
   late BaseStateV2 endInvokeState;
   BaseEventException? exception;
+  final BuildContext context;
 
-  BaseEventV2() {
+  BaseEventV2(this.context) {
     beginInvokeState = BeginEventState(this);
     endInvokeState = EndEventState(this);
     exception = BaseEventException("${this.runtimeType} exception!");
   }
+  T get bloc => BlocProvider.of<T>(context);
+  void invoke() => bloc.add(this);
 
   Future<void> execute() async {}
 }

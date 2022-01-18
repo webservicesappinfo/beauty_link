@@ -2,10 +2,10 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/pages/for_test/QR/qr_page.dart';
+import 'package:beauty_link/pages/for_test/master_offer_info/map_picker_page.dart';
 import 'package:beauty_link/services/company_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:beauty_link/widgets/custom_dropdownfield.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,9 +33,8 @@ class CompanyInfoPageBloc extends BaseBlocV2 {
       selectedUsers = items.map((e) => e.entity as AppUser).toList();
 }
 
-class CompanyInfoPageLoadEvent extends BaseEventV2 {
-  CompanyInfoPageBloc bloc;
-  CompanyInfoPageLoadEvent(this.bloc) : super();
+class CompanyInfoPageLoadEvent extends BaseEventV2<CompanyInfoPageBloc> {
+  CompanyInfoPageLoadEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -43,33 +42,41 @@ class CompanyInfoPageLoadEvent extends BaseEventV2 {
   }
 }
 
-class AddMasterByQREvent extends BaseEventV2 {
-  BuildContext context;
-
-  AddMasterByQREvent(this.context) : super();
+class AddMasterByQREvent extends BaseEventV2<CompanyInfoPageBloc> {
+  AddMasterByQREvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
-    var bloc = BlocProvider.of<CompanyInfoPageBloc>(context);
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => QRPage(),
       ),
-    ).then((value) => bloc.add(CompanyInfoPageLoadEvent(bloc)));
+    ).then((value) => CompanyInfoPageLoadEvent(context)..invoke());
   }
 }
 
-class AddMastersFromList extends BaseEventV2 {
-  BuildContext context;
-
-  AddMastersFromList(this.context) : super();
+class AddMastersFromList extends BaseEventV2<CompanyInfoPageBloc> {
+  AddMastersFromList(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
-    var bloc = BlocProvider.of<CompanyInfoPageBloc>(context);
     for (var user in bloc.selectedUsers)
       await CompanyService().joinToCompany(user.uidFB, user.name, bloc.company.guid, bloc.company.name);
-    bloc.add(CompanyInfoPageLoadEvent(bloc));
+    CompanyInfoPageLoadEvent(context)..invoke();
+  }
+}
+
+class SetLocationBtnClick extends BaseEventV2<CompanyInfoPageBloc> {
+  SetLocationBtnClick(BuildContext context) : super(context);
+
+  @override
+  Future<void> execute() async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MapPickerPage(),
+      ),
+    ).then((value) => CompanyInfoPageLoadEvent(context)..invoke());
   }
 }

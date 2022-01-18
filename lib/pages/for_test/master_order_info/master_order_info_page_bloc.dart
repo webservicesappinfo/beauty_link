@@ -26,9 +26,8 @@ class MasterOrderInfoPageBloc extends BaseBlocV2 {
   }
 }
 
-class MasterOrderInfoPageEvent extends BaseEventV2 {
-  MasterOrderInfoPageBloc bloc;
-  MasterOrderInfoPageEvent(this.bloc) : super();
+class MasterOrderInfoPageEvent extends BaseEventV2<MasterOrderInfoPageBloc> {
+  MasterOrderInfoPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -36,10 +35,8 @@ class MasterOrderInfoPageEvent extends BaseEventV2 {
   }
 }
 
-class CancelOrderBtnClickEvent extends BaseEventV2 {
-  MasterOrderInfoPageBloc bloc;
-  BuildContext context;
-  CancelOrderBtnClickEvent(this.context, this.bloc) : super();
+class CancelOrderBtnClickEvent extends BaseEventV2<MasterOrderInfoPageBloc> {
+  CancelOrderBtnClickEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -47,10 +44,8 @@ class CancelOrderBtnClickEvent extends BaseEventV2 {
   }
 }
 
-class AcceptOrderBtnClickEvent extends BaseEventV2 {
-  MasterOrderInfoPageBloc bloc;
-  BuildContext context;
-  AcceptOrderBtnClickEvent(this.context, this.bloc) : super();
+class AcceptOrderBtnClickEvent extends BaseEventV2<MasterOrderInfoPageBloc> {
+  AcceptOrderBtnClickEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -58,10 +53,8 @@ class AcceptOrderBtnClickEvent extends BaseEventV2 {
   }
 }
 
-class ExecuteOrderBtnClickEvent extends BaseEventV2 {
-  MasterOrderInfoPageBloc bloc;
-  BuildContext context;
-  ExecuteOrderBtnClickEvent(this.context, this.bloc) : super();
+class ExecuteOrderBtnClickEvent extends BaseEventV2<MasterOrderInfoPageBloc> {
+  ExecuteOrderBtnClickEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {

@@ -24,10 +24,9 @@ class UserCompaniesPage extends StatelessWidget {
               if (state is InitState) {}
             }, builder: (context, state) {
               return Builder(builder: (context) {
-                var bloc = BlocProvider.of<UserCompaniesPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(LoadUserCompaniesPageEvent(bloc));
+                    LoadUserCompaniesPageEvent(context)..invoke();
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -49,17 +48,15 @@ class UserCompaniesPage extends StatelessWidget {
     var bloc = BlocProvider.of<UserCompaniesPageBloc>(context);
     if (bloc.companyType == 'owner')
       return Column(children: [
-        Expanded(child: EntityListWidget(entities: bloc.companies, onTap: _onTap)),
+        Expanded(
+            child: EntityListWidget(
+                entities: bloc.companies,
+                onTap: (EntityBase entity) => CompanyTap(context, entity as Company)..invoke())),
         SizedBox(height: 10),
-        CustomButton(text: 'Add company', clickEvent: AddCompanyBtnClick(bloc, context), bloc: bloc)
+        CustomButton(text: 'Add company', clickEvent: () => AddCompanyBtnClick(context)..invoke())
       ]);
     else
-      return EntityListWidget(entities: bloc.companies, onTap: _onTap);
-  }
-
-  dynamic _onTap(BuildContext context, EntityBase entity) {
-    var company = entity as Company;
-    var bloc = BlocProvider.of<UserCompaniesPageBloc>(context);
-    bloc.add(CompanyTap(bloc, context, company));
+      return EntityListWidget(
+          entities: bloc.companies, onTap: (EntityBase entity) => CompanyTap(context, entity as Company)..invoke());
   }
 }

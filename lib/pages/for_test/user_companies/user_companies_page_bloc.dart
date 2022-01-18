@@ -20,9 +20,8 @@ class UserCompaniesPageBloc extends BaseBlocV2 {
   }
 }
 
-class LoadUserCompaniesPageEvent extends BaseEventV2 {
-  UserCompaniesPageBloc bloc;
-  LoadUserCompaniesPageEvent(this.bloc) : super();
+class LoadUserCompaniesPageEvent extends BaseEventV2<UserCompaniesPageBloc> {
+  LoadUserCompaniesPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -30,11 +29,8 @@ class LoadUserCompaniesPageEvent extends BaseEventV2 {
   }
 }
 
-class AddCompanyBtnClick extends BaseEventV2 {
-  UserCompaniesPageBloc bloc;
-  BuildContext context;
-
-  AddCompanyBtnClick(this.bloc, this.context) : super();
+class AddCompanyBtnClick extends BaseEventV2<UserCompaniesPageBloc> {
+  AddCompanyBtnClick(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -43,16 +39,14 @@ class AddCompanyBtnClick extends BaseEventV2 {
       MaterialPageRoute(
         builder: (context) => AddUserCompanyPage(user: bloc.user),
       ),
-    ).then((value) => bloc.add(LoadUserCompaniesPageEvent(bloc)));
+    ).then((value) => LoadUserCompaniesPageEvent(context)..invoke());
   }
 }
 
-class CompanyTap extends BaseEventV2 {
-  UserCompaniesPageBloc bloc;
-  BuildContext context;
+class CompanyTap extends BaseEventV2<UserCompaniesPageBloc> {
   Company company;
 
-  CompanyTap(this.bloc, this.context, this.company) : super();
+  CompanyTap(BuildContext context, this.company) : super(context);
 
   @override
   Future<void> execute() async {
@@ -61,6 +55,6 @@ class CompanyTap extends BaseEventV2 {
       MaterialPageRoute(
         builder: (context) => CompanyInfoPage(company: company),
       ),
-    ).then((value) => bloc.add(LoadUserCompaniesPageEvent(bloc)));
+    ).then((value) => LoadUserCompaniesPageEvent(context)..invoke());
   }
 }

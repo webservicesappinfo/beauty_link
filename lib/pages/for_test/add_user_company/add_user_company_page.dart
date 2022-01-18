@@ -31,7 +31,7 @@ class AddUserCompanyPage extends StatelessWidget {
                   children: [
                     CustomTextField(hint: 'enter name', ontextChanged: bloc.onChangedCompanyName),
                     SizedBox(height: 10),
-                    CustomButton(text: 'Add company', clickEvent: AddUserBtnClick(bloc, context), bloc: bloc)
+                    CustomButton(text: 'Add company', clickEvent: () => AddUserBtnClick(context)..invoke())
                   ],
                 );
             },

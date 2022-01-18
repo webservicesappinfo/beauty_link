@@ -27,7 +27,7 @@ class AddUserOfferPage extends StatelessWidget {
               var bloc = BlocProvider.of<AddUserOfferPageBloc>(context);
               switch (state.runtimeType) {
                 case InitState:
-                  bloc.add(AddOfferInfoPageLoad(bloc));
+                  AddOfferInfoPageLoad(context)..invoke();
                   return LoadingWidget();
                 case BeginEventState:
                   return LoadingWidget();
@@ -51,10 +51,11 @@ class AddUserOfferPage extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: CustomDropDownField(
                                 label: 'Select company',
-                                items: bloc.companies.map((e) => DropDownFieldItem(caption: e.name, entity: e)).toList(),
+                                items:
+                                    bloc.companies.map((e) => DropDownFieldItem(caption: e.name, entity: e)).toList(),
                                 onChanged: bloc.onCompanyChanged),
                           ),
-                          CustomButton(text: 'Add offer', clickEvent: AddOfferBtnClick(bloc, context), bloc: bloc)
+                          CustomButton(text: 'Add offer', clickEvent: () => AddOfferBtnClick(context))
                         ],
                       );
                     default:

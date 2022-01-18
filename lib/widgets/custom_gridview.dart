@@ -1,4 +1,3 @@
-import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:flutter/material.dart';
 
 class CustomGridView extends StatelessWidget {
@@ -21,7 +20,9 @@ class CustomGridView extends StatelessWidget {
                     child: Center(child: Text(item.text)),
                     color: Colors.grey[300],
                   ),
-                  onTap: () => item.bloc.add(item.event)))))
+                  onTap: () {
+                    item.onTap();
+                  }))))
           .toList(),
     );
   }
@@ -29,8 +30,6 @@ class CustomGridView extends StatelessWidget {
 
 class CustomGridViewItem {
   final String text;
-  final BaseBlocV2 bloc;
-  final BaseEventV2 event;
-
-  CustomGridViewItem({required this.text, required this.bloc, required this.event});
+  final void Function() onTap;
+  CustomGridViewItem({required this.text, required this.onTap});
 }

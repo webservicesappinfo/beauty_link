@@ -18,10 +18,8 @@ class AddUserPageBloc extends BaseBlocV2 {
   void onChangedUserName(String name) => userName = name;
 }
 
-class AddUserBtnClick extends BaseEventV2 {
-  AddUserPageBloc bloc;
-  BuildContext context;
-  AddUserBtnClick(this.bloc, this.context) : super();
+class AddUserBtnClick extends BaseEventV2<AddUserPageBloc> {
+  AddUserBtnClick(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {

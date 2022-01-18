@@ -23,17 +23,16 @@ class CompanyInfoPage extends StatelessWidget {
             body: BlocConsumer<CompanyInfoPageBloc, BaseStateV2>(listener: (context, state) {
               // TODO: implement listener
             }, builder: (context, state) {
-              var bloc = BlocProvider.of<CompanyInfoPageBloc>(context);
               switch (state.runtimeType) {
                 case InitState:
-                  bloc.add(CompanyInfoPageLoadEvent(bloc));
+                  CompanyInfoPageLoadEvent(context).invoke();
                   return LoadingWidget();
                 case BeginEventState:
                   return LoadingWidget();
                 case EndEventState:
                   switch ((state as EndEventState).event.runtimeType) {
                     case CompanyInfoPageLoadEvent:
-                      return _onLoadPageEvent(bloc, context);
+                      return _onLoadPageEvent(context);
                     default:
                       return Text('empty state');
                   }
@@ -43,12 +42,15 @@ class CompanyInfoPage extends StatelessWidget {
             })));
   }
 
-  Widget _onLoadPageEvent(CompanyInfoPageBloc bloc, BuildContext context) {
+  Widget _onLoadPageEvent(BuildContext context) {
+    var bloc = BlocProvider.of<CompanyInfoPageBloc>(context);
     return Center(
         child: Column(children: [
-      Text("Name: ${bloc.company.name ?? 'noName'}"),
+      Icon(Icons.business_center, size: 40),
+      Text("Name: ${bloc.company.name ?? 'noName'}", style: TextStyle(fontSize: 22)),
+      CustomButton(text: 'Set location', clickEvent: () => SetLocationBtnClick(context)..invoke()),
       bloc.company.masters.length > 0
-          ? Expanded(child: EntityListWidget(entities: bloc.company.masters, onTap: (context, entityBase) {}))
+          ? Expanded(child: EntityListWidget(entities: bloc.company.masters, onTap: (entityBase) {}))
           : Text("No masters"),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -79,7 +81,7 @@ class CompanyInfoPage extends StatelessWidget {
           )
         ]),
       ),
-      CustomButton(text: "Add master by QR", clickEvent: AddMasterByQREvent(context), bloc: bloc)
+      CustomButton(text: "Add master by QR", clickEvent: () => AddMasterByQREvent(context)..invoke())
     ]));
   }
 }

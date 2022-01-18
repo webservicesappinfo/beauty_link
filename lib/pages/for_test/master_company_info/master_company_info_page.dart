@@ -1,34 +1,33 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
-import 'package:beauty_link/models/offer.dart';
+import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
-import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'master_offer_info_bloc.dart';
+import 'master_company_info_bloc.dart';
 
-class MasterOfferInfoPage extends StatelessWidget {
-  final Offer offer;
+class MasterCompanyInfoPage extends StatelessWidget {
+  final Company company;
   final AppUser master;
-  const MasterOfferInfoPage({Key? key, required this.offer, required this.master}) : super(key: key);
+  const MasterCompanyInfoPage({Key? key, required this.company, required this.master}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => MasterOfferInfoPageBloc(InitState(), offer, master),
+        create: (context) => MasterCompanyInfoPageBloc(InitState(), company, master),
         child: Scaffold(
-            appBar: AppBar(title: Text('${offer.name}')),
-            body: BlocConsumer<MasterOfferInfoPageBloc, BaseStateV2>(
+            appBar: AppBar(title: Text('${company.name}')),
+            body: BlocConsumer<MasterCompanyInfoPageBloc, BaseStateV2>(
               listener: (context, state) {
                 // TODO: implement listener
               },
               builder: (context, state) {
-                var bloc = BlocProvider.of<MasterOfferInfoPageBloc>(context);
+                var bloc = BlocProvider.of<MasterCompanyInfoPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    MasterOfferInfoPageEvent(context)..invoke();
+                    bloc.add(MasterOfferInfoPageEvent(context));
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -46,15 +45,13 @@ class MasterOfferInfoPage extends StatelessWidget {
             )));
   }
 
-  Widget _onLoadPageEvent(MasterOfferInfoPageBloc bloc, BuildContext context) {
+  Widget _onLoadPageEvent(MasterCompanyInfoPageBloc bloc, BuildContext context) {
     return Center(
         child: Column(
       children: [
-        Text('Offer name: ${bloc.offer.name}'),
-        Text('Master name: ${bloc.offer.masterName}'),
-        Text('Skill name: ${bloc.offer.skillName}'),
-        CustomButton(text: "Set Location", clickEvent: () => SetLocationEvent(context)..invoke()),
-        CustomButton(text: "Del offer", clickEvent: () => DelOfferEvent(context)..invoke())
+        Text('Company name: ${bloc.company.name}'),
+        Text('Master name: ${bloc.master.name}'),
+        CustomButton(text: "Del master", clickEvent: () => DelMasterBtnClick(context)..invoke())
       ],
     ));
   }

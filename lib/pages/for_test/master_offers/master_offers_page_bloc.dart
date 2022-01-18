@@ -21,16 +21,10 @@ class MasterOffersPageBloc extends BaseBlocV2 {
       if (status != "all") offers = offers.where((element) => element.status?.toLowerCase() == status).toList();
     });
   }
-
-  void onFilterChanged(EntityBase? item) {
-    status = (item as DropDownItem).getCaption();
-    add(LoadOffersPageEvent(this));
-  }
 }
 
-class LoadOffersPageEvent extends BaseEventV2 {
-  MasterOffersPageBloc bloc;
-  LoadOffersPageEvent(this.bloc) : super();
+class LoadOffersPageEvent extends BaseEventV2<MasterOffersPageBloc> {
+  LoadOffersPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -38,27 +32,21 @@ class LoadOffersPageEvent extends BaseEventV2 {
   }
 }
 
-class TapUserEvent extends BaseEventV2 {
-  MasterOffersPageBloc bloc;
-  BuildContext context;
+class TapUserEvent extends BaseEventV2<MasterOffersPageBloc> {
   Offer offer;
-
-  TapUserEvent(this.bloc, this.context, this.offer) : super();
+  TapUserEvent(BuildContext context, this.offer) : super(context);
 
   @override
   Future<void> execute() async {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => MasterOfferInfoPage(master: bloc.user, offer: offer)),
-    ).then((value) => bloc.add(LoadOffersPageEvent(bloc)));
+    ).then((value) => LoadOffersPageEvent(context)..invoke());
   }
 }
 
-class AddOfferBtnClick extends BaseEventV2 {
-  MasterOffersPageBloc bloc;
-  BuildContext context;
-
-  AddOfferBtnClick(this.bloc, this.context) : super();
+class AddOfferBtnClick extends BaseEventV2<MasterOffersPageBloc> {
+  AddOfferBtnClick(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -67,6 +55,6 @@ class AddOfferBtnClick extends BaseEventV2 {
       MaterialPageRoute(
         builder: (context) => AddUserOfferPage(user: bloc.user),
       ),
-    ).then((value) => bloc.add(LoadOffersPageEvent(bloc)));
+    ).then((value) => LoadOffersPageEvent(context)..invoke());
   }
 }

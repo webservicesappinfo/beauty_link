@@ -41,7 +41,7 @@ class UserInfoPage extends StatelessWidget {
                   var bloc = BlocProvider.of<UserInfoPageBloc>(context);
                   switch (state.runtimeType) {
                     case InitState:
-                      bloc.add(LoadUserInfoPageEvent(bloc));
+                      LoadUserInfoPageEvent(context)..invoke();
                       return LoadingWidget();
                     case BeginEventState:
                       return LoadingWidget();
@@ -69,33 +69,36 @@ class UserInfoPage extends StatelessWidget {
         Column(children: [
           Expanded(
               child: CustomGridView(items: [
-            CustomGridViewItem(bloc: bloc, event: FindOfferBtnClicEvent(bloc, context), text: 'Find Offer'),
-            CustomGridViewItem(bloc: bloc, event: ClientOrdersBtnClicEvent(bloc, context), text: 'Orders')
+            CustomGridViewItem(
+                onTap: () {
+                  FindOfferBtnClicEvent(context)..invoke();
+                },
+                text: 'Find Offer'),
+            CustomGridViewItem(onTap: () => ClientOrdersBtnClicEvent(context)..invoke(), text: 'Orders')
           ]))
         ]),
         Column(children: [
           Expanded(
               child: CustomGridView(items: [
             CustomGridViewItem(
-                bloc: bloc, event: CompaniesBtnClickEvent(bloc, context, "contains"), text: 'ContainCompanies'),
+                onTap: () => CompaniesBtnClickEvent(context, "contains")..invoke(), text: 'ContainCompanies'),
             CustomGridViewItem(
-                bloc: bloc, event: CompaniesBtnClickEvent(bloc, context, "canbecontains"), text: 'JoinCompanies'),
-            CustomGridViewItem(bloc: bloc, event: OffersBtnClicEvent(bloc, context), text: 'Offers'),
-            CustomGridViewItem(bloc: bloc, event: MasterOrdersBtnClicEvent(bloc, context), text: 'Orders')
+                onTap: () => CompaniesBtnClickEvent(context, "canbecontains")..invoke(), text: 'JoinCompanies'),
+            CustomGridViewItem(onTap: () => OffersBtnClicEvent(context)..invoke(), text: 'Offers'),
+            CustomGridViewItem(onTap: () => MasterOrdersBtnClicEvent(context)..invoke(), text: 'Orders')
           ]))
         ]),
         Column(children: [
           Expanded(
               child: CustomGridView(items: [
-            CustomGridViewItem(bloc: bloc, event: CompaniesBtnClickEvent(bloc, context, "owner"), text: 'Companies')
+            CustomGridViewItem(onTap: () => CompaniesBtnClickEvent(context, "owner")..invoke(), text: 'Companies')
           ]))
         ]),
         Column(
           children: [
             Text('User name: ${bloc.user.name ?? 'empty'}'),
             CustomButton(
-              bloc: bloc,
-              clickEvent: DelUserEvent(bloc, context),
+              clickEvent: () => DelUserEvent(context),
               text: "Del User",
             )
           ],

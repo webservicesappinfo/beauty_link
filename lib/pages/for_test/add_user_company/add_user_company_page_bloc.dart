@@ -3,6 +3,7 @@ import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/services/company_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddUserCompanyPageBloc extends BaseBlocV2 {
   String? companyName;
@@ -17,10 +18,8 @@ class AddUserCompanyPageBloc extends BaseBlocV2 {
   void onChangedCompanyName(String name) => companyName = name;
 }
 
-class AddUserBtnClick extends BaseEventV2 {
-  AddUserCompanyPageBloc bloc;
-  BuildContext context;
-  AddUserBtnClick(this.bloc, this.context) : super();
+class AddUserBtnClick extends BaseEventV2<AddUserCompanyPageBloc> {
+  AddUserBtnClick(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {

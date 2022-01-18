@@ -20,9 +20,8 @@ class ClientOrderInfoPageBloc extends BaseBlocV2 {
   }
 }
 
-class ClientOrderInfoPageEvent extends BaseEventV2 {
-  ClientOrderInfoPageBloc bloc;
-  ClientOrderInfoPageEvent(this.bloc) : super();
+class ClientOrderInfoPageEvent extends BaseEventV2<ClientOrderInfoPageBloc> {
+  ClientOrderInfoPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -30,10 +29,8 @@ class ClientOrderInfoPageEvent extends BaseEventV2 {
   }
 }
 
-class CancelOrderBtnClickEvent extends BaseEventV2 {
-  ClientOrderInfoPageBloc bloc;
-  BuildContext context;
-  CancelOrderBtnClickEvent(this.context, this.bloc) : super();
+class CancelOrderBtnClickEvent extends BaseEventV2<ClientOrderInfoPageBloc> {
+  CancelOrderBtnClickEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {

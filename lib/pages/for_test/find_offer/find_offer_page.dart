@@ -28,7 +28,7 @@ class FindOfferPage extends StatelessWidget {
                 var bloc = BlocProvider.of<FindOfferPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(LoadFindOfferPageEvent(bloc));
+                    LoadFindOfferPageEvent(context)..invoke();
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -107,7 +107,7 @@ class FindOfferPage extends StatelessWidget {
             ),
           ),
         ),
-        CustomButton(text: 'Find', clickEvent: FindBtnClickEvent(bloc, context), bloc: bloc)
+        CustomButton(text: 'Find', clickEvent: () => FindBtnClickEvent(context)..invoke())
       ],
     );
   }

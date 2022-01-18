@@ -20,9 +20,8 @@ class UserInfoPageBloc extends BaseBlocV2 {
   }
 }
 
-class LoadUserInfoPageEvent extends BaseEventV2 {
-  UserInfoPageBloc bloc;
-  LoadUserInfoPageEvent(this.bloc) : super();
+class LoadUserInfoPageEvent extends BaseEventV2<UserInfoPageBloc> {
+  LoadUserInfoPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -30,81 +29,69 @@ class LoadUserInfoPageEvent extends BaseEventV2 {
   }
 }
 
-class CompaniesBtnClickEvent extends BaseEventV2 {
-  UserInfoPageBloc bloc;
-  BuildContext context;
+class CompaniesBtnClickEvent extends BaseEventV2<UserInfoPageBloc> {
   String companyType;
-  CompaniesBtnClickEvent(this.bloc, this.context, this.companyType) : super();
+  CompaniesBtnClickEvent(BuildContext context, this.companyType) : super(context);
 
   @override
   Future<void> execute() async {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => UserCompaniesPage(companyType: companyType, user: bloc.user)),
-    ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
+    ).then((value) => LoadUserInfoPageEvent(context)..invoke());
   }
 }
 
-class OffersBtnClicEvent extends BaseEventV2 {
-  UserInfoPageBloc bloc;
-  BuildContext context;
-  OffersBtnClicEvent(this.bloc, this.context) : super();
+class OffersBtnClicEvent extends BaseEventV2<UserInfoPageBloc> {
+  OffersBtnClicEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => MasterOffersPage(user: bloc.user)),
-    ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
+    ).then((value) => LoadUserInfoPageEvent(context)..invoke());
   }
 }
 
-class FindOfferBtnClicEvent extends BaseEventV2 {
-  UserInfoPageBloc bloc;
-  BuildContext context;
-  FindOfferBtnClicEvent(this.bloc, this.context) : super();
+class FindOfferBtnClicEvent extends BaseEventV2<UserInfoPageBloc> {
+  FindOfferBtnClicEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => FindOfferPage(client: bloc.user)),
-    ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
+    ).then((value) => LoadUserInfoPageEvent(context)..invoke());
   }
 }
 
-class MasterOrdersBtnClicEvent extends BaseEventV2 {
-  UserInfoPageBloc bloc;
-  BuildContext context;
-  MasterOrdersBtnClicEvent(this.bloc, this.context) : super();
+class MasterOrdersBtnClicEvent extends BaseEventV2<UserInfoPageBloc> {
+  MasterOrdersBtnClicEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => MasterOrdersPage(master: bloc.user)),
-    ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
+    ).then((value) => LoadUserInfoPageEvent(context)..invoke());
   }
 }
 
-class ClientOrdersBtnClicEvent extends BaseEventV2 {
-  UserInfoPageBloc bloc;
-  BuildContext context;
-  ClientOrdersBtnClicEvent(this.bloc, this.context) : super();
+class ClientOrdersBtnClicEvent extends BaseEventV2<UserInfoPageBloc> {
+  ClientOrdersBtnClicEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ClientOrdersPage(client: bloc.user)),
-    ).then((value) => bloc.add(LoadUserInfoPageEvent(bloc)));
+    ).then((value) => LoadUserInfoPageEvent(context)..invoke());
   }
 }
 
-class DelUserEvent extends BaseEventV2 {
-  UserInfoPageBloc bloc;
-  BuildContext context;
-  DelUserEvent(this.bloc, this.context) : super();
+class DelUserEvent extends BaseEventV2<UserInfoPageBloc> {
+  DelUserEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {

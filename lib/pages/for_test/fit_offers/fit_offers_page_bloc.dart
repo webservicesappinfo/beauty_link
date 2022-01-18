@@ -19,9 +19,8 @@ class FitOffersPageBloc extends BaseBlocV2 {
   }
 }
 
-class LoadOffersPageEvent extends BaseEventV2 {
-  FitOffersPageBloc bloc;
-  LoadOffersPageEvent(BuildContext context, this.bloc) : super();
+class LoadOffersPageEvent extends BaseEventV2<FitOffersPageBloc> {
+  LoadOffersPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -29,12 +28,10 @@ class LoadOffersPageEvent extends BaseEventV2 {
   }
 }
 
-class TapOfferEvent extends BaseEventV2 {
-  FitOffersPageBloc bloc;
-  BuildContext context;
+class TapOfferEvent extends BaseEventV2<FitOffersPageBloc> {
   Offer offer;
 
-  TapOfferEvent(this.bloc, this.context, this.offer) : super();
+  TapOfferEvent(BuildContext context, this.offer) : super(context);
 
   @override
   Future<void> execute() async {
@@ -46,6 +43,6 @@ class TapOfferEvent extends BaseEventV2 {
           client: bloc.client,
         ),
       ),
-    ).then((value) => bloc.add(LoadOffersPageEvent(context, bloc)));
+    ).then((value) => LoadOffersPageEvent(context)..invoke());
   }
 }

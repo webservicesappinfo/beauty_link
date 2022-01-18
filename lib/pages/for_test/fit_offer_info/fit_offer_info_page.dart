@@ -27,7 +27,7 @@ class FitOfferInfoPage extends StatelessWidget {
                 var bloc = BlocProvider.of<FitOfferInfoPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(FitOfferInfoPageEvent(bloc));
+                    FitOfferInfoPageEvent(context)..invoke();
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -53,7 +53,7 @@ class FitOfferInfoPage extends StatelessWidget {
         Text('Master name: ${bloc.fitOffer.masterName}'),
         Text('Skill name: ${bloc.fitOffer.skillName}'),
         Text('Client name: ${bloc.client.name}'),
-        CustomButton(text: "Create order", clickEvent: CreateOrderBtnClickEvent(context, bloc), bloc: bloc),
+        CustomButton(text: "Create order", clickEvent: () => CreateOrderBtnClickEvent(context)..invoke())
       ],
     ));
   }

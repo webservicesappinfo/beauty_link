@@ -1,10 +1,9 @@
-import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:flutter/material.dart';
 
 class EntityListWidget extends StatelessWidget {
   final List<EntityBase> entities;
-  final Function(BuildContext, EntityBase) onTap;
+  final Function(EntityBase) onTap;
   EntityListWidget({Key? key, required this.entities, required this.onTap}) : super(key: key);
 
   @override
@@ -25,7 +24,7 @@ class EntityListWidget extends StatelessWidget {
                     tileColor: entities[index].getColor(),
                     title: Text(entities[index].getCaption(), style: TextStyle(fontSize: 22)),
                     subtitle: Text(entities[index].getSubCaption(), style: TextStyle(fontSize: 14)),
-                    onTap: () => onTap(context, entities[index])),
+                    onTap: () => onTap(entities[index])),
               ));
         });
   }

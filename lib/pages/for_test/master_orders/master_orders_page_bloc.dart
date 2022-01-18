@@ -22,16 +22,10 @@ class MasterOrdersPageBloc extends BaseBlocV2 {
       if (status != "all") orders = orders.where((element) => element.status?.toLowerCase() == status).toList();
     });
   }
-
-  void onFilterChanged(EntityBase? item) {
-    status = (item as DropDownItem).getCaption();
-    add(LoadMasterOrdersPageEvent(this));
-  }
 }
 
-class LoadMasterOrdersPageEvent extends BaseEventV2 {
-  MasterOrdersPageBloc bloc;
-  LoadMasterOrdersPageEvent(this.bloc) : super();
+class LoadMasterOrdersPageEvent extends BaseEventV2<MasterOrdersPageBloc> {
+  LoadMasterOrdersPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -39,12 +33,10 @@ class LoadMasterOrdersPageEvent extends BaseEventV2 {
   }
 }
 
-class TapOrderEvent extends BaseEventV2 {
-  MasterOrdersPageBloc bloc;
-  BuildContext context;
+class TapOrderEvent extends BaseEventV2<MasterOrdersPageBloc> {
   Order _tapOrder;
 
-  TapOrderEvent(this.bloc, this.context, this._tapOrder) : super();
+  TapOrderEvent(BuildContext context, this._tapOrder) : super(context);
 
   @override
   Future<void> execute() async {
@@ -56,6 +48,6 @@ class TapOrderEvent extends BaseEventV2 {
           order: _tapOrder,
         ),
       ),
-    ).then((value) => bloc.add(LoadMasterOrdersPageEvent(bloc)));
+    ).then((value) => LoadMasterOrdersPageEvent(context)..invoke());
   }
 }

@@ -53,9 +53,8 @@ class AddUserOfferPageBloc extends BaseBlocV2 {
   void onCompanyChanged(DropDownFieldItem? item) => selectedCompany = item?.entity as Company;
 }
 
-class AddOfferInfoPageLoad extends BaseEventV2 {
-  AddUserOfferPageBloc bloc;
-  AddOfferInfoPageLoad(this.bloc) : super();
+class AddOfferInfoPageLoad extends BaseEventV2<AddUserOfferPageBloc> {
+  AddOfferInfoPageLoad(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -63,10 +62,8 @@ class AddOfferInfoPageLoad extends BaseEventV2 {
   }
 }
 
-class AddOfferBtnClick extends BaseEventV2 {
-  AddUserOfferPageBloc bloc;
-  BuildContext context;
-  AddOfferBtnClick(this.bloc, this.context) : super();
+class AddOfferBtnClick extends BaseEventV2<AddUserOfferPageBloc> {
+  AddOfferBtnClick(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {

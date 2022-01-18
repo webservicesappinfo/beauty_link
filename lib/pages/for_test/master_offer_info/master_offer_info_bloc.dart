@@ -21,9 +21,8 @@ class MasterOfferInfoPageBloc extends BaseBlocV2 {
   }
 }
 
-class MasterOfferInfoPageEvent extends BaseEventV2 {
-  MasterOfferInfoPageBloc bloc;
-  MasterOfferInfoPageEvent(this.bloc) : super();
+class MasterOfferInfoPageEvent extends BaseEventV2<MasterOfferInfoPageBloc> {
+  MasterOfferInfoPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -31,10 +30,8 @@ class MasterOfferInfoPageEvent extends BaseEventV2 {
   }
 }
 
-class DelOfferEvent extends BaseEventV2 {
-  MasterOfferInfoPageBloc bloc;
-  BuildContext context;
-  DelOfferEvent(this.bloc, this.context) : super();
+class DelOfferEvent extends BaseEventV2<MasterOfferInfoPageBloc> {
+  DelOfferEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -42,10 +39,8 @@ class DelOfferEvent extends BaseEventV2 {
   }
 }
 
-class SetLocationEvent extends BaseEventV2 {
-  MasterOfferInfoPageBloc bloc;
-  BuildContext context;
-  SetLocationEvent(this.bloc, this.context) : super();
+class SetLocationEvent extends BaseEventV2<MasterOfferInfoPageBloc> {
+  SetLocationEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -54,7 +49,7 @@ class SetLocationEvent extends BaseEventV2 {
         MaterialPageRoute(
           builder: (context) => MapPickerPage(),
         )).then((value) {
-      bloc.add(MasterOfferInfoPageEvent(bloc));
+      MasterOfferInfoPageEvent(context)..invoke();
     });
   }
 }

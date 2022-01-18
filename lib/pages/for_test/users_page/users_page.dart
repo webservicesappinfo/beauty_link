@@ -24,7 +24,7 @@ class UsersPage extends StatelessWidget {
                 var bloc = BlocProvider.of<UsersPageBloc>(context);
                 switch (state.runtimeType) {
                   case InitState:
-                    bloc.add(LoadUserPageEvent(context, bloc));
+                    LoadUserPageEvent(context)..invoke();
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
@@ -45,14 +45,10 @@ class UsersPage extends StatelessWidget {
   Widget _onUsersPageLoadedState(BuildContext context) {
     var bloc = BlocProvider.of<UsersPageBloc>(context);
     return Column(children: [
-      Expanded(child: EntityListWidget(entities: bloc.users, onTap: _onTap)),
-      CustomButton(text: 'Add user', clickEvent: AddUserBtnClick(bloc, context), bloc: bloc)
+      Expanded(
+          child: EntityListWidget(
+              entities: bloc.users, onTap: (EntityBase entity) => TapUserEvent(context, entity as AppUser)..invoke())),
+      CustomButton(text: 'Add user', clickEvent: () => AddUserBtnClick(context)..invoke())
     ]);
-  }
-
-  dynamic _onTap(BuildContext context, EntityBase entity) {
-    var user = entity as AppUser;
-    var bloc = BlocProvider.of<UsersPageBloc>(context);
-    bloc.add(TapUserEvent(bloc, context, user));
   }
 }

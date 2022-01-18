@@ -32,9 +32,8 @@ class FitOfferInfoPageBloc extends BaseBlocV2 {
   }
 }
 
-class FitOfferInfoPageEvent extends BaseEventV2 {
-  FitOfferInfoPageBloc bloc;
-  FitOfferInfoPageEvent(this.bloc) : super();
+class FitOfferInfoPageEvent extends BaseEventV2<FitOfferInfoPageBloc> {
+  FitOfferInfoPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -42,10 +41,8 @@ class FitOfferInfoPageEvent extends BaseEventV2 {
   }
 }
 
-class CreateOrderBtnClickEvent extends BaseEventV2 {
-  FitOfferInfoPageBloc bloc;
-  BuildContext context;
-  CreateOrderBtnClickEvent(this.context, this.bloc) : super();
+class CreateOrderBtnClickEvent extends BaseEventV2<FitOfferInfoPageBloc> {
+  CreateOrderBtnClickEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {

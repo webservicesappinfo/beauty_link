@@ -18,9 +18,8 @@ class UsersPageBloc extends BaseBlocV2 {
   }
 }
 
-class LoadUserPageEvent extends BaseEventV2 {
-  UsersPageBloc bloc;
-  LoadUserPageEvent(BuildContext context, this.bloc) : super();
+class LoadUserPageEvent extends BaseEventV2<UsersPageBloc> {
+  LoadUserPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -28,12 +27,10 @@ class LoadUserPageEvent extends BaseEventV2 {
   }
 }
 
-class TapUserEvent extends BaseEventV2 {
-  UsersPageBloc bloc;
-  BuildContext context;
+class TapUserEvent extends BaseEventV2<UsersPageBloc> {
   AppUser _tapUser;
 
-  TapUserEvent(this.bloc, this.context, this._tapUser) : super();
+  TapUserEvent(BuildContext context, this._tapUser) : super(context);
 
   @override
   Future<void> execute() async {
@@ -42,15 +39,12 @@ class TapUserEvent extends BaseEventV2 {
       MaterialPageRoute(
         builder: (context) => UserInfoPage(user: _tapUser),
       ),
-    ).then((value) => bloc.add(LoadUserPageEvent(context, bloc)));
+    ).then((value) => LoadUserPageEvent(context)..invoke());
   }
 }
 
-class AddUserBtnClick extends BaseEventV2 {
-  UsersPageBloc bloc;
-  BuildContext context;
-
-  AddUserBtnClick(this.bloc, this.context) : super();
+class AddUserBtnClick extends BaseEventV2<UsersPageBloc> {
+  AddUserBtnClick(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -59,6 +53,6 @@ class AddUserBtnClick extends BaseEventV2 {
       MaterialPageRoute(
         builder: (context) => AddUserPage(),
       ),
-    ).then((value) => bloc.add(LoadUserPageEvent(context, bloc)));
+    ).then((value) => LoadUserPageEvent(context)..invoke());
   }
 }
