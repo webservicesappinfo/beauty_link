@@ -62,8 +62,10 @@ class GetCompanyReply extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ownerGuid', protoName: 'ownerGuid')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ownerName', protoName: 'ownerName')
-    ..pPS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuids', protoName: 'masterGuids')
-    ..pPS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterNames', protoName: 'masterNames')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lat')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lng')
+    ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuids', protoName: 'masterGuids')
+    ..pPS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterNames', protoName: 'masterNames')
     ..hasRequiredFields = false
   ;
 
@@ -73,6 +75,8 @@ class GetCompanyReply extends $pb.GeneratedMessage {
     $core.String? guid,
     $core.String? ownerGuid,
     $core.String? ownerName,
+    $core.String? lat,
+    $core.String? lng,
     $core.Iterable<$core.String>? masterGuids,
     $core.Iterable<$core.String>? masterNames,
   }) {
@@ -88,6 +92,12 @@ class GetCompanyReply extends $pb.GeneratedMessage {
     }
     if (ownerName != null) {
       _result.ownerName = ownerName;
+    }
+    if (lat != null) {
+      _result.lat = lat;
+    }
+    if (lng != null) {
+      _result.lng = lng;
     }
     if (masterGuids != null) {
       _result.masterGuids.addAll(masterGuids);
@@ -155,10 +165,28 @@ class GetCompanyReply extends $pb.GeneratedMessage {
   void clearOwnerName() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.List<$core.String> get masterGuids => $_getList(4);
+  $core.String get lat => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set lat($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasLat() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearLat() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.List<$core.String> get masterNames => $_getList(5);
+  $core.String get lng => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set lng($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasLng() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearLng() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.List<$core.String> get masterGuids => $_getList(6);
+
+  @$pb.TagNumber(8)
+  $core.List<$core.String> get masterNames => $_getList(7);
 }
 
 class GetCompaniesRequest extends $pb.GeneratedMessage {
@@ -734,6 +762,128 @@ class DelCompanyReply extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static DelCompanyReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelCompanyReply>(create);
   static DelCompanyReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get result => $_getBF(0);
+  @$pb.TagNumber(1)
+  set result($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasResult() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearResult() => clearField(1);
+}
+
+class SetCompanyLocationRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SetCompanyLocationRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lat', $pb.PbFieldType.OD)
+    ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lng', $pb.PbFieldType.OD)
+    ..hasRequiredFields = false
+  ;
+
+  SetCompanyLocationRequest._() : super();
+  factory SetCompanyLocationRequest({
+    $core.String? guid,
+    $core.double? lat,
+    $core.double? lng,
+  }) {
+    final _result = create();
+    if (guid != null) {
+      _result.guid = guid;
+    }
+    if (lat != null) {
+      _result.lat = lat;
+    }
+    if (lng != null) {
+      _result.lng = lng;
+    }
+    return _result;
+  }
+  factory SetCompanyLocationRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SetCompanyLocationRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SetCompanyLocationRequest clone() => SetCompanyLocationRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SetCompanyLocationRequest copyWith(void Function(SetCompanyLocationRequest) updates) => super.copyWith((message) => updates(message as SetCompanyLocationRequest)) as SetCompanyLocationRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SetCompanyLocationRequest create() => SetCompanyLocationRequest._();
+  SetCompanyLocationRequest createEmptyInstance() => create();
+  static $pb.PbList<SetCompanyLocationRequest> createRepeated() => $pb.PbList<SetCompanyLocationRequest>();
+  @$core.pragma('dart2js:noInline')
+  static SetCompanyLocationRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SetCompanyLocationRequest>(create);
+  static SetCompanyLocationRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get guid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set guid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGuid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.double get lat => $_getN(1);
+  @$pb.TagNumber(2)
+  set lat($core.double v) { $_setDouble(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLat() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLat() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.double get lng => $_getN(2);
+  @$pb.TagNumber(3)
+  set lng($core.double v) { $_setDouble(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLng() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLng() => clearField(3);
+}
+
+class SetCompanyLocationReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SetCompanyLocationReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'company'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
+    ..hasRequiredFields = false
+  ;
+
+  SetCompanyLocationReply._() : super();
+  factory SetCompanyLocationReply({
+    $core.bool? result,
+  }) {
+    final _result = create();
+    if (result != null) {
+      _result.result = result;
+    }
+    return _result;
+  }
+  factory SetCompanyLocationReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SetCompanyLocationReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SetCompanyLocationReply clone() => SetCompanyLocationReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SetCompanyLocationReply copyWith(void Function(SetCompanyLocationReply) updates) => super.copyWith((message) => updates(message as SetCompanyLocationReply)) as SetCompanyLocationReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SetCompanyLocationReply create() => SetCompanyLocationReply._();
+  SetCompanyLocationReply createEmptyInstance() => create();
+  static $pb.PbList<SetCompanyLocationReply> createRepeated() => $pb.PbList<SetCompanyLocationReply>();
+  @$core.pragma('dart2js:noInline')
+  static SetCompanyLocationReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SetCompanyLocationReply>(create);
+  static SetCompanyLocationReply? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get result => $_getBF(0);

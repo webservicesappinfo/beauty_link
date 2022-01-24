@@ -50,6 +50,12 @@ class CompanyClient extends $grpc.Client {
           ($0.DelCompanyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.DelCompanyReply.fromBuffer(value));
+  static final _$setCompanyLocation = $grpc.ClientMethod<
+          $0.SetCompanyLocationRequest, $0.SetCompanyLocationReply>(
+      '/company.Company/SetCompanyLocation',
+      ($0.SetCompanyLocationRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $0.SetCompanyLocationReply.fromBuffer(value));
 
   CompanyClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -90,6 +96,12 @@ class CompanyClient extends $grpc.Client {
       $0.DelCompanyRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delCompany, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.SetCompanyLocationReply> setCompanyLocation(
+      $0.SetCompanyLocationRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setCompanyLocation, request, options: options);
   }
 }
 
@@ -145,6 +157,15 @@ abstract class CompanyServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.DelCompanyRequest.fromBuffer(value),
         ($0.DelCompanyReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.SetCompanyLocationRequest,
+            $0.SetCompanyLocationReply>(
+        'SetCompanyLocation',
+        setCompanyLocation_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $0.SetCompanyLocationRequest.fromBuffer(value),
+        ($0.SetCompanyLocationReply value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.AddCompanyReply> addCompany_Pre($grpc.ServiceCall call,
@@ -177,6 +198,12 @@ abstract class CompanyServiceBase extends $grpc.Service {
     return delCompany(call, await request);
   }
 
+  $async.Future<$0.SetCompanyLocationReply> setCompanyLocation_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.SetCompanyLocationRequest> request) async {
+    return setCompanyLocation(call, await request);
+  }
+
   $async.Future<$0.AddCompanyReply> addCompany(
       $grpc.ServiceCall call, $0.AddCompanyRequest request);
   $async.Future<$0.JoinToCompanyReply> joinToCompany(
@@ -189,4 +216,6 @@ abstract class CompanyServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.UpdateCompanyRequest request);
   $async.Future<$0.DelCompanyReply> delCompany(
       $grpc.ServiceCall call, $0.DelCompanyRequest request);
+  $async.Future<$0.SetCompanyLocationReply> setCompanyLocation(
+      $grpc.ServiceCall call, $0.SetCompanyLocationRequest request);
 }

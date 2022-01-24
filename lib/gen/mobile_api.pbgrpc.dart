@@ -76,6 +76,12 @@ class MobileApiClient extends $grpc.Client {
           ($1.DelCompanyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.DelCompanyReply.fromBuffer(value));
+  static final _$apiSetCompanyLocation = $grpc.ClientMethod<
+          $1.SetCompanyLocationRequest, $1.SetCompanyLocationReply>(
+      '/mobileApi.MobileApi/apiSetCompanyLocation',
+      ($1.SetCompanyLocationRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $1.SetCompanyLocationReply.fromBuffer(value));
   static final _$apiAddSkill =
       $grpc.ClientMethod<$2.AddSkillRequest, $2.AddSkillReply>(
           '/mobileApi.MobileApi/ApiAddSkill',
@@ -227,6 +233,12 @@ class MobileApiClient extends $grpc.Client {
       $1.DelCompanyRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiDelCompany, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.SetCompanyLocationReply> apiSetCompanyLocation(
+      $1.SetCompanyLocationRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$apiSetCompanyLocation, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.AddSkillReply> apiAddSkill($2.AddSkillRequest request,
@@ -406,6 +418,15 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.DelCompanyRequest.fromBuffer(value),
         ($1.DelCompanyReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.SetCompanyLocationRequest,
+            $1.SetCompanyLocationReply>(
+        'apiSetCompanyLocation',
+        apiSetCompanyLocation_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $1.SetCompanyLocationRequest.fromBuffer(value),
+        ($1.SetCompanyLocationReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.AddSkillRequest, $2.AddSkillReply>(
         'ApiAddSkill',
         apiAddSkill_Pre,
@@ -596,6 +617,12 @@ abstract class MobileApiServiceBase extends $grpc.Service {
     return apiDelCompany(call, await request);
   }
 
+  $async.Future<$1.SetCompanyLocationReply> apiSetCompanyLocation_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$1.SetCompanyLocationRequest> request) async {
+    return apiSetCompanyLocation(call, await request);
+  }
+
   $async.Future<$2.AddSkillReply> apiAddSkill_Pre(
       $grpc.ServiceCall call, $async.Future<$2.AddSkillRequest> request) async {
     return apiAddSkill(call, await request);
@@ -709,6 +736,8 @@ abstract class MobileApiServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $1.GetCompaniesRequest request);
   $async.Future<$1.DelCompanyReply> apiDelCompany(
       $grpc.ServiceCall call, $1.DelCompanyRequest request);
+  $async.Future<$1.SetCompanyLocationReply> apiSetCompanyLocation(
+      $grpc.ServiceCall call, $1.SetCompanyLocationRequest request);
   $async.Future<$2.AddSkillReply> apiAddSkill(
       $grpc.ServiceCall call, $2.AddSkillRequest request);
   $async.Future<$2.GetSkillsReply> apiGetSkills(

@@ -1,12 +1,14 @@
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Company extends EntityBase {
   String? guid;
   String? name;
   String? ownerGuid;
   String? ownerName;
+  LatLng? location;
   List<AppUser> masters = [];
 
   Company({this.guid, required this.name, this.ownerGuid, this.ownerName});

@@ -26,13 +26,15 @@ const GetCompanyReply$json = const {
     const {'1': 'guid', '3': 2, '4': 1, '5': 9, '10': 'guid'},
     const {'1': 'ownerGuid', '3': 3, '4': 1, '5': 9, '10': 'ownerGuid'},
     const {'1': 'ownerName', '3': 4, '4': 1, '5': 9, '10': 'ownerName'},
-    const {'1': 'masterGuids', '3': 5, '4': 3, '5': 9, '10': 'masterGuids'},
-    const {'1': 'masterNames', '3': 6, '4': 3, '5': 9, '10': 'masterNames'},
+    const {'1': 'lat', '3': 5, '4': 1, '5': 9, '10': 'lat'},
+    const {'1': 'lng', '3': 6, '4': 1, '5': 9, '10': 'lng'},
+    const {'1': 'masterGuids', '3': 7, '4': 3, '5': 9, '10': 'masterGuids'},
+    const {'1': 'masterNames', '3': 8, '4': 3, '5': 9, '10': 'masterNames'},
   ],
 };
 
 /// Descriptor for `GetCompanyReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getCompanyReplyDescriptor = $convert.base64Decode('Cg9HZXRDb21wYW55UmVwbHkSEgoEbmFtZRgBIAEoCVIEbmFtZRISCgRndWlkGAIgASgJUgRndWlkEhwKCW93bmVyR3VpZBgDIAEoCVIJb3duZXJHdWlkEhwKCW93bmVyTmFtZRgEIAEoCVIJb3duZXJOYW1lEiAKC21hc3Rlckd1aWRzGAUgAygJUgttYXN0ZXJHdWlkcxIgCgttYXN0ZXJOYW1lcxgGIAMoCVILbWFzdGVyTmFtZXM=');
+final $typed_data.Uint8List getCompanyReplyDescriptor = $convert.base64Decode('Cg9HZXRDb21wYW55UmVwbHkSEgoEbmFtZRgBIAEoCVIEbmFtZRISCgRndWlkGAIgASgJUgRndWlkEhwKCW93bmVyR3VpZBgDIAEoCVIJb3duZXJHdWlkEhwKCW93bmVyTmFtZRgEIAEoCVIJb3duZXJOYW1lEhAKA2xhdBgFIAEoCVIDbGF0EhAKA2xuZxgGIAEoCVIDbG5nEiAKC21hc3Rlckd1aWRzGAcgAygJUgttYXN0ZXJHdWlkcxIgCgttYXN0ZXJOYW1lcxgIIAMoCVILbWFzdGVyTmFtZXM=');
 @$core.Deprecated('Use getCompaniesRequestDescriptor instead')
 const GetCompaniesRequest$json = const {
   '1': 'GetCompaniesRequest',
@@ -142,3 +144,25 @@ const DelCompanyReply$json = const {
 
 /// Descriptor for `DelCompanyReply`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List delCompanyReplyDescriptor = $convert.base64Decode('Cg9EZWxDb21wYW55UmVwbHkSFgoGcmVzdWx0GAEgASgIUgZyZXN1bHQ=');
+@$core.Deprecated('Use setCompanyLocationRequestDescriptor instead')
+const SetCompanyLocationRequest$json = const {
+  '1': 'SetCompanyLocationRequest',
+  '2': const [
+    const {'1': 'guid', '3': 1, '4': 1, '5': 9, '10': 'guid'},
+    const {'1': 'lat', '3': 2, '4': 1, '5': 1, '10': 'lat'},
+    const {'1': 'lng', '3': 3, '4': 1, '5': 1, '10': 'lng'},
+  ],
+};
+
+/// Descriptor for `SetCompanyLocationRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List setCompanyLocationRequestDescriptor = $convert.base64Decode('ChlTZXRDb21wYW55TG9jYXRpb25SZXF1ZXN0EhIKBGd1aWQYASABKAlSBGd1aWQSEAoDbGF0GAIgASgBUgNsYXQSEAoDbG5nGAMgASgBUgNsbmc=');
+@$core.Deprecated('Use setCompanyLocationReplyDescriptor instead')
+const SetCompanyLocationReply$json = const {
+  '1': 'SetCompanyLocationReply',
+  '2': const [
+    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
+  ],
+};
+
+/// Descriptor for `SetCompanyLocationReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List setCompanyLocationReplyDescriptor = $convert.base64Decode('ChdTZXRDb21wYW55TG9jYXRpb25SZXBseRIWCgZyZXN1bHQYASABKAhSBnJlc3VsdA==');

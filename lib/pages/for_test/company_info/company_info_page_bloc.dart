@@ -8,6 +8,7 @@ import 'package:beauty_link/services/user_service.dart';
 import 'package:beauty_link/widgets/custom_dropdownfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CompanyInfoPageBloc extends BaseBlocV2 {
   Company company;
@@ -74,9 +75,16 @@ class SetLocationBtnClick extends BaseEventV2<CompanyInfoPageBloc> {
   Future<void> execute() async {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => MapPickerPage(),
-      ),
-    ).then((value) => CompanyInfoPageLoadEvent(context)..invoke());
+      MaterialPageRoute(builder: (context) => MapPickerPage(defLocation: bloc.company.location)),
+    ).then((value) {
+      bloc.company.location = value != null ? (value as List<LatLng?>)[0] : null;
+      if (bloc.company.location != null) setLocation();
+      else CompanyInfoPageLoadEvent(context)..invoke();
+    });
+  }
+
+  Future<void> setLocation() async {
+    await CompanyService().setCompanyLocation(bloc.company);
+    CompanyInfoPageLoadEvent(context)..invoke();
   }
 }

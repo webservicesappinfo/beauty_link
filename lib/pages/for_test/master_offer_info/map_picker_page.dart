@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-const _initLocation = LatLng(-33.852, 151.211);
-const CameraPosition _kInitialPosition = CameraPosition(target: _initLocation, zoom: 11.0);
-
 class MapPickerPage extends StatefulWidget {
-  MapPickerPage({Key? key}) : super(key: key);
+  LatLng? defLocation;
+  MapPickerPage({Key? key, this.defLocation}) : super(key: key);
 
   @override
   _MapPickerPageState createState() => _MapPickerPageState();
 }
 
 class _MapPickerPageState extends State<MapPickerPage> {
+  late LatLng _initLocation;
+  late CameraPosition _kInitialPosition;
+
   GoogleMapController? mapController;
   LatLng? _lastTap;
-  Marker marker = Marker(
-    markerId: MarkerId("marker_id_0"),
-    position: _initLocation,
-    infoWindow: InfoWindow(title: '0', snippet: '*'),
-  );
+  late Marker marker;
+
+  @override
+  void initState() {
+    _initLocation = widget.defLocation ?? LatLng(-33.852, 151.211);
+    _kInitialPosition = CameraPosition(target: _initLocation, zoom: 11.0);
+    marker = Marker(
+      markerId: MarkerId("marker_id_0"),
+      position: _initLocation,
+      infoWindow: InfoWindow(title: '0', snippet: '*'),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +70,7 @@ class _MapPickerPageState extends State<MapPickerPage> {
       columnChildren.add(Center(
           child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context, [_lastTap]);
+                Navigator.pop<List<LatLng?>>(context, [_lastTap]);
               },
               child: Text("Save location"))));
     }

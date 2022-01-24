@@ -2,6 +2,7 @@ import 'package:beauty_link/gen/company.pb.dart';
 import 'package:beauty_link/gen/mobile_api.pbgrpc.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grpc/grpc.dart';
 import 'package:beauty_link/global.dart' as global;
 
@@ -16,6 +17,9 @@ class CompanyService {
   Future<Company?> getCompany(String guid) async {
     var reply = await mobileApiClient.apiGetCompany(GetCompanyRequest(guid: guid));
     var company = Company(guid: reply.guid, name: reply.name, ownerGuid: reply.ownerGuid, ownerName: reply.ownerName);
+    var lat = double.tryParse(reply.lat);
+    var lng = double.tryParse(reply.lng);
+    if (lat != null && lng != null) company.location = LatLng(lat, lng);
     for (var i = 0; i < reply.masterGuids.length; i++)
       company.masters.add(AppUser(uidFB: reply.masterGuids[i], name: reply.masterNames[i]));
     return company;
@@ -47,5 +51,12 @@ class CompanyService {
     if (guid?.isEmpty ?? true) return false;
     var response = await mobileApiClient.apiDelCompany(new DelCompanyRequest(guid: guid));
     return response.result;
+  }
+
+  Future<bool> setCompanyLocation(Company company) async {
+    if (company.location == null) return false;
+    var reply = await mobileApiClient.apiSetCompanyLocation(new SetCompanyLocationRequest(
+        guid: company.guid, lat: company.location?.latitude, lng: company.location?.longitude));
+    return reply.result;
   }
 }
