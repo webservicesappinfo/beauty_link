@@ -1,7 +1,8 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:beauty_link/pages/for_test/master_offers/master_offers_page.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MasterCompanyInfoPageBloc extends BaseBlocV2 {
@@ -26,6 +27,16 @@ class MasterOfferInfoPageEvent extends BaseEventV2<MasterCompanyInfoPageBloc> {
   Future<void> execute() async {
     var bloc = BlocProvider.of<MasterCompanyInfoPageBloc>(context);
     await bloc.getCompanyInfo();
+  }
+}
+
+class OffersBtnClick extends BaseEventV2<MasterCompanyInfoPageBloc> {
+  OffersBtnClick(BuildContext context) : super(context);
+
+  @override
+  Future<void> execute() async {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => MasterOffersPage(user: bloc.master)))
+        .then((value) => MasterOfferInfoPageEvent(context)..invoke());
   }
 }
 

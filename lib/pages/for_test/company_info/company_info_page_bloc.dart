@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/pages/for_test/QR/qr_page.dart';
+import 'package:beauty_link/pages/for_test/master_company_info/master_company_info_page.dart';
 import 'package:beauty_link/pages/for_test/master_offer_info/map_picker_page.dart';
 import 'package:beauty_link/services/company_service.dart';
 import 'package:beauty_link/services/user_service.dart';
@@ -78,13 +79,27 @@ class SetLocationBtnClick extends BaseEventV2<CompanyInfoPageBloc> {
       MaterialPageRoute(builder: (context) => MapPickerPage(defLocation: bloc.company.location)),
     ).then((value) {
       bloc.company.location = value != null ? (value as List<LatLng?>)[0] : null;
-      if (bloc.company.location != null) setLocation();
-      else CompanyInfoPageLoadEvent(context)..invoke();
+      if (bloc.company.location != null)
+        setLocation();
+      else
+        CompanyInfoPageLoadEvent(context)..invoke();
     });
   }
 
   Future<void> setLocation() async {
     await CompanyService().setCompanyLocation(bloc.company);
     CompanyInfoPageLoadEvent(context)..invoke();
+  }
+}
+
+class OnMasterTab extends BaseEventV2<CompanyInfoPageBloc> {
+  final AppUser master;
+  OnMasterTab(BuildContext context, this.master) : super(context);
+
+  @override
+  Future<void> execute() async {
+    Navigator.push(context,
+            MaterialPageRoute(builder: (context) => MasterCompanyInfoPage(company: bloc.company, master: master)))
+        .then((value) => CompanyInfoPageLoadEvent(context)..invoke());
   }
 }

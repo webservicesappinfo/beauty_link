@@ -2,6 +2,7 @@ import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
+import 'package:beauty_link/widgets/custom_check_box.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,8 +50,13 @@ class MasterCompanyInfoPage extends StatelessWidget {
     return Center(
         child: Column(
       children: [
+        Icon(Icons.person, size: 40),
         Text('Company name: ${bloc.company.name}'),
         Text('Master name: ${bloc.master.name}'),
+        CustomCheckBox(checked: false, title: 'owner'),
+        CustomCheckBox(checked: false, title: 'admin'),
+        CustomCheckBox(checked: false, title: 'master'),
+        CustomButton(text: "Offers", clickEvent: () => OffersBtnClick(context)..invoke()),
         CustomButton(text: "Del master", clickEvent: () => DelMasterBtnClick(context)..invoke())
       ],
     ));

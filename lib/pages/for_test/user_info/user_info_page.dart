@@ -20,19 +20,18 @@ class UserInfoPage extends StatelessWidget {
             length: 4,
             child: Scaffold(
               appBar: AppBar(
-                bottom: TabBar(
-                    tabs: [
-                      Tab(icon: Icon(Icons.person), text: 'Client'),
-                      Tab(icon: Icon(Icons.account_box), text: 'Master'),
-                      Tab(icon: Icon(Icons.group), text: 'Admin'),
-                      Tab(icon: Icon(Icons.admin_panel_settings), text: 'Profile'),
-                    ],
-                    indicator: ShapeDecoration(
-                        shape: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.transparent, width: 0, style: BorderStyle.solid)),
-                        gradient: LinearGradient(colors: [Colors.pink, Color(0xff01ff80)]))),
-                title: Text('User Panel'),
-              ),
+                  bottom: TabBar(
+                      tabs: [
+                        Tab(icon: Icon(Icons.person), text: 'Client'),
+                        Tab(icon: Icon(Icons.account_box), text: 'Master'),
+                        Tab(icon: Icon(Icons.group), text: 'Admin'),
+                        Tab(icon: Icon(Icons.admin_panel_settings), text: 'Profile'),
+                      ],
+                      indicator: ShapeDecoration(
+                          shape: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent, width: 0, style: BorderStyle.solid)),
+                          gradient: LinearGradient(colors: [Colors.pink, Color(0xff01ff80)]))),
+                  title: Text(user.name ?? 'noName')),
               body: BlocConsumer<UserInfoPageBloc, BaseStateV2>(
                 listener: (context, state) {
                   // TODO: implement listener
