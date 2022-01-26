@@ -1,5 +1,6 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/pages/for_test/master_offers/master_offers_page_bloc.dart';
@@ -12,12 +13,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MasterOffersPage extends StatelessWidget {
   AppUser user;
-  MasterOffersPage({Key? key, required this.user}) : super(key: key);
+  Company company;
+  MasterOffersPage({Key? key, required this.user, required this.company}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => MasterOffersPageBloc(InitState(), user),
+        create: (context) => MasterOffersPageBloc(InitState(), user, company),
         child: Scaffold(
             appBar: AppBar(title: Text('${user.name} offers')),
             body: BlocConsumer<MasterOffersPageBloc, BaseStateV2>(listener: (context, state) {

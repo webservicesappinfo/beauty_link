@@ -42,18 +42,6 @@ class CompaniesBtnClickEvent extends BaseEventV2<UserInfoPageBloc> {
   }
 }
 
-class OffersBtnClicEvent extends BaseEventV2<UserInfoPageBloc> {
-  OffersBtnClicEvent(BuildContext context) : super(context);
-
-  @override
-  Future<void> execute() async {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MasterOffersPage(user: bloc.user)),
-    ).then((value) => LoadUserInfoPageEvent(context)..invoke());
-  }
-}
-
 class FindOfferBtnClicEvent extends BaseEventV2<UserInfoPageBloc> {
   FindOfferBtnClicEvent(BuildContext context) : super(context);
 

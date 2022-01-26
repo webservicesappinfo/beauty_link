@@ -103,3 +103,12 @@ class OnMasterTab extends BaseEventV2<CompanyInfoPageBloc> {
         .then((value) => CompanyInfoPageLoadEvent(context)..invoke());
   }
 }
+
+class DelCompanyBtnClick extends BaseEventV2<CompanyInfoPageBloc> {
+  DelCompanyBtnClick(BuildContext context) : super(context);
+
+  @override
+  Future<void> execute() async {
+    await bloc.delCompany().then((value) => Navigator.pop(context));
+  }
+}

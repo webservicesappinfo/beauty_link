@@ -56,35 +56,34 @@ class CompanyInfoPage extends StatelessWidget {
                   onTap: (entityBase) => OnMasterTab(context, entityBase as AppUser).invoke()))
           : Text("No masters"),
       Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(children: [
-          Expanded(
-              child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 1),
-                    color: Colors.grey[300],
-                    //shape: BoxShape.circle,
-                  ),
-                  child: CustomDropDownFieldMulti(
-                      items: bloc.canJoinUsers.map((e) => DropDownFieldItem(caption: e.name, entity: e)).toList(),
-                      hint: 'select masters',
-                      onChanged: bloc.onSelectMasterChanged))),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.blue, width: 1),
-              color: Colors.grey[300],
-              shape: BoxShape.rectangle,
-            ),
-            child: IconButton(
-                iconSize: 56,
-                icon: Icon(Icons.add),
-                onPressed: () {
-                  bloc.add(AddMastersFromList(context));
-                }),
-          )
-        ]),
-      ),
-      CustomButton(text: "Add master by QR", clickEvent: () => AddMasterByQREvent(context)..invoke())
+          padding: const EdgeInsets.all(8.0),
+          child: Row(children: [
+            Expanded(
+                child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue, width: 1),
+                      color: Colors.grey[300],
+                      //shape: BoxShape.circle,
+                    ),
+                    child: CustomDropDownFieldMulti(
+                        items: bloc.canJoinUsers.map((e) => DropDownFieldItem(caption: e.name, entity: e)).toList(),
+                        hint: 'select masters',
+                        onChanged: bloc.onSelectMasterChanged))),
+            Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue, width: 1),
+                  color: Colors.grey[300],
+                  shape: BoxShape.rectangle,
+                ),
+                child: IconButton(
+                    iconSize: 56,
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      bloc.add(AddMastersFromList(context));
+                    }))
+          ])),
+      CustomButton(text: "Add master by QR", clickEvent: () => AddMasterByQREvent(context).invoke()),
+      CustomButton(text: "Del company", clickEvent: () => DelCompanyBtnClick(context).invoke())
     ]));
   }
 }

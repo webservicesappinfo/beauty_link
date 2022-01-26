@@ -1,5 +1,6 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/pages/for_test/add_user_offer/add_user_offer_page.dart';
@@ -11,9 +12,10 @@ import 'package:flutter/material.dart';
 class MasterOffersPageBloc extends BaseBlocV2 {
   List<Offer> offers = [];
   AppUser user;
+  Company company;
   String status = "all";
 
-  MasterOffersPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
+  MasterOffersPageBloc(BaseStateV2 initialState, this.user, this.company) : super(initialState);
 
   Future getOffersByMaster() async {
     await OfferService().getOffersByMaster(user.uidFB, null, true).then((value) {
@@ -39,9 +41,8 @@ class TapUserEvent extends BaseEventV2<MasterOffersPageBloc> {
   @override
   Future<void> execute() async {
     Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MasterOfferInfoPage(master: bloc.user, offer: offer)),
-    ).then((value) => LoadOffersPageEvent(context)..invoke());
+            context, MaterialPageRoute(builder: (context) => MasterOfferInfoPage(master: bloc.user, offer: offer)))
+        .then((value) => LoadOffersPageEvent(context)..invoke());
   }
 }
 
@@ -51,10 +52,11 @@ class AddOfferBtnClick extends BaseEventV2<MasterOffersPageBloc> {
   @override
   Future<void> execute() async {
     Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => AddUserOfferPage(user: bloc.user),
-      ),
-    ).then((value) => LoadOffersPageEvent(context)..invoke());
+        context,
+        MaterialPageRoute(
+            builder: (context) => AddUserOfferPage(
+                  user: bloc.user,
+                  company: bloc.company,
+                ))).then((value) => LoadOffersPageEvent(context)..invoke());
   }
 }

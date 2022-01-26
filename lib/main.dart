@@ -79,12 +79,37 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 }
 
 class MyApp extends StatelessWidget {
+  MaterialColor colorCustom = MaterialColor(0xFFFF5C57, {
+    50: Color.fromRGBO(255, 92, 87, .1),
+    100: Color.fromRGBO(255, 92, 87, .2),
+    200: Color.fromRGBO(255, 92, 87, .3),
+    300: Color.fromRGBO(255, 92, 87, .4),
+    400: Color.fromRGBO(255, 92, 87, .5),
+    500: Color.fromRGBO(255, 92, 87, .6),
+    600: Color.fromRGBO(255, 92, 87, .7),
+    700: Color.fromRGBO(255, 92, 87, .8),
+    800: Color.fromRGBO(255, 92, 87, .9),
+    900: Color.fromRGBO(255, 92, 87, 1),
+  });
+  MaterialColor whiteColor = MaterialColor(Colors.white.value, {
+    50: Colors.white,
+    100: Colors.white,
+    200: Colors.white,
+    300: Colors.white,
+    400: Colors.white,
+    500: Colors.white,
+    600: Colors.white,
+    700: Colors.white,
+    800: Colors.white,
+    900: Colors.white
+  });
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'BeautyLink',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: whiteColor,
       ),
       home: StreamBuilder<User?>(
         stream: AuthService().authStateChange(),

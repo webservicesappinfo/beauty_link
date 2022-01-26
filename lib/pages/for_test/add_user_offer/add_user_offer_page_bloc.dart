@@ -14,24 +14,16 @@ import 'package:uuid/uuid.dart';
 class AddUserOfferPageBloc extends BaseBlocV2 {
   String? offerName;
   AppUser user;
+  Company company;
   List<Skill> skills = [];
   Skill? selectedSkill;
-  List<Company> companies = [];
-  Company? selectedCompany;
 
-  AddUserOfferPageBloc(BaseStateV2 initialState, this.user) : super(initialState);
+  AddUserOfferPageBloc(BaseStateV2 initialState, this.user, this.company) : super(initialState);
 
   Future getSkills() async {
     await SkillService().getSkills(user.uidFB).then((value) {
       skills = value;
       if (skills.length > 0) selectedSkill = skills[0];
-    });
-  }
-
-  Future getCompanies() async {
-    await CompanyService().getCompanies(user.uidFB ?? '', "forOffer").then((value) {
-      companies = value;
-      if (companies.length > 0) selectedCompany = companies[0];
     });
   }
 
@@ -49,8 +41,6 @@ class AddUserOfferPageBloc extends BaseBlocV2 {
   void onChangedOfferName(String name) => offerName = name;
 
   void onSkillChanged(DropDownFieldItem? item) => selectedSkill = item?.entity as Skill;
-
-  void onCompanyChanged(DropDownFieldItem? item) => selectedCompany = item?.entity as Company;
 }
 
 class AddOfferInfoPageLoad extends BaseEventV2<AddUserOfferPageBloc> {

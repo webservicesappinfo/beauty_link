@@ -83,7 +83,6 @@ class UserInfoPage extends StatelessWidget {
                 onTap: () => CompaniesBtnClickEvent(context, "contains")..invoke(), text: 'ContainCompanies'),
             CustomGridViewItem(
                 onTap: () => CompaniesBtnClickEvent(context, "canbecontains")..invoke(), text: 'JoinCompanies'),
-            CustomGridViewItem(onTap: () => OffersBtnClicEvent(context)..invoke(), text: 'Offers'),
             CustomGridViewItem(onTap: () => MasterOrdersBtnClicEvent(context)..invoke(), text: 'Orders')
           ]))
         ]),

@@ -35,7 +35,8 @@ class OffersBtnClick extends BaseEventV2<MasterCompanyInfoPageBloc> {
 
   @override
   Future<void> execute() async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => MasterOffersPage(user: bloc.master)))
+    Navigator.push(context,
+            MaterialPageRoute(builder: (context) => MasterOffersPage(user: bloc.master, company: bloc.company)))
         .then((value) => MasterOfferInfoPageEvent(context)..invoke());
   }
 }
