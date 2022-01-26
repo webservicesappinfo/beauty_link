@@ -13,15 +13,17 @@ const AddOfferRequest$json = const {
   '1': 'AddOfferRequest',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'masterGuid', '3': 2, '4': 1, '5': 9, '10': 'masterGuid'},
-    const {'1': 'masterName', '3': 3, '4': 1, '5': 9, '10': 'masterName'},
-    const {'1': 'skillGuid', '3': 4, '4': 1, '5': 9, '10': 'skillGuid'},
-    const {'1': 'skillName', '3': 5, '4': 1, '5': 9, '10': 'skillName'},
+    const {'1': 'companyGuid', '3': 2, '4': 1, '5': 9, '10': 'companyGuid'},
+    const {'1': 'companyName', '3': 3, '4': 1, '5': 9, '10': 'companyName'},
+    const {'1': 'masterGuid', '3': 4, '4': 1, '5': 9, '10': 'masterGuid'},
+    const {'1': 'masterName', '3': 5, '4': 1, '5': 9, '10': 'masterName'},
+    const {'1': 'skillGuid', '3': 6, '4': 1, '5': 9, '10': 'skillGuid'},
+    const {'1': 'skillName', '3': 7, '4': 1, '5': 9, '10': 'skillName'},
   ],
 };
 
 /// Descriptor for `AddOfferRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addOfferRequestDescriptor = $convert.base64Decode('Cg9BZGRPZmZlclJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIeCgptYXN0ZXJHdWlkGAIgASgJUgptYXN0ZXJHdWlkEh4KCm1hc3Rlck5hbWUYAyABKAlSCm1hc3Rlck5hbWUSHAoJc2tpbGxHdWlkGAQgASgJUglza2lsbEd1aWQSHAoJc2tpbGxOYW1lGAUgASgJUglza2lsbE5hbWU=');
+final $typed_data.Uint8List addOfferRequestDescriptor = $convert.base64Decode('Cg9BZGRPZmZlclJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIgCgtjb21wYW55R3VpZBgCIAEoCVILY29tcGFueUd1aWQSIAoLY29tcGFueU5hbWUYAyABKAlSC2NvbXBhbnlOYW1lEh4KCm1hc3Rlckd1aWQYBCABKAlSCm1hc3Rlckd1aWQSHgoKbWFzdGVyTmFtZRgFIAEoCVIKbWFzdGVyTmFtZRIcCglza2lsbEd1aWQYBiABKAlSCXNraWxsR3VpZBIcCglza2lsbE5hbWUYByABKAlSCXNraWxsTmFtZQ==');
 @$core.Deprecated('Use addOfferReplyDescriptor instead')
 const AddOfferReply$json = const {
   '1': 'AddOfferReply',
@@ -52,16 +54,18 @@ const GetOffersReply$json = const {
     const {'1': 'names', '3': 1, '4': 3, '5': 9, '10': 'names'},
     const {'1': 'guids', '3': 2, '4': 3, '5': 9, '10': 'guids'},
     const {'1': 'orderGuids', '3': 3, '4': 3, '5': 9, '10': 'orderGuids'},
-    const {'1': 'masterGuids', '3': 4, '4': 3, '5': 9, '10': 'masterGuids'},
-    const {'1': 'masterNames', '3': 5, '4': 3, '5': 9, '10': 'masterNames'},
-    const {'1': 'skillGuids', '3': 6, '4': 3, '5': 9, '10': 'skillGuids'},
-    const {'1': 'skillNames', '3': 7, '4': 3, '5': 9, '10': 'skillNames'},
-    const {'1': 'statuses', '3': 8, '4': 3, '5': 9, '10': 'statuses'},
+    const {'1': 'companyGuids', '3': 4, '4': 3, '5': 9, '10': 'companyGuids'},
+    const {'1': 'companyNames', '3': 5, '4': 3, '5': 9, '10': 'companyNames'},
+    const {'1': 'masterGuids', '3': 6, '4': 3, '5': 9, '10': 'masterGuids'},
+    const {'1': 'masterNames', '3': 7, '4': 3, '5': 9, '10': 'masterNames'},
+    const {'1': 'skillGuids', '3': 8, '4': 3, '5': 9, '10': 'skillGuids'},
+    const {'1': 'skillNames', '3': 9, '4': 3, '5': 9, '10': 'skillNames'},
+    const {'1': 'statuses', '3': 10, '4': 3, '5': 9, '10': 'statuses'},
   ],
 };
 
 /// Descriptor for `GetOffersReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getOffersReplyDescriptor = $convert.base64Decode('Cg5HZXRPZmZlcnNSZXBseRIUCgVuYW1lcxgBIAMoCVIFbmFtZXMSFAoFZ3VpZHMYAiADKAlSBWd1aWRzEh4KCm9yZGVyR3VpZHMYAyADKAlSCm9yZGVyR3VpZHMSIAoLbWFzdGVyR3VpZHMYBCADKAlSC21hc3Rlckd1aWRzEiAKC21hc3Rlck5hbWVzGAUgAygJUgttYXN0ZXJOYW1lcxIeCgpza2lsbEd1aWRzGAYgAygJUgpza2lsbEd1aWRzEh4KCnNraWxsTmFtZXMYByADKAlSCnNraWxsTmFtZXMSGgoIc3RhdHVzZXMYCCADKAlSCHN0YXR1c2Vz');
+final $typed_data.Uint8List getOffersReplyDescriptor = $convert.base64Decode('Cg5HZXRPZmZlcnNSZXBseRIUCgVuYW1lcxgBIAMoCVIFbmFtZXMSFAoFZ3VpZHMYAiADKAlSBWd1aWRzEh4KCm9yZGVyR3VpZHMYAyADKAlSCm9yZGVyR3VpZHMSIgoMY29tcGFueUd1aWRzGAQgAygJUgxjb21wYW55R3VpZHMSIgoMY29tcGFueU5hbWVzGAUgAygJUgxjb21wYW55TmFtZXMSIAoLbWFzdGVyR3VpZHMYBiADKAlSC21hc3Rlckd1aWRzEiAKC21hc3Rlck5hbWVzGAcgAygJUgttYXN0ZXJOYW1lcxIeCgpza2lsbEd1aWRzGAggAygJUgpza2lsbEd1aWRzEh4KCnNraWxsTmFtZXMYCSADKAlSCnNraWxsTmFtZXMSGgoIc3RhdHVzZXMYCiADKAlSCHN0YXR1c2Vz');
 @$core.Deprecated('Use getOffersByMasterRequestDescriptor instead')
 const GetOffersByMasterRequest$json = const {
   '1': 'GetOffersByMasterRequest',

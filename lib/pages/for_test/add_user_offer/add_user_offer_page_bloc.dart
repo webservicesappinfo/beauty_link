@@ -31,6 +31,8 @@ class AddUserOfferPageBloc extends BaseBlocV2 {
     if (offerName?.isEmpty ?? true) throw Exception("userName is null");
     await OfferService().addOffer(Offer(
         name: offerName,
+        companyGuid: company.guid,
+        companyName: company.name,
         masterGuid: user.uidFB,
         masterName: user.name,
         skillGuid: selectedSkill?.guid,

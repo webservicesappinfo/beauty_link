@@ -6,6 +6,8 @@ import 'package:flutter/src/material/colors.dart';
 class Offer extends EntityBase {
   String? guid;
   String? name;
+  String? companyGuid;
+  String? companyName;
   String? masterGuid;
   String? masterName;
   String? skillGuid;
@@ -15,13 +17,15 @@ class Offer extends EntityBase {
   Offer(
       {this.guid,
       required this.name,
+      required this.companyGuid,
+      required this.companyName,
       required this.masterGuid,
       required this.masterName,
       required this.skillGuid,
       required this.skillName,
       required this.status});
 
-  factory Offer.fromJson(Map<String, dynamic> json) {
+  /*factory Offer.fromJson(Map<String, dynamic> json) {
     return new Offer(
       guid: json['guid'],
       name: json['name'],
@@ -41,7 +45,7 @@ class Offer extends EntityBase {
       'skillGuid': skillGuid,
       'skillName': skillName,
     };
-  }
+  }*/
 
   @override
   String getCaption() => "Name: $name";

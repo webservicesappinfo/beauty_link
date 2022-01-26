@@ -12,16 +12,20 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class AddOfferRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddOfferRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'offer'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterName', protoName: 'masterName')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuid', protoName: 'skillGuid')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillName', protoName: 'skillName')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companyGuid', protoName: 'companyGuid')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companyName', protoName: 'companyName')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterName', protoName: 'masterName')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuid', protoName: 'skillGuid')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillName', protoName: 'skillName')
     ..hasRequiredFields = false
   ;
 
   AddOfferRequest._() : super();
   factory AddOfferRequest({
     $core.String? name,
+    $core.String? companyGuid,
+    $core.String? companyName,
     $core.String? masterGuid,
     $core.String? masterName,
     $core.String? skillGuid,
@@ -30,6 +34,12 @@ class AddOfferRequest extends $pb.GeneratedMessage {
     final _result = create();
     if (name != null) {
       _result.name = name;
+    }
+    if (companyGuid != null) {
+      _result.companyGuid = companyGuid;
+    }
+    if (companyName != null) {
+      _result.companyName = companyName;
     }
     if (masterGuid != null) {
       _result.masterGuid = masterGuid;
@@ -76,40 +86,58 @@ class AddOfferRequest extends $pb.GeneratedMessage {
   void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get masterGuid => $_getSZ(1);
+  $core.String get companyGuid => $_getSZ(1);
   @$pb.TagNumber(2)
-  set masterGuid($core.String v) { $_setString(1, v); }
+  set companyGuid($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasMasterGuid() => $_has(1);
+  $core.bool hasCompanyGuid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearMasterGuid() => clearField(2);
+  void clearCompanyGuid() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get masterName => $_getSZ(2);
+  $core.String get companyName => $_getSZ(2);
   @$pb.TagNumber(3)
-  set masterName($core.String v) { $_setString(2, v); }
+  set companyName($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasMasterName() => $_has(2);
+  $core.bool hasCompanyName() => $_has(2);
   @$pb.TagNumber(3)
-  void clearMasterName() => clearField(3);
+  void clearCompanyName() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get skillGuid => $_getSZ(3);
+  $core.String get masterGuid => $_getSZ(3);
   @$pb.TagNumber(4)
-  set skillGuid($core.String v) { $_setString(3, v); }
+  set masterGuid($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasSkillGuid() => $_has(3);
+  $core.bool hasMasterGuid() => $_has(3);
   @$pb.TagNumber(4)
-  void clearSkillGuid() => clearField(4);
+  void clearMasterGuid() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get skillName => $_getSZ(4);
+  $core.String get masterName => $_getSZ(4);
   @$pb.TagNumber(5)
-  set skillName($core.String v) { $_setString(4, v); }
+  set masterName($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasSkillName() => $_has(4);
+  $core.bool hasMasterName() => $_has(4);
   @$pb.TagNumber(5)
-  void clearSkillName() => clearField(5);
+  void clearMasterName() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get skillGuid => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set skillGuid($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasSkillGuid() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearSkillGuid() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get skillName => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set skillName($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasSkillName() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearSkillName() => clearField(7);
 }
 
 class AddOfferReply extends $pb.GeneratedMessage {
@@ -253,11 +281,13 @@ class GetOffersReply extends $pb.GeneratedMessage {
     ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'names')
     ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guids')
     ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'orderGuids', protoName: 'orderGuids')
-    ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuids', protoName: 'masterGuids')
-    ..pPS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterNames', protoName: 'masterNames')
-    ..pPS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuids', protoName: 'skillGuids')
-    ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillNames', protoName: 'skillNames')
-    ..pPS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'statuses')
+    ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companyGuids', protoName: 'companyGuids')
+    ..pPS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companyNames', protoName: 'companyNames')
+    ..pPS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuids', protoName: 'masterGuids')
+    ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterNames', protoName: 'masterNames')
+    ..pPS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuids', protoName: 'skillGuids')
+    ..pPS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillNames', protoName: 'skillNames')
+    ..pPS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'statuses')
     ..hasRequiredFields = false
   ;
 
@@ -266,6 +296,8 @@ class GetOffersReply extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? names,
     $core.Iterable<$core.String>? guids,
     $core.Iterable<$core.String>? orderGuids,
+    $core.Iterable<$core.String>? companyGuids,
+    $core.Iterable<$core.String>? companyNames,
     $core.Iterable<$core.String>? masterGuids,
     $core.Iterable<$core.String>? masterNames,
     $core.Iterable<$core.String>? skillGuids,
@@ -281,6 +313,12 @@ class GetOffersReply extends $pb.GeneratedMessage {
     }
     if (orderGuids != null) {
       _result.orderGuids.addAll(orderGuids);
+    }
+    if (companyGuids != null) {
+      _result.companyGuids.addAll(companyGuids);
+    }
+    if (companyNames != null) {
+      _result.companyNames.addAll(companyNames);
     }
     if (masterGuids != null) {
       _result.masterGuids.addAll(masterGuids);
@@ -330,19 +368,25 @@ class GetOffersReply extends $pb.GeneratedMessage {
   $core.List<$core.String> get orderGuids => $_getList(2);
 
   @$pb.TagNumber(4)
-  $core.List<$core.String> get masterGuids => $_getList(3);
+  $core.List<$core.String> get companyGuids => $_getList(3);
 
   @$pb.TagNumber(5)
-  $core.List<$core.String> get masterNames => $_getList(4);
+  $core.List<$core.String> get companyNames => $_getList(4);
 
   @$pb.TagNumber(6)
-  $core.List<$core.String> get skillGuids => $_getList(5);
+  $core.List<$core.String> get masterGuids => $_getList(5);
 
   @$pb.TagNumber(7)
-  $core.List<$core.String> get skillNames => $_getList(6);
+  $core.List<$core.String> get masterNames => $_getList(6);
 
   @$pb.TagNumber(8)
-  $core.List<$core.String> get statuses => $_getList(7);
+  $core.List<$core.String> get skillGuids => $_getList(7);
+
+  @$pb.TagNumber(9)
+  $core.List<$core.String> get skillNames => $_getList(8);
+
+  @$pb.TagNumber(10)
+  $core.List<$core.String> get statuses => $_getList(9);
 }
 
 class GetOffersByMasterRequest extends $pb.GeneratedMessage {

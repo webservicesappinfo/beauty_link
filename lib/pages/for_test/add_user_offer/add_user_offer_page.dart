@@ -48,7 +48,7 @@ class AddUserOfferPage extends StatelessWidget {
                               items: bloc.skills.map((e) => DropDownFieldItem(caption: e.name, entity: e)).toList(),
                               onChanged: bloc.onSkillChanged),
                         ),
-                        CustomButton(text: 'Add offer', clickEvent: () => AddOfferBtnClick(context))
+                        CustomButton(text: 'Add offer', clickEvent: () => AddOfferBtnClick(context).invoke())
                       ]);
                     default:
                       return LoadingWidget();

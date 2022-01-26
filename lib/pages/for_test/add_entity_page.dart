@@ -252,6 +252,8 @@ class AddEntityPage extends StatelessWidget {
     OfferService()
         .addOffer(Offer(
             name: _name,
+            companyGuid: '',
+            companyName: '',
             masterGuid: 'masterGuid',
             masterName: _masterName,
             skillGuid: 'skillGuid',

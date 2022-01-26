@@ -16,6 +16,8 @@ class OfferService {
     if (offer == null) return false;
     var response = await mobileApiClient.apiAddOffer(new AddOfferRequest(
         name: offer.name,
+        companyGuid: offer.companyGuid,
+        companyName: offer.companyName,
         masterGuid: offer.masterGuid,
         masterName: offer.masterName,
         skillGuid: offer.skillGuid,
@@ -47,6 +49,8 @@ class OfferService {
       offers.add(new Offer(
           guid: reply.guids[i],
           name: reply.names[i],
+          companyGuid: reply.companyGuids[i],
+          companyName: reply.companyNames[i],
           masterGuid: reply.masterGuids[i],
           masterName: reply.masterNames[i],
           skillGuid: reply.skillGuids[i],

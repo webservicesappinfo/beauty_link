@@ -109,7 +109,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'BeautyLink',
       theme: ThemeData(
-        primarySwatch: whiteColor,
+        primarySwatch: Colors.grey,
       ),
       home: StreamBuilder<User?>(
         stream: AuthService().authStateChange(),
