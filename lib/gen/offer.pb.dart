@@ -288,6 +288,8 @@ class GetOffersReply extends $pb.GeneratedMessage {
     ..pPS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuids', protoName: 'skillGuids')
     ..pPS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillNames', protoName: 'skillNames')
     ..pPS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'statuses')
+    ..pPS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lats')
+    ..pPS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lngs')
     ..hasRequiredFields = false
   ;
 
@@ -303,6 +305,8 @@ class GetOffersReply extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? skillGuids,
     $core.Iterable<$core.String>? skillNames,
     $core.Iterable<$core.String>? statuses,
+    $core.Iterable<$core.String>? lats,
+    $core.Iterable<$core.String>? lngs,
   }) {
     final _result = create();
     if (names != null) {
@@ -334,6 +338,12 @@ class GetOffersReply extends $pb.GeneratedMessage {
     }
     if (statuses != null) {
       _result.statuses.addAll(statuses);
+    }
+    if (lats != null) {
+      _result.lats.addAll(lats);
+    }
+    if (lngs != null) {
+      _result.lngs.addAll(lngs);
     }
     return _result;
   }
@@ -387,6 +397,12 @@ class GetOffersReply extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(10)
   $core.List<$core.String> get statuses => $_getList(9);
+
+  @$pb.TagNumber(11)
+  $core.List<$core.String> get lats => $_getList(10);
+
+  @$pb.TagNumber(12)
+  $core.List<$core.String> get lngs => $_getList(11);
 }
 
 class GetOffersByMasterRequest extends $pb.GeneratedMessage {

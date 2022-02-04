@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:flutter/src/material/colors.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Offer extends EntityBase {
   String? guid;
@@ -13,6 +14,7 @@ class Offer extends EntityBase {
   String? skillGuid;
   String? skillName;
   String? status;
+  LatLng? location;
 
   Offer(
       {this.guid,
@@ -23,7 +25,8 @@ class Offer extends EntityBase {
       required this.masterName,
       required this.skillGuid,
       required this.skillName,
-      required this.status});
+      required this.status,
+      this.location});
 
   /*factory Offer.fromJson(Map<String, dynamic> json) {
     return new Offer(

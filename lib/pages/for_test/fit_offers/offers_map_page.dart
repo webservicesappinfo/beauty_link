@@ -1,17 +1,18 @@
 import 'dart:async';
 
+import 'package:beauty_link/models/offer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapPage extends StatefulWidget {
-  LatLng? location;
-  MapPage({Key? key, required this.location}) : super(key: key);
+class OffersMapPage extends StatefulWidget {
+  List<Offer> offers = [];
+  OffersMapPage({Key? key, required this.offers}) : super(key: key);
 
   @override
-  _MapPageState createState() => _MapPageState();
+  _OffersMapPageState createState() => _OffersMapPageState();
 }
 
-class _MapPageState extends State<MapPage> {
+class _OffersMapPageState extends State<OffersMapPage> {
   Completer<GoogleMapController> _controller = Completer();
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
   int _markerIdCounter = 0;
@@ -29,17 +30,13 @@ class _MapPageState extends State<MapPage> {
 
   @override
   void initState() {
-    _addMarker(
-        widget.location ?? LatLng(37.43296265331129, -122.08832357078792));
+    for (var offer in widget.offers) _addMarker(offer.location);
     super.initState();
   }
 
-  void _addMarker(LatLng location) {
-    final int markerCount = markers.length;
-
-    if (markerCount == 12) {
-      return;
-    }
+  void _addMarker(LatLng? location) {
+    if(location == null) return;
+    if (markers.length == 12) return;
 
     final String markerIdVal = 'marker_id_$_markerIdCounter';
     _markerIdCounter++;
@@ -85,8 +82,6 @@ class _MapPageState extends State<MapPage> {
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
     controller..animateCamera(CameraUpdate.newCameraPosition(_kLake));
-    setState(() {
-      
-    });
+    setState(() {});
   }
 }

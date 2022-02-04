@@ -1,6 +1,7 @@
 import 'package:beauty_link/gen/mobile_api.pbgrpc.dart';
 import 'package:beauty_link/gen/offer.pb.dart';
 import 'package:beauty_link/models/offer.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grpc/grpc.dart';
 import 'package:beauty_link/global.dart' as global;
 
@@ -55,7 +56,8 @@ class OfferService {
           masterName: reply.masterNames[i],
           skillGuid: reply.skillGuids[i],
           skillName: reply.skillNames[i],
-          status: reply.statuses[i]));
+          status: reply.statuses[i],
+          location: LatLng(double.parse(reply.lats[i]), double.parse(reply.lngs[i]))));
     return offers;
   }
 }

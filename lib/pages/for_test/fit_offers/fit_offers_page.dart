@@ -5,7 +5,7 @@ import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/skill.dart';
-import 'package:beauty_link/pages/for_test/fit_offers/map_page.dart';
+import 'package:beauty_link/pages/for_test/fit_offers/offers_map_page.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:beauty_link/widgets/custom_gridview.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
@@ -72,11 +72,7 @@ class FitOffersPage extends StatelessWidget {
             child: EntityListWidget(
                 entities: bloc.offers, onTap: (EntityBase entity) => TapOfferEvent(context, entity as Offer)..invoke()))
       ]),
-      Column(children: [Expanded(child: _map())])
+      Column(children: [Expanded(child: OffersMapPage(offers: bloc.offers))])
     ]);
-  }
-
-  Widget _map() {
-    return MapPage(location: null);
   }
 }

@@ -51,6 +51,7 @@ class MasterOfferInfoPage extends StatelessWidget {
         child: Column(
       children: [
         Text('Offer name: ${bloc.offer.name}'),
+        Text('Company name: ${bloc.offer.companyName}'),
         Text('Master name: ${bloc.offer.masterName}'),
         Text('Skill name: ${bloc.offer.skillName}'),
         CustomButton(text: "Set Location", clickEvent: () => SetLocationEvent(context)..invoke()),

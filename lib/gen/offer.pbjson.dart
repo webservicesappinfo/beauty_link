@@ -61,11 +61,13 @@ const GetOffersReply$json = const {
     const {'1': 'skillGuids', '3': 8, '4': 3, '5': 9, '10': 'skillGuids'},
     const {'1': 'skillNames', '3': 9, '4': 3, '5': 9, '10': 'skillNames'},
     const {'1': 'statuses', '3': 10, '4': 3, '5': 9, '10': 'statuses'},
+    const {'1': 'lats', '3': 11, '4': 3, '5': 9, '10': 'lats'},
+    const {'1': 'lngs', '3': 12, '4': 3, '5': 9, '10': 'lngs'},
   ],
 };
 
 /// Descriptor for `GetOffersReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getOffersReplyDescriptor = $convert.base64Decode('Cg5HZXRPZmZlcnNSZXBseRIUCgVuYW1lcxgBIAMoCVIFbmFtZXMSFAoFZ3VpZHMYAiADKAlSBWd1aWRzEh4KCm9yZGVyR3VpZHMYAyADKAlSCm9yZGVyR3VpZHMSIgoMY29tcGFueUd1aWRzGAQgAygJUgxjb21wYW55R3VpZHMSIgoMY29tcGFueU5hbWVzGAUgAygJUgxjb21wYW55TmFtZXMSIAoLbWFzdGVyR3VpZHMYBiADKAlSC21hc3Rlckd1aWRzEiAKC21hc3Rlck5hbWVzGAcgAygJUgttYXN0ZXJOYW1lcxIeCgpza2lsbEd1aWRzGAggAygJUgpza2lsbEd1aWRzEh4KCnNraWxsTmFtZXMYCSADKAlSCnNraWxsTmFtZXMSGgoIc3RhdHVzZXMYCiADKAlSCHN0YXR1c2Vz');
+final $typed_data.Uint8List getOffersReplyDescriptor = $convert.base64Decode('Cg5HZXRPZmZlcnNSZXBseRIUCgVuYW1lcxgBIAMoCVIFbmFtZXMSFAoFZ3VpZHMYAiADKAlSBWd1aWRzEh4KCm9yZGVyR3VpZHMYAyADKAlSCm9yZGVyR3VpZHMSIgoMY29tcGFueUd1aWRzGAQgAygJUgxjb21wYW55R3VpZHMSIgoMY29tcGFueU5hbWVzGAUgAygJUgxjb21wYW55TmFtZXMSIAoLbWFzdGVyR3VpZHMYBiADKAlSC21hc3Rlckd1aWRzEiAKC21hc3Rlck5hbWVzGAcgAygJUgttYXN0ZXJOYW1lcxIeCgpza2lsbEd1aWRzGAggAygJUgpza2lsbEd1aWRzEh4KCnNraWxsTmFtZXMYCSADKAlSCnNraWxsTmFtZXMSGgoIc3RhdHVzZXMYCiADKAlSCHN0YXR1c2VzEhIKBGxhdHMYCyADKAlSBGxhdHMSEgoEbG5ncxgMIAMoCVIEbG5ncw==');
 @$core.Deprecated('Use getOffersByMasterRequestDescriptor instead')
 const GetOffersByMasterRequest$json = const {
   '1': 'GetOffersByMasterRequest',
