@@ -1,10 +1,12 @@
 import 'package:beauty_link/bloc/base_bloc_v2.dart';
 import 'package:beauty_link/models/app_user.dart';
+import 'package:beauty_link/models/skill.dart';
 import 'package:beauty_link/pages/for_test/client_orders/client_orders_page.dart';
 import 'package:beauty_link/pages/for_test/find_offer/find_offer_page.dart';
 import 'package:beauty_link/pages/for_test/master_orders/master_orders_page.dart';
 import 'package:beauty_link/pages/for_test/user_companies/user_companies_page.dart';
 import 'package:beauty_link/pages/for_test/master_offers/master_offers_page.dart';
+import 'package:beauty_link/services/skill_service.dart';
 import 'package:beauty_link/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +19,10 @@ class UserInfoPageBloc extends BaseBlocV2 {
 
   Future delUser() async {
     await UserService().delUser(user);
+  }
+
+  Future addSkill(Skill? skill) async {
+    await SkillService().addSkill(skill);
   }
 }
 
@@ -80,6 +86,15 @@ class ClientOrdersBtnClicEvent extends BaseEventV2<UserInfoPageBloc> {
 
 class DelUserEvent extends BaseEventV2<UserInfoPageBloc> {
   DelUserEvent(BuildContext context) : super(context);
+
+  @override
+  Future<void> execute() async {
+    await bloc.delUser().then((value) => Navigator.pop(context));
+  }
+}
+
+class AddSkillEvent extends BaseEventV2<UserInfoPageBloc> {
+  AddSkillEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {

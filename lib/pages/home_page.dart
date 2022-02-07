@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
                         ),
                       );
                       break;
-                    case "test2":
+                    case "users":
                       Navigator.push(
                         context,
                         MaterialPageRoute(
