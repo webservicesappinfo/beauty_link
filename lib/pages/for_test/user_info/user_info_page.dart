@@ -80,9 +80,9 @@ class UserInfoPage extends StatelessWidget {
           Expanded(
               child: CustomGridView(items: [
             CustomGridViewItem(
-                onTap: () => CompaniesBtnClickEvent(context, "contains")..invoke(), text: 'ContainCompanies'),
-            CustomGridViewItem(
-                onTap: () => CompaniesBtnClickEvent(context, "canbecontains")..invoke(), text: 'JoinCompanies'),
+                onTap: () => CompaniesBtnClickEvent(context, "contains")..invoke(), text: 'Companies'),
+            /*CustomGridViewItem(
+                onTap: () => CompaniesBtnClickEvent(context, "canbecontains")..invoke(), text: 'JoinCompanies'),*/
             CustomGridViewItem(onTap: () => MasterOrdersBtnClicEvent(context)..invoke(), text: 'Orders')
           ]))
         ]),

@@ -50,6 +50,7 @@ class FitOfferInfoPage extends StatelessWidget {
         child: Column(
       children: [
         Text('Offer name: ${bloc.fitOffer.name}'),
+        Text('Company name: ${bloc.fitOffer.companyName}'),
         Text('Master name: ${bloc.fitOffer.masterName}'),
         Text('Skill name: ${bloc.fitOffer.skillName}'),
         Text('Client name: ${bloc.client.name}'),

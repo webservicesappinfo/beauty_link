@@ -31,8 +31,8 @@ class FitOffersPage extends StatelessWidget {
               appBar: AppBar(
                   bottom: TabBar(
                       tabs: [
-                        Tab(icon: Icon(Icons.list), text: 'List'),
                         Tab(icon: Icon(Icons.location_on), text: 'Map'),
+                        Tab(icon: Icon(Icons.list), text: 'List')
                       ],
                       indicator: ShapeDecoration(
                           shape: UnderlineInputBorder(
@@ -68,11 +68,14 @@ class FitOffersPage extends StatelessWidget {
   Widget _onOffersPageLoadedState(FitOffersPageBloc bloc, BuildContext context) {
     return TabBarView(physics: NeverScrollableScrollPhysics(), children: [
       Column(children: [
+        Expanded(child: OffersMapPage(client: client, offers: bloc.offers)),
+        Text("Offers count ${bloc.offers.length}")
+      ]),
+      Column(children: [
         Expanded(
             child: EntityListWidget(
                 entities: bloc.offers, onTap: (EntityBase entity) => TapOfferEvent(context, entity as Offer)..invoke()))
-      ]),
-      Column(children: [Expanded(child: OffersMapPage(offers: bloc.offers))])
+      ])
     ]);
   }
 }

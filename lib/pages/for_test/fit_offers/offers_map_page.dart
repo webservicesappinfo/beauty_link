@@ -1,12 +1,15 @@
 import 'dart:async';
 
+import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/offer.dart';
+import 'package:beauty_link/pages/for_test/fit_offer_info/fit_offer_info_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class OffersMapPage extends StatefulWidget {
   List<Offer> offers = [];
-  OffersMapPage({Key? key, required this.offers}) : super(key: key);
+  AppUser client;
+  OffersMapPage({Key? key, required this.client, required this.offers}) : super(key: key);
 
   @override
   _OffersMapPageState createState() => _OffersMapPageState();
@@ -30,12 +33,13 @@ class _OffersMapPageState extends State<OffersMapPage> {
 
   @override
   void initState() {
-    for (var offer in widget.offers) _addMarker(offer.location);
+    for (var offer in widget.offers) _addMarker(offer);
     super.initState();
   }
 
-  void _addMarker(LatLng? location) {
-    if(location == null) return;
+  void _addMarker(Offer offer) {
+    var location = offer.location;
+    if (location == null) return;
     if (markers.length == 12) return;
 
     final String markerIdVal = 'marker_id_$_markerIdCounter';
@@ -45,7 +49,20 @@ class _OffersMapPageState extends State<OffersMapPage> {
     final Marker marker = Marker(
       markerId: markerId,
       position: location,
-      infoWindow: InfoWindow(title: markerIdVal, snippet: '*'),
+      infoWindow: InfoWindow(
+          title: offer.name,
+          snippet: "Company: ${offer.companyName}",
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FitOfferInfoPage(
+                  offer: offer,
+                  client: widget.client,
+                ),
+              ),
+            );
+          }),
       onTap: () {
         //_onMarkerTapped(markerId);
       },
@@ -70,12 +87,12 @@ class _OffersMapPageState extends State<OffersMapPage> {
             _controller.complete(controller);
           },
           markers: Set<Marker>.of(markers.values)),
-      floatingActionButton: FloatingActionButton.extended(
+      /*floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
         label: Text('To the lake!'),
         icon: Icon(Icons.directions_boat),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,*/
     );
   }
 

@@ -4,6 +4,7 @@ import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/skill.dart';
+import 'package:beauty_link/pages/for_test/master_offers/master_offers_page.dart';
 import 'package:beauty_link/services/company_service.dart';
 import 'package:beauty_link/services/offer_service.dart';
 import 'package:beauty_link/services/skill_service.dart';
@@ -59,6 +60,9 @@ class AddOfferBtnClick extends BaseEventV2<AddUserOfferPageBloc> {
 
   @override
   Future<void> execute() async {
-    await bloc.addOffer().then((value) => Navigator.pop(context));
+    await bloc.addOffer().then((value) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => MasterOffersPage(company: bloc.company, user: bloc.user)));
+    });
   }
 }
