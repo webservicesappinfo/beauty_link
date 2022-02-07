@@ -7,11 +7,12 @@ class BaseBloc extends Bloc<BaseEvent, BaseState> {
 
   @override
   Stream<BaseState> mapEventToState(BaseEvent event) async* {
-    while (true) {
-      var next = true;
-      await event.next(this).then((value) => next = value);
-      if (!next) break;
-      yield event.currentState;
+    try {
+      yield event.beginInvokeState;
+      await event.execute();
+      yield event.endInvokeState;
+    } catch (e, s) {
+      yield ExceptionState(event.exception ?? BaseEventException(e.toString()));
     }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:beauty_link/bloc/base_bloc_v2.dart';
+import 'package:beauty_link/bloc/base_bloc.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {

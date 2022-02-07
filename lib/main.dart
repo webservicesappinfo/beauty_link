@@ -1,4 +1,4 @@
-import 'package:beauty_link/pages/home_page.dart';
+import 'package:beauty_link/pages/home_page/home_page.dart';
 import 'package:beauty_link/pages/login_page.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
