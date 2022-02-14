@@ -46,17 +46,13 @@ class TapUserEvent extends BaseEvent<MasterOffersPageBloc> {
   }
 }
 
-class AddOfferBtnClick extends BaseEvent<MasterOffersPageBloc> {
-  AddOfferBtnClick(BuildContext context) : super(context);
+class AddMaterOfferBtnClick extends BaseEvent<MasterOffersPageBloc> {
+  AddMaterOfferBtnClick(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => AddUserOfferPage(
-                  user: bloc.user,
-                  company: bloc.company,
-                ))).then((value) => LoadOffersPageEvent(context)..invoke());
+            context, MaterialPageRoute(builder: (context) => AddUserOfferPage(user: bloc.user, company: bloc.company)))
+        .then((value) => LoadOffersPageEvent(context)..invoke());
   }
 }

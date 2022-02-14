@@ -66,7 +66,7 @@ class MasterOffersPage extends StatelessWidget {
       Expanded(
           child: EntityListWidget(
               entities: bloc.offers, onTap: (EntityBase? entity) => TapUserEvent(context, entity as Offer)..invoke())),
-      CustomButton(text: 'Add offer', clickEvent: () => AddOfferBtnClick(context)..invoke())
+      CustomButton(text: 'Add offer', clickEvent: () => AddMaterOfferBtnClick(context)..invoke())
     ]);
   }
 }

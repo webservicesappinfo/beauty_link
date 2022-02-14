@@ -59,9 +59,6 @@ class AddOfferBtnClick extends BaseEvent<AddUserOfferPageBloc> {
 
   @override
   Future<void> execute() async {
-    await bloc.addOffer().then((value) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MasterOffersPage(company: bloc.company, user: bloc.user)));
-    });
+    await bloc.addOffer().then((value) => Navigator.pop(context));
   }
 }

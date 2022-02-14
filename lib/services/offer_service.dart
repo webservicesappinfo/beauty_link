@@ -57,7 +57,7 @@ class OfferService {
           skillGuid: reply.skillGuids[i],
           skillName: reply.skillNames[i],
           status: reply.statuses[i],
-          location: LatLng(double.parse(reply.lats[i]), double.parse(reply.lngs[i]))));
+          location: LatLng(double.tryParse(reply.lats[i]) ?? 0.0, double.tryParse(reply.lngs[i]) ?? 0.0)));
     return offers;
   }
 }
