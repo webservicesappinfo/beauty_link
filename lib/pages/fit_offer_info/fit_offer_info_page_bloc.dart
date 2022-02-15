@@ -4,6 +4,7 @@ import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/order.dart';
+import 'package:beauty_link/pages/user_info/user_info_page.dart';
 import 'package:beauty_link/services/order_service.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +46,7 @@ class CreateOrderBtnClickEvent extends BaseEvent<FitOfferInfoPageBloc> {
 
   @override
   Future<void> execute() async {
-    await bloc.createOrder().then((value) => Navigator.pop(context));
+    await bloc.createOrder().then(
+        (value) => Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfoPage(user: bloc.client))));
   }
 }

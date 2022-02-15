@@ -1,7 +1,9 @@
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/skill.dart';
+import 'package:beauty_link/pages/user_info/client_tabs_page.dart';
 import 'package:beauty_link/pages/user_info/user_info_page_bloc.dart';
+import 'package:beauty_link/pages/users_page/users_page.dart';
 import 'package:beauty_link/widgets/custom_gridview.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:beauty_link/widgets/custom_button.dart';
@@ -20,18 +22,28 @@ class UserInfoPage extends StatelessWidget {
             length: 4,
             child: Scaffold(
               appBar: AppBar(
-                  bottom: TabBar(
-                      tabs: [
-                        Tab(icon: Icon(Icons.person), text: 'Client'),
-                        Tab(icon: Icon(Icons.account_box), text: 'Master'),
-                        Tab(icon: Icon(Icons.group), text: 'Admin'),
-                        Tab(icon: Icon(Icons.admin_panel_settings), text: 'Profile'),
-                      ],
-                      indicator: ShapeDecoration(
-                          shape: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.transparent, width: 0, style: BorderStyle.solid)),
-                          gradient: LinearGradient(colors: [Colors.pink, Color(0xff01ff80)]))),
-                  title: Text(user.name ?? 'noName')),
+                title: Center(child: Text("${user.name}")),
+                  automaticallyImplyLeading: false,
+                  bottom: PreferredSize(
+                      preferredSize: Size.fromHeight(20),
+                      child: TabBar(
+                          tabs: [
+                            Tab(text: 'Client'),
+                            Tab(text: 'Master'),
+                            Tab(text: 'Admin'),
+                            //Tab(text: 'Profile'),
+                            IconButton(
+                                onPressed: () =>
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => UsersPage())),
+                                icon: Icon(Icons.exit_to_app),
+                                iconSize: 30)
+                          ],
+                          indicator: ShapeDecoration(
+                              shape: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent, width: 0, style: BorderStyle.solid)),
+                              gradient: LinearGradient(colors: [Colors.pink, Color(0xff01ff80)])),
+                          onTap: (value) {}))),
               body: BlocConsumer<UserInfoPageBloc, BaseState>(
                 listener: (context, state) {
                   // TODO: implement listener
@@ -62,25 +74,12 @@ class UserInfoPage extends StatelessWidget {
   }
 
   Widget _onLoadUserInfoPageEvent(BuildContext context) {
-    var bloc = BlocProvider.of<UserInfoPageBloc>(context);
     return TabBarView(children: [
-      Column(children: [
-        Expanded(
-            child: CustomGridView(items: [
-          CustomGridViewItem(
-              onTap: () {
-                FindOfferBtnClicEvent(context)..invoke();
-              },
-              text: 'Find Offer'),
-          CustomGridViewItem(onTap: () => ClientOrdersBtnClicEvent(context)..invoke(), text: 'Orders')
-        ]))
-      ]),
+      ClientTabPage(0xffff5722, user),
       Column(children: [
         Expanded(
             child: CustomGridView(items: [
           CustomGridViewItem(onTap: () => CompaniesBtnClickEvent(context, "contains")..invoke(), text: 'Companies'),
-          /*CustomGridViewItem(
-                onTap: () => CompaniesBtnClickEvent(context, "canbecontains")..invoke(), text: 'JoinCompanies'),*/
           CustomGridViewItem(onTap: () => MasterOrdersBtnClicEvent(context)..invoke(), text: 'Orders')
         ]))
       ]),
@@ -90,7 +89,7 @@ class UserInfoPage extends StatelessWidget {
           CustomGridViewItem(onTap: () => CompaniesBtnClickEvent(context, "owner")..invoke(), text: 'Companies')
         ]))
       ]),
-      Column(children: [
+      /*Column(children: [
         Text('User name: ${bloc.user.name ?? 'empty'}'),
         CustomButton(
           clickEvent: () => _displayAddSkillDialog(context, bloc),
@@ -100,7 +99,8 @@ class UserInfoPage extends StatelessWidget {
           clickEvent: () => DelUserEvent(context).invoke(),
           text: "Del User",
         )
-      ])
+      ]),*/
+      Container()
     ]);
   }
 

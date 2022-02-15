@@ -3,6 +3,7 @@ import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/order.dart';
+import 'package:beauty_link/widgets/custom_button.dart';
 import 'package:beauty_link/widgets/custom_dropdownbutton.dart';
 import 'package:beauty_link/widgets/entity_list_widget.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
@@ -20,21 +21,21 @@ class ClientOrdersPage extends StatelessWidget {
     return BlocProvider(
         create: (context) => ClientOrdersPageBloc(InitState(), client),
         child: Scaffold(
-            appBar: AppBar(title: Text('Orders')),
+            //appBar: AppBar(title: Text('Orders')),
             body: BlocConsumer<ClientOrdersPageBloc, BaseState>(listener: (context, state) {
               if (state is InitState) {}
             }, builder: (context, state) {
               return Builder(builder: (context) {
                 switch (state.runtimeType) {
                   case InitState:
-                    LoadMasterOrdersPageEvent(context).invoke();
+                    LoadClientOrdersPageEvent(context).invoke();
                     return LoadingWidget();
                   case BeginEventState:
                     return LoadingWidget();
                   case EndEventState:
                     switch ((state as EndEventState).event.runtimeType) {
-                      case LoadMasterOrdersPageEvent:
-                        return _onMasterOrdersPageLoadedState(context);
+                      case LoadClientOrdersPageEvent:
+                        return _onClientOrdersPageLoadedState(context);
                       default:
                         return Text('empty state');
                     }
@@ -45,7 +46,7 @@ class ClientOrdersPage extends StatelessWidget {
             })));
   }
 
-  Widget _onMasterOrdersPageLoadedState(BuildContext context) {
+  Widget _onClientOrdersPageLoadedState(BuildContext context) {
     var bloc = BlocProvider.of<ClientOrdersPageBloc>(context);
     return Column(children: [
       CustomDropDownButton(
@@ -59,11 +60,12 @@ class ClientOrdersPage extends StatelessWidget {
           ],
           onChanged: (EntityBase? item) {
             bloc.status = (item as DropDownItem).getCaption();
-            LoadMasterOrdersPageEvent(context)..invoke();
+            LoadClientOrdersPageEvent(context)..invoke();
           }),
       Expanded(
           child: EntityListWidget(
-              entities: bloc.orders, onTap: (EntityBase entity) => TapOrderEvent(context, entity as Order)..invoke()))
+              entities: bloc.orders, onTap: (EntityBase entity) => TapOrderEvent(context, entity as Order)..invoke())),
+          CustomButton(text: 'Find', clickEvent: () => FindBtnClickEvent(context)..invoke())              
     ]);
   }
 }

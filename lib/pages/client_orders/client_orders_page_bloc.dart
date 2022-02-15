@@ -4,6 +4,7 @@ import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/order.dart';
 import 'package:beauty_link/pages/client_order_info/client_order_info_page.dart';
+import 'package:beauty_link/pages/find_offer/find_offer_page.dart';
 import 'package:beauty_link/services/order_service.dart';
 import 'package:flutter/material.dart';
 
@@ -23,8 +24,8 @@ class ClientOrdersPageBloc extends BaseBloc {
   }
 }
 
-class LoadMasterOrdersPageEvent extends BaseEvent<ClientOrdersPageBloc> {
-  LoadMasterOrdersPageEvent(BuildContext context) : super(context);
+class LoadClientOrdersPageEvent extends BaseEvent<ClientOrdersPageBloc> {
+  LoadClientOrdersPageEvent(BuildContext context) : super(context);
 
   @override
   Future<void> execute() async {
@@ -45,6 +46,20 @@ class TapOrderEvent extends BaseEvent<ClientOrdersPageBloc> {
             builder: (context) => ClientOrderInfoPage(
                   client: bloc.client,
                   order: _tapOrder,
-                ))).then((value) => LoadMasterOrdersPageEvent(context)..invoke());
+                ))).then((value) => LoadClientOrdersPageEvent(context)..invoke());
+  }
+}
+
+class FindBtnClickEvent extends BaseEvent<ClientOrdersPageBloc> {
+  FindBtnClickEvent(BuildContext context) : super(context);
+
+  @override
+  Future<void> execute() async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FindOfferPage(client: bloc.client),
+      ),
+    ).then((value) => LoadClientOrdersPageEvent(context)..invoke());
   }
 }

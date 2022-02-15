@@ -54,7 +54,6 @@ class FindBtnClickEvent extends BaseEvent<FindOfferPageBloc> {
 
   @override
   Future<void> execute() async {
-    //if (bloc.selectedMaster != null) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -64,6 +63,5 @@ class FindBtnClickEvent extends BaseEvent<FindOfferPageBloc> {
             client: bloc.client),
       ),
     ).then((value) => LoadFindOfferPageEvent(context)..invoke());
-    //}
   }
 }

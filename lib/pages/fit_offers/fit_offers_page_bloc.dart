@@ -38,13 +38,6 @@ class TapOfferEvent extends BaseEvent<FitOffersPageBloc> {
   @override
   Future<void> execute() async {
     Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => FitOfferInfoPage(
-          offer: offer,
-          client: bloc.client,
-        ),
-      ),
-    ).then((value) => LoadOffersPageEvent(context)..invoke());
+        context, MaterialPageRoute(builder: (context) => FitOfferInfoPage(offer: offer, client: bloc.client)));
   }
 }
