@@ -3,7 +3,8 @@
 import 'package:beauty_link/bloc/base_bloc.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/pages/profile_page.dart';
-import 'package:beauty_link/pages/test3_page.dart';
+import 'package:beauty_link/pages/drop_down_page.dart';
+import 'package:beauty_link/pages/users_page/entity_list_expanded_page.dart';
 import 'package:beauty_link/pages/users_page/users_page.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:beauty_link/widgets/custom_popup.dart';
@@ -21,35 +22,23 @@ class HomePage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(title: Text('Beauty Link'), centerTitle: true, actions: <Widget>[
-            CustomPopup(["profile", "signOut", "users", "test3"], (String choice) {
+            CustomPopup(["profile", "signOut", "users", "dropDownPage", "EntityListExpanded"], (String choice) {
               //PopupChoiceEvent(context, choice).invoke();
               switch (choice) {
                 case "profile":
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfilePage(),
-                    ),
-                  );
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
                   break;
                 case "signOut":
                   AuthService().signOut();
                   break;
                 case "users":
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => UsersPage(),
-                    ),
-                  );
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UsersPage()));
                   break;
-                case "test3":
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DropDownPage(),
-                    ),
-                  );
+                case "dropDownPage":
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => DropDownPage()));
+                  break;
+                case "EntityListExpanded":
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => EntityLitsExpandedPage()));
                   break;
               }
             })

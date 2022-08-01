@@ -83,4 +83,12 @@ class DropDownItem extends EntityBase {
 
   @override
   String getSubCaption() => subCaption ?? '';
+
+  @override
+  Widget? getBody() {
+  }
+
+  @override
+  Icon? getIcon() {
+  }
 }

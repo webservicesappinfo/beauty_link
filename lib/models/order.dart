@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:flutter/src/material/colors.dart';
+import 'package:flutter/src/widgets/icon.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
 class Order extends EntityBase {
   String? guid;
@@ -65,5 +67,17 @@ class Order extends EntityBase {
   @override
   String getSubCaption() {
     return "Status: $status";
+  }
+
+  @override
+  Widget? getBody() {
+    // TODO: implement getBody
+    throw UnimplementedError();
+  }
+
+  @override
+  Icon? getIcon() {
+    // TODO: implement getIcon
+    throw UnimplementedError();
   }
 }

@@ -40,4 +40,16 @@ class Company extends EntityBase {
   String getSubCaption() {
     return "";
   }
+
+  @override
+  Widget? getBody() {
+    // TODO: implement getBody
+    throw UnimplementedError();
+  }
+
+  @override
+  Icon? getIcon() {
+    // TODO: implement getIcon
+    throw UnimplementedError();
+  }
 }

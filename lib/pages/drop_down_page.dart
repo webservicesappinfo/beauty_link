@@ -73,7 +73,7 @@ class _DropDownPageState extends State<DropDownPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(2),
                         child: OutlinedButton(
                           onPressed: () {
                             // How should I unselect all items in the list?
@@ -83,7 +83,7 @@ class _DropDownPageState extends State<DropDownPage> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(2),
                         child: OutlinedButton(
                           onPressed: () {
                             // How should I select all items in the list?
@@ -93,7 +93,7 @@ class _DropDownPageState extends State<DropDownPage> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(2),
                         child: OutlinedButton(
                           onPressed: () {
                             // How should I unselect all items in the list?
@@ -117,12 +117,7 @@ class _DropDownPageState extends State<DropDownPage> {
                 showClearButton: true,
                 onChanged: print,
                 popupSelectionWidget: (cnt, String item, bool isSelected) {
-                  return isSelected
-                      ? Icon(
-                          Icons.check_circle,
-                          color: Colors.green[500],
-                        )
-                      : Container();
+                  return isSelected ? Icon(Icons.check_circle, color: Colors.green[500]) : Container();
                 },
                 popupItemDisabled: (String s) => s.startsWith('I'),
                 clearButtonSplashRadius: 20,

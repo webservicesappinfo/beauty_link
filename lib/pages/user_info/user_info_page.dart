@@ -18,59 +18,62 @@ class UserInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => UserInfoPageBloc(InitState(), user),
-        child: DefaultTabController(
-            length: 4,
-            child: Scaffold(
-              appBar: AppBar(
-                title: Center(child: Text("${user.name}")),
-                  automaticallyImplyLeading: false,
-                  bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(20),
-                      child: TabBar(
-                          tabs: [
-                            Tab(text: 'Client'),
-                            Tab(text: 'Master'),
-                            Tab(text: 'Admin'),
-                            //Tab(text: 'Profile'),
-                            IconButton(
-                                onPressed: () =>
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => UsersPage())),
-                                icon: Icon(Icons.exit_to_app),
-                                iconSize: 30)
-                          ],
-                          indicator: ShapeDecoration(
-                              shape: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.transparent, width: 0, style: BorderStyle.solid)),
-                              gradient: LinearGradient(colors: [Colors.pink, Color(0xff01ff80)])),
-                          onTap: (value) {}))),
-              body: BlocConsumer<UserInfoPageBloc, BaseState>(
-                listener: (context, state) {
-                  // TODO: implement listener
-                },
-                builder: (context, state) {
-                  var bloc = BlocProvider.of<UserInfoPageBloc>(context);
-                  switch (state.runtimeType) {
-                    case InitState:
-                      LoadUserInfoPageEvent(context)..invoke();
-                      return LoadingWidget();
-                    case BeginEventState:
-                      return LoadingWidget();
-                    case EndEventState:
-                      switch ((state as EndEventState).event.runtimeType) {
-                        case LoadUserInfoPageEvent:
-                          return _onLoadUserInfoPageEvent(context);
-                        case CompaniesBtnClickEvent:
+        child: Builder(builder: (context) {
+          return DefaultTabController(
+              length: 4,
+              child: Scaffold(
+                  appBar: AppBar(
+                      title: Center(child: Text("${user.name}")),
+                      automaticallyImplyLeading: false,
+                      bottom: PreferredSize(
+                          preferredSize: Size.fromHeight(20),
+                          child: TabBar(
+                              tabs: [
+                                Tab(text: 'Client'),
+                                Tab(text: 'Master'),
+                                Tab(text: 'Admin'),
+                                //Tab(text: 'Profile'),
+                                IconButton(
+                                    onPressed: () =>
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => UsersPage())),
+                                    icon: Icon(Icons.arrow_back),
+                                    iconSize: 30)
+                              ],
+                              indicator: ShapeDecoration(
+                                  shape: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.transparent, width: 0, style: BorderStyle.solid)),
+                                  gradient: LinearGradient(colors: [Colors.pink, Color(0xff01ff80)])),
+                              onTap: (value) {}))),
+                  body: BlocConsumer<UserInfoPageBloc, BaseState>(
+                    listener: (context, state) {
+                      // TODO: implement listener
+                    },
+                    builder: (context, state) {
+                      var bloc = BlocProvider.of<UserInfoPageBloc>(context);
+                      switch (state.runtimeType) {
+                        case InitState:
+                          LoadUserInfoPageEvent(context)..invoke();
                           return LoadingWidget();
+                        case BeginEventState:
+                          return LoadingWidget();
+                        case EndEventState:
+                          switch ((state as EndEventState).event.runtimeType) {
+                            case LoadUserInfoPageEvent:
+                              return _onLoadUserInfoPageEvent(context);
+                            case CompaniesBtnClickEvent:
+                              return LoadingWidget();
+                            default:
+                              return Text('empty state');
+                          }
                         default:
                           return Text('empty state');
                       }
-                    default:
-                      return Text('empty state');
-                  }
-                },
-              ),
-            )));
+                    },
+                  ),
+                  floatingActionButton: FloatingActionButton(
+                      child: Icon(Icons.delete), onPressed: () => DelUserEvent(context)..invoke())));
+        }));
   }
 
   Widget _onLoadUserInfoPageEvent(BuildContext context) {
