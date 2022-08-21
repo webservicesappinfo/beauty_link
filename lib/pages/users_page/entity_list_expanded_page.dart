@@ -81,11 +81,16 @@ class TestEntity extends EntityBase {
   Icon? getIcon() => Icon(Icons.people_rounded);
 
   @override
-  Widget? getBody() {
+  Widget? getBody(BuildContext context) {
     //return Text("BODY");
     return Column(children: [
+      Row(children:[
+        Expanded(child: TextButton(onPressed: ()=>{}, child: Text("Orders"))),
+        Expanded(child: TextButton(onPressed: ()=>{}, child: Text("Offers"))),
+        Expanded(child: TextButton(onPressed: ()=>{}, child: Text("Masters")))
+      ])
       //CustomDropDownField(items: [DropDownFieldItem(caption: "caption"), DropDownFieldItem(caption: "caption1")])
-      ddWidget()
+      //ddWidget()
     ]);
   }
 

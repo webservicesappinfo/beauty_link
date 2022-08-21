@@ -12,6 +12,8 @@ import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../SliderPage.dart';
+import '../scrolling_header.dart';
 import 'home_page_bloc.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,7 +24,8 @@ class HomePage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(title: Text('Beauty Link'), centerTitle: true, actions: <Widget>[
-            CustomPopup(["profile", "signOut", "users", "dropDownPage", "EntityListExpanded"], (String choice) {
+            CustomPopup(["profile", "signOut", "users", "dropDownPage", "EntityListExpanded", "ScrollingHeader", "SliderPage"],
+                (String choice) {
               //PopupChoiceEvent(context, choice).invoke();
               switch (choice) {
                 case "profile":
@@ -39,6 +42,12 @@ class HomePage extends StatelessWidget {
                   break;
                 case "EntityListExpanded":
                   Navigator.push(context, MaterialPageRoute(builder: (context) => EntityLitsExpandedPage()));
+                  break;
+                case "ScrollingHeader":
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ScrollingHeaderExample()));
+                  break;
+                case "SliderPage":
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => IntroScreenDefault()));
                   break;
               }
             })

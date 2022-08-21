@@ -38,10 +38,13 @@ dependencies:
   grpc: ^3.0.2
   protobuf: ^2.0.0
   uuid: ^3.0.5
-  syncfusion_flutter_datepicker: ^19.4.41
+  syncfusion_flutter_datepicker: ^20.2.43
   google_maps_flutter: ^2.1.1
   dropdown_search: ^2.0.1
-  qr_code_scanner: ^0.6.1
+  qr_code_scanner: ^1.0.0
+  page_indicator: ^0.4.1
+  carousel_slider: ^4.1.1
+  custom_radio_grouped_button: ^2.1.2+2
 
 dev_dependencies:
   flutter_test:

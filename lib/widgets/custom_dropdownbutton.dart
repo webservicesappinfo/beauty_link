@@ -85,7 +85,7 @@ class DropDownItem extends EntityBase {
   String getSubCaption() => subCaption ?? '';
 
   @override
-  Widget? getBody() {
+  Widget? getBody(BuildContext context) {
   }
 
   @override

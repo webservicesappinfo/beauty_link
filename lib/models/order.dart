@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/material/colors.dart';
 import 'package:flutter/src/widgets/icon.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -70,14 +72,45 @@ class Order extends EntityBase {
   }
 
   @override
-  Widget? getBody() {
-    // TODO: implement getBody
-    throw UnimplementedError();
+  Widget? getBody(BuildContext context) {
+    return Column(children: [
+      Text("masterName: $masterName"),
+      Text("skillName: $skillName"),
+      Text("status: $status"),
+      PopupMenuButton(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                  color: Colors.amber,
+                  shape: BoxShape.rectangle,
+                  border: Border.all(width: 2, color: Colors.black, style: BorderStyle.solid)),
+              child: Icon(Icons.call_to_action)),
+          itemBuilder: (context) {
+            return List.generate(3, (index) {
+              return PopupMenuItem(child: Text('button no $index'));
+            });
+          },
+          offset: Offset(1, 1))
+      /*TextButton(
+          onPressed: () {
+            showDialog<Widget>(
+                context: context,
+                barrierColor: Colors.transparent,
+                builder: (BuildContext context) {
+                  return Dialog(
+                    alignment: Alignment(0, 1),
+                      child:
+                          Container(height: 50, child: Column(children: [Text("Do1"), Text("Do2"), Text("remove")])));
+                });
+          },
+          child: Text("Actions"))*/
+    ]);
   }
 
   @override
   Icon? getIcon() {
-    // TODO: implement getIcon
-    throw UnimplementedError();
+    return null;
   }
 }

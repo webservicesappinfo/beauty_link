@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/material/colors.dart';
 import 'package:flutter/src/widgets/icon.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -75,14 +76,12 @@ class Offer extends EntityBase {
   }
 
   @override
-  Widget? getBody() {
-    // TODO: implement getBody
-    throw UnimplementedError();
+  Widget? getBody(BuildContext context) {
+    return Column(children: [Text("masterName: $masterName"), Text("skillName: $skillName"), Text("status: $status")]);
   }
 
   @override
   Icon? getIcon() {
-    // TODO: implement getIcon
-    throw UnimplementedError();
+    return null;
   }
 }

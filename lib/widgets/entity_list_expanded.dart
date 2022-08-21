@@ -5,10 +5,8 @@ import 'custom_dropdownfield.dart';
 
 class EntityListExpanded extends StatefulWidget {
   final List<EntityBase> entities;
-  EntityListExpanded({
-    Key? key,
-    required this.entities,
-  }) : super(key: key);
+  ScrollController? scrollController;
+  EntityListExpanded({Key? key, required this.entities, this.scrollController}) : super(key: key);
 
   @override
   State<EntityListExpanded> createState() => _EntityListExpandedState();
@@ -19,9 +17,9 @@ class _EntityListExpandedState extends State<EntityListExpanded> {
   Widget build(BuildContext context) => getExpandedListView(context);
 
   Widget getExpandedListView(BuildContext context) {
-    return ListView(children: [
+    return ListView(controller: widget.scrollController, children: [
       Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(2.0),
           child: ExpansionPanelList(
               expansionCallback: (int index, bool isExpanded) {
                 setState(() {
@@ -41,7 +39,7 @@ class _EntityListExpandedState extends State<EntityListExpanded> {
                             )));
                   },
                   isExpanded: (item.isExpanded ?? false),
-                  body: item.getBody() ?? Text("body empty"),
+                  body: item.getBody(context) ?? Text("body empty"),
                 );
               }).toList()))
     ]);

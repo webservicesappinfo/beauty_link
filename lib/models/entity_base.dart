@@ -6,6 +6,6 @@ abstract class EntityBase {
   String getSubCaption();
   Color? getColor();
   Icon? getIcon();
-  Widget? getBody();
+  Widget? getBody(BuildContext context);
   bool? isExpanded = false;
 }

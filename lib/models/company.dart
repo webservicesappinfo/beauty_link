@@ -42,7 +42,7 @@ class Company extends EntityBase {
   }
 
   @override
-  Widget? getBody() {
+  Widget? getBody(BuildContext context) {
     // TODO: implement getBody
     throw UnimplementedError();
   }
