@@ -9,6 +9,124 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'msg.pb.dart' as $1;
+
+class GetMainDataForUserRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMainDataForUserRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'mobileApi'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userGuid', protoName: 'userGuid')
+    ..hasRequiredFields = false
+  ;
+
+  GetMainDataForUserRequest._() : super();
+  factory GetMainDataForUserRequest({
+    $core.String? userGuid,
+  }) {
+    final _result = create();
+    if (userGuid != null) {
+      _result.userGuid = userGuid;
+    }
+    return _result;
+  }
+  factory GetMainDataForUserRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetMainDataForUserRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetMainDataForUserRequest clone() => GetMainDataForUserRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetMainDataForUserRequest copyWith(void Function(GetMainDataForUserRequest) updates) => super.copyWith((message) => updates(message as GetMainDataForUserRequest)) as GetMainDataForUserRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetMainDataForUserRequest create() => GetMainDataForUserRequest._();
+  GetMainDataForUserRequest createEmptyInstance() => create();
+  static $pb.PbList<GetMainDataForUserRequest> createRepeated() => $pb.PbList<GetMainDataForUserRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetMainDataForUserRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetMainDataForUserRequest>(create);
+  static GetMainDataForUserRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userGuid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userGuid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserGuid() => clearField(1);
+}
+
+class GetMainDataForUserReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMainDataForUserReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'mobileApi'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userName', protoName: 'userName')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userUidFB', protoName: 'userUidFB')
+    ..pc<$1.CompanyReply>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companies', $pb.PbFieldType.PM, subBuilder: $1.CompanyReply.create)
+    ..hasRequiredFields = false
+  ;
+
+  GetMainDataForUserReply._() : super();
+  factory GetMainDataForUserReply({
+    $core.String? userName,
+    $core.String? userUidFB,
+    $core.Iterable<$1.CompanyReply>? companies,
+  }) {
+    final _result = create();
+    if (userName != null) {
+      _result.userName = userName;
+    }
+    if (userUidFB != null) {
+      _result.userUidFB = userUidFB;
+    }
+    if (companies != null) {
+      _result.companies.addAll(companies);
+    }
+    return _result;
+  }
+  factory GetMainDataForUserReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetMainDataForUserReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetMainDataForUserReply clone() => GetMainDataForUserReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetMainDataForUserReply copyWith(void Function(GetMainDataForUserReply) updates) => super.copyWith((message) => updates(message as GetMainDataForUserReply)) as GetMainDataForUserReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetMainDataForUserReply create() => GetMainDataForUserReply._();
+  GetMainDataForUserReply createEmptyInstance() => create();
+  static $pb.PbList<GetMainDataForUserReply> createRepeated() => $pb.PbList<GetMainDataForUserReply>();
+  @$core.pragma('dart2js:noInline')
+  static GetMainDataForUserReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetMainDataForUserReply>(create);
+  static GetMainDataForUserReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userName => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userName($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get userUidFB => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set userUidFB($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasUserUidFB() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearUserUidFB() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$1.CompanyReply> get companies => $_getList(2);
+}
+
 class GetFitForCompanyUsersRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFitForCompanyUsersRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'mobileApi'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companyGuid', protoName: 'companyGuid')

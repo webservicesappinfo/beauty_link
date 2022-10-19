@@ -27,9 +27,10 @@ class CompanyService {
 
   Future<bool> addCompany(Company? company) async {
     if (company == null) return false;
-    var response = await mobileApiClient.apiAddCompany(
+    /*var response = await mobileApiClient.apiAddCompany(
         new AddCompanyRequest(name: company.name, ownerGuid: company.ownerGuid, ownerName: company.ownerName));
-    return response.result;
+    return response.result;*/
+    return true;
   }
 
   Future<bool> joinToCompany(String? userGuid, String? userName, String? companyGuid, String? companyName) async {
@@ -49,8 +50,9 @@ class CompanyService {
 
   Future<bool> delCompany(String? guid) async {
     if (guid?.isEmpty ?? true) return false;
-    var response = await mobileApiClient.apiDelCompany(new DelCompanyRequest(guid: guid));
-    return response.result;
+    /*var response = await mobileApiClient.apiDelCompany(new DelCompanyRequest(guid: guid));
+    return response.result;*/
+    return true;
   }
 
   Future<bool> setCompanyLocation(Company company) async {

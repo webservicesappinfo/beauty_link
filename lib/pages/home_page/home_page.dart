@@ -4,15 +4,15 @@ import 'package:beauty_link/bloc/base_bloc.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/pages/profile_page.dart';
 import 'package:beauty_link/pages/drop_down_page.dart';
-import 'package:beauty_link/pages/users_page/entity_list_expanded_page.dart';
-import 'package:beauty_link/pages/users_page/users_page.dart';
+import 'package:beauty_link/pages/old_ui/users_page/entity_list_expanded_page.dart';
+import 'package:beauty_link/pages/old_ui/users_page/users_page.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:beauty_link/widgets/custom_popup.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../SliderPage.dart';
+import '../main_page.dart';
 import '../scrolling_header.dart';
 import 'home_page_bloc.dart';
 
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => ScrollingHeaderExample()));
                   break;
                 case "SliderPage":
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => IntroScreenDefault()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
                   break;
               }
             })

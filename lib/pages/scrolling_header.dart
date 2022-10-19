@@ -1,5 +1,5 @@
 import 'package:beauty_link/models/app_user.dart';
-import 'package:beauty_link/pages/user_info/client_tabs_page.dart';
+import 'package:beauty_link/pages/old_ui/user_info/client_tabs_page.dart';
 import 'package:flutter/material.dart';
 
 class ScrollingHeaderExample extends StatelessWidget {

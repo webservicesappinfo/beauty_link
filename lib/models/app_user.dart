@@ -1,3 +1,4 @@
+import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -9,8 +10,9 @@ class AppUser extends EntityBase {
   String? login;
   String? token;
   LatLng? location;
+  List<Company>? companies;
 
-  AppUser({this.uidFB, this.name, this.token, this.email, this.login});
+  AppUser({this.uidFB, this.name, this.token, this.email, this.login, this.companies});
 
   factory AppUser.fromJson(Map<String, dynamic> json) {
     return new AppUser(
