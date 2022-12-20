@@ -10,29 +10,28 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'mobile_api.pb.dart' as $7;
+import 'mobile_api.pb.dart' as $6;
 import 'msg.pb.dart' as $1;
 import 'user.pb.dart' as $0;
 import 'company.pb.dart' as $2;
 import 'skill.pb.dart' as $3;
-import 'offer.pb.dart' as $4;
-import 'order.pb.dart' as $5;
-import 'notification.pb.dart' as $6;
+import 'order.pb.dart' as $4;
+import 'notification.pb.dart' as $5;
 export 'mobile_api.pb.dart';
 
 class MobileApiClient extends $grpc.Client {
   static final _$getMainDataForUser = $grpc.ClientMethod<
-          $7.GetMainDataForUserRequest, $7.GetMainDataForUserReply>(
+          $6.GetMainDataForUserRequest, $6.GetMainDataForUserReply>(
       '/mobileApi.MobileApi/GetMainDataForUser',
-      ($7.GetMainDataForUserRequest value) => value.writeToBuffer(),
+      ($6.GetMainDataForUserRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $7.GetMainDataForUserReply.fromBuffer(value));
+          $6.GetMainDataForUserReply.fromBuffer(value));
   static final _$getFitForCompanyUsers = $grpc.ClientMethod<
-          $7.GetFitForCompanyUsersRequest, $7.GetFitForCompanyUsersReply>(
+          $6.GetFitForCompanyUsersRequest, $6.GetFitForCompanyUsersReply>(
       '/mobileApi.MobileApi/GetFitForCompanyUsers',
-      ($7.GetFitForCompanyUsersRequest value) => value.writeToBuffer(),
+      ($6.GetFitForCompanyUsersRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $7.GetFitForCompanyUsersReply.fromBuffer(value));
+          $6.GetFitForCompanyUsersReply.fromBuffer(value));
   static final _$addCompany =
       $grpc.ClientMethod<$1.AddCompanyRequest, $1.AddCompanyReply>(
           '/mobileApi.MobileApi/AddCompany',
@@ -45,6 +44,16 @@ class MobileApiClient extends $grpc.Client {
           ($1.DelCompanyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.DelCompanyReply.fromBuffer(value));
+  static final _$addMaster =
+      $grpc.ClientMethod<$1.AddMasterRequest, $1.AddMasterReply>(
+          '/mobileApi.MobileApi/AddMaster',
+          ($1.AddMasterRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.AddMasterReply.fromBuffer(value));
+  static final _$delMaster =
+      $grpc.ClientMethod<$1.DelMasterRequest, $1.DelMasterReply>(
+          '/mobileApi.MobileApi/DelMaster',
+          ($1.DelMasterRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.DelMasterReply.fromBuffer(value));
   static final _$apiAddUser =
       $grpc.ClientMethod<$0.AddUserRequest, $0.AddUserReply>(
           '/mobileApi.MobileApi/ApiAddUser',
@@ -104,96 +113,86 @@ class MobileApiClient extends $grpc.Client {
           '/mobileApi.MobileApi/ApiDelSkill',
           ($3.DelSkillRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $3.DelSkillReply.fromBuffer(value));
-  static final _$apiAddOffer =
-      $grpc.ClientMethod<$4.AddOfferRequest, $4.AddOfferReply>(
-          '/mobileApi.MobileApi/ApiAddOffer',
-          ($4.AddOfferRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $4.AddOfferReply.fromBuffer(value));
+  static final _$addOffer =
+      $grpc.ClientMethod<$1.AddOfferRequest, $1.AddOfferReply>(
+          '/mobileApi.MobileApi/AddOffer',
+          ($1.AddOfferRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.AddOfferReply.fromBuffer(value));
+  static final _$delOffer =
+      $grpc.ClientMethod<$1.DelOfferRequest, $1.DelOfferReply>(
+          '/mobileApi.MobileApi/DelOffer',
+          ($1.DelOfferRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.DelOfferReply.fromBuffer(value));
   static final _$apiGetOffers =
-      $grpc.ClientMethod<$4.GetOffersRequest, $4.GetOffersReply>(
+      $grpc.ClientMethod<$1.GetOffersRequest, $1.GetOffersReply>(
           '/mobileApi.MobileApi/ApiGetOffers',
-          ($4.GetOffersRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $4.GetOffersReply.fromBuffer(value));
-  static final _$apiGetOffersByMaster =
-      $grpc.ClientMethod<$4.GetOffersByMasterRequest, $4.GetOffersReply>(
-          '/mobileApi.MobileApi/ApiGetOffersByMaster',
-          ($4.GetOffersByMasterRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $4.GetOffersReply.fromBuffer(value));
-  static final _$apiGetOffersBySkill =
-      $grpc.ClientMethod<$4.GetOffersBySkillRequest, $4.GetOffersReply>(
-          '/mobileApi.MobileApi/ApiGetOffersBySkill',
-          ($4.GetOffersBySkillRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $4.GetOffersReply.fromBuffer(value));
-  static final _$apiDelOffer =
-      $grpc.ClientMethod<$4.DelOfferRequest, $4.DelOfferReply>(
-          '/mobileApi.MobileApi/ApiDelOffer',
-          ($4.DelOfferRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $4.DelOfferReply.fromBuffer(value));
+          ($1.GetOffersRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.GetOffersReply.fromBuffer(value));
   static final _$apiAddOrder =
-      $grpc.ClientMethod<$5.AddOrderRequest, $5.AddOrderReply>(
+      $grpc.ClientMethod<$4.AddOrderRequest, $4.AddOrderReply>(
           '/mobileApi.MobileApi/ApiAddOrder',
-          ($5.AddOrderRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $5.AddOrderReply.fromBuffer(value));
+          ($4.AddOrderRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $4.AddOrderReply.fromBuffer(value));
   static final _$apiGetOrders =
-      $grpc.ClientMethod<$5.GetOrdersRequest, $5.GetOrdersReply>(
+      $grpc.ClientMethod<$4.GetOrdersRequest, $4.GetOrdersReply>(
           '/mobileApi.MobileApi/ApiGetOrders',
-          ($5.GetOrdersRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $5.GetOrdersReply.fromBuffer(value));
+          ($4.GetOrdersRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $4.GetOrdersReply.fromBuffer(value));
   static final _$apiDelOrder =
-      $grpc.ClientMethod<$5.DelOrderRequest, $5.DelOrderReply>(
+      $grpc.ClientMethod<$4.DelOrderRequest, $4.DelOrderReply>(
           '/mobileApi.MobileApi/ApiDelOrder',
-          ($5.DelOrderRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $5.DelOrderReply.fromBuffer(value));
+          ($4.DelOrderRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $4.DelOrderReply.fromBuffer(value));
   static final _$apiAcceptedOrder =
-      $grpc.ClientMethod<$5.AcceptedOrderRequest, $5.AcceptedOrderReply>(
+      $grpc.ClientMethod<$4.AcceptedOrderRequest, $4.AcceptedOrderReply>(
           '/mobileApi.MobileApi/ApiAcceptedOrder',
-          ($5.AcceptedOrderRequest value) => value.writeToBuffer(),
+          ($4.AcceptedOrderRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.AcceptedOrderReply.fromBuffer(value));
+              $4.AcceptedOrderReply.fromBuffer(value));
   static final _$apiExecutedOrder =
-      $grpc.ClientMethod<$5.ExecutedOrderRequest, $5.ExecutedOrderReply>(
+      $grpc.ClientMethod<$4.ExecutedOrderRequest, $4.ExecutedOrderReply>(
           '/mobileApi.MobileApi/ApiExecutedOrder',
-          ($5.ExecutedOrderRequest value) => value.writeToBuffer(),
+          ($4.ExecutedOrderRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.ExecutedOrderReply.fromBuffer(value));
+              $4.ExecutedOrderReply.fromBuffer(value));
   static final _$apiSendMessage =
-      $grpc.ClientMethod<$6.SendNotificationRequest, $6.SendNotificationReply>(
+      $grpc.ClientMethod<$5.SendNotificationRequest, $5.SendNotificationReply>(
           '/mobileApi.MobileApi/ApiSendMessage',
-          ($6.SendNotificationRequest value) => value.writeToBuffer(),
+          ($5.SendNotificationRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $6.SendNotificationReply.fromBuffer(value));
+              $5.SendNotificationReply.fromBuffer(value));
   static final _$apiFindLastMessage = $grpc.ClientMethod<
-          $6.FindLastGetMessageRequest, $6.FindLastGetMessageReply>(
+          $5.FindLastGetMessageRequest, $5.FindLastGetMessageReply>(
       '/mobileApi.MobileApi/ApiFindLastMessage',
-      ($6.FindLastGetMessageRequest value) => value.writeToBuffer(),
+      ($5.FindLastGetMessageRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $6.FindLastGetMessageReply.fromBuffer(value));
+          $5.FindLastGetMessageReply.fromBuffer(value));
   static final _$apiGetUserLocation = $grpc.ClientMethod<
-          $7.ApiGetUserLocationRequest, $7.ApiGetUserLocationReply>(
+          $6.ApiGetUserLocationRequest, $6.ApiGetUserLocationReply>(
       '/mobileApi.MobileApi/ApiGetUserLocation',
-      ($7.ApiGetUserLocationRequest value) => value.writeToBuffer(),
+      ($6.ApiGetUserLocationRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $7.ApiGetUserLocationReply.fromBuffer(value));
+          $6.ApiGetUserLocationReply.fromBuffer(value));
   static final _$apiSetUserLocation = $grpc.ClientMethod<
-          $7.ApiSetUserLocationRequest, $7.ApiSetUserLocationReply>(
+          $6.ApiSetUserLocationRequest, $6.ApiSetUserLocationReply>(
       '/mobileApi.MobileApi/ApiSetUserLocation',
-      ($7.ApiSetUserLocationRequest value) => value.writeToBuffer(),
+      ($6.ApiSetUserLocationRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $7.ApiSetUserLocationReply.fromBuffer(value));
+          $6.ApiSetUserLocationReply.fromBuffer(value));
 
   MobileApiClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$7.GetMainDataForUserReply> getMainDataForUser(
-      $7.GetMainDataForUserRequest request,
+  $grpc.ResponseFuture<$6.GetMainDataForUserReply> getMainDataForUser(
+      $6.GetMainDataForUserRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getMainDataForUser, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.GetFitForCompanyUsersReply> getFitForCompanyUsers(
-      $7.GetFitForCompanyUsersRequest request,
+  $grpc.ResponseFuture<$6.GetFitForCompanyUsersReply> getFitForCompanyUsers(
+      $6.GetFitForCompanyUsersRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getFitForCompanyUsers, request, options: options);
   }
@@ -208,6 +207,16 @@ class MobileApiClient extends $grpc.Client {
       $1.DelCompanyRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delCompany, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.AddMasterReply> addMaster($1.AddMasterRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$addMaster, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.DelMasterReply> delMaster($1.DelMasterRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delMaster, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.AddUserReply> apiAddUser($0.AddUserRequest request,
@@ -270,82 +279,70 @@ class MobileApiClient extends $grpc.Client {
     return $createUnaryCall(_$apiDelSkill, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.AddOfferReply> apiAddOffer($4.AddOfferRequest request,
+  $grpc.ResponseFuture<$1.AddOfferReply> addOffer($1.AddOfferRequest request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$apiAddOffer, request, options: options);
+    return $createUnaryCall(_$addOffer, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.GetOffersReply> apiGetOffers(
-      $4.GetOffersRequest request,
+  $grpc.ResponseFuture<$1.DelOfferReply> delOffer($1.DelOfferRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$delOffer, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.GetOffersReply> apiGetOffers(
+      $1.GetOffersRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiGetOffers, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.GetOffersReply> apiGetOffersByMaster(
-      $4.GetOffersByMasterRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$apiGetOffersByMaster, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$4.GetOffersReply> apiGetOffersBySkill(
-      $4.GetOffersBySkillRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$apiGetOffersBySkill, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$4.DelOfferReply> apiDelOffer($4.DelOfferRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$apiDelOffer, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$5.AddOrderReply> apiAddOrder($5.AddOrderRequest request,
+  $grpc.ResponseFuture<$4.AddOrderReply> apiAddOrder($4.AddOrderRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiAddOrder, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.GetOrdersReply> apiGetOrders(
-      $5.GetOrdersRequest request,
+  $grpc.ResponseFuture<$4.GetOrdersReply> apiGetOrders(
+      $4.GetOrdersRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiGetOrders, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.DelOrderReply> apiDelOrder($5.DelOrderRequest request,
+  $grpc.ResponseFuture<$4.DelOrderReply> apiDelOrder($4.DelOrderRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiDelOrder, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.AcceptedOrderReply> apiAcceptedOrder(
-      $5.AcceptedOrderRequest request,
+  $grpc.ResponseFuture<$4.AcceptedOrderReply> apiAcceptedOrder(
+      $4.AcceptedOrderRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiAcceptedOrder, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.ExecutedOrderReply> apiExecutedOrder(
-      $5.ExecutedOrderRequest request,
+  $grpc.ResponseFuture<$4.ExecutedOrderReply> apiExecutedOrder(
+      $4.ExecutedOrderRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiExecutedOrder, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.SendNotificationReply> apiSendMessage(
-      $6.SendNotificationRequest request,
+  $grpc.ResponseFuture<$5.SendNotificationReply> apiSendMessage(
+      $5.SendNotificationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiSendMessage, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.FindLastGetMessageReply> apiFindLastMessage(
-      $6.FindLastGetMessageRequest request,
+  $grpc.ResponseFuture<$5.FindLastGetMessageReply> apiFindLastMessage(
+      $5.FindLastGetMessageRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiFindLastMessage, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.ApiGetUserLocationReply> apiGetUserLocation(
-      $7.ApiGetUserLocationRequest request,
+  $grpc.ResponseFuture<$6.ApiGetUserLocationReply> apiGetUserLocation(
+      $6.ApiGetUserLocationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiGetUserLocation, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.ApiSetUserLocationReply> apiSetUserLocation(
-      $7.ApiSetUserLocationRequest request,
+  $grpc.ResponseFuture<$6.ApiSetUserLocationReply> apiSetUserLocation(
+      $6.ApiSetUserLocationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$apiSetUserLocation, request, options: options);
   }
@@ -355,24 +352,24 @@ abstract class MobileApiServiceBase extends $grpc.Service {
   $core.String get $name => 'mobileApi.MobileApi';
 
   MobileApiServiceBase() {
-    $addMethod($grpc.ServiceMethod<$7.GetMainDataForUserRequest,
-            $7.GetMainDataForUserReply>(
+    $addMethod($grpc.ServiceMethod<$6.GetMainDataForUserRequest,
+            $6.GetMainDataForUserReply>(
         'GetMainDataForUser',
         getMainDataForUser_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.GetMainDataForUserRequest.fromBuffer(value),
-        ($7.GetMainDataForUserReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.GetFitForCompanyUsersRequest,
-            $7.GetFitForCompanyUsersReply>(
+            $6.GetMainDataForUserRequest.fromBuffer(value),
+        ($6.GetMainDataForUserReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.GetFitForCompanyUsersRequest,
+            $6.GetFitForCompanyUsersReply>(
         'GetFitForCompanyUsers',
         getFitForCompanyUsers_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.GetFitForCompanyUsersRequest.fromBuffer(value),
-        ($7.GetFitForCompanyUsersReply value) => value.writeToBuffer()));
+            $6.GetFitForCompanyUsersRequest.fromBuffer(value),
+        ($6.GetFitForCompanyUsersReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.AddCompanyRequest, $1.AddCompanyReply>(
         'AddCompany',
         addCompany_Pre,
@@ -387,6 +384,20 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.DelCompanyRequest.fromBuffer(value),
         ($1.DelCompanyReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.AddMasterRequest, $1.AddMasterReply>(
+        'AddMaster',
+        addMaster_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.AddMasterRequest.fromBuffer(value),
+        ($1.AddMasterReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.DelMasterRequest, $1.DelMasterReply>(
+        'DelMaster',
+        delMaster_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.DelMasterRequest.fromBuffer(value),
+        ($1.DelMasterReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.AddUserRequest, $0.AddUserReply>(
         'ApiAddUser',
         apiAddUser_Pre,
@@ -470,131 +481,113 @@ abstract class MobileApiServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $3.DelSkillRequest.fromBuffer(value),
         ($3.DelSkillReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.AddOfferRequest, $4.AddOfferReply>(
-        'ApiAddOffer',
-        apiAddOffer_Pre,
+    $addMethod($grpc.ServiceMethod<$1.AddOfferRequest, $1.AddOfferReply>(
+        'AddOffer',
+        addOffer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.AddOfferRequest.fromBuffer(value),
-        ($4.AddOfferReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.GetOffersRequest, $4.GetOffersReply>(
+        ($core.List<$core.int> value) => $1.AddOfferRequest.fromBuffer(value),
+        ($1.AddOfferReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.DelOfferRequest, $1.DelOfferReply>(
+        'DelOffer',
+        delOffer_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.DelOfferRequest.fromBuffer(value),
+        ($1.DelOfferReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetOffersRequest, $1.GetOffersReply>(
         'ApiGetOffers',
         apiGetOffers_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.GetOffersRequest.fromBuffer(value),
-        ($4.GetOffersReply value) => value.writeToBuffer()));
-    $addMethod(
-        $grpc.ServiceMethod<$4.GetOffersByMasterRequest, $4.GetOffersReply>(
-            'ApiGetOffersByMaster',
-            apiGetOffersByMaster_Pre,
-            false,
-            false,
-            ($core.List<$core.int> value) =>
-                $4.GetOffersByMasterRequest.fromBuffer(value),
-            ($4.GetOffersReply value) => value.writeToBuffer()));
-    $addMethod(
-        $grpc.ServiceMethod<$4.GetOffersBySkillRequest, $4.GetOffersReply>(
-            'ApiGetOffersBySkill',
-            apiGetOffersBySkill_Pre,
-            false,
-            false,
-            ($core.List<$core.int> value) =>
-                $4.GetOffersBySkillRequest.fromBuffer(value),
-            ($4.GetOffersReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.DelOfferRequest, $4.DelOfferReply>(
-        'ApiDelOffer',
-        apiDelOffer_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $4.DelOfferRequest.fromBuffer(value),
-        ($4.DelOfferReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.AddOrderRequest, $5.AddOrderReply>(
+        ($core.List<$core.int> value) => $1.GetOffersRequest.fromBuffer(value),
+        ($1.GetOffersReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.AddOrderRequest, $4.AddOrderReply>(
         'ApiAddOrder',
         apiAddOrder_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $5.AddOrderRequest.fromBuffer(value),
-        ($5.AddOrderReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.GetOrdersRequest, $5.GetOrdersReply>(
+        ($core.List<$core.int> value) => $4.AddOrderRequest.fromBuffer(value),
+        ($4.AddOrderReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.GetOrdersRequest, $4.GetOrdersReply>(
         'ApiGetOrders',
         apiGetOrders_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $5.GetOrdersRequest.fromBuffer(value),
-        ($5.GetOrdersReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.DelOrderRequest, $5.DelOrderReply>(
+        ($core.List<$core.int> value) => $4.GetOrdersRequest.fromBuffer(value),
+        ($4.GetOrdersReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.DelOrderRequest, $4.DelOrderReply>(
         'ApiDelOrder',
         apiDelOrder_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $5.DelOrderRequest.fromBuffer(value),
-        ($5.DelOrderReply value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $4.DelOrderRequest.fromBuffer(value),
+        ($4.DelOrderReply value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$5.AcceptedOrderRequest, $5.AcceptedOrderReply>(
+        $grpc.ServiceMethod<$4.AcceptedOrderRequest, $4.AcceptedOrderReply>(
             'ApiAcceptedOrder',
             apiAcceptedOrder_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $5.AcceptedOrderRequest.fromBuffer(value),
-            ($5.AcceptedOrderReply value) => value.writeToBuffer()));
+                $4.AcceptedOrderRequest.fromBuffer(value),
+            ($4.AcceptedOrderReply value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$5.ExecutedOrderRequest, $5.ExecutedOrderReply>(
+        $grpc.ServiceMethod<$4.ExecutedOrderRequest, $4.ExecutedOrderReply>(
             'ApiExecutedOrder',
             apiExecutedOrder_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $5.ExecutedOrderRequest.fromBuffer(value),
-            ($5.ExecutedOrderReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.SendNotificationRequest,
-            $6.SendNotificationReply>(
+                $4.ExecutedOrderRequest.fromBuffer(value),
+            ($4.ExecutedOrderReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.SendNotificationRequest,
+            $5.SendNotificationReply>(
         'ApiSendMessage',
         apiSendMessage_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $6.SendNotificationRequest.fromBuffer(value),
-        ($6.SendNotificationReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.FindLastGetMessageRequest,
-            $6.FindLastGetMessageReply>(
+            $5.SendNotificationRequest.fromBuffer(value),
+        ($5.SendNotificationReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.FindLastGetMessageRequest,
+            $5.FindLastGetMessageReply>(
         'ApiFindLastMessage',
         apiFindLastMessage_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $6.FindLastGetMessageRequest.fromBuffer(value),
-        ($6.FindLastGetMessageReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.ApiGetUserLocationRequest,
-            $7.ApiGetUserLocationReply>(
+            $5.FindLastGetMessageRequest.fromBuffer(value),
+        ($5.FindLastGetMessageReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.ApiGetUserLocationRequest,
+            $6.ApiGetUserLocationReply>(
         'ApiGetUserLocation',
         apiGetUserLocation_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.ApiGetUserLocationRequest.fromBuffer(value),
-        ($7.ApiGetUserLocationReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.ApiSetUserLocationRequest,
-            $7.ApiSetUserLocationReply>(
+            $6.ApiGetUserLocationRequest.fromBuffer(value),
+        ($6.ApiGetUserLocationReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.ApiSetUserLocationRequest,
+            $6.ApiSetUserLocationReply>(
         'ApiSetUserLocation',
         apiSetUserLocation_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.ApiSetUserLocationRequest.fromBuffer(value),
-        ($7.ApiSetUserLocationReply value) => value.writeToBuffer()));
+            $6.ApiSetUserLocationRequest.fromBuffer(value),
+        ($6.ApiSetUserLocationReply value) => value.writeToBuffer()));
   }
 
-  $async.Future<$7.GetMainDataForUserReply> getMainDataForUser_Pre(
+  $async.Future<$6.GetMainDataForUserReply> getMainDataForUser_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.GetMainDataForUserRequest> request) async {
+      $async.Future<$6.GetMainDataForUserRequest> request) async {
     return getMainDataForUser(call, await request);
   }
 
-  $async.Future<$7.GetFitForCompanyUsersReply> getFitForCompanyUsers_Pre(
+  $async.Future<$6.GetFitForCompanyUsersReply> getFitForCompanyUsers_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.GetFitForCompanyUsersRequest> request) async {
+      $async.Future<$6.GetFitForCompanyUsersRequest> request) async {
     return getFitForCompanyUsers(call, await request);
   }
 
@@ -606,6 +599,16 @@ abstract class MobileApiServiceBase extends $grpc.Service {
   $async.Future<$1.DelCompanyReply> delCompany_Pre($grpc.ServiceCall call,
       $async.Future<$1.DelCompanyRequest> request) async {
     return delCompany(call, await request);
+  }
+
+  $async.Future<$1.AddMasterReply> addMaster_Pre($grpc.ServiceCall call,
+      $async.Future<$1.AddMasterRequest> request) async {
+    return addMaster(call, await request);
+  }
+
+  $async.Future<$1.DelMasterReply> delMaster_Pre($grpc.ServiceCall call,
+      $async.Future<$1.DelMasterRequest> request) async {
+    return delMaster(call, await request);
   }
 
   $async.Future<$0.AddUserReply> apiAddUser_Pre(
@@ -666,92 +669,84 @@ abstract class MobileApiServiceBase extends $grpc.Service {
     return apiDelSkill(call, await request);
   }
 
-  $async.Future<$4.AddOfferReply> apiAddOffer_Pre(
-      $grpc.ServiceCall call, $async.Future<$4.AddOfferRequest> request) async {
-    return apiAddOffer(call, await request);
+  $async.Future<$1.AddOfferReply> addOffer_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.AddOfferRequest> request) async {
+    return addOffer(call, await request);
   }
 
-  $async.Future<$4.GetOffersReply> apiGetOffers_Pre($grpc.ServiceCall call,
-      $async.Future<$4.GetOffersRequest> request) async {
+  $async.Future<$1.DelOfferReply> delOffer_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.DelOfferRequest> request) async {
+    return delOffer(call, await request);
+  }
+
+  $async.Future<$1.GetOffersReply> apiGetOffers_Pre($grpc.ServiceCall call,
+      $async.Future<$1.GetOffersRequest> request) async {
     return apiGetOffers(call, await request);
   }
 
-  $async.Future<$4.GetOffersReply> apiGetOffersByMaster_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$4.GetOffersByMasterRequest> request) async {
-    return apiGetOffersByMaster(call, await request);
-  }
-
-  $async.Future<$4.GetOffersReply> apiGetOffersBySkill_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$4.GetOffersBySkillRequest> request) async {
-    return apiGetOffersBySkill(call, await request);
-  }
-
-  $async.Future<$4.DelOfferReply> apiDelOffer_Pre(
-      $grpc.ServiceCall call, $async.Future<$4.DelOfferRequest> request) async {
-    return apiDelOffer(call, await request);
-  }
-
-  $async.Future<$5.AddOrderReply> apiAddOrder_Pre(
-      $grpc.ServiceCall call, $async.Future<$5.AddOrderRequest> request) async {
+  $async.Future<$4.AddOrderReply> apiAddOrder_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.AddOrderRequest> request) async {
     return apiAddOrder(call, await request);
   }
 
-  $async.Future<$5.GetOrdersReply> apiGetOrders_Pre($grpc.ServiceCall call,
-      $async.Future<$5.GetOrdersRequest> request) async {
+  $async.Future<$4.GetOrdersReply> apiGetOrders_Pre($grpc.ServiceCall call,
+      $async.Future<$4.GetOrdersRequest> request) async {
     return apiGetOrders(call, await request);
   }
 
-  $async.Future<$5.DelOrderReply> apiDelOrder_Pre(
-      $grpc.ServiceCall call, $async.Future<$5.DelOrderRequest> request) async {
+  $async.Future<$4.DelOrderReply> apiDelOrder_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.DelOrderRequest> request) async {
     return apiDelOrder(call, await request);
   }
 
-  $async.Future<$5.AcceptedOrderReply> apiAcceptedOrder_Pre(
+  $async.Future<$4.AcceptedOrderReply> apiAcceptedOrder_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.AcceptedOrderRequest> request) async {
+      $async.Future<$4.AcceptedOrderRequest> request) async {
     return apiAcceptedOrder(call, await request);
   }
 
-  $async.Future<$5.ExecutedOrderReply> apiExecutedOrder_Pre(
+  $async.Future<$4.ExecutedOrderReply> apiExecutedOrder_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.ExecutedOrderRequest> request) async {
+      $async.Future<$4.ExecutedOrderRequest> request) async {
     return apiExecutedOrder(call, await request);
   }
 
-  $async.Future<$6.SendNotificationReply> apiSendMessage_Pre(
+  $async.Future<$5.SendNotificationReply> apiSendMessage_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$6.SendNotificationRequest> request) async {
+      $async.Future<$5.SendNotificationRequest> request) async {
     return apiSendMessage(call, await request);
   }
 
-  $async.Future<$6.FindLastGetMessageReply> apiFindLastMessage_Pre(
+  $async.Future<$5.FindLastGetMessageReply> apiFindLastMessage_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$6.FindLastGetMessageRequest> request) async {
+      $async.Future<$5.FindLastGetMessageRequest> request) async {
     return apiFindLastMessage(call, await request);
   }
 
-  $async.Future<$7.ApiGetUserLocationReply> apiGetUserLocation_Pre(
+  $async.Future<$6.ApiGetUserLocationReply> apiGetUserLocation_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.ApiGetUserLocationRequest> request) async {
+      $async.Future<$6.ApiGetUserLocationRequest> request) async {
     return apiGetUserLocation(call, await request);
   }
 
-  $async.Future<$7.ApiSetUserLocationReply> apiSetUserLocation_Pre(
+  $async.Future<$6.ApiSetUserLocationReply> apiSetUserLocation_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.ApiSetUserLocationRequest> request) async {
+      $async.Future<$6.ApiSetUserLocationRequest> request) async {
     return apiSetUserLocation(call, await request);
   }
 
-  $async.Future<$7.GetMainDataForUserReply> getMainDataForUser(
-      $grpc.ServiceCall call, $7.GetMainDataForUserRequest request);
-  $async.Future<$7.GetFitForCompanyUsersReply> getFitForCompanyUsers(
-      $grpc.ServiceCall call, $7.GetFitForCompanyUsersRequest request);
+  $async.Future<$6.GetMainDataForUserReply> getMainDataForUser(
+      $grpc.ServiceCall call, $6.GetMainDataForUserRequest request);
+  $async.Future<$6.GetFitForCompanyUsersReply> getFitForCompanyUsers(
+      $grpc.ServiceCall call, $6.GetFitForCompanyUsersRequest request);
   $async.Future<$1.AddCompanyReply> addCompany(
       $grpc.ServiceCall call, $1.AddCompanyRequest request);
   $async.Future<$1.DelCompanyReply> delCompany(
       $grpc.ServiceCall call, $1.DelCompanyRequest request);
+  $async.Future<$1.AddMasterReply> addMaster(
+      $grpc.ServiceCall call, $1.AddMasterRequest request);
+  $async.Future<$1.DelMasterReply> delMaster(
+      $grpc.ServiceCall call, $1.DelMasterRequest request);
   $async.Future<$0.AddUserReply> apiAddUser(
       $grpc.ServiceCall call, $0.AddUserRequest request);
   $async.Future<$0.GetUserReply> apiGetUser(
@@ -774,32 +769,28 @@ abstract class MobileApiServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $3.GetSkillsRequest request);
   $async.Future<$3.DelSkillReply> apiDelSkill(
       $grpc.ServiceCall call, $3.DelSkillRequest request);
-  $async.Future<$4.AddOfferReply> apiAddOffer(
-      $grpc.ServiceCall call, $4.AddOfferRequest request);
-  $async.Future<$4.GetOffersReply> apiGetOffers(
-      $grpc.ServiceCall call, $4.GetOffersRequest request);
-  $async.Future<$4.GetOffersReply> apiGetOffersByMaster(
-      $grpc.ServiceCall call, $4.GetOffersByMasterRequest request);
-  $async.Future<$4.GetOffersReply> apiGetOffersBySkill(
-      $grpc.ServiceCall call, $4.GetOffersBySkillRequest request);
-  $async.Future<$4.DelOfferReply> apiDelOffer(
-      $grpc.ServiceCall call, $4.DelOfferRequest request);
-  $async.Future<$5.AddOrderReply> apiAddOrder(
-      $grpc.ServiceCall call, $5.AddOrderRequest request);
-  $async.Future<$5.GetOrdersReply> apiGetOrders(
-      $grpc.ServiceCall call, $5.GetOrdersRequest request);
-  $async.Future<$5.DelOrderReply> apiDelOrder(
-      $grpc.ServiceCall call, $5.DelOrderRequest request);
-  $async.Future<$5.AcceptedOrderReply> apiAcceptedOrder(
-      $grpc.ServiceCall call, $5.AcceptedOrderRequest request);
-  $async.Future<$5.ExecutedOrderReply> apiExecutedOrder(
-      $grpc.ServiceCall call, $5.ExecutedOrderRequest request);
-  $async.Future<$6.SendNotificationReply> apiSendMessage(
-      $grpc.ServiceCall call, $6.SendNotificationRequest request);
-  $async.Future<$6.FindLastGetMessageReply> apiFindLastMessage(
-      $grpc.ServiceCall call, $6.FindLastGetMessageRequest request);
-  $async.Future<$7.ApiGetUserLocationReply> apiGetUserLocation(
-      $grpc.ServiceCall call, $7.ApiGetUserLocationRequest request);
-  $async.Future<$7.ApiSetUserLocationReply> apiSetUserLocation(
-      $grpc.ServiceCall call, $7.ApiSetUserLocationRequest request);
+  $async.Future<$1.AddOfferReply> addOffer(
+      $grpc.ServiceCall call, $1.AddOfferRequest request);
+  $async.Future<$1.DelOfferReply> delOffer(
+      $grpc.ServiceCall call, $1.DelOfferRequest request);
+  $async.Future<$1.GetOffersReply> apiGetOffers(
+      $grpc.ServiceCall call, $1.GetOffersRequest request);
+  $async.Future<$4.AddOrderReply> apiAddOrder(
+      $grpc.ServiceCall call, $4.AddOrderRequest request);
+  $async.Future<$4.GetOrdersReply> apiGetOrders(
+      $grpc.ServiceCall call, $4.GetOrdersRequest request);
+  $async.Future<$4.DelOrderReply> apiDelOrder(
+      $grpc.ServiceCall call, $4.DelOrderRequest request);
+  $async.Future<$4.AcceptedOrderReply> apiAcceptedOrder(
+      $grpc.ServiceCall call, $4.AcceptedOrderRequest request);
+  $async.Future<$4.ExecutedOrderReply> apiExecutedOrder(
+      $grpc.ServiceCall call, $4.ExecutedOrderRequest request);
+  $async.Future<$5.SendNotificationReply> apiSendMessage(
+      $grpc.ServiceCall call, $5.SendNotificationRequest request);
+  $async.Future<$5.FindLastGetMessageReply> apiFindLastMessage(
+      $grpc.ServiceCall call, $5.FindLastGetMessageRequest request);
+  $async.Future<$6.ApiGetUserLocationReply> apiGetUserLocation(
+      $grpc.ServiceCall call, $6.ApiGetUserLocationRequest request);
+  $async.Future<$6.ApiSetUserLocationReply> apiSetUserLocation(
+      $grpc.ServiceCall call, $6.ApiSetUserLocationRequest request);
 }

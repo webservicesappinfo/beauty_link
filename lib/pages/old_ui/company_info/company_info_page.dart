@@ -49,10 +49,10 @@ class CompanyInfoPage extends StatelessWidget {
       Icon(Icons.business_center, size: 40),
       Text("Name: ${bloc.company.name ?? 'noName'}", style: TextStyle(fontSize: 22)),
       CustomButton(text: 'Set location', clickEvent: () => SetLocationBtnClick(context).invoke()),
-      bloc.company.masters.length > 0
+      (bloc.company.masters?.length ?? 0) > 0
           ? Expanded(
               child: EntityListWidget(
-                  entities: bloc.company.masters,
+                  entities: (bloc.company.masters ?? []),
                   onTap: (entityBase) => OnMasterTab(context, entityBase as AppUser).invoke()))
           : Text("No masters"),
       Padding(

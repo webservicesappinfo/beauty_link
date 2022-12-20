@@ -1,5 +1,7 @@
+import 'package:beauty_link/gen/msg.pb.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:beauty_link/models/offer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -11,8 +13,9 @@ class AppUser extends EntityBase {
   String? token;
   LatLng? location;
   List<Company>? companies;
+  List<Offer>? offers;
 
-  AppUser({this.uidFB, this.name, this.token, this.email, this.login, this.companies});
+  AppUser({this.uidFB, this.name, this.token, this.email, this.login, this.companies, this.offers});
 
   factory AppUser.fromJson(Map<String, dynamic> json) {
     return new AppUser(
@@ -52,14 +55,8 @@ class AppUser extends EntityBase {
   }
 
   @override
-  Widget? getBody(BuildContext context) {
-    // TODO: implement getBody
-    throw UnimplementedError();
-  }
+  Widget? getBody(BuildContext context) => Column(children: [Text("Name: $name")]);
 
   @override
-  Icon? getIcon() {
-    // TODO: implement getIcon
-    throw UnimplementedError();
-  }
+  Icon? getIcon() => null;
 }

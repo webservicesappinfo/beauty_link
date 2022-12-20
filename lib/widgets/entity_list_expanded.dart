@@ -1,3 +1,4 @@
+import 'package:beauty_link/bloc/base_bloc.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,10 @@ import 'custom_dropdownfield.dart';
 class EntityListExpanded extends StatefulWidget {
   final List<EntityBase> entities;
   ScrollController? scrollController;
-  EntityListExpanded({Key? key, required this.entities, this.scrollController}) : super(key: key);
+  Widget Function(BuildContext, EntityBase, Function?)? body;
+  void Function(EntityBase entity)? entityCallBack;
+  EntityListExpanded({Key? key, required this.entities, this.scrollController, this.body, this.entityCallBack})
+      : super(key: key);
 
   @override
   State<EntityListExpanded> createState() => _EntityListExpandedState();
@@ -28,19 +32,17 @@ class _EntityListExpandedState extends State<EntityListExpanded> {
               },
               children: widget.entities.map((EntityBase item) {
                 return ExpansionPanel(
-                  headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
-                        leading: item.getIcon() ?? Icon(Icons.no_accounts),
-                        title: Text(item.getCaption(),
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w400,
-                            )));
-                  },
-                  isExpanded: (item.isExpanded ?? false),
-                  body: item.getBody(context) ?? Text("body empty"),
-                );
+                    headerBuilder: (BuildContext context, bool isExpanded) {
+                      return ListTile(
+                          leading: item.getIcon() ?? Icon(Icons.no_accounts),
+                          title: Text(item.getCaption(),
+                              textAlign: TextAlign.left,
+                              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w400)));
+                    },
+                    isExpanded: (item.isExpanded ?? false),
+                    body: widget.body != null
+                        ? widget.body!(context, item, widget.entityCallBack)
+                        : item.getBody(context) ?? Text("body empty"));
               }).toList()))
     ]);
   }

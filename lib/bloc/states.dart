@@ -1,8 +1,10 @@
 import 'package:beauty_link/bloc/events.dart';
 
-abstract class BaseState<T> {
+abstract class BaseState<T extends BaseEvent> {
   T? event;
   BaseState(this.event);
+  bool its<S, E>() => this.runtimeType == S && (event != null ? event.runtimeType == E : T == E);
+  dynamic kind() => event?.kind;
 }
 
 class InitState extends BaseState {

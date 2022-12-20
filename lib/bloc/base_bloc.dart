@@ -12,7 +12,7 @@ class BaseBloc extends Bloc<BaseEvent, BaseState> {
       await event.execute();
       yield event.endInvokeState;
     } catch (e, s) {
-      yield ExceptionState(event.exception ?? BaseEventException(e.toString()));
+      yield ExceptionState(event.exception ?? BaseEventException(event.context, e.toString()));
     }
   }
 }

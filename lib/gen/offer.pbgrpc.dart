@@ -10,7 +10,8 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'offer.pb.dart' as $0;
+import 'msg.pb.dart' as $0;
+import 'offer.pb.dart' as $1;
 export 'offer.pb.dart';
 
 class OfferClient extends $grpc.Client {
@@ -20,36 +21,36 @@ class OfferClient extends $grpc.Client {
           ($0.AddOfferRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.AddOfferReply.fromBuffer(value));
   static final _$getOffers =
-      $grpc.ClientMethod<$0.GetOffersRequest, $0.GetOffersReply>(
+      $grpc.ClientMethod<$1.GetOffersRequest, $1.GetOffersReply>(
           '/offer.Offer/GetOffers',
-          ($0.GetOffersRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.GetOffersReply.fromBuffer(value));
+          ($1.GetOffersRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.GetOffersReply.fromBuffer(value));
   static final _$getOffersByMaster =
-      $grpc.ClientMethod<$0.GetOffersByMasterRequest, $0.GetOffersReply>(
+      $grpc.ClientMethod<$1.GetOffersByMasterRequest, $1.GetOffersReply>(
           '/offer.Offer/GetOffersByMaster',
-          ($0.GetOffersByMasterRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.GetOffersReply.fromBuffer(value));
+          ($1.GetOffersByMasterRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.GetOffersReply.fromBuffer(value));
   static final _$getOffersBySkill =
-      $grpc.ClientMethod<$0.GetOffersBySkillRequest, $0.GetOffersReply>(
+      $grpc.ClientMethod<$1.GetOffersBySkillRequest, $1.GetOffersReply>(
           '/offer.Offer/GetOffersBySkill',
-          ($0.GetOffersBySkillRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.GetOffersReply.fromBuffer(value));
+          ($1.GetOffersBySkillRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.GetOffersReply.fromBuffer(value));
   static final _$getOffer =
-      $grpc.ClientMethod<$0.GetOfferRequest, $0.GetOfferReply>(
+      $grpc.ClientMethod<$1.GetOfferRequest, $1.GetOfferReply>(
           '/offer.Offer/GetOffer',
-          ($0.GetOfferRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.GetOfferReply.fromBuffer(value));
+          ($1.GetOfferRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.GetOfferReply.fromBuffer(value));
   static final _$updateOffer =
-      $grpc.ClientMethod<$0.UpdateOfferRequest, $0.UpdateOfferReply>(
+      $grpc.ClientMethod<$1.UpdateOfferRequest, $1.UpdateOfferReply>(
           '/offer.Offer/UpdateOffer',
-          ($0.UpdateOfferRequest value) => value.writeToBuffer(),
+          ($1.UpdateOfferRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.UpdateOfferReply.fromBuffer(value));
+              $1.UpdateOfferReply.fromBuffer(value));
   static final _$delOffer =
-      $grpc.ClientMethod<$0.DelOfferRequest, $0.DelOfferReply>(
+      $grpc.ClientMethod<$1.DelOfferRequest, $1.DelOfferReply>(
           '/offer.Offer/DelOffer',
-          ($0.DelOfferRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.DelOfferReply.fromBuffer(value));
+          ($1.DelOfferRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.DelOfferReply.fromBuffer(value));
 
   OfferClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -61,35 +62,35 @@ class OfferClient extends $grpc.Client {
     return $createUnaryCall(_$addOffer, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.GetOffersReply> getOffers($0.GetOffersRequest request,
+  $grpc.ResponseFuture<$1.GetOffersReply> getOffers($1.GetOffersRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getOffers, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.GetOffersReply> getOffersByMaster(
-      $0.GetOffersByMasterRequest request,
+  $grpc.ResponseFuture<$1.GetOffersReply> getOffersByMaster(
+      $1.GetOffersByMasterRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getOffersByMaster, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.GetOffersReply> getOffersBySkill(
-      $0.GetOffersBySkillRequest request,
+  $grpc.ResponseFuture<$1.GetOffersReply> getOffersBySkill(
+      $1.GetOffersBySkillRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getOffersBySkill, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.GetOfferReply> getOffer($0.GetOfferRequest request,
+  $grpc.ResponseFuture<$1.GetOfferReply> getOffer($1.GetOfferRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getOffer, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.UpdateOfferReply> updateOffer(
-      $0.UpdateOfferRequest request,
+  $grpc.ResponseFuture<$1.UpdateOfferReply> updateOffer(
+      $1.UpdateOfferRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateOffer, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.DelOfferReply> delOffer($0.DelOfferRequest request,
+  $grpc.ResponseFuture<$1.DelOfferReply> delOffer($1.DelOfferRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delOffer, request, options: options);
   }
@@ -106,53 +107,53 @@ abstract class OfferServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.AddOfferRequest.fromBuffer(value),
         ($0.AddOfferReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.GetOffersRequest, $0.GetOffersReply>(
+    $addMethod($grpc.ServiceMethod<$1.GetOffersRequest, $1.GetOffersReply>(
         'GetOffers',
         getOffers_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.GetOffersRequest.fromBuffer(value),
-        ($0.GetOffersReply value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $1.GetOffersRequest.fromBuffer(value),
+        ($1.GetOffersReply value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$0.GetOffersByMasterRequest, $0.GetOffersReply>(
+        $grpc.ServiceMethod<$1.GetOffersByMasterRequest, $1.GetOffersReply>(
             'GetOffersByMaster',
             getOffersByMaster_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $0.GetOffersByMasterRequest.fromBuffer(value),
-            ($0.GetOffersReply value) => value.writeToBuffer()));
+                $1.GetOffersByMasterRequest.fromBuffer(value),
+            ($1.GetOffersReply value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$0.GetOffersBySkillRequest, $0.GetOffersReply>(
+        $grpc.ServiceMethod<$1.GetOffersBySkillRequest, $1.GetOffersReply>(
             'GetOffersBySkill',
             getOffersBySkill_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $0.GetOffersBySkillRequest.fromBuffer(value),
-            ($0.GetOffersReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.GetOfferRequest, $0.GetOfferReply>(
+                $1.GetOffersBySkillRequest.fromBuffer(value),
+            ($1.GetOffersReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.GetOfferRequest, $1.GetOfferReply>(
         'GetOffer',
         getOffer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.GetOfferRequest.fromBuffer(value),
-        ($0.GetOfferReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.UpdateOfferRequest, $0.UpdateOfferReply>(
+        ($core.List<$core.int> value) => $1.GetOfferRequest.fromBuffer(value),
+        ($1.GetOfferReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.UpdateOfferRequest, $1.UpdateOfferReply>(
         'UpdateOffer',
         updateOffer_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.UpdateOfferRequest.fromBuffer(value),
-        ($0.UpdateOfferReply value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.DelOfferRequest, $0.DelOfferReply>(
+            $1.UpdateOfferRequest.fromBuffer(value),
+        ($1.UpdateOfferReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.DelOfferRequest, $1.DelOfferReply>(
         'DelOffer',
         delOffer_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.DelOfferRequest.fromBuffer(value),
-        ($0.DelOfferReply value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $1.DelOfferRequest.fromBuffer(value),
+        ($1.DelOfferReply value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.AddOfferReply> addOffer_Pre(
@@ -160,48 +161,48 @@ abstract class OfferServiceBase extends $grpc.Service {
     return addOffer(call, await request);
   }
 
-  $async.Future<$0.GetOffersReply> getOffers_Pre($grpc.ServiceCall call,
-      $async.Future<$0.GetOffersRequest> request) async {
+  $async.Future<$1.GetOffersReply> getOffers_Pre($grpc.ServiceCall call,
+      $async.Future<$1.GetOffersRequest> request) async {
     return getOffers(call, await request);
   }
 
-  $async.Future<$0.GetOffersReply> getOffersByMaster_Pre($grpc.ServiceCall call,
-      $async.Future<$0.GetOffersByMasterRequest> request) async {
+  $async.Future<$1.GetOffersReply> getOffersByMaster_Pre($grpc.ServiceCall call,
+      $async.Future<$1.GetOffersByMasterRequest> request) async {
     return getOffersByMaster(call, await request);
   }
 
-  $async.Future<$0.GetOffersReply> getOffersBySkill_Pre($grpc.ServiceCall call,
-      $async.Future<$0.GetOffersBySkillRequest> request) async {
+  $async.Future<$1.GetOffersReply> getOffersBySkill_Pre($grpc.ServiceCall call,
+      $async.Future<$1.GetOffersBySkillRequest> request) async {
     return getOffersBySkill(call, await request);
   }
 
-  $async.Future<$0.GetOfferReply> getOffer_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.GetOfferRequest> request) async {
+  $async.Future<$1.GetOfferReply> getOffer_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.GetOfferRequest> request) async {
     return getOffer(call, await request);
   }
 
-  $async.Future<$0.UpdateOfferReply> updateOffer_Pre($grpc.ServiceCall call,
-      $async.Future<$0.UpdateOfferRequest> request) async {
+  $async.Future<$1.UpdateOfferReply> updateOffer_Pre($grpc.ServiceCall call,
+      $async.Future<$1.UpdateOfferRequest> request) async {
     return updateOffer(call, await request);
   }
 
-  $async.Future<$0.DelOfferReply> delOffer_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.DelOfferRequest> request) async {
+  $async.Future<$1.DelOfferReply> delOffer_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.DelOfferRequest> request) async {
     return delOffer(call, await request);
   }
 
   $async.Future<$0.AddOfferReply> addOffer(
       $grpc.ServiceCall call, $0.AddOfferRequest request);
-  $async.Future<$0.GetOffersReply> getOffers(
-      $grpc.ServiceCall call, $0.GetOffersRequest request);
-  $async.Future<$0.GetOffersReply> getOffersByMaster(
-      $grpc.ServiceCall call, $0.GetOffersByMasterRequest request);
-  $async.Future<$0.GetOffersReply> getOffersBySkill(
-      $grpc.ServiceCall call, $0.GetOffersBySkillRequest request);
-  $async.Future<$0.GetOfferReply> getOffer(
-      $grpc.ServiceCall call, $0.GetOfferRequest request);
-  $async.Future<$0.UpdateOfferReply> updateOffer(
-      $grpc.ServiceCall call, $0.UpdateOfferRequest request);
-  $async.Future<$0.DelOfferReply> delOffer(
-      $grpc.ServiceCall call, $0.DelOfferRequest request);
+  $async.Future<$1.GetOffersReply> getOffers(
+      $grpc.ServiceCall call, $1.GetOffersRequest request);
+  $async.Future<$1.GetOffersReply> getOffersByMaster(
+      $grpc.ServiceCall call, $1.GetOffersByMasterRequest request);
+  $async.Future<$1.GetOffersReply> getOffersBySkill(
+      $grpc.ServiceCall call, $1.GetOffersBySkillRequest request);
+  $async.Future<$1.GetOfferReply> getOffer(
+      $grpc.ServiceCall call, $1.GetOfferRequest request);
+  $async.Future<$1.UpdateOfferReply> updateOffer(
+      $grpc.ServiceCall call, $1.UpdateOfferRequest request);
+  $async.Future<$1.DelOfferReply> delOffer(
+      $grpc.ServiceCall call, $1.DelOfferRequest request);
 }

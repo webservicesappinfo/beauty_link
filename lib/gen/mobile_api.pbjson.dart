@@ -12,24 +12,24 @@ import 'dart:typed_data' as $typed_data;
 const GetMainDataForUserRequest$json = const {
   '1': 'GetMainDataForUserRequest',
   '2': const [
-    const {'1': 'userGuid', '3': 1, '4': 1, '5': 9, '10': 'userGuid'},
+    const {'1': 'userUIDFB', '3': 1, '4': 1, '5': 9, '10': 'userUIDFB'},
   ],
 };
 
 /// Descriptor for `GetMainDataForUserRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getMainDataForUserRequestDescriptor = $convert.base64Decode('ChlHZXRNYWluRGF0YUZvclVzZXJSZXF1ZXN0EhoKCHVzZXJHdWlkGAEgASgJUgh1c2VyR3VpZA==');
+final $typed_data.Uint8List getMainDataForUserRequestDescriptor = $convert.base64Decode('ChlHZXRNYWluRGF0YUZvclVzZXJSZXF1ZXN0EhwKCXVzZXJVSURGQhgBIAEoCVIJdXNlclVJREZC');
 @$core.Deprecated('Use getMainDataForUserReplyDescriptor instead')
 const GetMainDataForUserReply$json = const {
   '1': 'GetMainDataForUserReply',
   '2': const [
     const {'1': 'userName', '3': 1, '4': 1, '5': 9, '10': 'userName'},
-    const {'1': 'userUidFB', '3': 2, '4': 1, '5': 9, '10': 'userUidFB'},
+    const {'1': 'userUIDFB', '3': 2, '4': 1, '5': 9, '10': 'userUIDFB'},
     const {'1': 'companies', '3': 3, '4': 3, '5': 11, '6': '.msg.CompanyReply', '10': 'companies'},
   ],
 };
 
 /// Descriptor for `GetMainDataForUserReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getMainDataForUserReplyDescriptor = $convert.base64Decode('ChdHZXRNYWluRGF0YUZvclVzZXJSZXBseRIaCgh1c2VyTmFtZRgBIAEoCVIIdXNlck5hbWUSHAoJdXNlclVpZEZCGAIgASgJUgl1c2VyVWlkRkISLwoJY29tcGFuaWVzGAMgAygLMhEubXNnLkNvbXBhbnlSZXBseVIJY29tcGFuaWVz');
+final $typed_data.Uint8List getMainDataForUserReplyDescriptor = $convert.base64Decode('ChdHZXRNYWluRGF0YUZvclVzZXJSZXBseRIaCgh1c2VyTmFtZRgBIAEoCVIIdXNlck5hbWUSHAoJdXNlclVJREZCGAIgASgJUgl1c2VyVUlERkISLwoJY29tcGFuaWVzGAMgAygLMhEubXNnLkNvbXBhbnlSZXBseVIJY29tcGFuaWVz');
 @$core.Deprecated('Use getFitForCompanyUsersRequestDescriptor instead')
 const GetFitForCompanyUsersRequest$json = const {
   '1': 'GetFitForCompanyUsersRequest',

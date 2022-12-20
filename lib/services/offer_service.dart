@@ -15,7 +15,8 @@ class OfferService {
 
   Future<bool> addOffer(Offer? offer) async {
     if (offer == null) return false;
-    var response = await mobileApiClient.apiAddOffer(new AddOfferRequest(
+    /*var response = await mobileApiClient.addOffer(AddOfferRequest())
+    var response = await mobileApiClient.addOffer(new AddOfferRequest(
         name: offer.name,
         companyGuid: offer.companyGuid,
         companyName: offer.companyName,
@@ -23,25 +24,31 @@ class OfferService {
         masterName: offer.masterName,
         skillGuid: offer.skillGuid,
         skillName: offer.skillName));
-    return response.result;
+    return response.result;*/
+    return false;
   }
 
   Future<List<Offer>> getOffersByMaster(String? masterGuid, String? clientGuid, bool forMaster) async {
-    var response = await mobileApiClient.apiGetOffersByMaster(
+    /*var response = await mobileApiClient.apiGetOffersByMaster(
         new GetOffersByMasterRequest(masterGuid: masterGuid, clientGuid: clientGuid, forMaster: forMaster));
-    return getOffersFromReply(response);
+    return getOffersFromReply(response);*/
+    List<Offer> r = [];
+    return r;
   }
 
   Future<List<Offer>> getOffers(String? masterGuid, String? skillGuid, String? clientGuid, bool forMaster) async {
-    var response = await mobileApiClient.apiGetOffers(new GetOffersRequest(
+    /*var response = await mobileApiClient.apiGetOffers(new GetOffersRequest(
         masterGuid: masterGuid, skillGuid: skillGuid, clientGuid: clientGuid, forMaster: forMaster));
-    return getOffersFromReply(response);
+    return getOffersFromReply(response);*/
+    List<Offer> r = [];
+    return r;
   }
 
   Future<bool> delOffer(String? guid) async {
-    if (guid?.isEmpty ?? true) return false;
+    /*if (guid?.isEmpty ?? true) return false;
     var response = await mobileApiClient.apiDelOffer(new DelOfferRequest(guid: guid));
-    return response.result;
+    return response.result;*/
+    return false;
   }
 
   List<Offer> getOffersFromReply(GetOffersReply reply) {

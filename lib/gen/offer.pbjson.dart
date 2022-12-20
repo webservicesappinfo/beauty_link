@@ -8,32 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use addOfferRequestDescriptor instead')
-const AddOfferRequest$json = const {
-  '1': 'AddOfferRequest',
-  '2': const [
-    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'companyGuid', '3': 2, '4': 1, '5': 9, '10': 'companyGuid'},
-    const {'1': 'companyName', '3': 3, '4': 1, '5': 9, '10': 'companyName'},
-    const {'1': 'masterGuid', '3': 4, '4': 1, '5': 9, '10': 'masterGuid'},
-    const {'1': 'masterName', '3': 5, '4': 1, '5': 9, '10': 'masterName'},
-    const {'1': 'skillGuid', '3': 6, '4': 1, '5': 9, '10': 'skillGuid'},
-    const {'1': 'skillName', '3': 7, '4': 1, '5': 9, '10': 'skillName'},
-  ],
-};
-
-/// Descriptor for `AddOfferRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addOfferRequestDescriptor = $convert.base64Decode('Cg9BZGRPZmZlclJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIgCgtjb21wYW55R3VpZBgCIAEoCVILY29tcGFueUd1aWQSIAoLY29tcGFueU5hbWUYAyABKAlSC2NvbXBhbnlOYW1lEh4KCm1hc3Rlckd1aWQYBCABKAlSCm1hc3Rlckd1aWQSHgoKbWFzdGVyTmFtZRgFIAEoCVIKbWFzdGVyTmFtZRIcCglza2lsbEd1aWQYBiABKAlSCXNraWxsR3VpZBIcCglza2lsbE5hbWUYByABKAlSCXNraWxsTmFtZQ==');
-@$core.Deprecated('Use addOfferReplyDescriptor instead')
-const AddOfferReply$json = const {
-  '1': 'AddOfferReply',
-  '2': const [
-    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
-  ],
-};
-
-/// Descriptor for `AddOfferReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addOfferReplyDescriptor = $convert.base64Decode('Cg1BZGRPZmZlclJlcGx5EhYKBnJlc3VsdBgBIAEoCFIGcmVzdWx0');
 @$core.Deprecated('Use getOffersRequestDescriptor instead')
 const GetOffersRequest$json = const {
   '1': 'GetOffersRequest',

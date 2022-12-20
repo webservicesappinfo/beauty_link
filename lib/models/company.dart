@@ -1,5 +1,6 @@
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:beauty_link/models/offer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -9,9 +10,9 @@ class Company extends EntityBase {
   String? ownerGuid;
   String? ownerName;
   LatLng? location;
-  List<AppUser> masters = [];
+  List<AppUser>? masters = [];
 
-  Company({this.guid, required this.name, this.ownerGuid, this.ownerName});
+  Company({this.guid, required this.name, this.ownerGuid, this.ownerName, this.masters});
 
   factory Company.fromJson(Map<String, dynamic> json) {
     return new Company(
@@ -51,5 +52,15 @@ class Company extends EntityBase {
   Icon? getIcon() {
     // TODO: implement getIcon
     throw UnimplementedError();
+  }
+
+  List<Offer> getCompanyOffers() {
+    List<Offer> result = [];
+    if (masters == null) return result;
+    for (var master in masters!) {
+      if (master.offers == null) continue;
+      for (var offer in master.offers!) result.add(offer);
+    }
+    return result;
   }
 }

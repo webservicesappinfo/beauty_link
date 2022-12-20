@@ -16,12 +16,14 @@ class CompanyService {
 
   Future<Company?> getCompany(String guid) async {
     var reply = await mobileApiClient.apiGetCompany(GetCompanyRequest(guid: guid));
-    var company = Company(guid: reply.guid, name: reply.name, ownerGuid: reply.ownerGuid, ownerName: reply.ownerName);
-    var lat = double.tryParse(reply.lat);
-    var lng = double.tryParse(reply.lng);
+    var company = Company(guid: reply.company.guid, name: reply.company.name, ownerGuid: reply.company.ownerGuid, ownerName: reply.company.ownerName);
+    var lat = double.tryParse(reply.company.lat);
+    var lng = double.tryParse(reply.company.lng);
     if (lat != null && lng != null) company.location = LatLng(lat, lng);
-    for (var i = 0; i < reply.masterGuids.length; i++)
-      company.masters.add(AppUser(uidFB: reply.masterGuids[i], name: reply.masterNames[i]));
+    if(company.masters == null) company.masters = [];
+    var masters = reply.company.masters;
+    for (var i = 0; i <  masters.length; i++)
+      company.masters?.add(AppUser(uidFB: masters[i].uidFB, name:  masters[i].name));
     return company;
   }
 
@@ -36,15 +38,15 @@ class CompanyService {
   Future<bool> joinToCompany(String? userGuid, String? userName, String? companyGuid, String? companyName) async {
     if ((userGuid?.isEmpty ?? true) || (companyGuid?.isEmpty ?? true)) return false;
     var response = await mobileApiClient.apiJoinToCompany(new JoinToCompanyRequest(
-        userGuid: userGuid, userName: userName, companyGuid: companyGuid, companyName: companyName));
+        userUIDFB: userGuid, userName: userName, companyGuid: companyGuid, companyName: companyName));
     return response.result;
   }
 
   Future<List<Company>> getCompanies(String userGuid, String type) async {
     var companies = <Company>[];
-    var response = await mobileApiClient.apiGetCompanies(new GetCompaniesRequest(userGuid: userGuid, type: type));
-    for (var i = 0; i < response.names.length; i++)
-      companies.add(new Company(guid: response.guids[i], name: response.names[i]));
+    var response = await mobileApiClient.apiGetCompanies(new GetCompaniesRequest(userUIDFB: userGuid, type: type));
+    for (var i = 0; i < response.companies.length; i++)
+      companies.add(new Company(guid: response.companies[i].guid, name: response.companies[i].name));
     return companies;
   }
 

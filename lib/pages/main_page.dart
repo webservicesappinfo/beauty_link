@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:beauty_link/bloc/events.dart';
 import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/pages/admin_view/admin_view.dart';
@@ -25,23 +26,16 @@ class MainPage extends StatelessWidget {
         ],
         child: BlocBuilder<MainPageBloc, BaseState>(builder: (context, state) {
           return Builder(builder: (context) {
-            switch (state.runtimeType) {
-              case InitState:
-                LoadMainPageEvent(context).invoke();
-                return LoadingWidget();
-              case BeginEventState:
-                return LoadingWidget();
-              case EndEventState:
-                switch (state.event.runtimeType) {
-                  case LoadMainPageEvent:
-                    return _onLoadMainPage(context);
-                  case ChangeUserEvent:
-                    return _onLoadMainPage(context);
-                  default:
-                    return Text('empty state');
-                }
-              default:
-                return Text('empty state');
+            if (state.its<InitState, BaseEvent>()) {
+              LoadMainPageEvent(context).invoke();
+              return LoadingWidget();
+            } else if (state.its<BeginEventState, BaseEvent>() || state.its<BeginEventState, ChangeUserEvent>())
+              return LoadingWidget();
+            else if (state.its<EndEventState, LoadMainPageEvent>() || state.its<EndEventState, ChangeUserEvent>())
+              return _onLoadMainPage(context);
+            else {
+              log("mainPage empty state: ${state.runtimeType} event: ${state.event.runtimeType}");
+              return Text('empty state');
             }
           });
         }));

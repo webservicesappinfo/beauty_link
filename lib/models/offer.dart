@@ -28,7 +28,7 @@ class Offer extends EntityBase {
       required this.masterName,
       required this.skillGuid,
       required this.skillName,
-      required this.status,
+      this.status,
       this.location});
 
   /*factory Offer.fromJson(Map<String, dynamic> json) {
