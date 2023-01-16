@@ -13,7 +13,8 @@ class OrderService {
       ClientChannel(global.ip, port: global.port, options: ChannelOptions(credentials: ChannelCredentials.insecure())));
 
   Future<bool> addOrder(Order? order) async {
-    if (order == null) return false;
+    return false;
+    /*if (order == null) return false;
     var response = await mobileApiClient.apiAddOrder(new AddOrderRequest(
         name: order.name,
         offerGuid: order.offerGuid,
@@ -23,12 +24,13 @@ class OrderService {
         masterGuid: order.masterGuid,
         skillName: order.skillName,
         skillGuid: order.skillGuid));
-    return response.result;
+    return response.result;*/
   }
 
   Future<List<Order>> getOrders(String? userGuid, bool isMaster) async {
     var orders = <Order>[];
-    var response = await mobileApiClient.apiGetOrders(new GetOrdersRequest(userGuid: userGuid, isMaster: isMaster));
+    return orders;
+    /*var response = await mobileApiClient.apiGetOrders(new GetOrdersRequest(userGuid: userGuid, isMaster: isMaster));
     for (var i = 0; i < response.names.length; i++)
       orders.add(new Order(
         guid: response.guids[i],
@@ -42,24 +44,27 @@ class OrderService {
         skillName: response.skillNames[i],
         skillGuid: response.skillGuids[i],
       ));
-    return orders;
+    return orders;*/
   }
 
   Future<bool> delOrder(String? guid) async {
-    if (guid?.isEmpty ?? true) return false;
+    return false;
+    /*if (guid?.isEmpty ?? true) return false;
     var response = await mobileApiClient.apiDelOrder(new DelOrderRequest(guid: guid));
-    return response.result;
+    return response.result;*/
   }
 
   Future<bool> acceptOrder(String? guid) async {
-    if (guid?.isEmpty ?? true) return false;
+    return false;
+    /*if (guid?.isEmpty ?? true) return false;
     var response = await mobileApiClient.apiAcceptedOrder(new AcceptedOrderRequest(guid: guid));
-    return response.result;
+    return response.result;*/
   }
 
   Future<bool> executeOrder(String? guid) async {
-    if (guid?.isEmpty ?? true) return false;
+    return false;
+    /*if (guid?.isEmpty ?? true) return false;
     var response = await mobileApiClient.apiExecutedOrder(new ExecutedOrderRequest(guid: guid));
-    return response.result;
+    return response.result;*/
   }
 }

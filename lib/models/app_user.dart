@@ -2,6 +2,7 @@ import 'package:beauty_link/gen/msg.pb.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
+import 'package:beauty_link/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

@@ -649,9 +649,10 @@ class OfferApi extends $pb.GeneratedMessage {
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterName', protoName: 'masterName')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'orderGuid', protoName: 'orderGuid')
-    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuid', protoName: 'skillGuid')
-    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillName', protoName: 'skillName')
-    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'orderName', protoName: 'orderName')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuid', protoName: 'skillGuid')
+    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillName', protoName: 'skillName')
+    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status')
     ..hasRequiredFields = false
   ;
 
@@ -665,6 +666,7 @@ class OfferApi extends $pb.GeneratedMessage {
     $core.String? masterGuid,
     $core.String? masterName,
     $core.String? orderGuid,
+    $core.String? orderName,
     $core.String? skillGuid,
     $core.String? skillName,
     $core.String? status,
@@ -693,6 +695,9 @@ class OfferApi extends $pb.GeneratedMessage {
     }
     if (orderGuid != null) {
       _result.orderGuid = orderGuid;
+    }
+    if (orderName != null) {
+      _result.orderName = orderName;
     }
     if (skillGuid != null) {
       _result.skillGuid = skillGuid;
@@ -799,31 +804,40 @@ class OfferApi extends $pb.GeneratedMessage {
   void clearOrderGuid() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get skillGuid => $_getSZ(8);
+  $core.String get orderName => $_getSZ(8);
   @$pb.TagNumber(9)
-  set skillGuid($core.String v) { $_setString(8, v); }
+  set orderName($core.String v) { $_setString(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasSkillGuid() => $_has(8);
+  $core.bool hasOrderName() => $_has(8);
   @$pb.TagNumber(9)
-  void clearSkillGuid() => clearField(9);
+  void clearOrderName() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.String get skillName => $_getSZ(9);
+  $core.String get skillGuid => $_getSZ(9);
   @$pb.TagNumber(10)
-  set skillName($core.String v) { $_setString(9, v); }
+  set skillGuid($core.String v) { $_setString(9, v); }
   @$pb.TagNumber(10)
-  $core.bool hasSkillName() => $_has(9);
+  $core.bool hasSkillGuid() => $_has(9);
   @$pb.TagNumber(10)
-  void clearSkillName() => clearField(10);
+  void clearSkillGuid() => clearField(10);
 
   @$pb.TagNumber(11)
-  $core.String get status => $_getSZ(10);
+  $core.String get skillName => $_getSZ(10);
   @$pb.TagNumber(11)
-  set status($core.String v) { $_setString(10, v); }
+  set skillName($core.String v) { $_setString(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasStatus() => $_has(10);
+  $core.bool hasSkillName() => $_has(10);
   @$pb.TagNumber(11)
-  void clearStatus() => clearField(11);
+  void clearSkillName() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.String get status => $_getSZ(11);
+  @$pb.TagNumber(12)
+  set status($core.String v) { $_setString(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasStatus() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearStatus() => clearField(12);
 }
 
 class AddOfferRequest extends $pb.GeneratedMessage {
@@ -1199,6 +1213,563 @@ class DelOfferReply extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static DelOfferReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelOfferReply>(create);
   static DelOfferReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get result => $_getBF(0);
+  @$pb.TagNumber(1)
+  set result($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasResult() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearResult() => clearField(1);
+}
+
+class OrderApi extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OrderApi', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'offerGuid', protoName: 'offerGuid')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userName', protoName: 'userName')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterName', protoName: 'masterName')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillName', protoName: 'skillName')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userGuid', protoName: 'userGuid')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'masterGuid', protoName: 'masterGuid')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skillGuid', protoName: 'skillGuid')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status')
+    ..hasRequiredFields = false
+  ;
+
+  OrderApi._() : super();
+  factory OrderApi({
+    $core.String? name,
+    $core.String? guid,
+    $core.String? offerGuid,
+    $core.String? userName,
+    $core.String? masterName,
+    $core.String? skillName,
+    $core.String? userGuid,
+    $core.String? masterGuid,
+    $core.String? skillGuid,
+    $core.String? status,
+  }) {
+    final _result = create();
+    if (name != null) {
+      _result.name = name;
+    }
+    if (guid != null) {
+      _result.guid = guid;
+    }
+    if (offerGuid != null) {
+      _result.offerGuid = offerGuid;
+    }
+    if (userName != null) {
+      _result.userName = userName;
+    }
+    if (masterName != null) {
+      _result.masterName = masterName;
+    }
+    if (skillName != null) {
+      _result.skillName = skillName;
+    }
+    if (userGuid != null) {
+      _result.userGuid = userGuid;
+    }
+    if (masterGuid != null) {
+      _result.masterGuid = masterGuid;
+    }
+    if (skillGuid != null) {
+      _result.skillGuid = skillGuid;
+    }
+    if (status != null) {
+      _result.status = status;
+    }
+    return _result;
+  }
+  factory OrderApi.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OrderApi.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  OrderApi clone() => OrderApi()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  OrderApi copyWith(void Function(OrderApi) updates) => super.copyWith((message) => updates(message as OrderApi)) as OrderApi; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static OrderApi create() => OrderApi._();
+  OrderApi createEmptyInstance() => create();
+  static $pb.PbList<OrderApi> createRepeated() => $pb.PbList<OrderApi>();
+  @$core.pragma('dart2js:noInline')
+  static OrderApi getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OrderApi>(create);
+  static OrderApi? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get guid => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set guid($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasGuid() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGuid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get offerGuid => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set offerGuid($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOfferGuid() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOfferGuid() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get userName => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set userName($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUserName() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUserName() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get masterName => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set masterName($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasMasterName() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearMasterName() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get skillName => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set skillName($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasSkillName() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearSkillName() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get userGuid => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set userGuid($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasUserGuid() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearUserGuid() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get masterGuid => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set masterGuid($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasMasterGuid() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearMasterGuid() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get skillGuid => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set skillGuid($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasSkillGuid() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearSkillGuid() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get status => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set status($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasStatus() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearStatus() => clearField(10);
+}
+
+class AddOrderRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddOrderRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..aOM<OrderApi>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'order', subBuilder: OrderApi.create)
+    ..hasRequiredFields = false
+  ;
+
+  AddOrderRequest._() : super();
+  factory AddOrderRequest({
+    OrderApi? order,
+  }) {
+    final _result = create();
+    if (order != null) {
+      _result.order = order;
+    }
+    return _result;
+  }
+  factory AddOrderRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AddOrderRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AddOrderRequest clone() => AddOrderRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AddOrderRequest copyWith(void Function(AddOrderRequest) updates) => super.copyWith((message) => updates(message as AddOrderRequest)) as AddOrderRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AddOrderRequest create() => AddOrderRequest._();
+  AddOrderRequest createEmptyInstance() => create();
+  static $pb.PbList<AddOrderRequest> createRepeated() => $pb.PbList<AddOrderRequest>();
+  @$core.pragma('dart2js:noInline')
+  static AddOrderRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AddOrderRequest>(create);
+  static AddOrderRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  OrderApi get order => $_getN(0);
+  @$pb.TagNumber(1)
+  set order(OrderApi v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasOrder() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearOrder() => clearField(1);
+  @$pb.TagNumber(1)
+  OrderApi ensureOrder() => $_ensure(0);
+}
+
+class AddOrderReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddOrderReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
+    ..hasRequiredFields = false
+  ;
+
+  AddOrderReply._() : super();
+  factory AddOrderReply({
+    $core.bool? result,
+  }) {
+    final _result = create();
+    if (result != null) {
+      _result.result = result;
+    }
+    return _result;
+  }
+  factory AddOrderReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AddOrderReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AddOrderReply clone() => AddOrderReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AddOrderReply copyWith(void Function(AddOrderReply) updates) => super.copyWith((message) => updates(message as AddOrderReply)) as AddOrderReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AddOrderReply create() => AddOrderReply._();
+  AddOrderReply createEmptyInstance() => create();
+  static $pb.PbList<AddOrderReply> createRepeated() => $pb.PbList<AddOrderReply>();
+  @$core.pragma('dart2js:noInline')
+  static AddOrderReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AddOrderReply>(create);
+  static AddOrderReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get result => $_getBF(0);
+  @$pb.TagNumber(1)
+  set result($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasResult() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearResult() => clearField(1);
+}
+
+class GetOrderRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOrderRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guid')
+    ..hasRequiredFields = false
+  ;
+
+  GetOrderRequest._() : super();
+  factory GetOrderRequest({
+    $core.String? guid,
+  }) {
+    final _result = create();
+    if (guid != null) {
+      _result.guid = guid;
+    }
+    return _result;
+  }
+  factory GetOrderRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetOrderRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetOrderRequest clone() => GetOrderRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetOrderRequest copyWith(void Function(GetOrderRequest) updates) => super.copyWith((message) => updates(message as GetOrderRequest)) as GetOrderRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetOrderRequest create() => GetOrderRequest._();
+  GetOrderRequest createEmptyInstance() => create();
+  static $pb.PbList<GetOrderRequest> createRepeated() => $pb.PbList<GetOrderRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetOrderRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetOrderRequest>(create);
+  static GetOrderRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get guid => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set guid($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasGuid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearGuid() => clearField(1);
+}
+
+class GetOrderReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOrderReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..aOM<OrderApi>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'offer', subBuilder: OrderApi.create)
+    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
+    ..hasRequiredFields = false
+  ;
+
+  GetOrderReply._() : super();
+  factory GetOrderReply({
+    OrderApi? offer,
+    $core.bool? result,
+  }) {
+    final _result = create();
+    if (offer != null) {
+      _result.offer = offer;
+    }
+    if (result != null) {
+      _result.result = result;
+    }
+    return _result;
+  }
+  factory GetOrderReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetOrderReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetOrderReply clone() => GetOrderReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetOrderReply copyWith(void Function(GetOrderReply) updates) => super.copyWith((message) => updates(message as GetOrderReply)) as GetOrderReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetOrderReply create() => GetOrderReply._();
+  GetOrderReply createEmptyInstance() => create();
+  static $pb.PbList<GetOrderReply> createRepeated() => $pb.PbList<GetOrderReply>();
+  @$core.pragma('dart2js:noInline')
+  static GetOrderReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetOrderReply>(create);
+  static GetOrderReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  OrderApi get offer => $_getN(0);
+  @$pb.TagNumber(1)
+  set offer(OrderApi v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasOffer() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearOffer() => clearField(1);
+  @$pb.TagNumber(1)
+  OrderApi ensureOffer() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.bool get result => $_getBF(1);
+  @$pb.TagNumber(2)
+  set result($core.bool v) { $_setBool(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasResult() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearResult() => clearField(2);
+}
+
+class GetOrdersRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOrdersRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guids')
+    ..hasRequiredFields = false
+  ;
+
+  GetOrdersRequest._() : super();
+  factory GetOrdersRequest({
+    $core.Iterable<$core.String>? guids,
+  }) {
+    final _result = create();
+    if (guids != null) {
+      _result.guids.addAll(guids);
+    }
+    return _result;
+  }
+  factory GetOrdersRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetOrdersRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetOrdersRequest clone() => GetOrdersRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetOrdersRequest copyWith(void Function(GetOrdersRequest) updates) => super.copyWith((message) => updates(message as GetOrdersRequest)) as GetOrdersRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetOrdersRequest create() => GetOrdersRequest._();
+  GetOrdersRequest createEmptyInstance() => create();
+  static $pb.PbList<GetOrdersRequest> createRepeated() => $pb.PbList<GetOrdersRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetOrdersRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetOrdersRequest>(create);
+  static GetOrdersRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get guids => $_getList(0);
+}
+
+class GetOrdersReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOrdersReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..pc<OfferApi>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'offers', $pb.PbFieldType.PM, subBuilder: OfferApi.create)
+    ..hasRequiredFields = false
+  ;
+
+  GetOrdersReply._() : super();
+  factory GetOrdersReply({
+    $core.Iterable<OfferApi>? offers,
+  }) {
+    final _result = create();
+    if (offers != null) {
+      _result.offers.addAll(offers);
+    }
+    return _result;
+  }
+  factory GetOrdersReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetOrdersReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetOrdersReply clone() => GetOrdersReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetOrdersReply copyWith(void Function(GetOrdersReply) updates) => super.copyWith((message) => updates(message as GetOrdersReply)) as GetOrdersReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetOrdersReply create() => GetOrdersReply._();
+  GetOrdersReply createEmptyInstance() => create();
+  static $pb.PbList<GetOrdersReply> createRepeated() => $pb.PbList<GetOrdersReply>();
+  @$core.pragma('dart2js:noInline')
+  static GetOrdersReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetOrdersReply>(create);
+  static GetOrdersReply? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<OfferApi> get offers => $_getList(0);
+}
+
+class DelOrderRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DelOrderRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..aOM<OrderApi>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'order', subBuilder: OrderApi.create)
+    ..hasRequiredFields = false
+  ;
+
+  DelOrderRequest._() : super();
+  factory DelOrderRequest({
+    OrderApi? order,
+  }) {
+    final _result = create();
+    if (order != null) {
+      _result.order = order;
+    }
+    return _result;
+  }
+  factory DelOrderRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DelOrderRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DelOrderRequest clone() => DelOrderRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DelOrderRequest copyWith(void Function(DelOrderRequest) updates) => super.copyWith((message) => updates(message as DelOrderRequest)) as DelOrderRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DelOrderRequest create() => DelOrderRequest._();
+  DelOrderRequest createEmptyInstance() => create();
+  static $pb.PbList<DelOrderRequest> createRepeated() => $pb.PbList<DelOrderRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DelOrderRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelOrderRequest>(create);
+  static DelOrderRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  OrderApi get order => $_getN(0);
+  @$pb.TagNumber(1)
+  set order(OrderApi v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasOrder() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearOrder() => clearField(1);
+  @$pb.TagNumber(1)
+  OrderApi ensureOrder() => $_ensure(0);
+}
+
+class DelOrderReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DelOrderReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msg'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result')
+    ..hasRequiredFields = false
+  ;
+
+  DelOrderReply._() : super();
+  factory DelOrderReply({
+    $core.bool? result,
+  }) {
+    final _result = create();
+    if (result != null) {
+      _result.result = result;
+    }
+    return _result;
+  }
+  factory DelOrderReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DelOrderReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DelOrderReply clone() => DelOrderReply()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DelOrderReply copyWith(void Function(DelOrderReply) updates) => super.copyWith((message) => updates(message as DelOrderReply)) as DelOrderReply; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DelOrderReply create() => DelOrderReply._();
+  DelOrderReply createEmptyInstance() => create();
+  static $pb.PbList<DelOrderReply> createRepeated() => $pb.PbList<DelOrderReply>();
+  @$core.pragma('dart2js:noInline')
+  static DelOrderReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelOrderReply>(create);
+  static DelOrderReply? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get result => $_getBF(0);

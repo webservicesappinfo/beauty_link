@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:beauty_link/models/entity_base.dart';
+import 'package:beauty_link/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/colors.dart';
 import 'package:flutter/src/widgets/icon.dart';
@@ -18,6 +19,7 @@ class Offer extends EntityBase {
   String? skillName;
   String? status;
   LatLng? location;
+  Order? order;
 
   Offer(
       {this.guid,

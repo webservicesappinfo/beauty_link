@@ -6,6 +6,7 @@ import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
+import 'package:beauty_link/models/order.dart';
 import 'package:beauty_link/pages/admin_view/admin_view_bloc.dart';
 import 'package:beauty_link/pages/main_page_bloc.dart';
 import 'package:beauty_link/widgets/custom_text_field.dart';
@@ -36,7 +37,7 @@ class AdminView extends StatelessWidget {
                   state.its<EndEventState, CurrentCompanyChanged>() ||
                   state.its<EndEventState, AddCompany>() ||
                   state.its<EndEventState, DelCompany>()) {
-                    log("state: ${state.runtimeType} event: ${state.event.runtimeType}");
+                log("state: ${state.runtimeType} event: ${state.event.runtimeType}");
                 return _onLoadedAdminView(context);
               } else {
                 log("empty");
@@ -261,6 +262,52 @@ class AdminView extends StatelessWidget {
         });
   }
 
+  void onAddOrder(BuildContext context) {
+    var bloc = BlocProvider.of<AdminViewBloc>(context);
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (_) {
+          return Dialog(
+              elevation: 0,
+              backgroundColor: Colors.white,
+              child: Container(
+                  height: 200,
+                  child: Column(children: [
+                    Text("AddOrder"),
+                    CustomTextField(
+                        hint: "Order name",
+                        ontextChanged: (value) {
+                          bloc.newOrderName = value;
+                        }),
+                    DropdownButton<Offer>(
+                        items: _getOrdersList(context),
+                        onChanged: (value) => SelectedOfferForOrderChanged(context, value).invoke(),
+                        hint: BlocBuilder<AdminViewBloc, BaseState>(
+                            bloc: bloc,
+                            buildWhen: (prevState, state) => state.kind() == "addOrderDlg",
+                            builder: (context, state) => Text(state.its<EndEventState, SelectedOfferForOrderChanged>()
+                                ? '${bloc.selectedOfferForOrder?.name ?? 'select offer'}'
+                                : 'select offer'))),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      TextButton(
+                          style: ButtonStyle(
+                              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                  side: BorderSide(color: Colors.lightGreen),
+                                  borderRadius: BorderRadius.circular(30.0)))),
+                          onPressed: () => AddOrder(context).invoke(),
+                          child: Text("Apply", style: TextStyle(color: Colors.lightGreen))),
+                      TextButton(
+                          style: ButtonStyle(
+                              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                  side: BorderSide(color: Colors.red), borderRadius: BorderRadius.circular(30.0)))),
+                          onPressed: () => Navigator.pop(context),
+                          child: Text("Cancel", style: TextStyle(color: Colors.red)))
+                    ])
+                  ])));
+        });
+  }
+
   List<DropdownMenuItem<AppUser>> _getCanBeMastersList(List<AppUser> users, BuildContext context) {
     List<DropdownMenuItem<AppUser>> list = [];
     var mainBloc = BlocProvider.of<MainPageBloc>(context);
@@ -278,6 +325,21 @@ class AdminView extends StatelessWidget {
     if (masters != null)
       for (var master in masters) {
         list.add(DropdownMenuItem<AppUser>(value: master, child: Row(children: [Text("${master.name}")])));
+      }
+    return list;
+  }
+
+  List<DropdownMenuItem<Offer>> _getOrdersList(BuildContext context) {
+    List<DropdownMenuItem<Offer>> list = [];
+    var bloc = BlocProvider.of<AdminViewBloc>(context);
+    var masters = bloc.curCompany?.masters;
+    if (masters != null)
+      for (var master in masters) {
+        var offers = master.offers;
+        if (offers != null)
+          for (var offer in offers)
+            list.add(
+                DropdownMenuItem<Offer>(value: offer, child: Row(children: [Text("${offer.name} - ${master.name}")])));
       }
     return list;
   }
@@ -312,7 +374,9 @@ class AdminView extends StatelessWidget {
                   log("currentListName: ${bloc.listName}");
                   if (bloc.listName == "MASTERS")
                     onAddMaster(context);
-                  else if (bloc.listName == "OFFERS") onAddOffer(context);
+                  else if (bloc.listName == "OFFERS")
+                    onAddOffer(context);
+                  else if (bloc.listName == "ORDERS") onAddOrder(context);
                 },
                 icon: Icon(Icons.add_circle))
           ]),
@@ -341,6 +405,13 @@ class AdminView extends StatelessWidget {
                 entities: (bloc.curCompany?.getCompanyOffers() ?? []),
                 body: offerListBody,
                 entityCallBack: (entity) => DelOffer(context, entity as Offer).invoke(),
+              );
+              case "ORDERS":
+              return EntityListExpanded(
+                scrollController: scrollController,
+                entities: (bloc.curCompany?.getCompanyOrders() ?? []),
+                body: offerListBody,
+                entityCallBack: (entity) => DelOrder(context, entity as Order).invoke(),
               );
           }
           return Text("empty");

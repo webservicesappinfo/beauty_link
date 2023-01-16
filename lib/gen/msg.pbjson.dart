@@ -132,14 +132,15 @@ const OfferApi$json = const {
     const {'1': 'masterGuid', '3': 6, '4': 1, '5': 9, '10': 'masterGuid'},
     const {'1': 'masterName', '3': 7, '4': 1, '5': 9, '10': 'masterName'},
     const {'1': 'orderGuid', '3': 8, '4': 1, '5': 9, '10': 'orderGuid'},
-    const {'1': 'skillGuid', '3': 9, '4': 1, '5': 9, '10': 'skillGuid'},
-    const {'1': 'skillName', '3': 10, '4': 1, '5': 9, '10': 'skillName'},
-    const {'1': 'status', '3': 11, '4': 1, '5': 9, '10': 'status'},
+    const {'1': 'orderName', '3': 9, '4': 1, '5': 9, '10': 'orderName'},
+    const {'1': 'skillGuid', '3': 10, '4': 1, '5': 9, '10': 'skillGuid'},
+    const {'1': 'skillName', '3': 11, '4': 1, '5': 9, '10': 'skillName'},
+    const {'1': 'status', '3': 12, '4': 1, '5': 9, '10': 'status'},
   ],
 };
 
 /// Descriptor for `OfferApi`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List offerApiDescriptor = $convert.base64Decode('CghPZmZlckFwaRISCgRndWlkGAEgASgJUgRndWlkEhIKBG5hbWUYAiABKAlSBG5hbWUSEgoEZGVzYxgDIAEoCVIEZGVzYxIgCgtjb21wYW55R3VpZBgEIAEoCVILY29tcGFueUd1aWQSIAoLY29tcGFueU5hbWUYBSABKAlSC2NvbXBhbnlOYW1lEh4KCm1hc3Rlckd1aWQYBiABKAlSCm1hc3Rlckd1aWQSHgoKbWFzdGVyTmFtZRgHIAEoCVIKbWFzdGVyTmFtZRIcCglvcmRlckd1aWQYCCABKAlSCW9yZGVyR3VpZBIcCglza2lsbEd1aWQYCSABKAlSCXNraWxsR3VpZBIcCglza2lsbE5hbWUYCiABKAlSCXNraWxsTmFtZRIWCgZzdGF0dXMYCyABKAlSBnN0YXR1cw==');
+final $typed_data.Uint8List offerApiDescriptor = $convert.base64Decode('CghPZmZlckFwaRISCgRndWlkGAEgASgJUgRndWlkEhIKBG5hbWUYAiABKAlSBG5hbWUSEgoEZGVzYxgDIAEoCVIEZGVzYxIgCgtjb21wYW55R3VpZBgEIAEoCVILY29tcGFueUd1aWQSIAoLY29tcGFueU5hbWUYBSABKAlSC2NvbXBhbnlOYW1lEh4KCm1hc3Rlckd1aWQYBiABKAlSCm1hc3Rlckd1aWQSHgoKbWFzdGVyTmFtZRgHIAEoCVIKbWFzdGVyTmFtZRIcCglvcmRlckd1aWQYCCABKAlSCW9yZGVyR3VpZBIcCglvcmRlck5hbWUYCSABKAlSCW9yZGVyTmFtZRIcCglza2lsbEd1aWQYCiABKAlSCXNraWxsR3VpZBIcCglza2lsbE5hbWUYCyABKAlSCXNraWxsTmFtZRIWCgZzdGF0dXMYDCABKAlSBnN0YXR1cw==');
 @$core.Deprecated('Use addOfferRequestDescriptor instead')
 const AddOfferRequest$json = const {
   '1': 'AddOfferRequest',
@@ -221,3 +222,103 @@ const DelOfferReply$json = const {
 
 /// Descriptor for `DelOfferReply`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List delOfferReplyDescriptor = $convert.base64Decode('Cg1EZWxPZmZlclJlcGx5EhYKBnJlc3VsdBgBIAEoCFIGcmVzdWx0');
+@$core.Deprecated('Use orderApiDescriptor instead')
+const OrderApi$json = const {
+  '1': 'OrderApi',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'guid', '3': 2, '4': 1, '5': 9, '10': 'guid'},
+    const {'1': 'offerGuid', '3': 3, '4': 1, '5': 9, '10': 'offerGuid'},
+    const {'1': 'userName', '3': 4, '4': 1, '5': 9, '10': 'userName'},
+    const {'1': 'masterName', '3': 5, '4': 1, '5': 9, '10': 'masterName'},
+    const {'1': 'skillName', '3': 6, '4': 1, '5': 9, '10': 'skillName'},
+    const {'1': 'userGuid', '3': 7, '4': 1, '5': 9, '10': 'userGuid'},
+    const {'1': 'masterGuid', '3': 8, '4': 1, '5': 9, '10': 'masterGuid'},
+    const {'1': 'skillGuid', '3': 9, '4': 1, '5': 9, '10': 'skillGuid'},
+    const {'1': 'status', '3': 10, '4': 1, '5': 9, '10': 'status'},
+  ],
+};
+
+/// Descriptor for `OrderApi`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List orderApiDescriptor = $convert.base64Decode('CghPcmRlckFwaRISCgRuYW1lGAEgASgJUgRuYW1lEhIKBGd1aWQYAiABKAlSBGd1aWQSHAoJb2ZmZXJHdWlkGAMgASgJUglvZmZlckd1aWQSGgoIdXNlck5hbWUYBCABKAlSCHVzZXJOYW1lEh4KCm1hc3Rlck5hbWUYBSABKAlSCm1hc3Rlck5hbWUSHAoJc2tpbGxOYW1lGAYgASgJUglza2lsbE5hbWUSGgoIdXNlckd1aWQYByABKAlSCHVzZXJHdWlkEh4KCm1hc3Rlckd1aWQYCCABKAlSCm1hc3Rlckd1aWQSHAoJc2tpbGxHdWlkGAkgASgJUglza2lsbEd1aWQSFgoGc3RhdHVzGAogASgJUgZzdGF0dXM=');
+@$core.Deprecated('Use addOrderRequestDescriptor instead')
+const AddOrderRequest$json = const {
+  '1': 'AddOrderRequest',
+  '2': const [
+    const {'1': 'order', '3': 1, '4': 1, '5': 11, '6': '.msg.OrderApi', '10': 'order'},
+  ],
+};
+
+/// Descriptor for `AddOrderRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addOrderRequestDescriptor = $convert.base64Decode('Cg9BZGRPcmRlclJlcXVlc3QSIwoFb3JkZXIYASABKAsyDS5tc2cuT3JkZXJBcGlSBW9yZGVy');
+@$core.Deprecated('Use addOrderReplyDescriptor instead')
+const AddOrderReply$json = const {
+  '1': 'AddOrderReply',
+  '2': const [
+    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
+  ],
+};
+
+/// Descriptor for `AddOrderReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addOrderReplyDescriptor = $convert.base64Decode('Cg1BZGRPcmRlclJlcGx5EhYKBnJlc3VsdBgBIAEoCFIGcmVzdWx0');
+@$core.Deprecated('Use getOrderRequestDescriptor instead')
+const GetOrderRequest$json = const {
+  '1': 'GetOrderRequest',
+  '2': const [
+    const {'1': 'guid', '3': 1, '4': 1, '5': 9, '10': 'guid'},
+  ],
+};
+
+/// Descriptor for `GetOrderRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getOrderRequestDescriptor = $convert.base64Decode('Cg9HZXRPcmRlclJlcXVlc3QSEgoEZ3VpZBgBIAEoCVIEZ3VpZA==');
+@$core.Deprecated('Use getOrderReplyDescriptor instead')
+const GetOrderReply$json = const {
+  '1': 'GetOrderReply',
+  '2': const [
+    const {'1': 'offer', '3': 1, '4': 1, '5': 11, '6': '.msg.OrderApi', '10': 'offer'},
+    const {'1': 'result', '3': 2, '4': 1, '5': 8, '10': 'result'},
+  ],
+};
+
+/// Descriptor for `GetOrderReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getOrderReplyDescriptor = $convert.base64Decode('Cg1HZXRPcmRlclJlcGx5EiMKBW9mZmVyGAEgASgLMg0ubXNnLk9yZGVyQXBpUgVvZmZlchIWCgZyZXN1bHQYAiABKAhSBnJlc3VsdA==');
+@$core.Deprecated('Use getOrdersRequestDescriptor instead')
+const GetOrdersRequest$json = const {
+  '1': 'GetOrdersRequest',
+  '2': const [
+    const {'1': 'guids', '3': 1, '4': 3, '5': 9, '10': 'guids'},
+  ],
+};
+
+/// Descriptor for `GetOrdersRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getOrdersRequestDescriptor = $convert.base64Decode('ChBHZXRPcmRlcnNSZXF1ZXN0EhQKBWd1aWRzGAEgAygJUgVndWlkcw==');
+@$core.Deprecated('Use getOrdersReplyDescriptor instead')
+const GetOrdersReply$json = const {
+  '1': 'GetOrdersReply',
+  '2': const [
+    const {'1': 'offers', '3': 1, '4': 3, '5': 11, '6': '.msg.OfferApi', '10': 'offers'},
+  ],
+};
+
+/// Descriptor for `GetOrdersReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getOrdersReplyDescriptor = $convert.base64Decode('Cg5HZXRPcmRlcnNSZXBseRIlCgZvZmZlcnMYASADKAsyDS5tc2cuT2ZmZXJBcGlSBm9mZmVycw==');
+@$core.Deprecated('Use delOrderRequestDescriptor instead')
+const DelOrderRequest$json = const {
+  '1': 'DelOrderRequest',
+  '2': const [
+    const {'1': 'order', '3': 1, '4': 1, '5': 11, '6': '.msg.OrderApi', '10': 'order'},
+  ],
+};
+
+/// Descriptor for `DelOrderRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List delOrderRequestDescriptor = $convert.base64Decode('Cg9EZWxPcmRlclJlcXVlc3QSIwoFb3JkZXIYASABKAsyDS5tc2cuT3JkZXJBcGlSBW9yZGVy');
+@$core.Deprecated('Use delOrderReplyDescriptor instead')
+const DelOrderReply$json = const {
+  '1': 'DelOrderReply',
+  '2': const [
+    const {'1': 'result', '3': 1, '4': 1, '5': 8, '10': 'result'},
+  ],
+};
+
+/// Descriptor for `DelOrderReply`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List delOrderReplyDescriptor = $convert.base64Decode('Cg1EZWxPcmRlclJlcGx5EhYKBnJlc3VsdBgBIAEoCFIGcmVzdWx0');

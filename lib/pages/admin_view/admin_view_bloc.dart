@@ -4,6 +4,7 @@ import 'package:beauty_link/bloc/states.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/offer.dart';
+import 'package:beauty_link/models/order.dart';
 import 'package:beauty_link/pages/main_page_bloc.dart';
 import 'package:beauty_link/services/main_service.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,9 @@ class AdminViewBloc extends BaseBloc {
   AppUser? admin;
   AppUser? selectedCanBeMaster;
   AppUser? selectedMasterForOffer;
+  Offer? selectedOfferForOrder;
   String? newOfferName;
+  String? newOrderName;
   Company? curCompany;
   String? newCompanyName;
   String? listName;
@@ -57,6 +60,21 @@ class AdminViewBloc extends BaseBloc {
   }
 
   Future<bool> delOffer(Offer offer) async => await MainService().delOffer(offer);
+
+  Future<bool> addOrder() async {
+    if (newOrderName == null || selectedOfferForOrder == null) return false;
+    var skillGuid = Uuid().v1().toString();
+    var reply = await MainService().addOrder(Order(
+        name: newOrderName,
+        masterGuid: selectedOfferForOrder?.masterGuid,
+        masterName: selectedOfferForOrder?.masterName,
+        skillGuid: skillGuid,
+        skillName: "",
+        status: null));
+    return reply;
+  }
+
+  Future<bool> delOrder(Order order) async => await MainService().delOrder(order);
 
   Future getCompanyInfo() async {}
 }
@@ -177,6 +195,15 @@ class SelectedMasterForOfferChanged extends BaseEvent<AdminViewBloc> {
   Future<void> execute() async => bloc.selectedMasterForOffer = selectedMaster;
 }
 
+class SelectedOfferForOrderChanged extends BaseEvent<AdminViewBloc> {
+  Offer? selectedOffer;
+  SelectedOfferForOrderChanged(super.context, this.selectedOffer) {
+    super.kind = "addOrderDlg";
+  }
+  @override
+  Future<void> execute() async => bloc.selectedOfferForOrder = selectedOffer;
+}
+
 class ListTypeChanged extends BaseEvent<AdminViewBloc> {
   String listName;
   ListTypeChanged(super.context, this.listName) {
@@ -208,6 +235,37 @@ class DelOffer extends BaseEvent<AdminViewBloc> {
   @override
   Future<void> execute() async {
     var result = await bloc.delOffer(offer);
+    if (result) {
+      var mainBlock = BlocProvider.of<MainPageBloc>(context);
+      await mainBlock.getUserData();
+      LoadAdminDataEvent(context).invoke();
+    }
+    Navigator.pop(context);
+  }
+}
+
+class AddOrder extends BaseEvent<AdminViewBloc> {
+  AddOrder(super.context);
+
+  @override
+  Future<void> execute() async {
+    var result = await bloc.addOrder();
+    if (result) {
+      var mainBlock = BlocProvider.of<MainPageBloc>(context);
+      await mainBlock.getUserData();
+      LoadAdminDataEvent(context).invoke();
+    }
+    Navigator.pop(context);
+  }
+}
+
+class DelOrder extends BaseEvent<AdminViewBloc> {
+  Order order;
+  DelOrder(super.context, this.order);
+
+  @override
+  Future<void> execute() async {
+    var result = await bloc.delOrder(order);
     if (result) {
       var mainBlock = BlocProvider.of<MainPageBloc>(context);
       await mainBlock.getUserData();

@@ -3,6 +3,7 @@ import 'package:beauty_link/gen/msg.pb.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/offer.dart';
+import 'package:beauty_link/models/order.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:grpc/grpc.dart';
 import 'package:beauty_link/global.dart' as global;
@@ -94,6 +95,28 @@ class MainService {
     var reply = await mobileApiClient.delOffer(DelOfferRequest(
         offer: OfferApi(
             name: offer.name, guid: offer.guid, companyGuid: offer.companyGuid, masterGuid: offer.masterGuid)));
+    return reply.result;
+  }
+
+  Future<bool> addOrder(Order? order) async {
+    if (order == null) return false;
+    var reply = await mobileApiClient.addOrder(AddOrderRequest(
+        order: OrderApi(
+            name: order.name,
+            userName: order.clientName,
+            userGuid: order.clientGuid,
+            masterGuid: order.masterGuid,
+            masterName: order.masterName,
+            skillGuid: order.skillGuid,
+            skillName: order.skillName,
+            status: order.status)));
+    return reply.result;
+  }
+
+  Future<bool> delOrder(Order? order) async {
+    if (order == null) return false;
+    var reply = await mobileApiClient
+        .delOrder(DelOrderRequest(order: OrderApi(name: order.name, guid: order.guid, masterGuid: order.masterGuid)));
     return reply.result;
   }
 }

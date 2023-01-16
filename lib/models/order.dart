@@ -11,25 +11,25 @@ class Order extends EntityBase {
   String? guid;
   String? name;
   String? status;
-  String offerGuid;
-  String clientGuid;
-  String clientName;
-  String masterGuid;
-  String masterName;
-  String skillGuid;
-  String skillName;
+  String? offerGuid;
+  String? clientGuid;
+  String? clientName;
+  String? masterGuid;
+  String? masterName;
+  String? skillGuid;
+  String? skillName;
 
   Order(
       {this.guid,
       required this.name,
-      required this.status,
-      required this.offerGuid,
-      required this.masterGuid,
-      required this.clientName,
-      required this.clientGuid,
-      required this.skillGuid,
-      required this.masterName,
-      required this.skillName});
+      this.status,
+      this.offerGuid,
+      this.masterGuid,
+      this.clientName,
+      this.clientGuid,
+      this.skillGuid,
+      this.masterName,
+      this.skillName});
 
   factory Order.fromJson(Map<String, dynamic> json) {
     return new Order(

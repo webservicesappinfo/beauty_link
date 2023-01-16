@@ -1,6 +1,7 @@
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
+import 'package:beauty_link/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -61,6 +62,18 @@ class Company extends EntityBase {
       if (master.offers == null) continue;
       for (var offer in master.offers!) result.add(offer);
     }
+    return result;
+  }
+
+  List<Order> getCompanyOrders() {
+    List<Order> result = [];
+    if (masters != null)
+      for (var master in masters!) {
+        if (master.offers != null)
+          for (var offer in master.offers!) {
+            if (offer.order != null) result.add(offer.order!);
+          }
+      }
     return result;
   }
 }
