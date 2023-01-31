@@ -1,5 +1,4 @@
 import 'package:beauty_link/gen/mobile_api.pbgrpc.dart';
-import 'package:beauty_link/gen/msg.pb.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/offer.dart';

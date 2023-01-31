@@ -1,4 +1,3 @@
-import 'package:beauty_link/gen/msg.pb.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';

@@ -1,5 +1,4 @@
 import 'package:beauty_link/gen/mobile_api.pbgrpc.dart';
-import 'package:beauty_link/gen/notification.pb.dart';
 import 'package:beauty_link/models/app_user.dart';
 import 'package:grpc/grpc.dart';
 import 'package:beauty_link/global.dart' as global;
