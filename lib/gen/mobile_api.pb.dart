@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'msg.pb.dart' as $1;
+import 'msg.pb.dart' as $3;
 
 class GetMainDataForUserRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMainDataForUserRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'mobileApi'), createEmptyInstance: create)
@@ -62,7 +62,7 @@ class GetMainDataForUserReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMainDataForUserReply', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'mobileApi'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userName', protoName: 'userName')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userUIDFB', protoName: 'userUIDFB')
-    ..pc<$1.CompanyReply>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companies', $pb.PbFieldType.PM, subBuilder: $1.CompanyReply.create)
+    ..pc<$3.CompanyReply>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'companies', $pb.PbFieldType.PM, subBuilder: $3.CompanyReply.create)
     ..hasRequiredFields = false
   ;
 
@@ -70,7 +70,7 @@ class GetMainDataForUserReply extends $pb.GeneratedMessage {
   factory GetMainDataForUserReply({
     $core.String? userName,
     $core.String? userUIDFB,
-    $core.Iterable<$1.CompanyReply>? companies,
+    $core.Iterable<$3.CompanyReply>? companies,
   }) {
     final _result = create();
     if (userName != null) {
@@ -124,7 +124,7 @@ class GetMainDataForUserReply extends $pb.GeneratedMessage {
   void clearUserUIDFB() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<$1.CompanyReply> get companies => $_getList(2);
+  $core.List<$3.CompanyReply> get companies => $_getList(2);
 }
 
 class GetFitForCompanyUsersRequest extends $pb.GeneratedMessage {

@@ -2,8 +2,6 @@ import 'package:beauty_link/bloc/base_bloc.dart';
 import 'package:beauty_link/models/entity_base.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_dropdownfield.dart';
-
 class EntityListExpanded extends StatefulWidget {
   final List<EntityBase> entities;
   ScrollController? scrollController;

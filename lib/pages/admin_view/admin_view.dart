@@ -8,7 +8,7 @@ import 'package:beauty_link/models/entity_base.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/order.dart';
 import 'package:beauty_link/pages/admin_view/admin_view_bloc.dart';
-import 'package:beauty_link/pages/main_page_bloc.dart';
+import 'package:beauty_link/pages/main_page/main_page_bloc.dart';
 import 'package:beauty_link/widgets/custom_text_field.dart';
 import 'package:beauty_link/widgets/entity_list_expanded.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';

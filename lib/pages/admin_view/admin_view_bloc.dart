@@ -5,7 +5,7 @@ import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/company.dart';
 import 'package:beauty_link/models/offer.dart';
 import 'package:beauty_link/models/order.dart';
-import 'package:beauty_link/pages/main_page_bloc.dart';
+import 'package:beauty_link/pages/main_page/main_page_bloc.dart';
 import 'package:beauty_link/services/main_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

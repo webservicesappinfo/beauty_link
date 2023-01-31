@@ -22,17 +22,17 @@ class _CustomDropDownFieldState extends State<CustomDropDownField> {
   @override
   Widget build(BuildContext context) {
     return DropdownSearch<DropDownFieldItem>(
-      mode: Mode.BOTTOM_SHEET,
-      showSelectedItems: true,
-      showSearchBox: true,
-      showClearButton: true,
+      //mode: Mode.BOTTOM_SHEET,
+      //showSelectedItems: true,
+      //showSearchBox: true,
+      //showClearButton: true,
       itemAsString: (DropDownFieldItem? item) => item?.getcaption() ?? 'noName',
       items: widget.items,
       selectedItem: widget.selectedItem,
       //popupItemDisabled: (String s) => s.startsWith('('),
       onChanged: widget.onChanged,
       compareFn:(DropDownFieldItem? item1, DropDownFieldItem? item2) => item1?.caption == item2?.caption,
-      dropdownSearchDecoration: InputDecoration(labelText: widget.label, hintText: widget.hint),
+      //dropdownSearchDecoration: InputDecoration(labelText: widget.label, hintText: widget.hint),
     );
   }
 }
@@ -58,17 +58,17 @@ class _CustomDropDownFieldMultiState extends State<CustomDropDownFieldMulti> {
   @override
   Widget build(BuildContext context) {
     return DropdownSearch<DropDownFieldItem>.multiSelection(
-      mode: Mode.BOTTOM_SHEET,
-      showSelectedItems: true,
-      showSearchBox: true,
-      showClearButton: true,
+      //mode: Mode.BOTTOM_SHEET,
+      //showSelectedItems: true,
+      //showSearchBox: true,
+      //showClearButton: true,
       itemAsString: (DropDownFieldItem? item) => item?.getcaption() ?? 'noName',
       items: widget.items,
       selectedItems: widget.selectedItems ?? [],
       //popupItemDisabled: (String s) => s.startsWith('('),
       compareFn:(DropDownFieldItem? item1, DropDownFieldItem? item2) => item1?.caption == item2?.caption,
       onChanged: widget.onChanged,
-      dropdownSearchDecoration: InputDecoration(labelText: widget.label, hintText: widget.hint),
+      //dropdownSearchDecoration: InputDecoration(labelText: widget.label, hintText: widget.hint),
     );
   }
 }

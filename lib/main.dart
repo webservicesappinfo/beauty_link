@@ -1,5 +1,5 @@
-import 'package:beauty_link/pages/home_page/home_page.dart';
-import 'package:beauty_link/pages/login_page.dart';
+import 'package:beauty_link/pages/main_page/login_page.dart';
+import 'package:beauty_link/pages/main_page/main_page.dart';
 import 'package:beauty_link/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -116,7 +116,7 @@ class MyApp extends StatelessWidget {
         builder: (_, snapshot) {
           FirebaseAuth.instance.currentUser?.reload();
           final isSignedIn = snapshot.data != null && AuthService().isSignedIn;
-          return isSignedIn ? HomePage() : LoginPage();
+          return isSignedIn ? MainPage() : LoginPage();
         },
       ),
     );

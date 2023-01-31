@@ -7,7 +7,11 @@ import 'package:beauty_link/pages/admin_view/admin_view.dart';
 import 'package:beauty_link/pages/client_view/client_view.dart';
 import 'package:beauty_link/pages/master_view/master_view.dart';
 import 'package:beauty_link/pages/admin_view/admin_view_bloc.dart';
-import 'package:beauty_link/pages/main_page_bloc.dart';
+import 'package:beauty_link/pages/main_page/main_page_bloc.dart';
+import 'package:beauty_link/pages/app_bar_context_menu_pages/profile_page.dart';
+import 'package:beauty_link/pages/app_bar_context_menu_pages/scrolling_header.dart';
+import 'package:beauty_link/services/auth_service.dart';
+import 'package:beauty_link/widgets/custom_popup.dart';
 import 'package:beauty_link/widgets/custom_text_field.dart';
 import 'package:beauty_link/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +50,67 @@ Widget _onLoadMainPage(BuildContext context) {
   final PageController controller = PageController();
   var bloc = BlocProvider.of<MainPageBloc>(context);
   return Scaffold(
+      appBar: AppBar(
+          title: Text('Beauty Link'),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(10),
+          )),
+          bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(10.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.only(bottomLeft: Radius.circular(16.0), bottomRight: Radius.circular(16.0)),
+                    color: Colors.pink),
+                height: 10.0,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 3.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.only(bottomLeft: Radius.circular(16.0), bottomRight: Radius.circular(16.0)),
+                        color: Colors.white),
+                    height: 1.0,
+                  ),
+                ),
+              )),
+          backgroundColor: Colors.white,
+          actions: <Widget>[
+            Row(
+              children: [
+                DropdownButton<AppUser>(
+                    items: _getUsersList(bloc.users),
+                    onChanged: (value) => ChangeUserEvent(context, value).invoke(),
+                    hint: Text('${bloc.curUser?.name ?? 'Add user'}', style: TextStyle(color: Colors.black))),
+                IconButton(
+                  onPressed: () => _addUserDlg(context),
+                  icon: Icon(Icons.add),
+                  iconSize: 20,
+                  splashRadius: 15,
+                ),
+                IconButton(
+                  onPressed: () => DelUserEvent(context, bloc.curUser).invoke(),
+                  icon: Icon(Icons.remove_circle),
+                  iconSize: 20,
+                  splashRadius: 15,
+                ),
+                CustomPopup(["profile", "signOut", "users", "EntityListExpanded", "ScrollingHeader"], (String choice) {
+                  switch (choice) {
+                    case "profile":
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                      break;
+                    case "signOut":
+                      AuthService().signOut();
+                      break;
+                    case "ScrollingHeader":
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ScrollingHeaderExample()));
+                      break;
+                  }
+                }),
+              ],
+            )
+          ]),
       body: Padding(
           padding: const EdgeInsets.only(top: 15.0),
           child: PageIndicatorContainer(

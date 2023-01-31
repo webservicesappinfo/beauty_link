@@ -1,7 +1,6 @@
 import 'package:beauty_link/models/app_user.dart';
 import 'package:beauty_link/models/order.dart';
 import 'package:beauty_link/models/skill.dart';
-import 'package:beauty_link/pages/old_ui/fit_offers/fit_offers_page.dart';
 import 'package:beauty_link/widgets/custom_dropdownfield.dart';
 import 'package:beauty_link/widgets/entity_list_expanded.dart';
 import 'package:flutter/material.dart';
@@ -89,13 +88,7 @@ class ClientView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(onPressed: () => Navigator.pop(context), child: Text("Cancel")),
-                        TextButton(
-                            onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => FitOffersPage(
-                                        master: AppUser(), skill: Skill(name: 'empty'), client: AppUser()))),
-                            child: Text("Apply"))
+                        TextButton(onPressed: () {}, child: Text("Apply"))
                       ],
                     )
                   ])));
