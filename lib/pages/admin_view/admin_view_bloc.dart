@@ -21,6 +21,7 @@ class AdminViewBloc extends BaseBloc {
   Company? curCompany;
   String? newCompanyName;
   String? listName;
+  bool scrollingPage = true;
   AdminViewBloc(BaseState initialState) : super(initialState);
 
   Future<bool> addCompany() async {
@@ -273,4 +274,13 @@ class DelOrder extends BaseEvent<AdminViewBloc> {
     }
     Navigator.pop(context);
   }
+}
+
+class ScrollPageEvent extends BaseEvent<AdminViewBloc> {
+  bool isStarted;
+  ScrollPageEvent(super.context, this.isStarted) {
+    super.kind = "adminView";
+  }
+  @override
+  Future<void> execute() async => bloc.scrollingPage = this.isStarted;
 }

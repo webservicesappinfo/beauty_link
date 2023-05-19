@@ -27,42 +27,72 @@ class AdminView extends StatelessWidget {
         child: BlocBuilder<AdminViewBloc, BaseState>(
             buildWhen: (prevState, state) => state.kind() == "adminView",
             builder: (context, state) {
-              log("adminView main rebuild");
-              if (state.its<InitState, BaseEvent>()) {
-                LoadAdminDataEvent(context).invoke();
-                return LoadingWidget();
-              } else if (state.its<BeginEventState, BaseEvent>())
-                return LoadingWidget();
-              else if (state.its<EndEventState, LoadAdminDataEvent>() ||
-                  state.its<EndEventState, CurrentCompanyChanged>() ||
-                  state.its<EndEventState, AddCompany>() ||
-                  state.its<EndEventState, DelCompany>()) {
-                log("state: ${state.runtimeType} event: ${state.event.runtimeType}");
-                return _onLoadedAdminView(context);
-              } else {
-                log("empty");
-                return Text('empty state');
-              }
-            }));
+          log("adminView main rebuild");
+          if (state.its<InitState, BaseEvent>()) {
+            LoadAdminDataEvent(context).invoke();
+            return LoadingWidget();
+          } else if (state.its<BeginEventState, BaseEvent>())
+            return LoadingWidget();
+          else if (state.its<EndEventState, LoadAdminDataEvent>() ||
+              state.its<EndEventState, CurrentCompanyChanged>() ||
+              state.its<EndEventState, AddCompany>() ||
+              state.its<EndEventState, DelCompany>() ||
+              state.its<EndEventState, ScrollPageEvent>()) {
+            log("state: ${state.runtimeType} event: ${state.event.runtimeType}");
+            return _onLoadedAdminView(context);
+          } else {
+            log("empty");
+            return Text('empty state');
+          }
+        }));
   }
 
   Widget _onLoadedAdminView(BuildContext context) {
     var bloc = BlocProvider.of<AdminViewBloc>(context);
     return Stack(children: [
       Column(children: [
-        SizedBox(height: 80),
-        Center(child: Icon(Icons.person_rounded, size: 70)),
-        Center(child: Text("Admin")),
-        Center(
-            child: Container(
-                height: 100,
-                width: 200,
-                color: Colors.amber,
-                child: Column(children: [
-                  IconButton(onPressed: () => showCompanyInfoDlg(context), icon: Icon(Icons.info_outline)),
-                  Text(bloc.curCompany?.name ?? "noSet"),
-                  Text("Owner: ${bloc.curCompany?.ownerName ?? "Owner"}")
-                ]))),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(child: Text("Admin")),
+        ),
+        Stack(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: BlocBuilder<AdminViewBloc, BaseState>(
+                //bloc: bloc,
+                buildWhen: (prevState, state) => state.its<EndEventState, ScrollPageEvent>(),
+                builder: (context, state) {
+                  log("scrollingPage : ${bloc.scrollingPage}, state: $state, event: ${state.event}");
+                  return Visibility(
+                    visible: !bloc.scrollingPage,
+                    child: Container(
+                        color: Colors.amber,
+                        height: 100,
+                        width: 30,
+                        child: Center(child: RotatedBox(quarterTurns: 1, child: Text("Master")))),
+                  );
+                },
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                  height: 100,
+                  width: 200,
+                  child: Column(children: [
+                    IconButton(onPressed: () => showCompanyInfoDlg(context), icon: Icon(Icons.info_outline)),
+                    Text(bloc.curCompany?.name ?? "noSet"),
+                    Text("Owner: ${bloc.curCompany?.ownerName ?? "Owner"}")
+                  ]),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [BoxShadow(color: Colors.pinkAccent, spreadRadius: 3)])),
+            )
+          ],
+        ),
         IconButton(onPressed: () => showCompanies(context), icon: Icon(Icons.expand_circle_down))
       ]),
       DraggableScrollableSheet(
@@ -72,7 +102,7 @@ class AdminView extends StatelessWidget {
           builder: (BuildContext context, ScrollController scrollController) {
             return Column(children: [
               listHeader(context),
-              Expanded(child: Container(color: Colors.blue[100], child: body(scrollController, context)))
+              Expanded(child: Container(color: Colors.pink[50], child: body(scrollController, context)))
             ]);
           })
     ]);
@@ -89,12 +119,14 @@ class AdminView extends StatelessWidget {
               child: Container(
                   height: 100,
                   child: Column(children: [
-                    OutlinedButton(
-                        onPressed: () => DelCompany(context).invoke(),
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)))),
-                        child: const Text("Remove"))
+                    Center(
+                      child: OutlinedButton(
+                          onPressed: () => DelCompany(context).invoke(),
+                          style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)))),
+                          child: Text("Remove")),
+                    )
                   ])));
         });
   }
@@ -115,7 +147,7 @@ class AdminView extends StatelessWidget {
                     Expanded(
                         child: CarouselSlider(
                             options: CarouselOptions(
-                                height: 50,
+                                height: 30,
                                 enableInfiniteScroll: false,
                                 enlargeStrategy: CenterPageEnlargeStrategy.scale,
                                 aspectRatio: 2.0,
@@ -128,7 +160,12 @@ class AdminView extends StatelessWidget {
                                           child: GestureDetector(
                                               onTap: () => CurrentCompanyChanged(context, item).invoke(),
                                               child: Container(
-                                                  color: Colors.amber,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      color: Colors.white,
+                                                      boxShadow: [
+                                                        BoxShadow(color: Colors.pinkAccent, spreadRadius: 3)
+                                                      ]),
                                                   child: Center(child: Text(item.name ?? "Noname"))))),
                                       color: Colors.white,
                                     ))
@@ -347,29 +384,38 @@ class AdminView extends StatelessWidget {
   Widget listHeader(BuildContext context) {
     var bloc = BlocProvider.of<AdminViewBloc>(context);
     return Column(children: [
-      CustomRadioButton(
-          enableShape: true,
-          //absoluteZeroSpacing: true,
-          unSelectedColor: Colors.white,
-          buttonLables: [
-            'Orders',
-            'Offers',
-            'Masters',
-          ],
-          buttonValues: [
-            "ORDERS",
-            "OFFERS",
-            "MASTERS",
-          ],
-          defaultSelected: "MASTERS",
-          buttonTextStyle: ButtonTextStyle(
-              selectedColor: Colors.white, unSelectedColor: Colors.black, textStyle: TextStyle(fontSize: 16)),
-          radioButtonValue: (value) => ListTypeChanged(context, "$value").invoke(),
-          selectedColor: Colors.green),
       Container(
-          height: 30,
-          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          height: 40,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            color: Colors.pink[50],
+          ),
+          child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+            CustomRadioButton(
+              enableShape: true,
+              elevation: 0,
+              width: 80,
+              //absoluteZeroSpacing: true,
+              unSelectedColor: Colors.white,
+              selectedColor: Color.fromARGB(255, 161, 240, 168),
+              buttonLables: [
+                'Orders',
+                'Offers',
+                'Masters',
+              ],
+              buttonValues: [
+                "ORDERS",
+                "OFFERS",
+                "MASTERS",
+              ],
+              defaultSelected: "MASTERS",
+              buttonTextStyle: ButtonTextStyle(
+                  selectedColor: Colors.black, unSelectedColor: Colors.black, textStyle: TextStyle(fontSize: 12)),
+              radioButtonValue: (value) => ListTypeChanged(context, "$value").invoke(),
+            ),
             IconButton(
+                iconSize: 40,
+                padding: EdgeInsets.only(left: 40),
                 onPressed: () {
                   log("currentListName: ${bloc.listName}");
                   if (bloc.listName == "MASTERS")
@@ -378,11 +424,8 @@ class AdminView extends StatelessWidget {
                     onAddOffer(context);
                   else if (bloc.listName == "ORDERS") onAddOrder(context);
                 },
-                icon: Icon(Icons.add_circle))
-          ]),
-          decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))))
+                icon: Icon(Icons.add_circle_outline_sharp))
+          ]))
     ]);
   }
 
@@ -393,25 +436,34 @@ class AdminView extends StatelessWidget {
         builder: (context, state) {
           switch (bloc.listName) {
             case "MASTERS":
-              return EntityListExpanded(
-                scrollController: scrollController,
-                entities: (bloc.curCompany?.masters ?? []),
-                body: masterListBody,
-                entityCallBack: (entity) => DelMaster(context, entity as AppUser).invoke(),
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: EntityListExpanded(
+                  scrollController: scrollController,
+                  entities: (bloc.curCompany?.masters ?? []),
+                  body: masterListBody,
+                  entityCallBack: (entity) => DelMaster(context, entity as AppUser).invoke(),
+                ),
               );
             case "OFFERS":
-              return EntityListExpanded(
-                scrollController: scrollController,
-                entities: (bloc.curCompany?.getCompanyOffers() ?? []),
-                body: offerListBody,
-                entityCallBack: (entity) => DelOffer(context, entity as Offer).invoke(),
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: EntityListExpanded(
+                  scrollController: scrollController,
+                  entities: (bloc.curCompany?.getCompanyOffers() ?? []),
+                  body: offerListBody,
+                  entityCallBack: (entity) => DelOffer(context, entity as Offer).invoke(),
+                ),
               );
-              case "ORDERS":
-              return EntityListExpanded(
-                scrollController: scrollController,
-                entities: (bloc.curCompany?.getCompanyOrders() ?? []),
-                body: offerListBody,
-                entityCallBack: (entity) => DelOrder(context, entity as Order).invoke(),
+            case "ORDERS":
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: EntityListExpanded(
+                  scrollController: scrollController,
+                  entities: (bloc.curCompany?.getCompanyOrders() ?? []),
+                  body: offerListBody,
+                  entityCallBack: (entity) => DelOrder(context, entity as Order).invoke(),
+                ),
               );
           }
           return Text("empty");
